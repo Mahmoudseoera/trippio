@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <title>Thank You | Brand Name</title>
+  <meta name="description" content="Thank you for reaching out to Brand Name — your request has been received and our team will be in touch shortly." />
+  <meta name="keywords" content="Brand Name booking confirmation, Egypt tour enquiry received, contact Brand Name" />
+  <meta name="author" content="Brand Name" />
+  <!-- noindex: confirmation pages should not be indexed -->
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://www.BrandName.com/thank-you" />
+  <meta name="theme-color" content="#082844" />
+
+  <!-- Favicons -->
+  <link rel="icon" sizes="any" href="/assets/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/images/favlogo.png" />
+
+  <!-- Open Graph (still useful for sharing) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Brand Name" />
+  <meta property="og:title" content="Thank You | Brand Name" />
+  <meta property="og:description" content="Thank you for reaching out to Brand Name — your request has been received and our team will be in touch shortly." />
+  <meta property="og:url" content="https://www.BrandName.com/thank-you" />
+  <meta property="og:image" content="https://www.BrandName.com/assets/images/tours/Pyramids-in-Egypt-webp.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Thank You | Brand Name" />
+  <meta name="twitter:description" content="Thank you for reaching out to Brand Name — your request has been received and our team will be in touch shortly." />
+  <meta name="twitter:image" content="https://www.BrandName.com/assets/images/tours/Pyramids-in-Egypt-webp.webp" />
+
+  <!-- Performance: preconnect, preload LCP hero -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+<!-- swiper Css — non-render-blocking -->
+  <link rel="preload" as="style" href="assets/css/librairies/swiper-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/librairies/swiper-bundle.min.css"></noscript>
+  <!-- fancybox css -->
+  <link rel="preload" as="style" href="assets/css/librairies/fancy-box.css" onload="this.onload=null;this.rel='stylesheet'">
+  <!-- flatpickr -->
+  <link rel="preload" as="style" href="assets/css/librairies/flatpickr.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <!-- font-awesome -->
+  <link rel="preload" as="style" href="assets/fonts/fontawesome/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <!-- global stylesheet -->
+  <link rel="stylesheet" href="assets/css/global.css" />
+
+  <!-- Structured data: WebPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Thank You — Brand Name",
+  "url": "https://www.BrandName.com/thank-you",
+  "description": "Thank you for reaching out to Brand Name — your request has been received and our team will be in touch shortly.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Brand Name",
+    "url": "https://www.BrandName.com/"
+  }
+}
+  </script>
+<style>
+    /* =========================================================
+       Start HEADER OVERRIDE — 
+    ========================================================= */
+
+    .header-wrap {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .topbar {
+        color: var(--main-color);
+    }
+
+    .topbar__dropdown svg {
+        stroke: var(--main-color);
+    }
+
+    .topbar__social svg {
+        stroke: var(--main-color);
+    }
+
+    .topbar__social a {
+        border: 1px solid rgb(8 40 68/ 0.3);
+    }
+
+    /* =========================================================
+       End HEADER OVERRIDE — 
+    ========================================================= */
+    /* =========================================================
+       THANK YOU PAGE
+    ========================================================= */
+    .ty-section {
+      position: relative;
+      /* overflow: hidden; */
+      padding: 60px 0;
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Decorative floating blobs, same palette as the rest of the site */
+    .ty-blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(2px);
+    }
+    .ty-blob--1 {
+      width: 420px; height: 420px; top: -140px; left: -120px;
+      background: radial-gradient(circle, rgba(201,155,61,.14), transparent 70%);
+      animation: ty-float-a 9s ease-in-out infinite;
+    }
+    .ty-blob--2 {
+      width: 380px; height: 380px; bottom: -160px; right: -100px;
+      background: radial-gradient(circle, rgba(29,104,159,.14), transparent 70%);
+      animation: ty-float-b 11s ease-in-out infinite;
+    }
+    .ty-blob--3 {
+      width: 200px; height: 200px; top: 20%; right: 8%;
+      background: radial-gradient(circle, rgba(201,155,61,.10), transparent 70%);
+      animation: ty-float-a 7s ease-in-out infinite reverse;
+    }
+    @keyframes ty-float-a {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(20px, -24px); }
+    }
+    @keyframes ty-float-b {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-24px, 18px); }
+    }
+
+    /* Confetti burst — brand-colored dots, not rainbow */
+    .ty-confetti {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    }
+    .ty-confetti span {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 8px; height: 8px;
+      border-radius: 2px;
+      opacity: 0;
+      background: var(--accent-color);
+      animation: ty-confetti-burst 1.1s cubic-bezier(.2,.7,.3,1) forwards;
+      animation-delay: .35s;
+    }
+    @keyframes ty-confetti-burst {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+      15% { opacity: 1; }
+      100% {
+        opacity: 0;
+        transform:
+          translate(calc(-50% + var(--tx)), calc(-50% + var(--ty)))
+          scale(1)
+          rotate(var(--rot));
+      }
+    }
+
+    .ty-card {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Animated success checkmark */
+    .ty-check-wrap {
+      width: 108px; height: 108px;
+      margin: 0 auto 1.8rem;
+      position: relative;
+    }
+    .ty-check-wrap svg { width: 100%; height: 100%; }
+    .ty-check-circle-bg {
+      fill: none;
+      stroke: rgba(201,155,61,.16);
+      stroke-width: 4;
+    }
+    .ty-check-circle {
+      fill: none;
+      stroke: var(--accent-color);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 302;
+      stroke-dashoffset: 302;
+      animation: ty-draw-circle 0.7s cubic-bezier(.65,0,.35,1) forwards;
+    }
+    .ty-check-mark {
+      fill: none;
+      stroke: var(--accent-color-dark);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: ty-draw-check 0.4s cubic-bezier(.65,0,.35,1) 0.65s forwards;
+    }
+    @keyframes ty-draw-circle { to { stroke-dashoffset: 0; } }
+    @keyframes ty-draw-check { to { stroke-dashoffset: 0; } }
+
+    .ty-check-pulse {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 2px solid var(--accent-color);
+      opacity: 0;
+      animation: ty-pulse 1.4s ease-out 0.9s;
+    }
+    @keyframes ty-pulse {
+      0% { transform: scale(0.8); opacity: 0.6; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+
+    /* Staggered content reveal */
+    .ty-fade {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: ty-fade-in 0.6s ease forwards;
+    }
+    @keyframes ty-fade-in { to { opacity: 1; transform: translateY(0); } }
+    .ty-fade--1 { animation-delay: .75s; }
+    .ty-fade--2 { animation-delay: .88s; }
+    .ty-fade--3 { animation-delay: 1.0s; }
+    .ty-fade--4 { animation-delay: 1.12s; }
+    .ty-fade--5 { animation-delay: 1.24s; }
+
+    .ty-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--accent-color-dark); font-weight: 700; font-size: 0.8rem;
+      letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .ty-title {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: clamp(1.9rem, 4vw, 2.6rem); color: var(--main-color);
+      margin: 0 0 1rem; line-height: 1.2;
+    }
+    .ty-title em { font-style: normal; color: var(--accent-color-dark); }
+    .ty-desc {
+      font-size: 0.96rem; line-height: 1.75; color: var(--color-gray-500);
+      max-width: 480px; margin: 0 auto 2rem;
+    }
+
+    .ty-ref {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--color-off-white);
+      border: 1px dashed var(--color-gray-300);
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 0.82rem; color: var(--color-gray-700); font-weight: 600;
+      margin-bottom: 2.2rem;
+    }
+    .ty-ref strong { color: var(--main-color); font-family: var(--font-heading); letter-spacing: .03em; }
+
+    /* Next steps */
+    .ty-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem;
+      margin-bottom: 2.4rem; text-align: left;
+    }
+    .ty-step {
+      background: var(--white-color);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.3rem;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .ty-step__icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(201,155,61,.14);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ty-step__icon svg { stroke: var(--accent-color-dark); }
+    .ty-step h4 { margin: 0; font-size: 0.88rem; font-weight: 700; color: var(--color-gray-900); }
+    .ty-step p { margin: 0; font-size: 0.8rem; line-height: 1.55; color: var(--color-gray-500); }
+
+    .ty-cta-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;
+    }
+    .ty-btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-weight: 700; font-size: 0.86rem;
+      color: var(--main-color);
+      background: var(--white-color);
+      border: 1.5px solid var(--color-gray-300);
+      border-radius: 999px; padding: 0.85rem 1.6rem;
+      text-decoration: none;
+      transition: border-color .25s ease, transform .15s ease, background .25s ease;
+    }
+    .ty-btn-outline:hover { border-color: var(--main-color); background: var(--color-off-white); }
+    .ty-btn-outline:active { transform: scale(.96); }
+
+    .ty-social {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .ty-social span { font-size: 0.8rem; color: var(--color-gray-500); margin-right: 6px; }
+    .ty-social a {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid var(--color-gray-300);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .25s ease, border-color .25s ease, transform .25s ease;
+    }
+    .ty-social a:hover { background: var(--gradient-accent); border-color: transparent; transform: translateY(-3px); }
+    .ty-social svg { stroke: var(--main-color); transition: stroke .25s ease; }
+    .ty-social a:hover svg { stroke: var(--white-color); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ty-blob, .ty-confetti span, .ty-check-circle, .ty-check-mark, .ty-check-pulse, .ty-fade {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        stroke-dashoffset: 0 !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .topbar { display: none; }
+      .nav-pill-wrap { padding: 0; }
+      .nav-pill { padding: 8px 8px 8px 16px; }
+      .nav-pill .btn--primary span { display: none; }
+      .nav-pill__search { display: none; }
+      .main-nav { display: none; }
+      .burger { display: flex; }
+
+      .ty-steps { grid-template-columns: 1fr; }
+      .ty-section { padding: 60px 0 70px; }
+    }
+</style>
+</head>
+<body>
+  <!--==================================================
+          Start: desktop Header
+ ================================================== -->
+  <header>
+    <!-- Start: desktop Header -->
+    <div class="header-wrap" id="headerWrap">
+      <div class="topbar">
+        <div class="container topbar__inner">
+          <div class="topbar__left">
+            <a href="mailto:info@BrandName.com">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+              info@BrandName.com
+            </a>
+            <a href="tel:+201067865053">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              +201067865053
+            </a>
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              Zahraa Maadi, Cairo, Egypt
+            </span>
+          </div>
+
+          <div class="topbar__right">
+            <div class="topbar__dropdown">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+              </svg>
+              EN
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+              <div class="top-dropdown-menu">
+                <a href="#">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="https://flagcdn.com/w40/gb.png" sizes="100vw"
+                      type="image/png"><img src="https://flagcdn.com/w40/gb.png" alt="EN" sizes="100vw" decoding="async"
+                      loading="lazy" fetchpriority="low">
+                  </picture> English
+                </a>
+                <a href="#">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="https://flagcdn.com/w40/eg.png" sizes="100vw"
+                      type="image/png"><img src="https://flagcdn.com/w40/eg.png" alt="AR" sizes="100vw" decoding="async"
+                      loading="lazy" fetchpriority="low">
+                  </picture> العربية
+                </a>
+                <a href="#">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="https://flagcdn.com/w40/de.png" sizes="100vw"
+                      type="image/png"><img src="https://flagcdn.com/w40/de.png" alt="DE" sizes="100vw" decoding="async"
+                      loading="lazy" fetchpriority="low">
+                  </picture> Deutsch
+                </a>
+              </div>
+            </div>
+            <div class="topbar__dropdown">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9" />
+                <path
+                  d="M12 6v12M9 9.5c0-1.4 1.3-2.5 3-2.5s3 1.1 3 2.5-1.3 2.5-3 2.5-3 1.1-3 2.5 1.3 2.5 3 2.5 3-1.1 3-2.5" />
+              </svg>
+              $
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+              <div class="top-dropdown-menu">
+                <a href="#"><i class="fa-solid fa-dollar-sign"></i> USD</a>
+                <a href="#"><i class="fa-solid fa-euro-sign"></i> EUR</a>
+                <a href="#"><i class="fa-solid fa-sterling-sign"></i> GBP</a>
+                <a href="#">E£ EGP</a>
+              </div>
+            </div>
+            <div class="topbar__social">
+              <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-pill-wrap">
+        <div class="mx-auto flex max-w-7xl">
+          <div class="nav-pill w-full">
+            <a href="index.html" class="logo">
+              <picture>
+                <source media="(min-width: 769px)" srcset="assets/images/BrandName-logo.png" sizes="100vw"
+                  type="image/png" width="874" height="500"><img title="image" src="assets/images/BrandName-logo.png"
+                  alt="Brand Name" sizes="100vw" decoding="async" loading="lazy" fetchpriority="low" width="874"
+                  height="500">
+              </picture>
+            </a>
+
+            <nav>
+              <ul class="main-nav" id="mainNav">
+                <li><a href="index.html" class="nav-link is-active" aria-current="page">Home</a></li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Day Tours
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown nav-dropdown--mega">
+                     <div class="mega-featured">
+                      <a href="category.html" class="mega-featured__img">
+                        <picture>
+                          <source media="(min-width: 769px)" srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp" sizes="230px" type="image/webp" width="900" height="600">
+                          <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Explore Egypt day tours" title="Explore Egypt day tours" sizes="230px" decoding="async" loading="lazy" fetchpriority="low" width="900" height="600">
+                        </picture>
+                        <span class="mega-featured__title">Day Tours</span>
+                      </a>
+                        <p class="mega-featured__desc">
+                       Everything travelers usually ask before booking a tour with us. Can't Everything travelers usually ask before booking a tour with us.  
+                        </p>
+                    </div>
+                    <div class="mega-col mega-col--1">
+                      <a href="subcategory.html">Giza Pyramids &amp; Sphinx Tour</a>
+                      <a href="subcategory.html">Egyptian Museum Tour</a>
+                      <a href="subcategory.html">Old Cairo &amp; Khan El Khalili</a>
+                    </div>
+                    <div class="mega-col mega-col--2">
+                      <a href="subcategory.html">Luxor Day Trip from Cairo</a>
+                      <a href="subcategory.html">Alexandria Day Trip</a>
+                      <a href="subcategory.html">Abu Simbel Day Trip</a>
+                    </div>
+                    <a href="category.html" class="mega-view-all">
+                      Show All Day Tours
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.4">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                  </div>
+                </li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Travel Packages
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown nav-dropdown--mega">
+                    <div class="mega-col mega-col--1">
+                      <a href="subcategory.html">5-Day Cairo &amp; Luxor</a>
+                      <a href="subcategory.html">8-Day Nile Explorer</a>
+                      <a href="subcategory.html">12-Day Grand Egypt</a>
+                    </div>
+                    <div class="mega-col mega-col--2">
+                      <a href="subcategory.html">Honeymoon Package</a>
+                      <a href="subcategory.html">Family Package</a>
+                    </div>
+                    <a href="category.html" class="mega-view-all">
+                      Show All Travel Packages
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.4">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                    <div class="mega-featured">
+                      <a href="category.html" class="mega-featured__img">
+                        <picture>
+                          <source media="(min-width: 769px)" srcset="assets/images/tours/49-webp.webp" sizes="230px" type="image/webp" width="900" height="600">
+                          <img src="assets/images/tours/49-webp.webp" alt="Egypt travel packages" title="Egypt travel packages" sizes="230px" decoding="async" loading="lazy" fetchpriority="low" width="900" height="600">
+                        </picture>
+                        <span class="mega-featured__title">Travel Packages</span>
+                      </a>
+                        <p class="mega-featured__desc">
+                       Everything travelers usually ask before booking a tour with us. Can't Everything travelers usually ask before booking a tour with us.  
+                        </p>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Nile Cruises
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown nav-dropdown--mega">
+                    <div class="mega-col mega-col--1">
+                      <a href="subcategory.html">4-Day Luxor to Aswan</a>
+                      <a href="subcategory.html">5-Day Aswan to Luxor</a>
+                    </div>
+                    <div class="mega-col mega-col--2">
+                      <a href="subcategory.html">7-Day Nile &amp; Lake Nasser</a>
+                      <a href="subcategory.html">Luxury Dahabiya Cruise</a>
+                    </div>
+                    <a href="category.html" class="mega-view-all">
+                      Show All Nile Cruises
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.4">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                    <div class="mega-featured">
+                      <a href="category.html" class="mega-featured__img">
+                        <picture>
+                          <source media="(min-width: 769px)" srcset="assets/images/tours/aswan5345.webp" sizes="230px" type="image/webp" width="900" height="600">
+                          <img src="assets/images/tours/aswan5345.webp" alt="Nile cruises in Aswan" title="Nile cruises in Aswan" sizes="230px" decoding="async" loading="lazy" fetchpriority="low" width="900" height="600">
+                        </picture>
+                        <span class="mega-featured__title">Nile Cruises</span>
+                      </a>
+                        <p class="mega-featured__desc">
+                       Everything travelers usually ask before booking a tour with us. Can't Everything travelers usually ask before booking a tour with us.  
+                        </p>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Travel Style
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown nav-dropdown--mega">
+                    <div class="mega-col mega-col--1">
+                      <a href="subcategory.html">Private Tours</a>
+                      <a href="subcategory.html">Small Group Tours</a>
+                      <a href="subcategory.html">Luxury Travel</a>
+                    </div>
+                    <div class="mega-col mega-col--2">
+                      <a href="subcategory.html">Budget Friendly</a>
+                      <a href="subcategory.html">Family Friendly</a>
+                    </div>
+                    <a href="category.html" class="mega-view-all">
+                      Show All Travel Styles
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.4">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                    <div class="mega-featured">
+                      <a href="category.html" class="mega-featured__img">
+                        <picture>
+                          <source media="(min-width: 769px)" srcset="assets/images/tours/Egypt Budget Tours-webp.webp" sizes="230px" type="image/webp" width="900" height="600">
+                          <img src="assets/images/tours/Egypt Budget Tours-webp.webp" alt="Egypt travel styles" title="Egypt travel styles" sizes="230px" decoding="async" loading="lazy" fetchpriority="low" width="900" height="600">
+                        </picture>
+                        <span class="mega-featured__title">Travel Style</span>
+                      </a>
+                        <p class="mega-featured__desc">
+                       Everything travelers usually ask before booking a tour with us. Can't Everything travelers usually ask before booking a tour with us.  
+                        </p>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Destinations
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown nav-dropdown--mega">
+                    <div class="mega-col mega-col--1">
+                      <a href="subcategory.html">Cairo &amp; Giza</a>
+                      <a href="subcategory.html">Luxor</a>
+                      <a href="subcategory.html">Aswan</a>
+                    </div>
+                    <div class="mega-col mega-col--2">
+                      <a href="subcategory.html">Alexandria</a>
+                      <a href="subcategory.html">Sharm El Sheikh</a>
+                    </div>
+                    <a href="category.html" class="mega-view-all">
+                      Show All Destinations
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.4">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                    <div class="mega-featured">
+                      <a href="category.html" class="mega-featured__img">
+                        <picture>
+                          <source media="(min-width: 769px)" srcset="assets/images/tours/cairo.webp" sizes="230px" type="image/webp" width="900" height="600">
+                          <img src="assets/images/tours/cairo.webp" alt="Explore Egypt destinations" title="Explore Egypt destinations" sizes="230px" decoding="async" loading="lazy" fetchpriority="low" width="900" height="600">
+                        </picture>
+                        <span class="mega-featured__title">Destinations</span>
+                      </a>
+                        <p class="mega-featured__desc">
+                       Everything travelers usually ask before booking a tour with us. Can't Everything travelers usually ask before booking a tour with us.  
+                        </p>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <span class="nav-link">Pages
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </span>
+                  <div class="nav-dropdown">
+                    <a href="about.html">About Us</a>
+                    <a href="blog-category.html">Blogs</a>
+                    <a href="free-page.html">Free Page</a>
+                    <a href="contact.html">Contact</a>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="nav-pill__actions">
+              <a class="btn btn--primary" href="tailor-made.html">
+                <span>Plan Your Trip</span>
+                <span class="btn__arrow">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </span>
+              </a>
+              <button class="burger" type="button" id="burgerBtn" aria-label="Open menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M4 7h16M4 12h16M4 17h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End: desktop Header -->
+
+    <!-- Start: Mobile Menu (Viator-style slide-in with drill-down) -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+      <a href="index.html" class="mobile-menu__logo">
+        <img src="assets/images/BrandName-logo.png" alt="Brand Name">
+      </a>
+      <div class="mobile-menu__views" id="mobileMenuViews">
+        <div class="mobile-menu__panel mobile-menu__panel--main">
+          <nav id="mobileCategoryList">
+            <div class="mobile-menu__cat-row">
+              <a href="index.html" class="mobile-menu__cat-link">Home</a>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="day-tours">
+              <a href="category.html" class="mobile-menu__cat-link">Day Tours</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Day Tours subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="travel-packages">
+              <a href="category.html" class="mobile-menu__cat-link">Travel Packages</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Travel Packages subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="nile-cruises">
+              <a href="category.html" class="mobile-menu__cat-link">Nile Cruises</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Nile Cruises subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="travel-style">
+              <a href="category.html" class="mobile-menu__cat-link">Travel Style</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Travel Style subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="destinations">
+              <a href="category.html" class="mobile-menu__cat-link">Destinations</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Destinations subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="pages">
+              <span class="mobile-menu__cat-link">Pages</span>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Pages subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+          </nav>
+
+          <div class="mobile-menu__utilities">
+            <div class="mobile-menu__dropdown">
+              <button class="mobile-menu__dropdown-toggle" type="button" aria-expanded="false"
+                aria-controls="mobileLanguageMenu">
+                <span class="mobile-menu__dropdown-label">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                  Language <span class="mobile-menu__current-value">EN</span>
+                </span>
+                <svg class="mobile-menu__dropdown-caret" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.4">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mobile-menu__dropdown-menu" id="mobileLanguageMenu" hidden>
+                <a href="EN" type="button" data-value="EN">
+                  <img src="https://flagcdn.com/w40/gb.png" alt="English flag" title="English flag" width="20"
+                    height="14" loading="lazy"> English
+                </a>
+                <a href="AR" type="button" data-value="AR">
+                  <img src="https://flagcdn.com/w40/eg.png" alt="Arabic flag" title="Arabic flag" width="20"
+                    height="14" loading="lazy"> Arabic
+                </a>
+                <a href="DE" type="button" data-value="DE">
+                  <img src="https://flagcdn.com/w40/de.png" alt="German flag" title="German flag" width="20"
+                    height="14" loading="lazy"> Deutsch
+                </a>
+              </div>
+            </div>
+
+            <div class="mobile-menu__dropdown">
+              <button class="mobile-menu__dropdown-toggle" type="button" aria-expanded="false"
+                aria-controls="mobileCurrencyMenu">
+                <span class="mobile-menu__dropdown-label">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 6v12M9 9.5c0-1.4 1.3-2.5 3-2.5s3 1.1 3 2.5-1.3 2.5-3 2.5-3 1.1-3 2.5 1.3 2.5 3 2.5 3-1.1 3-2.5" />
+                  </svg>
+                  Currency <span class="mobile-menu__current-value">USD</span>
+                </span>
+                <svg class="mobile-menu__dropdown-caret" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.4">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mobile-menu__dropdown-menu" id="mobileCurrencyMenu" hidden>
+                <a href="USD" data-value="USD"><span aria-hidden="true">$</span> USD</a>
+                <a href="EUR" data-value="EUR"><span aria-hidden="true">€</span> EUR</a>
+                <a href="GBP" data-value="GBP"><span aria-hidden="true">£</span> GBP</a>
+                <a href="EGP" data-value="EGP"><span aria-hidden="true">E£</span> EGP</a>
+              </div>
+            </div>
+
+            <a class="btn btn--primary mobile-menu__cta" href="tailor-made.html">
+              <span>Plan Your Trip</span>
+              <span class="btn__arrow">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.4">
+                  <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile-menu__panel mobile-menu__panel--sub">
+          <button class="mobile-menu__back" id="mobileMenuBack">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+            Back
+          </button>
+
+          <div class="mobile-menu__subpanel is-active" data-subpanel="day-tours">
+            <p class="mobile-menu__sub-title">Day Tours</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">Giza Pyramids &amp; Sphinx Tour</a></li>
+              <li><a href="subcategory.html">Egyptian Museum Tour</a></li>
+              <li><a href="subcategory.html">Old Cairo &amp; Khan El Khalili</a></li>
+              <li><a href="subcategory.html">Luxor Day Trip from Cairo</a></li>
+              <li><a href="subcategory.html">Alexandria Day Trip</a></li>
+              <li><a href="subcategory.html">Abu Simbel Day Trip</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="travel-packages">
+            <p class="mobile-menu__sub-title">Travel Packages</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">5-Day Cairo &amp; Luxor</a></li>
+              <li><a href="subcategory.html">8-Day Nile Explorer</a></li>
+              <li><a href="subcategory.html">12-Day Grand Egypt</a></li>
+              <li><a href="subcategory.html">Honeymoon Package</a></li>
+              <li><a href="subcategory.html">Family Package</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="nile-cruises">
+            <p class="mobile-menu__sub-title">Nile Cruises</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">4-Day Luxor to Aswan</a></li>
+              <li><a href="subcategory.html">5-Day Aswan to Luxor</a></li>
+              <li><a href="subcategory.html">7-Day Nile &amp; Lake Nasser</a></li>
+              <li><a href="subcategory.html">Luxury Dahabiya Cruise</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="travel-style">
+            <p class="mobile-menu__sub-title">Travel Style</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">Private Tours</a></li>
+              <li><a href="subcategory.html">Small Group Tours</a></li>
+              <li><a href="subcategory.html">Luxury Travel</a></li>
+              <li><a href="subcategory.html">Budget Friendly</a></li>
+              <li><a href="subcategory.html">Family Friendly</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="destinations">
+            <p class="mobile-menu__sub-title">Destinations</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">Cairo &amp; Giza</a></li>
+              <li><a href="subcategory.html">Luxor</a></li>
+              <li><a href="subcategory.html">Aswan</a></li>
+              <li><a href="subcategory.html">Alexandria</a></li>
+              <li><a href="subcategory.html">Sharm El Sheikh</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="pages">
+            <p class="mobile-menu__sub-title">Pages</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="blog-category.html">Blog</a></li>
+              <li><a href="free-page.html">terms and conditions</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End: Mobile Menu -->
+  </header>
+  <!--==================================================
+          Start: desktop Header
+ ================================================== -->
+
+  <!-- Start: Thank You -->
+  <section class="ty-section">
+    <div class="ty-blob ty-blob--1"></div>
+    <div class="ty-blob ty-blob--2"></div>
+    <div class="ty-blob ty-blob--3"></div>
+    <div class="ty-confetti" id="tyConfetti"></div>
+
+    <div class="container">
+      <div class="ty-card">
+
+        <div class="ty-check-wrap">
+          <div class="ty-check-pulse"></div>
+          <svg viewBox="0 0 100 100">
+            <circle class="ty-check-circle-bg" cx="50" cy="50" r="46" />
+            <circle class="ty-check-circle" cx="50" cy="50" r="46" transform="rotate(-90 50 50)" />
+            <path class="ty-check-mark" d="M30 52 L44 66 L72 36" />
+          </svg>
+        </div>
+
+        <p class="ty-eyebrow ty-fade ty-fade--1">Request Received</p>
+        <h1 class="ty-title ty-fade ty-fade--2" id="tyTitle">Thank You<span id="tyNameSpan"></span>!</h1>
+        <p class="ty-desc ty-fade ty-fade--2" id="tyDesc">
+          We've received your request and one of our Egypt specialists will be in touch within 24 hours with everything you need.
+        </p>
+
+        <div class="ty-ref ty-fade ty-fade--3">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          Reference No. <strong id="tyRef">EG-000000</strong>
+        </div>
+
+        <div class="ty-steps ty-fade ty-fade--4">
+          <div class="ty-step">
+            <span class="ty-step__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </span>
+            <h4>Check Your Email</h4>
+            <p>A confirmation with your request details is on its way to your inbox.</p>
+          </div>
+          <div class="ty-step">
+            <span class="ty-step__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <h4>We'll Call You</h4>
+            <p>A travel specialist will reach out within 24 hours to go over the details.</p>
+          </div>
+          <div class="ty-step">
+            <span class="ty-step__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 20l-6-3V4l6 3 6-3 6 3v13l-6-3-6 3z"/><path d="M9 7v13M15 4v13"/></svg>
+            </span>
+            <h4>Get Your Itinerary</h4>
+            <p>We'll build a personalized plan around exactly what you're looking for.</p>
+          </div>
+        </div>
+
+        <div class="ty-cta-row ty-fade ty-fade--5">
+          <a href="index.html" class="btn btn--primary">
+            <span>Back to Home</span>
+            <span class="btn__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+          </a>
+          <a href="index.html#tours" class="ty-btn-outline">Explore More Tours</a>
+        </div>
+
+        <div class="ty-social ty-fade ty-fade--5">
+          <span>Follow our journeys</span>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End: Thank You -->
+
+  <!-- ════════════════════════════════════════════
+     Start Scroll to top
+════════════════════════════════════════════ -->
+  <div id="progress-wrap" class="progress-wrap style-one active-progress" role="button" aria-label="Scroll to top">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102" aria-hidden="true">
+      <path id="progress-path" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+        style="transition: stroke-dashoffset 10ms linear; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 71.2596;">
+      </path>
+    </svg>
+
+  </div>
+  <!-- ════════════════════════════════════════════
+     End Scroll to top
+════════════════════════════════════════════ -->
+  <!-- ========== MOBILE FIXED FOOTER ========== -->
+  <div class="mobile-fixed-footer" id="mobileFixedFooter">
+    <a href="https://wa.me/+201234567890" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+      </svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="tel:+201234567890" aria-label="Call us">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.91-1.14a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      </svg>
+      <span>Call</span>
+    </a>
+    <a href="index.html" aria-label="Home" class="mob-footer-active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+      <span>Home</span>
+    </a>
+    <a href="contact.html" aria-label="Contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
+      </svg>
+      <span>Contact</span>
+    </a>
+    <a href="tailor-made.html" aria-label="Customize Your Trip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+        stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+      </svg>
+      <span>Tailor Made</span>
+    </a>
+  </div>
+  <!-- ========== MOBILE FIXED FOOTER ========== -->
+  <!--=============================================
+          Start: Footer
+  ==============================================-->
+  <footer class="site-footer">
+    <div class="site-footer__shapes">
+      <div class="site-footer__blob-1"></div>
+      <div class="site-footer__blob-2"></div>
+      <div class="site-footer__dotgrid"></div>
+      <svg class="site-footer__watermark" viewBox="0 0 400 260" fill="none" stroke="#e3bd68" stroke-width="1.5">
+        <circle cx="330" cy="60" r="34" />
+        <polygon points="120,230 220,60 320,230" />
+        <polygon points="40,230 110,110 180,230" />
+        <line x1="0" y1="230" x2="400" y2="230" />
+      </svg>
+    </div>
+
+    <div class="container site-footer__top">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">
+          <picture><source media="(min-width: 769px)" srcset="assets/images/BrandName-logo.png" sizes="100vw" width="874" type="image/png" height="500"><img title="image" src="assets/images/BrandName-logo.png" alt="Brand Name Logo" width="874" loading="lazy" decoding="async" sizes="100vw" fetchpriority="low" height="500"></picture>
+        </a>
+        <p class="site-footer__desc">Guided tours across Cairo, Luxor, Aswan and the Red Sea coast — planned around what
+          you actually want to see.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blogs-posts.html">Blogs</a></li>
+          <li><a href="category.html">Destinations</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore Egypt</h4>
+        <ul>
+          <li><a href="category.html">Egypt Packages</a></li>
+          <li><a href="category.html">Egypt Day Tours</a></li>
+          <li><a href="category.html">Nile Cruises</a></li>
+          <li><a href="category.html">Middle East Tours</a></li>
+          <li><a href="category.html">travel excursions </a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get new tours and travel tips for Egypt straight to your inbox.</p>
+        <form onsubmit="return false;">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit" aria-label="Subscribe">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.4">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container site-footer__bottom">
+      <p>&copy; <span id="year"></span> Brand Name. All rights reserved.</p>
+      <ul class="site-footer__legal">
+        <li><a href="free-page.html">Privacy Policy</a></li>
+        <li><a href="free-page.html">Terms of Service</a></li>
+        <li><a href="free-page.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+    </div>
+    <div class="bg-text-style5">Brand Name</div>
+  </footer>
+    <!--=============================================
+          End : Footer
+  ==============================================-->
+  <script src="assets/js/custom.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      /* ---------- Personalize from the redirecting form (?type=&name=) ---------- */
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get('type');   // 'booking' | 'tailor' | 'contact'
+      const name = params.get('name');
+
+      const titleEl = document.getElementById('tyTitle');
+      const nameSpan = document.getElementById('tyNameSpan');
+      const descEl = document.getElementById('tyDesc');
+
+      const copy = {
+        booking: {
+          title: 'Your Booking Request Is In',
+          desc: "We've received your tour booking request. Our team will confirm availability and send your booking details within 24 hours.",
+        },
+        tailor: {
+          title: 'Your Tailor-Made Trip Is Underway',
+          desc: "Thanks for sharing your travel wishlist. One of our Egypt specialists will craft your personalised itinerary and reach out within 24 hours.",
+        },
+        contact: {
+          title: 'Your Message Has Been Sent',
+          desc: "Thanks for reaching out — our team will read your message and get back to you as soon as possible, usually within 24 hours.",
+        },
+      };
+
+      if (type && copy[type]) {
+        titleEl.childNodes[0].textContent = copy[type].title;
+        descEl.textContent = copy[type].desc;
+      }
+      if (name) {
+        nameSpan.textContent = ', ' + name;
+      }
+
+      /* ---------- Reference number ---------- */
+      const ref = 'EG-' + Math.floor(100000 + Math.random() * 900000);
+      const refEl = document.getElementById('tyRef');
+      if (refEl) refEl.textContent = ref;
+
+      /* ---------- Confetti burst, brand-colored ---------- */
+      const confettiHost = document.getElementById('tyConfetti');
+      const colors = ['var(--accent-color)', 'var(--main-color)', 'var(--color-second-light)', 'var(--accent-color-light)'];
+      const total = 26;
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('span');
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 90 + Math.random() * 160;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance - 40;
+        dot.style.setProperty('--tx', tx.toFixed(0) + 'px');
+        dot.style.setProperty('--ty', ty.toFixed(0) + 'px');
+        dot.style.setProperty('--rot', (Math.random() * 360).toFixed(0) + 'deg');
+        dot.style.background = colors[i % colors.length];
+        dot.style.animationDelay = (0.35 + Math.random() * 0.15) + 's';
+        if (Math.random() > 0.5) dot.style.borderRadius = '50%';
+        confettiHost.appendChild(dot);
+      }
+    });
+  </script>
+</body>
+</html>
