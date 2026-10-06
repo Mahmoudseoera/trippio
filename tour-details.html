@@ -849,6 +849,7 @@
             <path d="M6 9l6 6 6-6" />
           </svg>
         </button>
+        <button class="gallery-hero__map-button" id="galleryHeroMap" type="button" aria-label="Show tour city map">Tour map</button>
         <button class="gallery-hero__autoplay" id="galleryHeroAutoplay" type="button" aria-pressed="false">Pause</button>
       </div>
     </div>
@@ -882,6 +883,8 @@
         data-src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1600&q=80"
         data-thumb="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=200&q=80"
         data-sub-html="Sharm El Sheikh coast" class="tour-img"></a>
+
+      <script src="assets/js/tour-gallery-map.js?v=2" data-locations-id="tour-map-locations" defer></script>
     </div>
   </section>
 
@@ -1138,7 +1141,7 @@
                       <path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" />
                       <circle cx="12" cy="9" r="2.5" />
                     </svg></span>
-                  <div><span>Your Location</span><strong>Cairo, Aswan, Luxor, Hurghada</strong></div>
+                  <div><span>Your Location</span><strong id="tour-map-locations">Cairo, Aswan, Luxor, Hurghada</strong></div>
                 </div>
                 <div class="goodtoknow-item">
                   <span class="goodtoknow-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -2069,85 +2072,83 @@
   <!--=============================================
           Start: Footer
   ==============================================-->
-  <footer class="site-footer">
-    <div class="site-footer__shapes">
-      <div class="site-footer__blob-1"></div>
-      <div class="site-footer__blob-2"></div>
-      <div class="site-footer__dotgrid"></div>
-      <svg class="site-footer__watermark" viewBox="0 0 400 260" fill="none" stroke="#e3bd68" stroke-width="1.5">
-        <circle cx="330" cy="60" r="34" />
-        <polygon points="120,230 220,60 320,230" />
-        <polygon points="40,230 110,110 180,230" />
-        <line x1="0" y1="230" x2="400" y2="230" />
-      </svg>
-    </div>
+  <!-- ================= PROMO + FOOTER ================= -->
+  <div class="promo-wrap">
 
-    <div class="container site-footer__top">
-      <div class="footer-col">
-        <a href="index.html" class="footer-logo">
-          <picture>
-            <source media="(min-width: 769px)" srcset="assets/images/BrandName-logo.png" sizes="100vw" width="874"
-              type="image/png" height="500"><img title="image" src="assets/images/BrandName-logo.png"
-              alt="Brand Name Logo" width="874" loading="lazy" decoding="async" sizes="100vw" fetchpriority="low"
-              height="500">
-          </picture>
-        </a>
-        <p class="site-footer__desc">Guided tours across Cairo, Luxor, Aswan and the Red Sea coast — planned around what
-          you actually want to see.</p>
-        <div class="footer-social">
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <svg class="promo-curve" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path d="M0 0H1000V70Q500 -70 0 70Z" />
+    </svg>
+
+    <section class="promo-banner">
+      <img class="promo-photo" src="assets/images/tours/long%20banners%20of%20egypt%20attractions67.webp" alt="Panoramic views of Egypt" title="Panoramic views of Egypt" width="720" height="480" loading="lazy" decoding="async">
+      <div class="promo-inner">
+        <h2>Limited Time Travel Promo</h2>
+        <p>Grab your exclusive offer before it's gone! Simply log in, pick your destination, and unlock up to 30% off
+          selected trips.</p>
+        <a href="tailor-made.html" class="promo-cta">Book My Trip Now</a>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+
+      <div class="container footer-columns">
+        <div class="col-logo">
+          <a href="index.html" class="logo">
+            <img src="assets/images/BrandName-logo.png" alt="Your Brand Logo" title="Your Brand Logo" width="200" height="50"
+              loading="lazy" decoding="async">
+          </a>
+          <p>We help you discover handpicked destinations across Egypt and authentic experiences that make every journey
+            unforgettable.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+
+        <div class="col-company">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-explore">
+          <h4>Explore Egypt</h4>
+          <ul>
+            <li><a href="#">Nile Cruises</a></li>
+            <li><a href="#">Desert Safaris</a></li>
+            <li><a href="#">Ancient Temples</a></li>
+            <li><a href="#">Red Sea Diving</a></li>
+            <li><a href="#">Luxury Getaways</a></li>
+          </ul>
+        </div>
+
+        <div class="col-newsletter">
+          <h4>Stay in the loop</h4>
+          <p>Get travel inspo, exclusive deals, and the latest updates straight to your inbox.</p>
+          <form class="newsletter-form" onsubmit="return false">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
         </div>
       </div>
 
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="blogs-posts.html">Blogs</a></li>
-          <li><a href="category.html">Destinations</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <div class="container footer-bottom">
+        <span>© 2026 Your Brand. All rights reserved.</span>
+        <div class="legal-links">
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
       </div>
-
-      <div class="footer-col">
-        <h4>Explore Egypt</h4>
-        <ul>
-          <li><a href="category.html">Egypt Packages</a></li>
-          <li><a href="category.html">Egypt Day Tours</a></li>
-          <li><a href="category.html">Nile Cruises</a></li>
-          <li><a href="category.html">Middle East Tours</a></li>
-          <li><a href="category.html">travel excursions </a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-newsletter">
-        <h4>Stay Updated</h4>
-        <p>Get new tours and travel tips for Egypt straight to your inbox.</p>
-        <form onsubmit="return false;">
-          <input type="email" placeholder="Your email address" required>
-          <button type="submit" aria-label="Subscribe">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.4">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </button>
-        </form>
-      </div>
-    </div>
-
-    <div class="container site-footer__bottom">
-      <p>&copy; <span id="year"></span> Brand Name. All rights reserved.</p>
-      <ul class="site-footer__legal">
-        <li><a href="free-page.html">Privacy Policy</a></li>
-        <li><a href="free-page.html">Terms of Service</a></li>
-        <li><a href="free-page.html">Cookie Policy</a></li>
-      </ul>
-    </div>
-    </div>
-    <div class="bg-text-style5">Brand Name</div>
-  </footer>
+    </footer>
+  </div>
   <!--=============================================
           End : Footer
   ==============================================-->
@@ -2160,7 +2161,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js" defer></script>
   <script src="assets/js/librairies/swiper-bundle.min.js" defer></script>
   <script src="assets/js/custom.js" defer></script>
-   <script src="assets/js/tour-gallery-map.js" data-locations-id="tourLocations"></script>
   <script defer>
     document.addEventListener('DOMContentLoaded', function () {
       /* ---------- Truncate / show more, only when content actually overflows ---------- */
@@ -2713,6 +2713,7 @@
       };
       preload.src = nextSrc;
       renderWheel();
+      button.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
     }
 
     function moveWheel(step) {
@@ -2735,6 +2736,21 @@
       moveWheel(step);
       syncAutoplay();
     }));
+    const mapButton = document.getElementById('galleryHeroMap');
+    mapButton.addEventListener('click', () => {
+      const mapThumb = thumbs.find(thumb => thumb.dataset.galleryMap === 'true');
+      if (!mapThumb) {
+        mapButton.textContent = 'Map unavailable';
+        mapButton.title = 'The map script did not initialize. Reload the page and check that tour-gallery-map.js loads.';
+        return;
+      }
+      userPaused = true;
+      mapThumb.click();
+    });
+    document.addEventListener('tour-gallery-map:updated', () => {
+      if (thumbs[currentIndex]?.dataset.galleryMap === 'true') setMain(thumbs[currentIndex]);
+      renderWheel();
+    });
     upBtn.addEventListener('click', () => { moveWheel(-1); syncAutoplay(); });
     downBtn.addEventListener('click', () => { moveWheel(1); syncAutoplay(); });
     autoplayButton.addEventListener('click', () => { userPaused = !userPaused; syncAutoplay(); });
@@ -2869,12 +2885,13 @@
       Init: resolve every video thumbnail first, THEN initialize
       LightGallery.
       ===================================================================== */
-    (async () => {
-      await Promise.all(
-        thumbs.filter(t => t.dataset.type === 'video').map(resolveVideoThumb)
-      );
+    (async () => {  
+    await Promise.all(
+      thumbs.filter(t => t.dataset.type === 'video').map(resolveVideoThumb)
+    );
+    await (window.tourGalleryMapReady || Promise.resolve());
 
-      const gallery = document.querySelector('#lightgallery');
+    const gallery = document.querySelector('#lightgallery');
       if (gallery && window.lightGallery) {
         window.lgInstance = window.lightGallery(gallery, {
           plugins: [window.lgZoom, window.lgThumbnail, window.lgVideo],
@@ -2896,7 +2913,5 @@
     })();
   });
   </script>
-
 </body>
-
 </html>

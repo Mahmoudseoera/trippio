@@ -143,7 +143,8 @@ document.querySelectorAll("input[type='date']").forEach(function (input) {
       }
 });
   
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearElement = document.getElementById("year");
+if (yearElement) yearElement.textContent = new Date().getFullYear();
 
 document.addEventListener("DOMContentLoaded", function () {
   const observer = new IntersectionObserver(entries => {
@@ -368,3 +369,32 @@ document.addEventListener('DOMContentLoaded', function () {
     document.fonts?.ready.then(() => moveIndicator(currentItem || homeItem));
   }
 
+
+// Services: highlight one card and restore the second card after hover ends.
+(function () {
+  const grid = document.getElementById('servicesGrid');
+  if (!grid) return;
+  const section = grid.closest('.services-section');
+  const items = Array.from(grid.querySelectorAll('.service-box'));
+  const defaultItem = items[1] || items[0];
+  if (!defaultItem) return;
+
+  function setActive(item) {
+    items.forEach(function (service) {
+      service.classList.toggle('active', service === item);
+    });
+  }
+
+  setActive(defaultItem);
+  items.forEach(function (item) {
+    item.addEventListener('mouseenter', function () {
+      setActive(item);
+    });
+  });
+  (section || grid).addEventListener('mouseleave', function () {
+    setActive(defaultItem);
+  });
+  grid.addEventListener('pointercancel', function () {
+    setActive(defaultItem);
+  });
+})();

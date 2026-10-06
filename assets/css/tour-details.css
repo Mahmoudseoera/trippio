@@ -3330,3 +3330,8 @@
     right: 14px;
   }
 }
+
+/* A visible shortcut keeps the map reachable beyond the clipped thumbnail rail. */
+.gallery-hero__map-button {border:1px solid var(--accent-color-light);border-radius:999px;background:var(--main-color);color:var(--white-color);padding:9px 12px;font:600 12px/1.3 var(--font-body);white-space:nowrap;cursor:pointer;min-height:36px;}
+.gallery-hero__map-button:hover {background:var(--color-second);}
+.gallery-hero__map-button:focus-visible {outline:3px solid var(--accent-color-light);outline-offset:3px;}
