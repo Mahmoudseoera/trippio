@@ -117,7 +117,7 @@
   border-radius: 999px;
   background: rgba(8, 40, 68, .35);
   backdrop-filter: blur(8px);
-  color: var(--color-white);
+  color: var(--white-color);
   font-size: .74rem;
   font-weight: 700;
 }
@@ -154,7 +154,7 @@
 
 .category-card__content h3 {
   margin: 0 0 .55rem;
-  color: var(--color-white);
+  color: var(--white-color);
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 700;
@@ -250,7 +250,7 @@
     .tour-card {
       --tilt: -3deg;
       position: relative;
-      background: var(--color-white);
+      background: var(--white-color);
       border-radius: var(--radius-sm);
       box-shadow: var(--shadow-md);
       padding-bottom: 1.4rem;
@@ -371,7 +371,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-white);
+      color: var(--white-color);
       background: rgba(8, 40, 68, .55);
       padding: 3px 7px;
       border-radius: 3px;
@@ -382,8 +382,8 @@
       height: 12px;
       margin: 0 10px;
       background:
-        linear-gradient(-45deg, var(--color-white) 6px, transparent 0) 0 bottom / 12px 12px repeat-x,
-        linear-gradient(45deg, var(--color-white) 6px, transparent 0) 0 bottom / 12px 12px repeat-x;
+        linear-gradient(-45deg, var(--white-color) 6px, transparent 0) 0 bottom / 12px 12px repeat-x,
+        linear-gradient(45deg, var(--white-color) 6px, transparent 0) 0 bottom / 12px 12px repeat-x;
       background-color: var(--color-gray-200);
     }
 
@@ -486,7 +486,7 @@
       font-family: var(--font-body);
       font-weight: 700;
       font-size: 0.8rem;
-      color: var(--color-white);
+      color: var(--white-color);
       background: var(--clr-btn);
       background-image: var(--gradient-main);
       background-size: 220% 100%;
@@ -638,7 +638,7 @@
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: clamp(1.9rem, 3.4vw, 2.6rem);
-      color: var(--color-white);
+      color: var(--white-color);
       margin: 0 0 0.9rem;
     }
 
@@ -673,7 +673,7 @@
     }
 
     .category-hero__reviews strong {
-      color: var(--color-white);
+      color: var(--white-color);
     }
 
     .category-hero__content p.desc {
@@ -695,7 +695,7 @@
       font-family: var(--font-body);
       font-weight: 700;
       font-size: 0.85rem;
-      color: var(--color-white);
+      color: var(--white-color);
       background: rgba(255, 255, 255, .12);
       border: 1px solid rgba(255, 255, 255, .35);
       border-radius: 999px;
@@ -728,7 +728,7 @@
     }
 
     .category-hero__trust-item strong {
-      color: var(--color-white);
+      color: var(--white-color);
     }
 
     /* Featured category — reuses the ticket-mockup perforation language, as a standalone card */
@@ -740,7 +740,7 @@
       border-radius: var(--radius-md);
       overflow: hidden;
       box-shadow: var(--shadow-lg);
-      color: var(--color-white);
+      color: var(--white-color);
       width: 250px;
       transform: translatex(-10px);
     }
@@ -898,7 +898,7 @@
     }
 
     .title-switch__btn svg {
-      stroke: var(--color-white);
+      stroke: var(--white-color);
       transition: transform .3s ease;
     }
 
@@ -912,7 +912,7 @@
       left: calc(100% + 12px);
       z-index: 200;
       width: 420px;
-      background: var(--color-white);
+      background: var(--white-color);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-lg);
       padding: 16px;
@@ -1040,7 +1040,7 @@
       border-radius: 18px;
       background:
         radial-gradient(circle at 100% 0%, rgba(227, 189, 104, .14), transparent 42%),
-        var(--color-white);
+        var(--white-color);
       box-shadow: 0 24px 65px rgba(6, 29, 53, .26);
     }
 
@@ -1095,7 +1095,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--color-white);
+      background: var(--white-color);
       border: 1.5px solid var(--color-gray-300);
       border-radius: 999px;
       padding: 9px 16px;
@@ -1117,7 +1117,7 @@
 
     .filter-toggle-btn__count {
       background: var(--accent-color);
-      color: var(--color-white);
+      color: var(--white-color);
       font-size: 0.68rem;
       font-weight: 800;
       border-radius: 999px;
@@ -1153,7 +1153,7 @@
       font-size: 0.82rem;
       font-weight: 700;
       color: var(--color-gray-900);
-      background: var(--color-white);
+      background: var(--white-color);
       cursor: pointer;
     }
 
@@ -1183,7 +1183,7 @@
     }
 
     .view-toggle__btn.active {
-      background: var(--color-white);
+      background: var(--white-color);
       box-shadow: var(--shadow-sm);
     }
 
@@ -1215,7 +1215,7 @@
     .tours-filter-sidebar {
       position: sticky;
       top: 100px;
-      background: var(--color-white);
+      background: var(--white-color);
       border: 1px solid var(--color-gray-200);
       border-radius: var(--radius-md);
       overflow: hidden;
@@ -1356,7 +1356,7 @@
       grid-template-columns: 220px 1fr auto;
       gap: 1.6rem;
       align-items: center;
-      background: var(--color-white);
+      background: var(--white-color);
       border: 1px solid var(--color-gray-200);
       border-radius: var(--radius-md);
       padding: 14px;
@@ -1386,7 +1386,7 @@
       top: 8px;
       left: 8px;
       background: var(--gradient-accent);
-      color: var(--color-white);
+      color: var(--white-color);
       font-size: 0.65rem;
       font-weight: 600;
       text-transform: uppercase;
@@ -1457,7 +1457,7 @@
       gap: 6px;
       border: 1.5px solid var(--main-color);
       color: var(--main-color);
-      background: var(--color-white);
+      background: var(--white-color);
       border-radius: 999px;
       padding: 8px 16px;
       font-size: 0.8rem;
@@ -1469,7 +1469,7 @@
 
     .tour-list-card__actions .btn-outline-sm:hover {
       background: var(--main-color);
-      color: var(--color-white);
+      color: var(--white-color);
     }
 
     .tour-list-card__side {
@@ -1623,7 +1623,7 @@
       top: calc(100% + 14px);
       left: 0;
       width: 460px;
-      background: var(--color-white);
+      background: var(--white-color);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-lg);
       padding: 1.1rem 1.1rem 1.2rem;
@@ -1649,7 +1649,7 @@
       left: 22px;
       width: 12px;
       height: 12px;
-      background: var(--color-white);
+      background: var(--white-color);
       transform: rotate(45deg);
       border-radius: 2px;
     }
@@ -1789,7 +1789,7 @@
       right: 12px;
       bottom: 10px;
       z-index: 1;
-      color: var(--color-white);
+      color: var(--white-color);
     }
 
     .subcat-card__body strong {
@@ -1842,7 +1842,7 @@
     }
 
     .more-subcat-card {
-      background: var(--color-white);
+      background: var(--white-color);
       border-radius: var(--radius-md);
       overflow: hidden;
       box-shadow: var(--shadow-sm);

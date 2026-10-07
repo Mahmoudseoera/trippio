@@ -146,7 +146,225 @@
   <script src="assets/js/tour-comparison.js" defer></script>
   <link rel="stylesheet" href="assets/css/trip-intent.css" />
   <script src="assets/js/trip-intent.js" defer></script>
+ <style>
+/* ---------- Tokens ---------- */
+.climate{
+  --c-ideal: #10B981;
+  --c-moderate: #F59E0B;
+  --c-hot: #EF4444;
+  --c-cold: #3B82F6;
 
+  --c-ink: #1f2a37;
+  --c-muted: #64748b;
+  --c-line: #e5e7eb;
+  --c-bg: #f7f5f0;
+  --c-card: #ffffff;
+  --c-accent: #0f4c5c;
+
+  --font-heading: "Bricolage Grotesque", sans-serif;
+  --font-body: "Manrope",  system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, .06), 0 4px 14px rgba(15, 23, 42, .05);
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Section ---------- */
+.climate { padding: clamp(32px, 6vw, 72px) 16px; }
+.climate__inner { max-width: 1120px; margin: 0 auto; }
+
+.climate__head { max-width: 620px; margin-bottom: 28px; }
+.climate__title {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+.climate__lead { margin: 0; color: var(--c-muted); font-size: 1.05rem; }
+
+/* ---------- Search ---------- */
+.search { display: flex; gap: 10px; max-width: 640px; }
+.search__field {
+  flex: 1;
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 16px;
+  background: var(--c-card);
+  border: 1.5px solid var(--c-line);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+  color: var(--c-muted);
+  transition: border-color .2s, box-shadow .2s;
+}
+.search__field:focus-within {
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 3px rgba(15, 76, 92, .15);
+}
+.search__field input {
+  flex: 1; min-width: 0;
+  border: 0; outline: 0; background: transparent;
+  padding: 14px 0;
+  font: inherit; color: var(--c-ink);
+}
+.search__btn {
+  padding: 0 24px;
+  border: 0; border-radius: var(--radius-pill);
+  background: var(--c-accent); color: #fff;
+  font: inherit; font-weight: 600; cursor: pointer;
+  transition: background .2s, transform .1s;
+}
+.search__btn:hover { background: #0b3a47; }
+.search__btn:active { transform: scale(.98); }
+.search__btn:disabled { opacity: .6; cursor: progress; }
+
+.presets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.preset {
+  padding: 7px 16px;
+  border: 1.5px solid var(--c-line); border-radius: var(--radius-pill);
+  background: var(--c-card); color: var(--c-ink);
+  font: inherit; font-size: .9rem; cursor: pointer;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.preset:hover { border-color: var(--c-accent); }
+.preset.is-active { background: var(--c-accent); border-color: var(--c-accent); color: #fff; }
+
+:is(.search__btn, .preset):focus-visible {
+  outline: 3px solid rgba(15, 76, 92, .45); outline-offset: 2px;
+}
+
+/* ---------- Result header & messages ---------- */
+.result-head { margin: 32px 0 16px; }
+.result-head__place { margin: 0; font-family: var(--font-heading); font-size: 1.5rem; }
+.result-head__best { margin: 4px 0 0; color: var(--c-muted); }
+.result-head__best strong { color: var(--c-ink); }
+
+.message {
+  margin: 24px 0 0; padding: 14px 18px; max-width: 640px;
+  border-radius: 10px; background: #fef2f2; color: #991b1b;
+}
+
+/* ---------- Grid ---------- */
+.grid {
+  list-style: none; margin: 24px 0 0; padding: 0;
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 640px)  { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px)  { .grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1100px) { .grid { grid-template-columns: repeat(6, 1fr); } }
+
+/* ---------- Month card + status utilities ---------- */
+.month {
+  --status: var(--c-line);
+  --status-soft: #f1f5f9;
+  position: relative;
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 16px 14px 14px;
+  background: var(--c-card);
+  border-radius: var(--radius-card);
+  border-top: 4px solid var(--status);
+  box-shadow: var(--shadow-card);
+  cursor: default;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.month:hover, .month:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .12);
+  outline: none;
+  z-index: 3;
+}
+.month:focus-visible { box-shadow: 0 0 0 3px var(--status), 0 8px 24px rgba(15, 23, 42, .12); }
+
+.month__name { margin: 0; font-weight: 600; font-size: 1rem; }
+.month__row { display: flex; align-items: center; justify-content: space-between; }
+.month__temp { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 700; line-height: 1; }
+.month__temp small { font-family: var(--font-body); font-size: .85rem; font-weight: 500; color: var(--c-muted); }
+.month__icon { width: 36px; height: 36px; color: var(--status); flex-shrink: 0; }
+.month__badge {
+  align-self: flex-start;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+  background: var(--status-soft); color: var(--status-ink, var(--c-ink));
+  font-size: .78rem; font-weight: 600;
+}
+
+.status--ideal    { --status: var(--c-ideal);    --status-soft: #d1fae5; --status-ink: #065f46; }
+.status--moderate { --status: var(--c-moderate); --status-soft: #fef3c7; --status-ink: #92400e; }
+.status--hot      { --status: var(--c-hot);      --status-soft: #fee2e2; --status-ink: #991b1b; }
+.status--cold     { --status: var(--c-cold);     --status-soft: #dbeafe; --status-ink: #1e40af; }
+
+/* ---------- Tooltip ---------- */
+.tooltip {
+  position: absolute; left: 50%; bottom: calc(100% + 8px);
+  transform: translate(-50%, 4px);
+  min-width: 150px; padding: 8px 12px;
+  background: #1f2a37; color: #fff;
+  border-radius: 8px; font-size: .78rem; line-height: 1.5; text-align: center;
+  white-space: nowrap; pointer-events: none;
+  opacity: 0; visibility: hidden;
+  transition: opacity .15s, transform .15s, visibility .15s;
+}
+.tooltip::after {
+  content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px;
+  border: 5px solid transparent; border-top-color: #1f2a37;
+}
+.month:hover .tooltip,
+.month:focus-visible .tooltip { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+
+/* Keep tooltips inside the viewport on the outer columns */
+.month:nth-child(2n+1) .tooltip { left: 0; transform: translate(0, 4px); }
+.month:nth-child(2n+1) .tooltip::after { left: 28px; }
+.month:nth-child(2n+1):hover .tooltip,
+.month:nth-child(2n+1):focus-visible .tooltip { transform: translate(0, 0); }
+@media (min-width: 640px) {
+  .month:nth-child(2n+1) .tooltip { left: 50%; transform: translate(-50%, 4px); }
+  .month:nth-child(2n+1) .tooltip::after { left: 50%; }
+  .month:nth-child(2n+1):hover .tooltip,
+  .month:nth-child(2n+1):focus-visible .tooltip { transform: translate(-50%, 0); }
+}
+
+/* ---------- Skeleton loading ---------- */
+.month--skeleton { pointer-events: none; border-top-color: var(--c-line); }
+.skel {
+  display: block; border-radius: 6px;
+  background: linear-gradient(90deg, #eef0f3 25%, #f8f9fb 50%, #eef0f3 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite linear;
+}
+.skel--name  { width: 55%; height: 14px; }
+.skel--temp  { width: 45%; height: 28px; margin: 6px 0; }
+.skel--badge { width: 70%; height: 20px; border-radius: var(--radius-pill); }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* ---------- Legend ---------- */
+.legend {
+  display: flex; flex-wrap: wrap; gap: 8px 20px;
+  list-style: none; margin: 24px 0 0; padding: 0;
+  font-size: .85rem; color: var(--c-muted);
+}
+.legend li { display: flex; align-items: center; gap: 8px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot--ideal { background: var(--c-ideal); }
+.dot--moderate { background: var(--c-moderate); }
+.dot--hot { background: var(--c-hot); }
+.dot--cold { background: var(--c-cold); }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 520px) {
+  .search { flex-direction: column; }
+  .search__btn { padding: 14px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skel { animation: none; }
+  .month, .tooltip { transition: none; }
+}
+
+  </style>
 </head>
 
 <body>
@@ -1227,8 +1445,8 @@
             <article class="tour-card">
               <a class="tour-media" href="tour-details.html" aria-label="Pyramids of Giza and Sphinx Private Tour">
                 <picture>
-                  <source srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp" type="image/webp">
-                  <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Pyramids of Giza and Sphinx">
+                  <source srcset="assets/images/tours/alexandria.jpg" type="image/webp">
+                  <img src="assets/images/tours/alexandria.jpg" alt="Pyramids of Giza and Sphinx">
                 </picture>
               </a>
               <div class="tour-body">
@@ -1297,8 +1515,8 @@
             <article class="tour-card">
               <a class="tour-media" href="tour-details.html" aria-label="Abu Simbel Sunrise Excursion">
                   <picture>
-                    <source srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp" type="image/webp">
-                    <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Pyramids of Giza and Sphinx">
+                    <source srcset="assets/images/tours/marsa alam banner.webp" type="image/webp">
+                    <img src="assets/images/tours/marsa alam banner.webp" alt="Pyramids of Giza and Sphinx">
                   </picture>
               </a>
               <div class="tour-body">
@@ -1367,8 +1585,8 @@
             <article class="tour-card">
               <a class="tour-media" href="tour-details.html" aria-label="Red Sea Snorkeling from Hurghada">
                   <picture>
-                    <source srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp" type="image/webp">
-                    <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Pyramids of Giza and Sphinx">
+                    <source srcset="assets/images/tours/quad bike safari in sharm el sheikh78768.jpg" type="image/webp">
+                    <img src="assets/images/tours/quad bike safari in sharm el sheikh78768.jpg" alt="Pyramids of Giza and Sphinx">
                   </picture>
               </a>
               <div class="tour-body">
@@ -1599,7 +1817,53 @@
   <!--=====================================
        End: Featured Tours
    ===================================== -->
+<section class="climate" id="climateWidget" aria-labelledby="climateTitle">
+  <div class="climate__inner">
 
+    <!-- <header class="climate__head">
+      <h2 class="climate__title" id="climateTitle">When is the best time to visit?</h2>
+      <p class="climate__lead">Pick a destination to see how each month feels, based on real 2025 weather records.</p>
+    </header> -->
+      <div class="section-header">
+        <div class="section-header__copy"><span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Time Visit?</span>
+          <h2 class="section-header__title">When is the best time to visit?</h2>
+          <p class="section-header__description">Pick a destination to see how each month feels, based on real 2025 weather records..</p>
+        </div>
+      </div>
+    <form class="search" id="searchForm" role="search" autocomplete="off">
+      <label class="search__field" for="cityInput">
+        <svg class="search__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="sr-only">Destination city</span>
+        <input type="text" id="cityInput" name="city" placeholder="Search a city, e.g. Aswan" required>
+      </label>
+      <button type="submit" class="search__btn" id="searchBtn">Check Best Months</button>
+    </form>
+
+    <div class="presets" role="group" aria-label="Popular destinations">
+      <button type="button" class="preset" data-city="Luxor">Luxor</button>
+      <button type="button" class="preset" data-city="Sharm El Sheikh">Sharm El Sheikh</button>
+      <button type="button" class="preset" data-city="Cairo">Cairo</button>
+      <button type="button" class="preset" data-city="Alexandria">Alexandria</button>
+    </div>
+
+    <div class="result-head" id="resultHead" hidden>
+      <h3 class="result-head__place" id="placeName"></h3>
+      <p class="result-head__best" id="bestSummary"></p>
+    </div>
+
+    <p class="message" id="message" role="status" aria-live="polite" hidden></p>
+
+    <ul class="grid" id="monthGrid" aria-live="polite"></ul>
+
+    <ul class="legend" aria-label="Colour key">
+      <li><span class="dot dot--ideal"></span>Best time</li>
+      <li><span class="dot dot--moderate"></span>Acceptable</li>
+      <li><span class="dot dot--hot"></span>Too hot</li>
+      <li><span class="dot dot--cold"></span>Too cold or wet</li>
+    </ul>
+
+  </div>
+</section>
   <!--=====================================
        Start: FAQ Section
    ===================================== -->
@@ -2179,13 +2443,9 @@
         alt="Panoramic views of Egypt" title="Panoramic views of Egypt" width="720" height="480" loading="lazy"
         decoding="async">
       <div class="promo-inner">
-        <div class="section-header section-header--inverse">
-          <div class="section-header__copy"><span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Travel Offers</span>
-        <h2 class="section-header__title">Limited Time Travel Promo</h2>
-        <p class="section-header__description">Grab your exclusive offer before it's gone! Simply log in, pick your destination, and unlock up to 30% off
+        <h2>Limited Time Travel Promo</h2>
+        <p>Grab your exclusive offer before it's gone! Simply log in, pick your destination, and unlock up to 30% off
           selected trips.</p>
-          </div>
-        </div>
         <a href="tailor-made.html" class="promo-cta">Book My Trip Now</a>
       </div>
     </section>
@@ -2254,6 +2514,7 @@
           End : Footer
   ==============================================-->
   <script src="assets/js/librairies/swiper-bundle.min.js"></script>
+  <script src="assets/js/weather-app.js"></script>
   <script src="assets/js/custom.js" defer></script>
   <script>
     (function () {

@@ -57,6 +57,38 @@
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
+/* bricolage-grotesque-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/bricolage-fonts/bricolage-grotesque-v9-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* bricolage-grotesque-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/bricolage-fonts/bricolage-grotesque-v9-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* bricolage-grotesque-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/bricolage-fonts/bricolage-grotesque-v9-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* bricolage-grotesque-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/bricolage-fonts/bricolage-grotesque-v9-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 /* manrope-regular - latin */
 @font-face {
   font-display: swap;
@@ -184,8 +216,8 @@
     /* ========================================
        Typography
     ======================================== */
-    --font-heading: "Lora", serif;
-    --font-body: "Manrope", sans-serif;
+    --font-heading: "Bricolage Grotesque", sans-serif;
+    --font-body: "Manrope", sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
     /* ========================================
        Components / Layout
@@ -331,7 +363,10 @@ p.three-line {
   overflow-y: hidden;
 }
 
-
+.inner-banner {
+  max-width: calc(100% - 24px);
+  margin: 0 auto;
+}
 
 .padding-section {
   padding-top: 60px;
@@ -2357,6 +2392,42 @@ picture {
 /*====================================================
   end mobile menu
 ======================================================*/
+
+/* Homepage header: gold contact strip above the floating white navigation. */
+.header-wrap--home:not(.is-fixed) .topbar {width:calc(100% - 24px);max-width: 100%;margin:0 auto;background:var(--color-second-light);border-radius:0 0 18px 18px;padding:11px 40px;color:var(--white-color);font-size:14px;font-weight:600;}
+.header-wrap--home .topbar__inner {width:100%;max-width:none;padding:0;}
+.header-wrap--home .topbar__social a {color:var(--main-color);}
+.header-wrap--home:not(.is-fixed) .nav-pill-wrap {padding: 0;}
+.header-wrap--home:not(.is-fixed) .nav-pill-wrap > div {width:calc(100% - 24px);max-width: calc(100% - 24px);margin-inline:auto;}
+.header-wrap--home:not(.is-fixed) .nav-pill {width:100%;min-height:68px;border-radius:17px;padding:8px 40px ;gap:20px;}
+.header-wrap--home .logo {flex-shrink:0;}
+.header-wrap--home .logo img {display:block;width:100px;max-height:52px;object-fit:contain;}
+.header-wrap--home .nav-pill .btn--primary {background:var(--main-color);min-height:50px;}
+.header-wrap--home .nav-pill .btn--primary:hover {background:var(--color-second);}
+.header-wrap--home .topbar__dropdown:focus-within .top-dropdown-menu {opacity:1;visibility:visible;transform:translateY(0);}
+.category-reveal__image {display:block;width:100%;height:144px;min-height:110px;object-fit:cover;border-radius:8px;margin-bottom:14px;flex:1 1 144px;}
+.category-reveal :is(.reveal-name,.reveal-count,.reveal-desc) {flex-shrink:0;}
+.categories-section .category-card:focus-visible {outline:3px solid var(--accent-color-dark);outline-offset:-3px;}
+@media (min-width:901px) and (max-width:1199px) {
+ .header-wrap--home .main-nav {gap:0;}
+ .header-wrap--home .main-nav>li>.nav-link {font-size:12px;padding:9px 6px;}
+ .header-wrap--home:not(.is-fixed) .nav-pill {gap:10px;padding-left:16px;}
+ .header-wrap--home .topbar__left {gap:14px;}
+ .header-wrap--home .topbar__left>span {display:none;}
+ .header-wrap--home .nav-pill .btn--primary {padding-inline:12px;font-size:12px;}
+}
+@media(max-width:900px) {
+ .header-wrap--home:not(.is-fixed) .nav-pill-wrap {padding-top:12px;}
+ .header-wrap--home:not(.is-fixed) .nav-pill-wrap > div {width:calc(100% - 24px);}
+ .header-wrap--home:not(.is-fixed) .nav-pill {min-height:64px;padding:6px 12px 6px 18px;border-radius:16px;}
+}
+@media(hover:none) {
+ .categories-section .category-reveal {transform:none;opacity:1;visibility:visible;}
+ .categories-section .category-info {visibility:hidden;}
+}
+@media(prefers-reduced-motion:reduce) {
+ .categories-section .category-reveal {transition:none;}
+}
 /*====================================================
   end Header
 ======================================================*/

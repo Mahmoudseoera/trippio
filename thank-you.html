@@ -1138,6 +1138,15 @@
         nameSpan.textContent = ', ' + name;
       }
 
+      if (type === 'preview') {
+        titleEl.textContent = 'Thank you for trying the request form';
+        descEl.textContent = 'Your form passed validation. This is a static preview: no request was sent and no booking was made.';
+        document.querySelector('.ty-eyebrow').textContent = 'Form preview complete';
+        document.querySelector('.ty-ref').hidden = true;
+        document.querySelector('.ty-steps').hidden = true;
+        return;
+      }
+
       /* ---------- Reference number ---------- */
       const ref = 'EG-' + Math.floor(100000 + Math.random() * 900000);
       const refEl = document.getElementById('tyRef');
