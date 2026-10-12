@@ -146,224 +146,490 @@
   <script src="assets/js/tour-comparison.js" defer></script>
   <link rel="stylesheet" href="assets/css/trip-intent.css" />
   <script src="assets/js/trip-intent.js" defer></script>
- <style>
-/* ---------- Tokens ---------- */
-.climate{
-  --c-ideal: #10B981;
-  --c-moderate: #F59E0B;
-  --c-hot: #EF4444;
-  --c-cold: #3B82F6;
+  <style>
+    /* ---------- Tokens ---------- */
+    .climate {
+      --c-ideal: #10B981;
+      --c-moderate: #F59E0B;
+      --c-hot: #EF4444;
+      --c-cold: #3B82F6;
 
-  --c-ink: #1f2a37;
-  --c-muted: #64748b;
-  --c-line: #e5e7eb;
-  --c-bg: #f7f5f0;
-  --c-card: #ffffff;
-  --c-accent: #0f4c5c;
+      --c-ink: #1f2a37;
+      --c-muted: #64748b;
+      --c-line: #e5e7eb;
+      --c-bg: #f7f5f0;
+      --c-card: #ffffff;
+      --c-accent: #0f4c5c;
 
-  --font-heading: "Bricolage Grotesque", sans-serif;
-  --font-body: "Manrope",  system-ui, -apple-system, "Segoe UI", sans-serif;
-  --radius-card: 14px;
-  --radius-pill: 999px;
-  --shadow-card: 0 1px 2px rgba(15, 23, 42, .06), 0 4px 14px rgba(15, 23, 42, .05);
-}
+      --font-heading: "Bricolage Grotesque", sans-serif;
+      --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --radius-card: 14px;
+      --radius-pill: 999px;
+      --shadow-card: 0 1px 2px rgba(15, 23, 42, .06), 0 4px 14px rgba(15, 23, 42, .05);
+    }
 
-.sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
-}
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
-/* ---------- Section ---------- */
-.climate { padding: clamp(32px, 6vw, 72px) 16px; }
-.climate__inner { max-width: 1120px; margin: 0 auto; }
+    /* ---------- Section ---------- */
+    .climate {
+      padding: clamp(32px, 6vw, 72px) 16px;
+    }
 
-.climate__head { max-width: 620px; margin-bottom: 28px; }
-.climate__title {
-  margin: 0 0 8px;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(1.75rem, 4vw, 2.6rem);
-  line-height: 1.15;
-  letter-spacing: -.01em;
-}
-.climate__lead { margin: 0; color: var(--c-muted); font-size: 1.05rem; }
+    .climate__inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
 
-/* ---------- Search ---------- */
-.search { display: flex; gap: 10px; max-width: 640px; }
-.search__field {
-  flex: 1;
-  display: flex; align-items: center; gap: 10px;
-  padding: 0 16px;
-  background: var(--c-card);
-  border: 1.5px solid var(--c-line);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-card);
-  color: var(--c-muted);
-  transition: border-color .2s, box-shadow .2s;
-}
-.search__field:focus-within {
-  border-color: var(--c-accent);
-  box-shadow: 0 0 0 3px rgba(15, 76, 92, .15);
-}
-.search__field input {
-  flex: 1; min-width: 0;
-  border: 0; outline: 0; background: transparent;
-  padding: 14px 0;
-  font: inherit; color: var(--c-ink);
-}
-.search__btn {
-  padding: 0 24px;
-  border: 0; border-radius: var(--radius-pill);
-  background: var(--c-accent); color: #fff;
-  font: inherit; font-weight: 600; cursor: pointer;
-  transition: background .2s, transform .1s;
-}
-.search__btn:hover { background: #0b3a47; }
-.search__btn:active { transform: scale(.98); }
-.search__btn:disabled { opacity: .6; cursor: progress; }
+    .climate__head {
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
 
-.presets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.preset {
-  padding: 7px 16px;
-  border: 1.5px solid var(--c-line); border-radius: var(--radius-pill);
-  background: var(--c-card); color: var(--c-ink);
-  font: inherit; font-size: .9rem; cursor: pointer;
-  transition: border-color .2s, background .2s, color .2s;
-}
-.preset:hover { border-color: var(--c-accent); }
-.preset.is-active { background: var(--c-accent); border-color: var(--c-accent); color: #fff; }
+    .climate__title {
+      margin: 0 0 8px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+    }
 
-:is(.search__btn, .preset):focus-visible {
-  outline: 3px solid rgba(15, 76, 92, .45); outline-offset: 2px;
-}
+    .climate__lead {
+      margin: 0;
+      color: var(--c-muted);
+      font-size: 1.05rem;
+    }
 
-/* ---------- Result header & messages ---------- */
-.result-head { margin: 32px 0 16px; }
-.result-head__place { margin: 0; font-family: var(--font-heading); font-size: 1.5rem; }
-.result-head__best { margin: 4px 0 0; color: var(--c-muted); }
-.result-head__best strong { color: var(--c-ink); }
+    /* ---------- Search ---------- */
+    .search {
+      display: flex;
+      gap: 10px;
+      max-width: 640px;
+    }
 
-.message {
-  margin: 24px 0 0; padding: 14px 18px; max-width: 640px;
-  border-radius: 10px; background: #fef2f2; color: #991b1b;
-}
+    .search__field {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+      background: var(--c-card);
+      border: 1.5px solid var(--c-line);
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-card);
+      color: var(--c-muted);
+      transition: border-color .2s, box-shadow .2s;
+    }
 
-/* ---------- Grid ---------- */
-.grid {
-  list-style: none; margin: 24px 0 0; padding: 0;
-  display: grid; gap: 14px;
-  grid-template-columns: repeat(2, 1fr);
-}
-@media (min-width: 640px)  { .grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 900px)  { .grid { grid-template-columns: repeat(4, 1fr); } }
-@media (min-width: 1100px) { .grid { grid-template-columns: repeat(6, 1fr); } }
+    .search__field:focus-within {
+      border-color: var(--c-accent);
+      box-shadow: 0 0 0 3px rgba(15, 76, 92, .15);
+    }
 
-/* ---------- Month card + status utilities ---------- */
-.month {
-  --status: var(--c-line);
-  --status-soft: #f1f5f9;
-  position: relative;
-  display: flex; flex-direction: column; gap: 6px;
-  padding: 16px 14px 14px;
-  background: var(--c-card);
-  border-radius: var(--radius-card);
-  border-top: 4px solid var(--status);
-  box-shadow: var(--shadow-card);
-  cursor: default;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.month:hover, .month:focus-visible {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, .12);
-  outline: none;
-  z-index: 3;
-}
-.month:focus-visible { box-shadow: 0 0 0 3px var(--status), 0 8px 24px rgba(15, 23, 42, .12); }
+    .search__field input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      padding: 14px 0;
+      font: inherit;
+      color: var(--c-ink);
+    }
 
-.month__name { margin: 0; font-weight: 600; font-size: 1rem; }
-.month__row { display: flex; align-items: center; justify-content: space-between; }
-.month__temp { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 700; line-height: 1; }
-.month__temp small { font-family: var(--font-body); font-size: .85rem; font-weight: 500; color: var(--c-muted); }
-.month__icon { width: 36px; height: 36px; color: var(--status); flex-shrink: 0; }
-.month__badge {
-  align-self: flex-start;
-  padding: 3px 10px; border-radius: var(--radius-pill);
-  background: var(--status-soft); color: var(--status-ink, var(--c-ink));
-  font-size: .78rem; font-weight: 600;
-}
+    .search__btn {
+      padding: 0 24px;
+      border: 0;
+      border-radius: var(--radius-pill);
+      background: var(--c-accent);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
 
-.status--ideal    { --status: var(--c-ideal);    --status-soft: #d1fae5; --status-ink: #065f46; }
-.status--moderate { --status: var(--c-moderate); --status-soft: #fef3c7; --status-ink: #92400e; }
-.status--hot      { --status: var(--c-hot);      --status-soft: #fee2e2; --status-ink: #991b1b; }
-.status--cold     { --status: var(--c-cold);     --status-soft: #dbeafe; --status-ink: #1e40af; }
+    .search__btn:hover {
+      background: #0b3a47;
+    }
 
-/* ---------- Tooltip ---------- */
-.tooltip {
-  position: absolute; left: 50%; bottom: calc(100% + 8px);
-  transform: translate(-50%, 4px);
-  min-width: 150px; padding: 8px 12px;
-  background: #1f2a37; color: #fff;
-  border-radius: 8px; font-size: .78rem; line-height: 1.5; text-align: center;
-  white-space: nowrap; pointer-events: none;
-  opacity: 0; visibility: hidden;
-  transition: opacity .15s, transform .15s, visibility .15s;
-}
-.tooltip::after {
-  content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px;
-  border: 5px solid transparent; border-top-color: #1f2a37;
-}
-.month:hover .tooltip,
-.month:focus-visible .tooltip { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+    .search__btn:active {
+      transform: scale(.98);
+    }
 
-/* Keep tooltips inside the viewport on the outer columns */
-.month:nth-child(2n+1) .tooltip { left: 0; transform: translate(0, 4px); }
-.month:nth-child(2n+1) .tooltip::after { left: 28px; }
-.month:nth-child(2n+1):hover .tooltip,
-.month:nth-child(2n+1):focus-visible .tooltip { transform: translate(0, 0); }
-@media (min-width: 640px) {
-  .month:nth-child(2n+1) .tooltip { left: 50%; transform: translate(-50%, 4px); }
-  .month:nth-child(2n+1) .tooltip::after { left: 50%; }
-  .month:nth-child(2n+1):hover .tooltip,
-  .month:nth-child(2n+1):focus-visible .tooltip { transform: translate(-50%, 0); }
-}
+    .search__btn:disabled {
+      opacity: .6;
+      cursor: progress;
+    }
 
-/* ---------- Skeleton loading ---------- */
-.month--skeleton { pointer-events: none; border-top-color: var(--c-line); }
-.skel {
-  display: block; border-radius: 6px;
-  background: linear-gradient(90deg, #eef0f3 25%, #f8f9fb 50%, #eef0f3 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.3s infinite linear;
-}
-.skel--name  { width: 55%; height: 14px; }
-.skel--temp  { width: 45%; height: 28px; margin: 6px 0; }
-.skel--badge { width: 70%; height: 20px; border-radius: var(--radius-pill); }
-@keyframes shimmer { to { background-position: -200% 0; } }
+    .presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
 
-/* ---------- Legend ---------- */
-.legend {
-  display: flex; flex-wrap: wrap; gap: 8px 20px;
-  list-style: none; margin: 24px 0 0; padding: 0;
-  font-size: .85rem; color: var(--c-muted);
-}
-.legend li { display: flex; align-items: center; gap: 8px; }
-.dot { width: 12px; height: 12px; border-radius: 50%; }
-.dot--ideal { background: var(--c-ideal); }
-.dot--moderate { background: var(--c-moderate); }
-.dot--hot { background: var(--c-hot); }
-.dot--cold { background: var(--c-cold); }
+    .preset {
+      padding: 7px 16px;
+      border: 1.5px solid var(--c-line);
+      border-radius: var(--radius-pill);
+      background: var(--c-card);
+      color: var(--c-ink);
+      font: inherit;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, color .2s;
+    }
 
-/* ---------- Small screens ---------- */
-@media (max-width: 520px) {
-  .search { flex-direction: column; }
-  .search__btn { padding: 14px 24px; }
-}
+    .preset:hover {
+      border-color: var(--c-accent);
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  .skel { animation: none; }
-  .month, .tooltip { transition: none; }
-}
+    .preset.is-active {
+      background: var(--c-accent);
+      border-color: var(--c-accent);
+      color: #fff;
+    }
 
+    :is(.search__btn, .preset):focus-visible {
+      outline: 3px solid rgba(15, 76, 92, .45);
+      outline-offset: 2px;
+    }
+
+    /* ---------- Result header & messages ---------- */
+    .result-head {
+      margin: 32px 0 16px;
+    }
+    .result-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+    .result-head__place {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+    }
+
+    .result-head__best {
+      margin: 4px 0 0;
+      color: var(--c-muted);
+    }
+
+    .result-head__best strong {
+      color: var(--c-ink);
+    }
+
+    .message {
+      margin: 24px 0 0;
+      padding: 14px 18px;
+      max-width: 640px;
+      border-radius: 10px;
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    /* ---------- Grid ---------- */
+    .grid {
+      list-style: none;
+      margin: 24px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 640px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+    /* ---------- Month card + status utilities ---------- */
+    .month {
+      --status: var(--c-line);
+      --status-soft: #f1f5f9;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px 14px 14px;
+      background: var(--c-card);
+      border-radius: var(--radius-card);
+      border-top: 4px solid var(--status);
+      box-shadow: var(--shadow-card);
+      cursor: default;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .month:hover,
+    .month:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, .12);
+      outline: none;
+      z-index: 3;
+    }
+
+    .month:focus-visible {
+      box-shadow: 0 0 0 3px var(--status), 0 8px 24px rgba(15, 23, 42, .12);
+    }
+
+    .month__name {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .month__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .month__temp {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .month__temp small {
+      font-family: var(--font-body);
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--c-muted);
+    }
+
+    .month__icon {
+      width: 36px;
+      height: 36px;
+      color: var(--status);
+      flex-shrink: 0;
+    }
+
+    .month__badge {
+      align-self: flex-start;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--status-soft);
+      color: var(--status-ink, var(--c-ink));
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    .status--ideal {
+      --status: var(--c-ideal);
+      --status-soft: #d1fae5;
+      --status-ink: #065f46;
+    }
+
+    .status--moderate {
+      --status: var(--c-moderate);
+      --status-soft: #fef3c7;
+      --status-ink: #92400e;
+    }
+
+    .status--hot {
+      --status: var(--c-hot);
+      --status-soft: #fee2e2;
+      --status-ink: #991b1b;
+    }
+
+    .status--cold {
+      --status: var(--c-cold);
+      --status-soft: #dbeafe;
+      --status-ink: #1e40af;
+    }
+
+    /* ---------- Tooltip ---------- */
+    .tooltip {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 8px);
+      transform: translate(-50%, 4px);
+      min-width: 150px;
+      padding: 8px 12px;
+      background: #1f2a37;
+      color: #fff;
+      border-radius: 8px;
+      font-size: .78rem;
+      line-height: 1.5;
+      text-align: center;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .15s, transform .15s, visibility .15s;
+    }
+
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border: 5px solid transparent;
+      border-top-color: #1f2a37;
+    }
+
+    .month:hover .tooltip,
+    .month:focus-visible .tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    /* Keep tooltips inside the viewport on the outer columns */
+    .month:nth-child(2n+1) .tooltip {
+      left: 0;
+      transform: translate(0, 4px);
+    }
+
+    .month:nth-child(2n+1) .tooltip::after {
+      left: 28px;
+    }
+
+    .month:nth-child(2n+1):hover .tooltip,
+    .month:nth-child(2n+1):focus-visible .tooltip {
+      transform: translate(0, 0);
+    }
+
+    @media (min-width: 640px) {
+      .month:nth-child(2n+1) .tooltip {
+        left: 50%;
+        transform: translate(-50%, 4px);
+      }
+
+      .month:nth-child(2n+1) .tooltip::after {
+        left: 50%;
+      }
+
+      .month:nth-child(2n+1):hover .tooltip,
+      .month:nth-child(2n+1):focus-visible .tooltip {
+        transform: translate(-50%, 0);
+      }
+    }
+
+    /* ---------- Skeleton loading ---------- */
+    .month--skeleton {
+      pointer-events: none;
+      border-top-color: var(--c-line);
+    }
+
+    .skel {
+      display: block;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #eef0f3 25%, #f8f9fb 50%, #eef0f3 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.3s infinite linear;
+    }
+
+    .skel--name {
+      width: 55%;
+      height: 14px;
+    }
+
+    .skel--temp {
+      width: 45%;
+      height: 28px;
+      margin: 6px 0;
+    }
+
+    .skel--badge {
+      width: 70%;
+      height: 20px;
+      border-radius: var(--radius-pill);
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: -200% 0;
+      }
+    }
+
+    /* ---------- Legend ---------- */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      list-style: none;
+      margin: 24px 0 0;
+      padding: 0;
+      font-size: .85rem;
+      color: var(--c-muted);
+    }
+
+    .legend li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot--ideal {
+      background: var(--c-ideal);
+    }
+
+    .dot--moderate {
+      background: var(--c-moderate);
+    }
+
+    .dot--hot {
+      background: var(--c-hot);
+    }
+
+    .dot--cold {
+      background: var(--c-cold);
+    }
+
+    /* ---------- Small screens ---------- */
+    @media (max-width: 520px) {
+      .search {
+        flex-direction: column;
+      }
+
+      .search__btn {
+        padding: 14px 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .skel {
+        animation: none;
+      }
+
+      .month,
+      .tooltip {
+        transition: none;
+      }
+    }
   </style>
 </head>
 
@@ -483,22 +749,7 @@
                     </svg>
                   </a>
                   <div class="nav-dropdown nav-dropdown--mega">
-                    <div class="mega-featured">
-                      <a href="category.html" class="mega-featured__img">
-                        <picture>
-                          <source media="(min-width: 769px)" srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp"
-                            sizes="230px" type="image/webp" width="900" height="600">
-                          <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Explore Egypt day tours"
-                            title="Explore Egypt day tours" sizes="230px" decoding="async" loading="lazy"
-                            fetchpriority="low" width="900" height="600">
-                        </picture>
-                        <span class="mega-featured__title">Day Tours</span>
-                      </a>
-                      <p class="mega-featured__desc">
-                        Everything travelers usually ask before booking a tour with us. Can't Everything travelers
-                        usually ask before booking a tour with us.
-                      </p>
-                    </div>
+
                     <div class="mega-col mega-col--1">
                       <a href="subcategory.html">Giza Pyramids &amp; Sphinx Tour</a>
                       <a href="subcategory.html">Egyptian Museum Tour</a>
@@ -542,22 +793,7 @@
                         <path d="M7 17L17 7M9 7h8v8" />
                       </svg>
                     </a>
-                    <div class="mega-featured">
-                      <a href="category.html" class="mega-featured__img">
-                        <picture>
-                          <source media="(min-width: 769px)" srcset="assets/images/tours/49-webp.webp" sizes="230px"
-                            type="image/webp" width="900" height="600">
-                          <img src="assets/images/tours/49-webp.webp" alt="Egypt travel packages"
-                            title="Egypt travel packages" sizes="230px" decoding="async" loading="lazy"
-                            fetchpriority="low" width="900" height="600">
-                        </picture>
-                        <span class="mega-featured__title">Travel Packages</span>
-                      </a>
-                      <p class="mega-featured__desc">
-                        Everything travelers usually ask before booking a tour with us. Can't Everything travelers
-                        usually ask before booking a tour with us.
-                      </p>
-                    </div>
+
                   </div>
                 </li>
 
@@ -583,22 +819,7 @@
                         <path d="M7 17L17 7M9 7h8v8" />
                       </svg>
                     </a>
-                    <div class="mega-featured">
-                      <a href="category.html" class="mega-featured__img">
-                        <picture>
-                          <source media="(min-width: 769px)" srcset="assets/images/tours/aswan5345.webp" sizes="230px"
-                            type="image/webp" width="900" height="600">
-                          <img src="assets/images/tours/aswan5345.webp" alt="Nile cruises in Aswan"
-                            title="Nile cruises in Aswan" sizes="230px" decoding="async" loading="lazy"
-                            fetchpriority="low" width="900" height="600">
-                        </picture>
-                        <span class="mega-featured__title">Nile Cruises</span>
-                      </a>
-                      <p class="mega-featured__desc">
-                        Everything travelers usually ask before booking a tour with us. Can't Everything travelers
-                        usually ask before booking a tour with us.
-                      </p>
-                    </div>
+
                   </div>
                 </li>
 
@@ -625,22 +846,7 @@
                         <path d="M7 17L17 7M9 7h8v8" />
                       </svg>
                     </a>
-                    <div class="mega-featured">
-                      <a href="category.html" class="mega-featured__img">
-                        <picture>
-                          <source media="(min-width: 769px)" srcset="assets/images/tours/Egypt Budget Tours-webp.webp"
-                            sizes="230px" type="image/webp" width="900" height="600">
-                          <img src="assets/images/tours/Egypt Budget Tours-webp.webp" alt="Egypt travel styles"
-                            title="Egypt travel styles" sizes="230px" decoding="async" loading="lazy"
-                            fetchpriority="low" width="900" height="600">
-                        </picture>
-                        <span class="mega-featured__title">Travel Style</span>
-                      </a>
-                      <p class="mega-featured__desc">
-                        Everything travelers usually ask before booking a tour with us. Can't Everything travelers
-                        usually ask before booking a tour with us.
-                      </p>
-                    </div>
+
                   </div>
                 </li>
 
@@ -667,22 +873,7 @@
                         <path d="M7 17L17 7M9 7h8v8" />
                       </svg>
                     </a>
-                    <div class="mega-featured">
-                      <a href="category.html" class="mega-featured__img">
-                        <picture>
-                          <source media="(min-width: 769px)" srcset="assets/images/tours/cairo.webp" sizes="230px"
-                            type="image/webp" width="900" height="600">
-                          <img src="assets/images/tours/cairo.webp" alt="Explore Egypt destinations"
-                            title="Explore Egypt destinations" sizes="230px" decoding="async" loading="lazy"
-                            fetchpriority="low" width="900" height="600">
-                        </picture>
-                        <span class="mega-featured__title">Destinations</span>
-                      </a>
-                      <p class="mega-featured__desc">
-                        Everything travelers usually ask before booking a tour with us. Can't Everything travelers
-                        usually ask before booking a tour with us.
-                      </p>
-                    </div>
+
                   </div>
                 </li>
 
@@ -937,7 +1128,7 @@
   <!--==================================================
           Start: desktop Header
  ================================================== -->
- 
+
   <!-- <section class="hero-section">
     <div class="container hero-wrap">
       <div class="hero-bg">
@@ -1004,7 +1195,7 @@
   <!--=====================================
        End: Hero Section
    ===================================== -->
-    <section class="hero-section">
+  <section class="hero-section">
     <div class="hero-wrapper">
       <div class="swiper hero-swiper" id="heroSwiper">
         <div class="swiper-wrapper">
@@ -1041,8 +1232,8 @@
           <div class="swiper-slide">
             <div class="slide-media">
               <picture>
-                <source media="(max-width: 769px)" srcset="assets/images/tours/marsa alam7567.jpg" sizes="100vw" width="480"
-                  height="600" type="image/jpeg"><img title="Marsa Alam on the Red Sea"
+                <source media="(max-width: 769px)" srcset="assets/images/tours/marsa alam7567.jpg" sizes="100vw"
+                  width="480" height="600" type="image/jpeg"><img title="Marsa Alam on the Red Sea"
                   src="assets/images/tours/marsa alam7567.jpg" alt="Marsa Alam on Egypt?s Red Sea coast" width="480"
                   height="600" loading="lazy" decoding="async" sizes="100vw" fetchpriority="low">
               </picture>
@@ -1051,8 +1242,8 @@
           <div class="swiper-slide">
             <div class="slide-media">
               <picture>
-                <source media="(max-width: 769px)" srcset="assets/images/tours/marsa alam7567.jpg" sizes="100vw" width="480"
-                  height="600" type="image/jpeg"><img title="Marsa Alam on the Red Sea"
+                <source media="(max-width: 769px)" srcset="assets/images/tours/marsa alam7567.jpg" sizes="100vw"
+                  width="480" height="600" type="image/jpeg"><img title="Marsa Alam on the Red Sea"
                   src="assets/images/tours/marsa alam7567.jpg" alt="Marsa Alam on Egypt?s Red Sea coast" width="480"
                   height="600" loading="lazy" decoding="async" sizes="100vw" fetchpriority="low">
               </picture>
@@ -1087,8 +1278,10 @@
     <div class="container why-grid">
       <div>
         <div class="section-header section-header--stacked">
-          <div class="section-header__copy"><span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Why Choose Us</span>
-          <h2 class="section-header__title">Creating memories you'll want to revisit</h2></div>
+          <div class="section-header__copy"><span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon"
+                title="Pill Icon"> Why Choose Us</span>
+            <h2 class="section-header__title">Creating memories you'll want to revisit</h2>
+          </div>
         </div>
 
         <div class="acc" id="whyAcc">
@@ -1191,8 +1384,8 @@
               </textPath>
             </text>
           </svg>
-          <svg class="core" viewBox="0 0 48 48" fill="none" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"
-            stroke-linejoin="round" aria-hidden="true">
+          <svg class="core" viewBox="0 0 48 48" fill="none" stroke="var(--accent-color)" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polygon points="24,13 27,20.5 35,21 29,26 31,34 24,29.8 17,34 19,26 13,21 21,20.5" />
             <path d="M11 20c-3 6 0 13 8 17M37 20c3 6 0 13-8 17" />
           </svg>
@@ -1212,9 +1405,11 @@
     <div class="container">
       <div class="section-header">
         <div class="section-header__copy">
-          <span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Tour Categories</span>
+          <span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon" title="Pill Icon"> Tour
+            Categories</span>
           <h2 class="section-header__title">Explore Egypt by experience</h2>
-          <p class="section-header__description">From the Nile to the desert, pick the kind of journey that fits how you like to travel.</p>
+          <p class="section-header__description">From the Nile to the desert, pick the kind of journey that fits how you
+            like to travel.</p>
         </div>
         <div class="nav-arrows" id="cArrows">
           <button class="arrow-btn prev" aria-label="Previous category">
@@ -1334,50 +1529,51 @@
       <div class="about-polaroid__collage">
         <div class="about-polaroid__accent" aria-hidden="true"></div>
         <div class="about-polaroid__photo about-polaroid__photo--back">
-          <img src="assets/images/tours/visiting-place2.jpg"
-            alt="Travelers exploring ancient ruins in Egypt" title="Explore Egypt's ancient ruins"
-            width="480" height="600" loading="lazy" decoding="async">
+          <img src="assets/images/tours/visiting-place2.jpg" alt="Travelers exploring ancient ruins in Egypt"
+            title="Explore Egypt's ancient ruins" width="480" height="600" loading="lazy" decoding="async">
         </div>
         <div class="about-polaroid__photo about-polaroid__photo--front">
-          <img src="assets/images/tours/great-pyramid-webp.webp"
-            alt="The Great Pyramid of Giza" title="Discover the Great Pyramid of Giza"
-            width="600" height="800" loading="lazy" decoding="async">
+          <img src="assets/images/tours/great-pyramid-webp.webp" alt="The Great Pyramid of Giza"
+            title="Discover the Great Pyramid of Giza" width="600" height="800" loading="lazy" decoding="async">
         </div>
       </div>
 
       <div class="about-polaroid__content">
         <div class="section-header section-header--stacked">
-          <div class="section-header__copy"><span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>About Us</span>
-        <h2 id="about-polaroid-heading" class="section-header__title">We Make Your <em>Travel Dreams</em> Come True.</h2>
-        <p class="section-header__description">We're a Cairo-based team of licensed Egyptologists and travel planners who've spent over a
-          decade building trips around what travelers actually want — not a fixed script.</p>
+          <div class="section-header__copy"><span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon"
+                title="Pill Icon"> About Us</span>
+            <h2 id="about-polaroid-heading" class="section-header__title">We Make Your <em>Travel Dreams</em> Come True.
+            </h2>
+            <p class="section-header__description">We're a Cairo-based team of licensed Egyptologists and travel
+              planners who've spent over a
+              decade building trips around what travelers actually want — not a fixed script.</p>
           </div>
         </div>
         <ul class="about-polaroid__checklist">
           <li>
-            <span class="chev"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="3">
+            <span class="chev"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="3">
                 <path d="M7 6l5 6-5 6M13 6l5 6-5 6" />
               </svg></span>
             Handpicked Destinations Worldwide
           </li>
           <li>
-            <span class="chev"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="3">
+            <span class="chev"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="3">
                 <path d="M7 6l5 6-5 6M13 6l5 6-5 6" />
               </svg></span>
             Affordable &amp; Flexible Packages
           </li>
           <li>
-            <span class="chev"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="3">
+            <span class="chev"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="3">
                 <path d="M7 6l5 6-5 6M13 6l5 6-5 6" />
               </svg></span>
             24/7 Customer Support
           </li>
           <li>
-            <span class="chev"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="3">
+            <span class="chev"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="3">
                 <path d="M7 6l5 6-5 6M13 6l5 6-5 6" />
               </svg></span>
             Trusted By Thousands Of Travelers
@@ -1387,14 +1583,16 @@
           <a href="about.html" class="btn btn--primary">
             <span>More About us</span>
             <span class="btn__arrow">
-              <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+              <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.4">
                 <path d="M7 17L17 7M9 7h8v8" />
               </svg>
             </span>
           </a>
           <div class="about-polaroid__phone">
             <div class="about-polaroid__phone__icon">
-              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
                 <path
                   d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
@@ -1419,7 +1617,7 @@
     <div class="container">
       <div class="section-header">
         <div class="section-header__copy">
-          <span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Popular Tours</span>
+          <span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon" title="Pill Icon"> Popular Tours</span>
           <h2 class="section-header__title">Handpicked tours across Egypt</h2>
           <p class="section-header__description">Small groups, expert local guides, and fair prices per person.</p>
         </div>
@@ -1479,10 +1677,10 @@
           <div class="swiper-slide">
             <article class="tour-card">
               <a class="tour-media" href="tour-details.html" aria-label="Nile Cruise from Luxor to Aswan">
-                  <picture>
-                    <source srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp" type="image/webp">
-                    <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Pyramids of Giza and Sphinx">
-                  </picture>
+                <picture>
+                  <source srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp" type="image/webp">
+                  <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Pyramids of Giza and Sphinx">
+                </picture>
               </a>
               <div class="tour-body">
                 <div class="tour-meta"><span><svg viewBox="0 0 24 24">
@@ -1514,10 +1712,10 @@
           <div class="swiper-slide">
             <article class="tour-card">
               <a class="tour-media" href="tour-details.html" aria-label="Abu Simbel Sunrise Excursion">
-                  <picture>
-                    <source srcset="assets/images/tours/marsa alam banner.webp" type="image/webp">
-                    <img src="assets/images/tours/marsa alam banner.webp" alt="Pyramids of Giza and Sphinx">
-                  </picture>
+                <picture>
+                  <source srcset="assets/images/tours/marsa alam banner.webp" type="image/webp">
+                  <img src="assets/images/tours/marsa alam banner.webp" alt="Pyramids of Giza and Sphinx">
+                </picture>
               </a>
               <div class="tour-body">
                 <div class="tour-meta"><span><svg viewBox="0 0 24 24">
@@ -1549,10 +1747,10 @@
           <div class="swiper-slide">
             <article class="tour-card">
               <a class="tour-media" href="tour-details.html" aria-label="Siwa Oasis Desert Escape">
-                  <picture>
-                    <source srcset="assets/images/tours/aswan547547.webp" type="image/webp">
-                    <img src="assets/images/tours/aswan547547.webp" alt="Pyramids of Giza and Sphinx">
-                  </picture>
+                <picture>
+                  <source srcset="assets/images/tours/aswan547547.webp" type="image/webp">
+                  <img src="assets/images/tours/aswan547547.webp" alt="Pyramids of Giza and Sphinx">
+                </picture>
               </a>
               <div class="tour-body">
                 <div class="tour-meta"><span><svg viewBox="0 0 24 24">
@@ -1584,10 +1782,11 @@
           <div class="swiper-slide">
             <article class="tour-card">
               <a class="tour-media" href="tour-details.html" aria-label="Red Sea Snorkeling from Hurghada">
-                  <picture>
-                    <source srcset="assets/images/tours/quad bike safari in sharm el sheikh78768.jpg" type="image/webp">
-                    <img src="assets/images/tours/quad bike safari in sharm el sheikh78768.jpg" alt="Pyramids of Giza and Sphinx">
-                  </picture>
+                <picture>
+                  <source srcset="assets/images/tours/quad bike safari in sharm el sheikh78768.jpg" type="image/webp">
+                  <img src="assets/images/tours/quad bike safari in sharm el sheikh78768.jpg"
+                    alt="Pyramids of Giza and Sphinx">
+                </picture>
               </a>
               <div class="tour-body">
                 <div class="tour-meta"><span><svg viewBox="0 0 24 24">
@@ -1629,11 +1828,12 @@
   <section class="services-section section-spacing">
     <div class="container">
       <div class="section-header">
-        <div class="section-header__copy"><span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>What We Offer</span>
+        <div class="section-header__copy"><span class="pill">
+            <img src="assets/images/sphinx.svg" alt="Pill Icon" title="Pill Icon"> What We Offer</span>
           <h2 class="section-header__title">Our Services</h2>
           <p class="section-header__description">Everything handled end-to-end, from the moment you land to the moment
-          you fly
-          home. Hover a service for a closer look.</p>
+            you fly
+            home. Hover a service for a closer look.</p>
         </div>
       </div>
 
@@ -1725,10 +1925,12 @@
       decoding="async">
     <div class="container">
       <div class="section-header section-header--inverse">
-        <div class="section-header__copy"><span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Handpicked for you</span>
+        <div class="section-header__copy"><span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon"
+              title="Pill Icon"> Handpicked for you</span>
           <h2 id="featured-ticket-title" class="section-header__title">Your ticket to Egypt</h2>
-        <p class="section-header__description">Discover your next adventure. Pick up to three tours to compare and find the journey that feels right for
-          you.</p>
+          <p class="section-header__description">Discover your next adventure. Pick up to three tours to compare and
+            find the journey that feels right for
+            you.</p>
         </div>
       </div>
       <div class="ticket-tour-grid">
@@ -1817,68 +2019,102 @@
   <!--=====================================
        End: Featured Tours
    ===================================== -->
-<section class="climate" id="climateWidget" aria-labelledby="climateTitle">
-  <div class="climate__inner">
+  <section class="climate" id="climateWidget" aria-labelledby="climateTitle">
+    <div class="climate__inner">
 
-    <!-- <header class="climate__head">
+      <!-- <header class="climate__head">
       <h2 class="climate__title" id="climateTitle">When is the best time to visit?</h2>
       <p class="climate__lead">Pick a destination to see how each month feels, based on real 2025 weather records.</p>
     </header> -->
       <div class="section-header">
-        <div class="section-header__copy"><span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Time Visit?</span>
+        <div class="section-header__copy"><span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon"
+              title="Pill Icon"> Time Visit?</span>
           <h2 class="section-header__title">When is the best time to visit?</h2>
-          <p class="section-header__description">Pick a destination to see how each month feels, based on real 2025 weather records..</p>
+          <p class="section-header__description">Pick a destination to see how each month feels, based on real 2025
+            weather records..</p>
         </div>
       </div>
-    <form class="search" id="searchForm" role="search" autocomplete="off">
-      <label class="search__field" for="cityInput">
-        <svg class="search__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <span class="sr-only">Destination city</span>
-        <input type="text" id="cityInput" name="city" placeholder="Search a city, e.g. Aswan" required>
-      </label>
-      <button type="submit" class="search__btn" id="searchBtn">Check Best Months</button>
-    </form>
+      <div class="result-header">
+        <div class="result-search">
+        <form class="search" id="searchForm" role="search" autocomplete="off">
+          <label class="search__field" for="cityInput">
+            <svg class="search__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <span class="sr-only">Destination city</span>
+            <input type="text" id="cityInput" name="city" placeholder="Search a city, e.g. Aswan" required>
+          </label>
+          <button type="submit" class="search__btn" id="searchBtn">Check Best Months</button>
+        </form>
 
-    <div class="presets" role="group" aria-label="Popular destinations">
-      <button type="button" class="preset" data-city="Luxor">Luxor</button>
-      <button type="button" class="preset" data-city="Sharm El Sheikh">Sharm El Sheikh</button>
-      <button type="button" class="preset" data-city="Cairo">Cairo</button>
-      <button type="button" class="preset" data-city="Alexandria">Alexandria</button>
+        <div class="presets" role="group" aria-label="Popular destinations">
+          <button type="button" class="preset" data-city="Luxor">Luxor</button>
+          <button type="button" class="preset" data-city="Sharm El Sheikh">Sharm El Sheikh</button>
+          <button type="button" class="preset" data-city="Cairo">Cairo</button>
+          <button type="button" class="preset" data-city="Alexandria">Alexandria</button>
+        </div>
+        </div>
+
+
+        <div class="result-head" id="resultHead" hidden>
+          <h3 class="result-head__place" id="placeName"></h3>
+          <p class="result-head__best" id="bestSummary"></p>
+        </div>
+
+      </div>
+
+
+
+      <p class="message" id="message" role="status" aria-live="polite" hidden></p>
+
+      <ul class="grid" id="monthGrid" aria-live="polite"></ul>
+
+      <ul class="legend" aria-label="Colour key">
+        <li><span class="dot dot--ideal"></span>Best time</li>
+        <li><span class="dot dot--moderate"></span>Acceptable</li>
+        <li><span class="dot dot--hot"></span>Too hot</li>
+        <li><span class="dot dot--cold"></span>Too cold or wet</li>
+      </ul>
+
     </div>
-
-    <div class="result-head" id="resultHead" hidden>
-      <h3 class="result-head__place" id="placeName"></h3>
-      <p class="result-head__best" id="bestSummary"></p>
-    </div>
-
-    <p class="message" id="message" role="status" aria-live="polite" hidden></p>
-
-    <ul class="grid" id="monthGrid" aria-live="polite"></ul>
-
-    <ul class="legend" aria-label="Colour key">
-      <li><span class="dot dot--ideal"></span>Best time</li>
-      <li><span class="dot dot--moderate"></span>Acceptable</li>
-      <li><span class="dot dot--hot"></span>Too hot</li>
-      <li><span class="dot dot--cold"></span>Too cold or wet</li>
-    </ul>
-
-  </div>
-</section>
+  </section>
   <!--=====================================
        Start: FAQ Section
    ===================================== -->
-  <section class="section section-spacing">
+  <section class="section section-spacing faq-section">
     <div class="container">
-      <div class="section-header">
-        <div class="section-header__copy"><span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Got Questions?</span>
-          <h2 class="section-header__title">Frequently Asked</h2>
-          <p class="section-header__description">Everything travelers usually ask before booking a tour with us. Can't
-          find your
-          answer? Reach out and we'll help directly.</p>
-        </div>
-      </div>
-
       <div class="faq-grid">
+        <div class="faq-visual">
+          <div class="section-header">
+            <div class="section-header__copy"><span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon"
+                  title="Pill Icon"> Got Questions?</span>
+              <h2 class="section-header__title">Frequently Asked</h2>
+              <p class="section-header__description">Everything travelers usually ask before booking a tour with us. Can't
+                find your
+                answer? Reach out and we'll help directly.</p>
+            </div>
+          </div>
+          <div class="faq-collage" aria-label="Discover Egypt">
+            <svg class="faq-collage__trail" viewBox="0 0 500 400" fill="none" aria-hidden="true">
+              <path d="M0 280C90 355 110 110 205 185S335 10 390 115S450 230 500 210" />
+              <circle cx="365" cy="40" r="7" />
+            </svg>
+            <img class="faq-collage__photo faq-collage__photo--top"
+              src="assets/images/tours/Pyramids-in-Egypt-webp.webp"
+              alt="The pyramids of Giza in Egypt" title="Discover the pyramids of Giza"
+              width="300" height="300" loading="lazy" decoding="async">
+            <img class="faq-collage__photo faq-collage__photo--left"
+              src="assets/images/tours/106896752__MG_7633-final_Pompeys_Pillar-webp.webp"
+              alt="Ancient Egyptian sphinx in Alexandria" title="Explore historic Alexandria"
+              width="300" height="320" loading="lazy" decoding="async">
+            <img class="faq-collage__photo faq-collage__photo--right"
+              src="assets/images/tours/aswan547547.webp"
+              alt="Scenery in Aswan, Egypt" title="Experience Aswan"
+              width="320" height="280" loading="lazy" decoding="async">
+          </div>
+        </div>
         <div class="faq-list" id="faqList">
           <div class="faq-item is-open">
             <div class="faq-item__head">
@@ -1993,70 +2229,6 @@
             </a>
           </div>
         </div>
-
-        <div class="faq-image">
-          <div class="faq-image__frame">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t">
-              <image href="assets/images/tours/106896752__MG_7633-final_Pompeys_Pillar-webp.webp" x="-20" y="-30"
-                width="240" height="240" preserveAspectRatio="xMidYMid meet" clip-path="url(#blobClip)" />
-              <clipPath id="blobClip">
-                <path
-                  d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
-                  transform="translate(100 100)" />
-              </clipPath>
-
-              <path class="blob"
-                d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
-                transform="translate(100 100)" fill="url(#imgFill)" />
-              <path id="text"
-                d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
-                transform="translate(100 100)" fill="none" stroke="none" pathLength="100" />
-
-              <text class="text-content">
-                <textPath href="#text" startOffset="0%">Check our Awesome Tours now from Brand Name Travel
-                  <animate attributeName="startOffset" from="0%" to="100%" dur="15s" repeatCount="indefinite" />
-                </textPath>
-                <textPath href="#text" startOffset="100%">Check our Awesome Tours now from Brand Name
-                  <animate attributeName="startOffset" from="-100%" to="0%" dur="15s" repeatCount="indefinite" />
-                </textPath>
-              </text>
-            </svg>
-            <!-- <picture><source media="(min-width: 769px)" srcset="assets/images/tours/visiting-place2.jpg" sizes="100vw" width="480" height="460" type="image/jpeg"><img title="image" src="assets/images/tours/visiting-place2.jpg" alt="Travelers checking a map together" width="480"
-              height="460" loading="lazy" decoding="async" sizes="100vw" fetchpriority="low"></picture>
-            <div class="faq-review">
-              <svg class="faq-review__g" viewBox="0 0 48 48">
-                <path fill="#4285F4"
-                  d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
-                <path fill="#34A853"
-                  d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
-                <path fill="#FBBC05"
-                  d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z" />
-                <path fill="#EA4335"
-                  d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z" />
-              </svg>
-              <div>
-                <div class="faq-review__stars">
-                  <svg width="14" height="14" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                  </svg>
-                  <svg width="14" height="14" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                  </svg>
-                  <svg width="14" height="14" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                  </svg>
-                  <svg width="14" height="14" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                  </svg>
-                  <svg width="14" height="14" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                  </svg>
-                </div>
-                <p class="faq-review__text">4.8/5 Clients Reviews</p>
-              </div>
-            </div> -->
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -2071,9 +2243,11 @@
     <div class="container">
       <div class="section-header">
         <div class="section-header__copy">
-          <span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Travel Journal</span>
+          <span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon" title="Pill Icon"> Travel
+            Journal</span>
           <h2 class="section-header__title">Stories from the road in Egypt</h2>
-          <p class="section-header__description">Guides, planning tips, and first-hand accounts to help shape your trip.</p>
+          <p class="section-header__description">Guides, planning tips, and first-hand accounts to help shape your trip.
+          </p>
         </div>
         <div class="header-actions">
           <a href="blog-posts.html" class="btn-view-all">View All Posts</a>
@@ -2100,9 +2274,10 @@
               <a class="blog-card-link" href="blog-details.html">
                 <div class="blog-card-inner">
                   <div class="blog-card-front" aria-hidden="true">
-                    <div class="card-media"><img src="assets/images/blogs/A-wonderful-picture-of-a-tourist-in-front-of-the-pyramids-webp.webp"
-                  alt="A traveler visiting the pyramids of Giza" title="A traveler visiting the pyramids of Giza"
-                  width="600" height="450" loading="lazy" decoding="async"></div>
+                    <div class="card-media"><img
+                        src="assets/images/blogs/A-wonderful-picture-of-a-tourist-in-front-of-the-pyramids-webp.webp"
+                        alt="A traveler visiting the pyramids of Giza" title="A traveler visiting the pyramids of Giza"
+                        width="600" height="450" loading="lazy" decoding="async"></div>
                     <div class="card-front-overlay">
                       <span class="card-date">Sep 20, 2026</span>
                       <p class="card-title">Easy travel tips to help you plan a safe trip</p>
@@ -2110,16 +2285,18 @@
                     </div>
                   </div>
                   <div class="blog-card-back">
-                    <div class="card-media"><img src="assets/images/blogs/A-wonderful-picture-of-a-tourist-in-front-of-the-pyramids-webp.webp"
-                  alt="A traveler visiting the pyramids of Giza" title="A traveler visiting the pyramids of Giza"
-                  width="600" height="450" loading="lazy" decoding="async"></div>
+                    <div class="card-media"><img
+                        src="assets/images/blogs/A-wonderful-picture-of-a-tourist-in-front-of-the-pyramids-webp.webp"
+                        alt="A traveler visiting the pyramids of Giza" title="A traveler visiting the pyramids of Giza"
+                        width="600" height="450" loading="lazy" decoding="async"></div>
                     <div class="back-content">
                       <span class="card-date">Sep 20, 2026</span>
                       <h3 class="card-title">Easy travel tips to help you plan a safe trip</h3>
                       <span class="card-author">By Trippio Travel Team</span>
                       <p class="card-excerpt">Planning ahead makes all the difference on the road. From packing light to
-                    knowing which documents to carry, a little preparation goes a long way toward a smooth, worry-free
-                    trip.</p>
+                        knowing which documents to carry, a little preparation goes a long way toward a smooth,
+                        worry-free
+                        trip.</p>
                       <span class="read-more">Read More</span>
                     </div>
                   </div>
@@ -2132,27 +2309,29 @@
               <a class="blog-card-link" href="blog-details.html">
                 <div class="blog-card-inner">
                   <div class="blog-card-front" aria-hidden="true">
-                    <div class="card-media"><img src="assets/images/blogs/A-snapshot-of-two-children-from-the-Nubian-village-of-Aswan-webp.webp"
-                  alt="Children in a Nubian village in Aswan" title="Children in a Nubian village in Aswan" width="600"
-                  height="450" loading="lazy" decoding="async"></div>
+                    <div class="card-media"><img
+                        src="assets/images/blogs/A-snapshot-of-two-children-from-the-Nubian-village-of-Aswan-webp.webp"
+                        alt="Children in a Nubian village in Aswan" title="Children in a Nubian village in Aswan"
+                        width="600" height="450" loading="lazy" decoding="async"></div>
                     <div class="card-front-overlay">
                       <span class="card-date">Sep 20, 2026</span>
                       <p class="card-title">Best places for a fun trip with friends and
-                    family</p>
+                        family</p>
                       <span class="card-author">By Trippio Travel Team</span>
                     </div>
                   </div>
                   <div class="blog-card-back">
-                    <div class="card-media"><img src="assets/images/blogs/A-snapshot-of-two-children-from-the-Nubian-village-of-Aswan-webp.webp"
-                  alt="Children in a Nubian village in Aswan" title="Children in a Nubian village in Aswan" width="600"
-                  height="450" loading="lazy" decoding="async"></div>
+                    <div class="card-media"><img
+                        src="assets/images/blogs/A-snapshot-of-two-children-from-the-Nubian-village-of-Aswan-webp.webp"
+                        alt="Children in a Nubian village in Aswan" title="Children in a Nubian village in Aswan"
+                        width="600" height="450" loading="lazy" decoding="async"></div>
                     <div class="back-content">
                       <span class="card-date">Sep 20, 2026</span>
                       <h3 class="card-title">Best places for a fun trip with friends and
-                    family</h3>
+                        family</h3>
                       <span class="card-author">By Trippio Travel Team</span>
                       <p class="card-excerpt">Whether you're travelling with a big group or a close few, the right
-                    destination balances shared activities with quiet downtime, so everyone comes home happy.</p>
+                        destination balances shared activities with quiet downtime, so everyone comes home happy.</p>
                       <span class="read-more">Read More</span>
                     </div>
                   </div>
@@ -2166,8 +2345,8 @@
                 <div class="blog-card-inner">
                   <div class="blog-card-front" aria-hidden="true">
                     <div class="card-media"><img src="assets/images/blogs/guide-pictures_0052_Image-webp.webp"
-                  alt="Exploring Egypt on a guided trip" title="Exploring Egypt on a guided trip" width="600"
-                  height="450" loading="lazy" decoding="async"></div>
+                        alt="Exploring Egypt on a guided trip" title="Exploring Egypt on a guided trip" width="600"
+                        height="450" loading="lazy" decoding="async"></div>
                     <div class="card-front-overlay">
                       <span class="card-date">Sep 20, 2026</span>
                       <p class="card-title">How to save more money on your next trip</p>
@@ -2176,15 +2355,16 @@
                   </div>
                   <div class="blog-card-back">
                     <div class="card-media"><img src="assets/images/blogs/guide-pictures_0052_Image-webp.webp"
-                  alt="Exploring Egypt on a guided trip" title="Exploring Egypt on a guided trip" width="600"
-                  height="450" loading="lazy" decoding="async"></div>
+                        alt="Exploring Egypt on a guided trip" title="Exploring Egypt on a guided trip" width="600"
+                        height="450" loading="lazy" decoding="async"></div>
                     <div class="back-content">
                       <span class="card-date">Sep 20, 2026</span>
                       <h3 class="card-title">How to save more money on your next trip</h3>
                       <span class="card-author">By Trippio Travel Team</span>
                       <p class="card-excerpt">Smart budgeting doesn't mean cutting the fun. Booking off-season, bundling
-                    stays, and travelling light can stretch a trip's budget without touching what makes it memorable.
-                  </p>
+                        stays, and travelling light can stretch a trip's budget without touching what makes it
+                        memorable.
+                      </p>
                       <span class="read-more">Read More</span>
                     </div>
                   </div>
@@ -2198,8 +2378,8 @@
                 <div class="blog-card-inner">
                   <div class="blog-card-front" aria-hidden="true">
                     <div class="card-media"><img src="assets/images/blogs/Philae-Temple-Island-from-the-top-webp.webp"
-                  alt="Philae Temple on an island in the Nile" title="Philae Temple on an island in the Nile"
-                  width="600" height="450" loading="lazy" decoding="async"></div>
+                        alt="Philae Temple on an island in the Nile" title="Philae Temple on an island in the Nile"
+                        width="600" height="450" loading="lazy" decoding="async"></div>
                     <div class="card-front-overlay">
                       <span class="card-date">Sep 12, 2026</span>
                       <p class="card-title">A first-timer's guide to the Nile</p>
@@ -2208,14 +2388,15 @@
                   </div>
                   <div class="blog-card-back">
                     <div class="card-media"><img src="assets/images/blogs/Philae-Temple-Island-from-the-top-webp.webp"
-                  alt="Philae Temple on an island in the Nile" title="Philae Temple on an island in the Nile"
-                  width="600" height="450" loading="lazy" decoding="async"></div>
+                        alt="Philae Temple on an island in the Nile" title="Philae Temple on an island in the Nile"
+                        width="600" height="450" loading="lazy" decoding="async"></div>
                     <div class="back-content">
                       <span class="card-date">Sep 12, 2026</span>
                       <h3 class="card-title">A first-timer's guide to the Nile</h3>
                       <span class="card-author">By Trippio Travel Team</span>
-                      <p class="card-excerpt">From choosing a cruise length to knowing when the river is quietest, here's
-                    what first-time visitors ask before setting sail down Egypt's most storied waterway.</p>
+                      <p class="card-excerpt">From choosing a cruise length to knowing when the river is quietest,
+                        here's
+                        what first-time visitors ask before setting sail down Egypt's most storied waterway.</p>
                       <span class="read-more">Read More</span>
                     </div>
                   </div>
@@ -2239,9 +2420,11 @@
     <div class="container testimonials-grid">
       <div class="testimonials-content">
         <div class="section-header section-header--stacked">
-          <div class="section-header__copy"><span class="pill"><svg class="section-header__icon" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 34h56M38 27l10-17 12 24M48 10v17M9 33v-6l5-5h13l7 5h14v6H24l-5-4v4H9Z"/><path d="M12 22 9 12l5-8h10l5 8-3 10M14 10h10v8l-5 5-5-5v-8ZM10 12h4m10 0h4M17 14h.1m4 0h.1M17 18h4M29 28h9v5M43 29v4"/></svg>Testimonials</span>
-        <h2 class="section-header__title">What our travelers say</h2>
-        <p class="section-header__description">Real stories from guests who explored Egypt with us — from the pyramids to the Nile and beyond.</p>
+          <div class="section-header__copy"><span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon"
+                title="Pill Icon"> Testimonials</span>
+            <h2 class="section-header__title">What our travelers say</h2>
+            <p class="section-header__description">Real stories from guests who explored Egypt with us — from the
+              pyramids to the Nile and beyond.</p>
           </div>
         </div>
         <div class="testimonials-actions">
@@ -2335,30 +2518,48 @@
   <section class="partners-section section-spacing" aria-label="Our partners and secure payment">
     <div class="container">
       <div class="partners-panel">
-        <div class="partners-grid-scroll" tabindex="0" role="region" aria-label="Partner logos, scroll horizontally on small screens">
+        <div class="partners-grid-scroll" tabindex="0" role="region"
+          aria-label="Partner logos, scroll horizontally on small screens">
           <ul class="partners-grid">
-            <li class="partner-logo"><img src="assets/images/partners/1.png" alt="EgyptAir" title="EgyptAir" width="2560" height="384" loading="lazy" decoding="async"></li>
-            <li class="partner-logo"><img src="assets/images/partners/2.png" alt="Sonesta Hotels and Resorts" title="Sonesta Hotels and Resorts" width="473" height="107" loading="lazy" decoding="async"></li>
-            <li class="partner-logo"><img src="assets/images/partners/3.png" alt="M?venpick" title="M?venpick" width="1245" height="267" loading="lazy" decoding="async"></li>
-            <li class="partner-logo"><img src="assets/images/partners/6.png" alt="Marriott" title="Marriott" width="2534" height="576" loading="lazy" decoding="async"></li>
-            <li class="partner-logo"><img src="assets/images/partners/8.png" alt="IATA Accredited Agent" title="IATA Accredited Agent" width="980" height="312" loading="lazy" decoding="async"></li>
-            <li class="partner-logo"><img src="assets/images/partners/1.png" alt="EgyptAir" title="EgyptAir" width="2560" height="384" loading="lazy" decoding="async"></li>
-            <li class="partner-logo"><img src="assets/images/partners/2.png" alt="Sonesta Hotels and Resorts" title="Sonesta Hotels and Resorts" width="473" height="107" loading="lazy" decoding="async"></li>
-            <li class="partner-logo"><img src="assets/images/partners/3.png" alt="M?venpick" title="M?venpick" width="1245" height="267" loading="lazy" decoding="async"></li>
-            <li class="partner-logo"><img src="assets/images/partners/6.png" alt="Marriott" title="Marriott" width="2534" height="576" loading="lazy" decoding="async"></li>
-            <li class="partner-logo"><img src="assets/images/partners/8.png" alt="IATA Accredited Agent" title="IATA Accredited Agent" width="980" height="312" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/1.png" alt="EgyptAir" title="EgyptAir"
+                width="2560" height="384" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/2.png" alt="Sonesta Hotels and Resorts"
+                title="Sonesta Hotels and Resorts" width="473" height="107" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/3.png" alt="M?venpick" title="M?venpick"
+                width="1245" height="267" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/6.png" alt="Marriott" title="Marriott"
+                width="2534" height="576" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/8.png" alt="IATA Accredited Agent"
+                title="IATA Accredited Agent" width="980" height="312" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/1.png" alt="EgyptAir" title="EgyptAir"
+                width="2560" height="384" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/2.png" alt="Sonesta Hotels and Resorts"
+                title="Sonesta Hotels and Resorts" width="473" height="107" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/3.png" alt="M?venpick" title="M?venpick"
+                width="1245" height="267" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/6.png" alt="Marriott" title="Marriott"
+                width="2534" height="576" loading="lazy" decoding="async"></li>
+            <li class="partner-logo"><img src="assets/images/partners/8.png" alt="IATA Accredited Agent"
+                title="IATA Accredited Agent" width="980" height="312" loading="lazy" decoding="async"></li>
           </ul>
         </div>
         <div class="partners-payment">
           <p class="partners-payment__label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7v5c0 5 8 9 8 9s8-4 8-9V7l-8-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3 4 7v5c0 5 8 9 8 9s8-4 8-9V7l-8-4Z" />
+              <path d="m8.5 12 2.5 2.5 4.5-5" />
+            </svg>
             <span>Pay safely ? SSL secured</span>
           </p>
           <ul class="partners-payment__methods" aria-label="Payment methods">
-            <li class="payment-badge"><img src="assets/images/footer/visa-icon.svg" alt="Visa" title="Visa" width="52" height="28" loading="lazy" decoding="async"></li>
-            <li class="payment-badge"><img src="assets/images/footer/mastar-card-icon.svg" alt="Mastercard" title="Mastercard" width="52" height="28" loading="lazy" decoding="async"></li>
+            <li class="payment-badge"><img src="assets/images/footer/visa-icon.svg" alt="Visa" title="Visa" width="52"
+                height="28" loading="lazy" decoding="async"></li>
+            <li class="payment-badge"><img src="assets/images/footer/mastar-card-icon.svg" alt="Mastercard"
+                title="Mastercard" width="52" height="28" loading="lazy" decoding="async"></li>
             <li class="payment-badge"><span class="payment-badge__amex" aria-label="American Express">AMEX</span></li>
-            <li class="payment-badge"><img src="assets/images/footer/paypal-icon.svg" alt="PayPal" title="PayPal" width="52" height="28" loading="lazy" decoding="async"></li>
+            <li class="payment-badge"><img src="assets/images/footer/paypal-icon.svg" alt="PayPal" title="PayPal"
+                width="52" height="28" loading="lazy" decoding="async"></li>
           </ul>
         </div>
       </div>
@@ -2456,8 +2657,8 @@
       <div class="container footer-columns">
         <div class="col-logo">
           <a href="index.html" class="logo">
-            <img src="assets/images/BrandName-logo.png" alt="Your Brand Logo" title="Your Brand Logo" width="200" height="50"
-              loading="lazy" decoding="async">
+            <img src="assets/images/BrandName-logo.png" alt="Your Brand Logo" title="Your Brand Logo" width="200"
+              height="50" loading="lazy" decoding="async">
           </a>
           <p>We help you discover handpicked destinations across Egypt and authentic experiences that make every journey
             unforgettable.</p>
@@ -2684,7 +2885,7 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
     })();
   </script>
-    <script>
+  <script>
     new Swiper('#heroSwiper', {
       loop: true,
       centeredSlides: true,
