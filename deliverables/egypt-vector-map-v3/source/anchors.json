@@ -1,0 +1,245 @@
+{
+  "coordinate_system": "EPSG:4326",
+  "anchors": [
+    {
+      "id": "siwa",
+      "name": "Siwa",
+      "kind": "destination",
+      "longitude": 25.516675,
+      "latitude": 29.200012,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Siwa"
+    },
+    {
+      "id": "bahariya",
+      "name": "Bahariya",
+      "kind": "destination",
+      "longitude": 28.87,
+      "latitude": 28.35,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "farafra",
+      "name": "Farafra",
+      "kind": "destination",
+      "longitude": 27.966551,
+      "latitude": 27.067145,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Qasr Farafra"
+    },
+    {
+      "id": "dakhla",
+      "name": "Dakhla",
+      "kind": "destination",
+      "longitude": 29.0,
+      "latitude": 25.5,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "kharga",
+      "name": "Kharga",
+      "kind": "destination",
+      "longitude": 30.550011,
+      "latitude": 25.440009,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "El Kharga"
+    },
+    {
+      "id": "fayoum",
+      "name": "Fayoum",
+      "kind": "destination",
+      "longitude": 30.839967,
+      "latitude": 29.310031,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "El Faiyum"
+    },
+    {
+      "id": "alexandria",
+      "name": "Alexandria",
+      "kind": "destination",
+      "longitude": 29.94805,
+      "latitude": 31.201965,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Alexandria"
+    },
+    {
+      "id": "cairo",
+      "name": "Cairo",
+      "kind": "destination",
+      "longitude": 31.248022,
+      "latitude": 30.051906,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Cairo"
+    },
+    {
+      "id": "giza",
+      "name": "Giza Pyramids",
+      "kind": "attraction",
+      "longitude": 31.1342,
+      "latitude": 29.9792,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "luxor",
+      "name": "Luxor",
+      "kind": "destination",
+      "longitude": 32.650038,
+      "latitude": 25.700019,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Luxor"
+    },
+    {
+      "id": "karnak",
+      "name": "Karnak",
+      "kind": "attraction",
+      "longitude": 32.6573,
+      "latitude": 25.7188,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "valley-of-the-kings",
+      "name": "Valley of the Kings",
+      "kind": "attraction",
+      "longitude": 32.6014,
+      "latitude": 25.7402,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "edfu",
+      "name": "Edfu",
+      "kind": "attraction",
+      "longitude": 32.873,
+      "latitude": 24.978,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "kom-ombo",
+      "name": "Kom Ombo",
+      "kind": "attraction",
+      "longitude": 32.928,
+      "latitude": 24.452,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "aswan",
+      "name": "Aswan",
+      "kind": "destination",
+      "longitude": 32.898911,
+      "latitude": 24.087508,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Aswan"
+    },
+    {
+      "id": "philae",
+      "name": "Philae",
+      "kind": "attraction",
+      "longitude": 32.884,
+      "latitude": 24.025,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "abu-simbel",
+      "name": "Abu Simbel",
+      "kind": "attraction",
+      "longitude": 31.6258,
+      "latitude": 22.3372,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "hurghada",
+      "name": "Hurghada",
+      "kind": "destination",
+      "longitude": 33.830017,
+      "latitude": 27.230003,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Hurghada"
+    },
+    {
+      "id": "marsa-alam",
+      "name": "Marsa Alam",
+      "kind": "destination",
+      "longitude": 34.9,
+      "latitude": 25.067,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "sharm-el-sheikh",
+      "name": "Sharm el-Sheikh",
+      "kind": "destination",
+      "longitude": 34.33,
+      "latitude": 27.91,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "dahab",
+      "name": "Dahab",
+      "kind": "destination",
+      "longitude": 34.513,
+      "latitude": 28.493,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    },
+    {
+      "id": "suez",
+      "name": "Suez",
+      "kind": "destination",
+      "longitude": 32.549941,
+      "latitude": 30.004976,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Suez"
+    },
+    {
+      "id": "saint-catherine",
+      "name": "Saint Catherine",
+      "kind": "attraction",
+      "longitude": 33.975,
+      "latitude": 28.556,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed."
+    }
+  ]
+}

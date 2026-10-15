@@ -1,0 +1,397 @@
+{
+  "source": "F:\\projects\\trippio\\deliverables\\egypt-vector-map-v3\\source\\art\\terrain-atlas.png",
+  "source_sha256": "e9709343d2a806eade32ec16f86439a8def25356c75aee3dd33a7b8d8f1f14e4",
+  "source_size": [
+    1254,
+    1254
+  ],
+  "grid": [
+    3,
+    3
+  ],
+  "split": "components",
+  "alpha_threshold": 32,
+  "alpha_levels": 16,
+  "raster_embedded": false,
+  "assets": [
+    {
+      "id": "eastern-ridge",
+      "index": 0,
+      "svg": "eastern-ridge.svg",
+      "source_bbox": [
+        12,
+        70,
+        422,
+        409
+      ],
+      "viewBox": [
+        0,
+        0,
+        410,
+        339
+      ],
+      "width": 410,
+      "height": 339,
+      "anchor": [
+        205.0,
+        339
+      ],
+      "color_paths": 746,
+      "alpha_paths": 30,
+      "total_paths": 776,
+      "svg_bytes": 486714,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 4,
+        "color_precision": 6,
+        "layer_difference": 16,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 91638
+    },
+    {
+      "id": "sinai-ridge",
+      "index": 1,
+      "svg": "sinai-ridge.svg",
+      "source_bbox": [
+        435,
+        54,
+        830,
+        408
+      ],
+      "viewBox": [
+        0,
+        0,
+        395,
+        354
+      ],
+      "width": 395,
+      "height": 354,
+      "anchor": [
+        197.5,
+        354
+      ],
+      "color_paths": 802,
+      "alpha_paths": 37,
+      "total_paths": 839,
+      "svg_bytes": 539309,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 4,
+        "color_precision": 6,
+        "layer_difference": 16,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 101535
+    },
+    {
+      "id": "plateau",
+      "index": 2,
+      "svg": "plateau.svg",
+      "source_bbox": [
+        839,
+        129,
+        1246,
+        374
+      ],
+      "viewBox": [
+        0,
+        0,
+        407,
+        245
+      ],
+      "width": 407,
+      "height": 245,
+      "anchor": [
+        203.5,
+        245
+      ],
+      "color_paths": 583,
+      "alpha_paths": 32,
+      "total_paths": 615,
+      "svg_bytes": 406529,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 4,
+        "color_precision": 6,
+        "layer_difference": 16,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 75141
+    },
+    {
+      "id": "dunes",
+      "index": 3,
+      "svg": "dunes.svg",
+      "source_bbox": [
+        17,
+        480,
+        424,
+        790
+      ],
+      "viewBox": [
+        0,
+        0,
+        407,
+        310
+      ],
+      "width": 407,
+      "height": 310,
+      "anchor": [
+        203.5,
+        310
+      ],
+      "color_paths": 359,
+      "alpha_paths": 46,
+      "total_paths": 405,
+      "svg_bytes": 318928,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 4,
+        "color_precision": 6,
+        "layer_difference": 16,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 97808
+    },
+    {
+      "id": "oasis",
+      "index": 4,
+      "svg": "oasis.svg",
+      "source_bbox": [
+        431,
+        465,
+        855,
+        776
+      ],
+      "viewBox": [
+        0,
+        0,
+        424,
+        311
+      ],
+      "width": 424,
+      "height": 311,
+      "anchor": [
+        212.0,
+        311
+      ],
+      "color_paths": 798,
+      "alpha_paths": 67,
+      "total_paths": 865,
+      "svg_bytes": 559635,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 4,
+        "color_precision": 6,
+        "layer_difference": 16,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 99552
+    },
+    {
+      "id": "palms",
+      "index": 5,
+      "svg": "palms.svg",
+      "source_bbox": [
+        864,
+        430,
+        1234,
+        802
+      ],
+      "viewBox": [
+        0,
+        0,
+        370,
+        372
+      ],
+      "width": 370,
+      "height": 372,
+      "anchor": [
+        185.0,
+        372
+      ],
+      "color_paths": 667,
+      "alpha_paths": 230,
+      "total_paths": 897,
+      "svg_bytes": 625316,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 4,
+        "color_precision": 6,
+        "layer_difference": 16,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 82255
+    },
+    {
+      "id": "nubian-village",
+      "index": 6,
+      "svg": "nubian-village.svg",
+      "source_bbox": [
+        14,
+        818,
+        508,
+        1215
+      ],
+      "viewBox": [
+        0,
+        0,
+        494,
+        397
+      ],
+      "width": 494,
+      "height": 397,
+      "anchor": [
+        247.0,
+        397
+      ],
+      "color_paths": 971,
+      "alpha_paths": 83,
+      "total_paths": 1054,
+      "svg_bytes": 651149,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 4,
+        "color_precision": 6,
+        "layer_difference": 16,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 127213
+    },
+    {
+      "id": "felucca",
+      "index": 7,
+      "svg": "felucca.svg",
+      "source_bbox": [
+        517,
+        793,
+        804,
+        1231
+      ],
+      "viewBox": [
+        0,
+        0,
+        287,
+        438
+      ],
+      "width": 287,
+      "height": 438,
+      "anchor": [
+        143.5,
+        438
+      ],
+      "color_paths": 355,
+      "alpha_paths": 77,
+      "total_paths": 432,
+      "svg_bytes": 282447,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 4,
+        "color_precision": 6,
+        "layer_difference": 16,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 2,
+      "largest_component": 52498
+    },
+    {
+      "id": "granite-island",
+      "index": 8,
+      "svg": "granite-island.svg",
+      "source_bbox": [
+        812,
+        853,
+        1240,
+        1217
+      ],
+      "viewBox": [
+        0,
+        0,
+        428,
+        364
+      ],
+      "width": 428,
+      "height": 364,
+      "anchor": [
+        214.0,
+        364
+      ],
+      "color_paths": 813,
+      "alpha_paths": 80,
+      "total_paths": 893,
+      "svg_bytes": 570651,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 4,
+        "color_precision": 6,
+        "layer_difference": 16,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 101011
+    }
+  ],
+  "elapsed_seconds": 38.77
+}

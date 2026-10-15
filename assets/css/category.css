@@ -180,8 +180,8 @@
   width: fit-content;
   padding: 7px 15px;
   border-radius: 999px;
-  background: #fff;
-  color: var(--accent-color-dark);
+  background: var(--white-color);
+  color: var(--link-color);
   font-family: var(--font-body);
   font-size: .8rem;
   font-weight: 700;
@@ -408,7 +408,7 @@
       gap: 6px;
       margin: 0 0 0.9rem;
       font-size: 0.8rem;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
     }
 
     .info__meta svg {
@@ -468,18 +468,18 @@
       font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
     }
 
     .info__price strong {
       font-family: var(--font-heading);
       font-size: 1.3rem;
-      color: var(--accent-color-dark);
+      color: var(--link-color);
     }
 
     .info__price small {
       font-size: 0.68rem;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
     }
 
     .cta {
@@ -503,7 +503,7 @@
     }
 
     .cta:hover {
-      background-image: var(--gradient-accent);
+      background-image: var(--gradient-main);
       background-position: 100% 0%;
     }
 
@@ -555,13 +555,13 @@
       gap: 8px;
       padding: 1.4rem 0 0.4rem;
       font-size: 0.82rem;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
       white-space: nowrap;
       overflow: visible;
     }
 
     .breadcrumb a {
-      color: var(--color-gray-500);
+      color: var(--text-muted);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -770,8 +770,8 @@
       position: absolute;
       top: 12px;
       left: 12px;
-      background: var(--gradient-accent);
-      color: var(--color--white);
+      background: var(--accent-color-light);
+      color: var(--main-color-dark);
       font-weight: 800;
       font-size: 0.62rem;
       text-transform: uppercase;
@@ -894,8 +894,8 @@
     }
 
     .title-switch__btn:hover {
-      background: rgba(255, 255, 255, .28);
-    }
+      background: rgba(255, 255, 255, .28); color: var(--white-color);
+}
 
     .title-switch__btn svg {
       stroke: var(--white-color);
@@ -937,7 +937,7 @@
       font-weight: 700;
       letter-spacing: .04em;
       text-transform: uppercase;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
       margin: 0 0 10px;
     }
 
@@ -990,7 +990,7 @@
 
     .title-switch__chip-body span {
       font-size: 0.72rem;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
     }
 
     .title-switch__all {
@@ -1002,7 +1002,7 @@
       border-top: 1px solid var(--color-gray-200);
       font-size: 0.82rem;
       font-weight: 700;
-      color: var(--accent-color-dark);
+      color: var(--link-color);
       text-decoration: none;
     }
 
@@ -1025,13 +1025,13 @@
       width: 40px;
       height: 40px;
       border-color: rgba(227, 189, 104, .7);
-      background: var(--gradient-accent);
+      background: var(--button-primary-hover);
       box-shadow: 0 6px 16px rgba(201, 155, 61, .25);
     }
 
     :is(.category-page, .subcategory-page) .title-switch__btn:hover {
-      background: var(--accent-color-dark);
-    }
+      background: var(--button-primary-bg); color: var(--white-color);
+}
 
     :is(.category-page, .subcategory-page) .title-switch__popup {
       width: min(460px, calc(100vw - 32px));
@@ -1116,7 +1116,7 @@
     }
 
     .filter-toggle-btn__count {
-      background: var(--accent-color);
+      background: var(--button-primary-bg);
       color: var(--white-color);
       font-size: 0.68rem;
       font-weight: 800;
@@ -1126,8 +1126,8 @@
     }
 
     .filter-toggle-btn.has-active .filter-toggle-btn__count {
-      display: inline-block;
-    }
+      display: inline-block; color: var(--white-color);
+}
 
     .tours-toolbar__right {
       display: flex;
@@ -1141,7 +1141,7 @@
       align-items: center;
       gap: 8px;
       font-size: 0.82rem;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
       font-weight: 600;
     }
 
@@ -1244,7 +1244,7 @@
       cursor: pointer;
       font-size: 0.78rem;
       font-weight: 700;
-      color: var(--accent-color-dark);
+      color: var(--link-color);
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -1385,8 +1385,8 @@
       position: absolute;
       top: 8px;
       left: 8px;
-      background: var(--gradient-accent);
-      color: var(--white-color);
+      background: var(--accent-color-light);
+      color: var(--main-color-dark);
       font-size: 0.65rem;
       font-weight: 600;
       text-transform: uppercase;
@@ -1442,7 +1442,7 @@
 
     .tour-list-card__meta {
       font-size: 0.8rem;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
       margin-bottom: 12px;
     }
 
@@ -1482,7 +1482,7 @@
     .tour-list-card__side span {
       display: block;
       font-size: 0.72rem;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: .04em;
     }
@@ -1490,7 +1490,7 @@
     .tour-list-card__side strong {
       font-family: var(--font-heading);
       font-size: 1.4rem;
-      color: var(--accent-color-dark);
+      color: var(--link-color);
     }
 
     @media (max-width: 900px) {
@@ -1662,7 +1662,7 @@
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent-color-dark);
+      color: var(--link-color);
       margin: 0 0 0.8rem;
       padding: 0 0.3rem;
     }
@@ -1709,7 +1709,7 @@
 
     .breadcrumb__dchip-body span {
       font-size: 0.72rem;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
     }
 
     .breadcrumb__dropdown-all {
@@ -1722,7 +1722,7 @@
       border-top: 1px solid var(--color-gray-100);
       font-size: 0.8rem;
       font-weight: 700;
-      color: var(--color-second);
+      color: var(--link-color);
       text-decoration: none;
     }
 
@@ -1814,7 +1814,7 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: var(--accent-color);
+      background: var(--color-second-dark);
       display: none;
       align-items: center;
       justify-content: center;
@@ -1877,7 +1877,7 @@
 
     .more-subcat-card__body span {
       font-size: 0.75rem;
-      color: var(--color-gray-500);
+      color: var(--text-muted);
     }
 
     @media (max-width: 1024px) {

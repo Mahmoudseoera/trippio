@@ -34,10 +34,10 @@
     .breadcrumb {
       display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
       padding: 1.2rem 0 0.2rem;
-      font-size: 0.82rem; color: var(--color-gray-500);
+      font-size: 0.82rem; color: var(--text-muted);
     }
     .breadcrumb a {
-      color: var(--color-gray-500); text-decoration: none;
+      color: var(--text-muted); text-decoration: none;
       display: inline-flex; align-items: center; gap: 5px;
       transition: color .2s ease;
     }
@@ -53,7 +53,7 @@
     .tailor-heading { text-align: center; max-width: 640px; margin: 0 auto 2.4rem; }
     .tailor-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
-      color: var(--accent-color-dark); font-weight: 700; font-size: 0.82rem;
+      color: var(--link-color); font-weight: 700; font-size: 0.82rem;
       letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.8rem;
     }
     .eyebrow-line { width: 26px; height: 2px; background: var(--accent-color); display: inline-block; }
@@ -62,8 +62,8 @@
       font-size: clamp(1.8rem, 3.4vw, 2.5rem); color: var(--main-color);
       margin: 0 0 0.9rem; line-height: 1.2;
     }
-    .tailor-title span { color: var(--accent-color-dark); }
-    .tailor-subtitle { font-size: 0.95rem; line-height: 1.7; color: var(--color-gray-500); margin: 0; }
+    .tailor-title span { color: var(--link-color); }
+    .tailor-subtitle { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); margin: 0; }
 
     /* Reveal-on-scroll (works with the IntersectionObserver in the script) */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
@@ -85,7 +85,7 @@
     .step-nav-progress {
       position: absolute; top: 21px; left: 6%;
       height: 3px; width: 0%;
-      background: var(--gradient-accent); z-index: 1;
+      background: var(--button-primary-hover); z-index: 1;
       transition: width .4s ease;
     }
     .step-item {
@@ -101,12 +101,12 @@
       transition: border-color .3s ease, background .3s ease, color .3s ease;
     }
     .step-circle .fa-check { display: none; }
-    .step-item.active .step-circle { border-color: var(--accent-color); color: var(--accent-color-dark); background: rgba(201,155,61,.1);  background:var(--white-color);}
-    .step-item.done .step-circle { background: var(--gradient-accent); border-color: transparent; color: var(--white-color); }
+    .step-item.active .step-circle { border-color: var(--color-second-dark); color: var(--link-color); background: rgba(201,155,61,.1);  background:var(--white-color);}
+    .step-item.done .step-circle { background: var(--button-primary-hover); border-color: transparent; color: var(--white-color); }
     .step-item.done .step-circle .step-num { display: none; }
     .step-item.done .step-circle .fa-check { display: inline-block; }
     .step-label {
-      font-size: 0.72rem; font-weight: 700; color: var(--color-gray-500);
+      font-size: 0.72rem; font-weight: 700; color: var(--text-muted);
       text-align: center; line-height: 1.3;
       transition: color .3s ease;
     }
@@ -132,8 +132,8 @@
       font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem;
       color: var(--main-color); margin: 0 0 0.5rem;
     }
-    .panel-title i { color: var(--accent-color-dark); font-size: 1rem; }
-    .panel-sub { font-size: 0.88rem; line-height: 1.65; color: var(--color-gray-500); margin: 0 0 1.6rem; max-width: 560px; }
+    .panel-title i { color: var(--link-color); font-size: 1rem; }
+    .panel-sub { font-size: 0.88rem; line-height: 1.65; color: var(--text-muted); margin: 0 0 1.6rem; max-width: 560px; }
 
     /* Selected cities bar */
     .selected-cities-bar {
@@ -156,7 +156,7 @@
       transition: border-color .25s ease, transform .2s ease;
     }
     .city-box label:hover { transform: translateY(-2px); }
-    .city-box.active label { border-color: var(--accent-color); box-shadow: var(--shadow-sm); }
+    .city-box.active label { border-color: var(--color-second-dark); box-shadow: var(--shadow-sm); }
     .city-box label img { width: 100%; height: 78px; object-fit: cover; display: block; }
     .city-box label h5 { margin: 0; padding: 8px 4px; font-size: 0.78rem; font-weight: 700; color: var(--color-gray-900); }
     .city-check-icon {
@@ -167,7 +167,7 @@
       font-size: 0.65rem; color: transparent;
       transition: background .2s ease, border-color .2s ease, color .2s ease;
     }
-    .city-box.active .city-check-icon { background: var(--accent-color); border-color: var(--accent-color); color: var(--white-color); }
+    .city-box.active .city-check-icon { background: var(--color-second-dark); border-color: var(--color-second-dark); color: var(--white-color); }
 
     #city-err, #date-err, #month-err, #days-err {
       color: #e0503a !important; font-size: 0.78rem !important; font-weight: 700 !important;
@@ -193,7 +193,7 @@
       background: var(--white-color); outline: none;
       transition: border-color .2s ease;
     }
-    .input-box input:focus, .input-box select:focus, .input-box textarea:focus { border-color: var(--accent-color); }
+    .input-box input:focus, .input-box select:focus, .input-box textarea:focus { border-color: var(--color-second-dark); }
     .input-box textarea { resize: vertical; }
     .input-box.error input, .input-box.error select, .input-box.error textarea { border-color: #e0503a; }
     .input-box .err-msg { display: block; margin-top: 6px; font-size: 0.74rem; color: #e0503a; font-weight: 600; }
@@ -223,8 +223,8 @@
       padding: 12px 14px; font-size: 0.9rem; font-weight: 700; color: var(--color-gray-900);
       text-align: center; outline: none;
     }
-    .days-input-wrap input:focus { border-color: var(--accent-color); }
-    .days-label { font-size: 0.84rem; font-weight: 700; color: var(--color-gray-500); }
+    .days-input-wrap input:focus { border-color: var(--color-second-dark); }
+    .days-label { font-size: 0.84rem; font-weight: 700; color: var(--text-muted); }
 
     /* Travel type tabs (step 4) */
     .pickup-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -236,7 +236,7 @@
       cursor: pointer; transition: all .25s ease;
     }
     .pickup-tab:hover { border-color: var(--accent-color); }
-    .pickup-tab.active { background: rgba(201,155,61,.12); border-color: var(--accent-color); color: var(--accent-color-dark); }
+    .pickup-tab.active { background: rgba(201,155,61,.12); border-color: var(--color-second-dark); color: var(--link-color); }
 
     /* Guest counter card */
     .guest-count-card {
@@ -249,7 +249,7 @@
     }
     .guest-option:last-child { border-bottom: none; }
     .guest-label-text { font-size: 0.9rem; font-weight: 700; color: var(--color-gray-900); }
-    .guest-label-sub { font-size: 0.76rem; color: var(--color-gray-500); }
+    .guest-label-sub { font-size: 0.76rem; color: var(--text-muted); }
     .counter { display: flex; align-items: center; gap: 12px; }
     .counter-btn {
       width: 30px; height: 30px; border-radius: 50%;
@@ -269,7 +269,7 @@
     padding: 0 !important;;
     }
     .counter-input.changed { animation: counter-pop .3s ease; }
-    @keyframes counter-pop { 0% { transform: scale(1.3); color: var(--accent-color-dark); } 100% { transform: scale(1); } }
+    @keyframes counter-pop { 0% { transform: scale(1.3); color: var(--link-color); } 100% { transform: scale(1); } }
 
     /* Step footer nav buttons */
     .step-footer {
@@ -288,9 +288,9 @@
       color: var(--white-color);
       background-image: var(--gradient-main); background-size: 220% 100%; background-position: 0% 0%;
     }
-    .btn-next:hover { background-image: var(--gradient-accent); background-position: 100% 0%; box-shadow: var(--shadow-md); }
+    .btn-next:hover { background-image: var(--gradient-main); background-position: 100% 0%; box-shadow: var(--shadow-md); }
     .btn-prev:active, .btn-next:active { transform: scale(.96); }
-    .step-count-label { font-size: 0.8rem; font-weight: 700; color: var(--color-gray-500); }
+    .step-count-label { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
 
     /* =========================================================
        SIDEBAR
@@ -327,9 +327,9 @@
       width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
       background: rgba(201,155,61,.12);
       display: flex; align-items: center; justify-content: center;
-      color: var(--accent-color-dark); font-size: 0.82rem;
+      color: var(--link-color); font-size: 0.82rem;
     }
-    .trip-summary-text { font-size: 0.8rem; color: var(--color-gray-500); line-height: 1.3; }
+    .trip-summary-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.3; }
     .trip-summary-text strong { display: block; font-size: 0.86rem; color: var(--color-gray-900); font-weight: 700; }
     .sidebar-divider { height: 1px; background: var(--color-gray-200); margin: 1rem 0; }
 
@@ -339,12 +339,12 @@
     .success-state { text-align: center; padding: 2.5rem 1rem; }
     .success-icon {
       width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 1.2rem;
-      background: var(--gradient-accent);
+      background: var(--button-primary-hover);
       display: flex; align-items: center; justify-content: center;
       color: var(--white-color); font-size: 1.6rem;
     }
     .success-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; color: var(--main-color); margin: 0 0 0.8rem; }
-    .success-sub { font-size: 0.9rem; line-height: 1.7; color: var(--color-gray-500); max-width: 440px; margin: 0 auto 1.6rem; }
+    .success-sub { font-size: 0.9rem; line-height: 1.7; color: var(--text-muted); max-width: 440px; margin: 0 auto 1.6rem; }
     .btn-home {
       display: inline-flex; align-items: center; gap: 8px;
       color: var(--white-color); text-decoration: none;
@@ -352,7 +352,7 @@
       font-weight: 700; font-size: 0.88rem; border-radius: 999px; padding: 0.8rem 1.6rem;
       transition: background-position .4s ease;
     }
-    .btn-home:hover { background-image: var(--gradient-accent); background-position: 100% 0%; }
+    .btn-home:hover { background-image: var(--gradient-main); background-position: 100% 0%; }
 
     @media (max-width: 1100px) {
       .tailor-layout { grid-template-columns: 1fr; }

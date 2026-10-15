@@ -1,0 +1,22 @@
+{
+  "features": {
+    "land": 6,
+    "egypt": 1,
+    "rivers": 7,
+    "lakes": 4
+  },
+  "total_features": 18,
+  "coordinate_points": 5904,
+  "lake_nasser_bounds": [
+    31.090596,
+    21.60909,
+    33.064307,
+    23.987846
+  ],
+  "lake_nasser_vertices": 706,
+  "anchors": 23,
+  "verified_city_anchors": 10,
+  "illustrative_approximate_anchors": 13,
+  "projection_height": 2377.928715987803,
+  "output_bytes": 135326
+}

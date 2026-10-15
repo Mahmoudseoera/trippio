@@ -31,7 +31,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background: #f8f5ee;
+    background: var(--surface-subtle);
     border: 1px solid rgba(8, 40, 68, .14);
     border-left: 5px solid var(--accent-color);
     border-radius: 8px 22px 22px 8px;
@@ -121,7 +121,7 @@
     padding: 22px 20px 18px;
     background:
         linear-gradient(135deg, rgba(201, 155, 61, .09), transparent 45%),
-        #f8f5ee;
+        var(--surface-subtle);
 }
 
 .blog-category__meta {
@@ -130,7 +130,7 @@
     gap: 7px;
     font-size: 0.72rem;
     font-weight: 600;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     margin: 0 0 0.8rem 0.5rem;
 }
 
@@ -173,7 +173,7 @@
     height: calc(1.6 * 3em);
     text-overflow: ellipsis;
     overflow: hidden;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .blog-category__cta {
@@ -194,7 +194,7 @@
 
 .blog-category:hover .blog-category__cta {
     gap: 10px;
-    background: var(--color-second);
+    background: var(--color-second-dark);
 }
 
 .blog-category__cta svg {
@@ -260,7 +260,7 @@
     z-index: 2;
     background: rgba(255, 255, 255, .85);
     backdrop-filter: blur(4px);
-    color: var(--accent-color-dark);
+    color: var(--link-color);
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 0.95rem;
@@ -272,7 +272,7 @@
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.62rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     display: block;
     text-align: right;
 }
@@ -367,7 +367,7 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: var(--accent-color);
+    background: var(--button-primary-bg);
     border: none;
     display: flex;
     align-items: center;
@@ -375,6 +375,8 @@
     cursor: pointer;
     flex-shrink: 0;
     transition: background .3s ease, transform .3s ease;
+
+  color: var(--white-color);
 }
 
 .tour-card-v2:hover .tour-card-v2__cta {
@@ -563,7 +565,7 @@
     gap: 6px;
     margin: 0 0 0.9rem;
     font-size: 0.8rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .info__meta svg {
@@ -623,18 +625,18 @@
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .info__price strong {
     font-family: var(--font-heading);
     font-size: 1.3rem;
-    color: var(--accent-color-dark);
+    color: var(--link-color);
 }
 
 .info__price small {
     font-size: 0.68rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .cta {
@@ -658,7 +660,7 @@
 }
 
 .cta:hover {
-    background-image: var(--gradient-accent);
+    background-image: var(--gradient-main);
     background-position: 100% 0%;
 }
 
@@ -691,11 +693,11 @@
     gap: 8px;
     padding: 1.4rem 0 0.4rem;
     font-size: 0.82rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .breadcrumb a {
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -887,7 +889,7 @@
     position: absolute;
     top: 12px;
     left: 12px;
-    background: var(--gradient-accent);
+    background: var(--accent-color-light);
     color: var(--main-color-dark);
     font-weight: 800;
     font-size: 0.62rem;
@@ -1090,7 +1092,7 @@
 .blog-results-bar p {
     margin: 0;
     font-size: 0.88rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .blog-results-bar p strong {
@@ -1220,7 +1222,7 @@
     background: transparent;
     cursor: pointer;
     display: flex;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .widget-cats {
@@ -1265,7 +1267,7 @@
 }
 
 .widget-cats a.is-active {
-    color: var(--accent-color-dark);
+    color: var(--link-color);
 }
 
 .widget-post {
@@ -1307,7 +1309,7 @@
 
 .widget-post__body span {
     font-size: 0.74rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .widget-tags {
@@ -1407,7 +1409,7 @@
 .article-header__sub {
     font-size: 1rem;
     line-height: 1.7;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     margin: 0 0 1.4rem;
     max-width: 720px;
 }
@@ -1442,7 +1444,7 @@
 
 .article-meta__author span {
     font-size: 0.76rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .article-meta__info {
@@ -1450,7 +1452,7 @@
     align-items: center;
     gap: 1rem;
     font-size: 0.8rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     flex-wrap: wrap;
 }
 
@@ -1474,7 +1476,7 @@
 .article-share span {
     font-size: 0.78rem;
     font-weight: 700;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     margin-right: 2px;
 }
 
@@ -1546,7 +1548,7 @@
 }
 
 .article-body a.inline-link {
-    color: var(--color-second);
+    color: var(--link-color);
     font-weight: 700;
     text-decoration: underline;
     text-decoration-color: var(--accent-color);
@@ -1574,7 +1576,7 @@
 
 .article-body h3.item-h3 .num {
     font-size: 0.95rem;
-    color: var(--accent-color-dark);
+    color: var(--link-color);
     font-family: var(--font-body);
     font-weight: 800;
 }
@@ -1643,7 +1645,7 @@
 }
 
 .quick-glance a {
-    color: var(--color-second);
+    color: var(--link-color);
     font-weight: 700;
     text-decoration: none;
 }
@@ -1687,7 +1689,7 @@
     flex-wrap: wrap;
     gap: 1.4rem 2.2rem;
     font-size: 0.85rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     margin: 0 0 2rem;
     padding-bottom: 1.6rem;
     border-bottom: 1px solid var(--color-gray-200);
@@ -1785,7 +1787,7 @@
     top: 8px;
     left: 8px;
     background: rgba(255, 255, 255, .92);
-    color: var(--accent-color-dark);
+    color: var(--link-color);
     font-size: 0.68rem;
     font-weight: 800;
     padding: 3px 8px;
@@ -1815,7 +1817,7 @@
     align-items: center;
     gap: 4px;
     font-size: 0.72rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     margin-bottom: 8px;
 }
 
@@ -1834,7 +1836,7 @@
     align-items: baseline;
     justify-content: space-between;
     font-size: 0.7rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     padding-top: 8px;
     border-top: 1px solid var(--color-gray-100);
 }
@@ -1842,7 +1844,7 @@
 .product-card__price strong {
     font-family: var(--font-heading);
     font-size: 0.98rem;
-    color: var(--accent-color-dark);
+    color: var(--link-color);
 }
 
 /* Newsletter box inside article */
@@ -1898,8 +1900,8 @@
 .article-newsletter button {
     border: none;
     border-radius: 999px;
-    background: var(--accent-color);
-    color: var(--main-color-dark);
+    background: var(--button-primary-bg);
+    color: var(--white-color);
     font-weight: 800;
     font-size: 0.82rem;
     padding: 0.7rem 1.4rem;
@@ -1998,7 +2000,7 @@
 .featured-post-card__meta {
     font-size: 0.72rem;
     font-weight: 700;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     margin-bottom: 0.5rem;
 }
 
@@ -2012,7 +2014,7 @@
 
 .featured-post-card__body p {
     font-size: 0.83rem;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     line-height: 1.6;
     margin: 0 0 1rem;
 }
@@ -2023,7 +2025,7 @@
     gap: 6px;
     font-size: 0.82rem;
     font-weight: 700;
-    color: var(--accent-color-dark);
+    color: var(--link-color);
     text-decoration: none;
 }
 
@@ -2103,7 +2105,7 @@
     position: relative;
     z-index: 1;
     padding: 16px 10px 8px;
-    background: #fff;
+    background: var(--white-color);
     margin-top: -20px;
     border-radius: 24px;
 }
@@ -2114,7 +2116,7 @@
     gap: 7px;
     font-size: 0.72rem;
     font-weight: 600;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     margin: 0 0 0.8rem 0.5rem;
 }
 
@@ -2153,7 +2155,7 @@
     height: calc(1.6 * 3em);
     text-overflow: ellipsis;
     overflow: hidden;
-    color: var(--color-gray-500);
+    color: var(--text-muted);
 }
 
 .blog-card__cta {
@@ -2162,7 +2164,7 @@
     gap: 6px;
     font-size: 0.82rem;
     font-weight: 700;
-    color: var(--accent-color-dark);
+    color: var(--link-color);
     text-decoration: none;
     transition: gap .3s ease;
 }
@@ -2207,7 +2209,7 @@
     height: 24px;
     border-radius: 50%;
     background: var(--color-gray-100);
-    color: var(--color-gray-500);
+    color: var(--text-muted);
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,0 +1,10 @@
+{
+  "svgBytes": 250760,
+  "elementCount": 2625,
+  "uniqueIDs": 65,
+  "destinationCount": 23,
+  "rasterElements": 0,
+  "scripts": 0,
+  "filters": 0,
+  "checks": "XML, unique IDs, local symbol references, anchor bounds and group references passed"
+}

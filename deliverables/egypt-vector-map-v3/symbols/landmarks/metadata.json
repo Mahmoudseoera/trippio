@@ -1,0 +1,397 @@
+{
+  "source": "F:\\projects\\trippio\\deliverables\\egypt-vector-map-v3\\source\\art\\landmarks-atlas.png",
+  "source_sha256": "87a7de8cbbbe26445281f1e05d81a0d24296a3662e9177c48de60af69deae21e",
+  "source_size": [
+    1254,
+    1254
+  ],
+  "grid": [
+    3,
+    3
+  ],
+  "split": "components",
+  "alpha_threshold": 32,
+  "alpha_levels": 16,
+  "raster_embedded": false,
+  "assets": [
+    {
+      "id": "giza",
+      "index": 0,
+      "svg": "giza.svg",
+      "source_bbox": [
+        17,
+        68,
+        424,
+        384
+      ],
+      "viewBox": [
+        0,
+        0,
+        407,
+        316
+      ],
+      "width": 407,
+      "height": 316,
+      "anchor": [
+        203.5,
+        316
+      ],
+      "color_paths": 647,
+      "alpha_paths": 24,
+      "total_paths": 671,
+      "svg_bytes": 419364,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 2,
+        "color_precision": 7,
+        "layer_difference": 10,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 80210
+    },
+    {
+      "id": "karnak",
+      "index": 1,
+      "svg": "karnak.svg",
+      "source_bbox": [
+        434,
+        52,
+        825,
+        397
+      ],
+      "viewBox": [
+        0,
+        0,
+        391,
+        345
+      ],
+      "width": 391,
+      "height": 345,
+      "anchor": [
+        195.5,
+        345
+      ],
+      "color_paths": 740,
+      "alpha_paths": 27,
+      "total_paths": 767,
+      "svg_bytes": 473677,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 2,
+        "color_precision": 7,
+        "layer_difference": 10,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 95575
+    },
+    {
+      "id": "hatshepsut",
+      "index": 2,
+      "svg": "hatshepsut.svg",
+      "source_bbox": [
+        843,
+        43,
+        1237,
+        388
+      ],
+      "viewBox": [
+        0,
+        0,
+        394,
+        345
+      ],
+      "width": 394,
+      "height": 345,
+      "anchor": [
+        197.0,
+        345
+      ],
+      "color_paths": 811,
+      "alpha_paths": 13,
+      "total_paths": 824,
+      "svg_bytes": 470830,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 2,
+        "color_precision": 7,
+        "layer_difference": 10,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 97508
+    },
+    {
+      "id": "luxor",
+      "index": 3,
+      "svg": "luxor.svg",
+      "source_bbox": [
+        15,
+        441,
+        409,
+        767
+      ],
+      "viewBox": [
+        0,
+        0,
+        394,
+        326
+      ],
+      "width": 394,
+      "height": 326,
+      "anchor": [
+        197.0,
+        326
+      ],
+      "color_paths": 665,
+      "alpha_paths": 49,
+      "total_paths": 714,
+      "svg_bytes": 435764,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 2,
+        "color_precision": 7,
+        "layer_difference": 10,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 81881
+    },
+    {
+      "id": "edfu",
+      "index": 4,
+      "svg": "edfu.svg",
+      "source_bbox": [
+        404,
+        463,
+        836,
+        776
+      ],
+      "viewBox": [
+        0,
+        0,
+        432,
+        313
+      ],
+      "width": 432,
+      "height": 313,
+      "anchor": [
+        216.0,
+        313
+      ],
+      "color_paths": 783,
+      "alpha_paths": 31,
+      "total_paths": 814,
+      "svg_bytes": 497673,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 2,
+        "color_precision": 7,
+        "layer_difference": 10,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 100003
+    },
+    {
+      "id": "kom-ombo",
+      "index": 5,
+      "svg": "kom-ombo.svg",
+      "source_bbox": [
+        842,
+        488,
+        1239,
+        779
+      ],
+      "viewBox": [
+        0,
+        0,
+        397,
+        291
+      ],
+      "width": 397,
+      "height": 291,
+      "anchor": [
+        198.5,
+        291
+      ],
+      "color_paths": 653,
+      "alpha_paths": 24,
+      "total_paths": 677,
+      "svg_bytes": 389215,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 2,
+        "color_precision": 7,
+        "layer_difference": 10,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 77988
+    },
+    {
+      "id": "philae",
+      "index": 6,
+      "svg": "philae.svg",
+      "source_bbox": [
+        10,
+        839,
+        421,
+        1176
+      ],
+      "viewBox": [
+        0,
+        0,
+        411,
+        337
+      ],
+      "width": 411,
+      "height": 337,
+      "anchor": [
+        205.5,
+        337
+      ],
+      "color_paths": 830,
+      "alpha_paths": 55,
+      "total_paths": 885,
+      "svg_bytes": 542739,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 2,
+        "color_precision": 7,
+        "layer_difference": 10,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 101728
+    },
+    {
+      "id": "abu-simbel",
+      "index": 7,
+      "svg": "abu-simbel.svg",
+      "source_bbox": [
+        417,
+        831,
+        838,
+        1195
+      ],
+      "viewBox": [
+        0,
+        0,
+        421,
+        364
+      ],
+      "width": 421,
+      "height": 364,
+      "anchor": [
+        210.5,
+        364
+      ],
+      "color_paths": 946,
+      "alpha_paths": 15,
+      "total_paths": 961,
+      "svg_bytes": 575316,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 2,
+        "color_precision": 7,
+        "layer_difference": 10,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 117862
+    },
+    {
+      "id": "qaitbay",
+      "index": 8,
+      "svg": "qaitbay.svg",
+      "source_bbox": [
+        842,
+        868,
+        1247,
+        1192
+      ],
+      "viewBox": [
+        0,
+        0,
+        405,
+        324
+      ],
+      "width": 405,
+      "height": 324,
+      "anchor": [
+        202.5,
+        324
+      ],
+      "color_paths": 750,
+      "alpha_paths": 35,
+      "total_paths": 785,
+      "svg_bytes": 480834,
+      "trace_settings": {
+        "colormode": "color",
+        "hierarchical": "cutout",
+        "mode": "spline",
+        "filter_speckle": 2,
+        "color_precision": 7,
+        "layer_difference": 10,
+        "corner_threshold": 60,
+        "length_threshold": 2.5,
+        "max_iterations": 10,
+        "splice_threshold": 45,
+        "path_precision": 2
+      },
+      "component_count": 1,
+      "largest_component": 89442
+    }
+  ],
+  "elapsed_seconds": 38.8
+}

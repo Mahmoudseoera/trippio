@@ -62,6 +62,7 @@
   <link rel="stylesheet" href="assets/css/global.css" />
   <!-- home stylesheet -->
   <link rel="stylesheet" href="assets/css/home.css" />
+  <link rel="stylesheet" href="assets/css/tour-tabs.css" />
 
   <!-- Structured data: organization -->
   <script type="application/ld+json">
@@ -154,12 +155,12 @@
       --c-hot: #EF4444;
       --c-cold: #3B82F6;
 
-      --c-ink: #1f2a37;
-      --c-muted: #64748b;
-      --c-line: #e5e7eb;
-      --c-bg: #f7f5f0;
-      --c-card: #ffffff;
-      --c-accent: #0f4c5c;
+      --c-ink: var(--color-gray-900, #0B1623);
+      --c-muted: var(--color-gray-700, #455665);
+      --c-line: var(--color-gray-300, #DDE7E6);
+      --c-bg: var(--color-off-white, #FAFBFA);
+      --c-card: var(--white-color, #FFFFFF);
+      --c-accent: var(--main-color, #153B60);
 
       --font-heading: "Bricolage Grotesque", sans-serif;
       --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -252,7 +253,7 @@
       border: 0;
       border-radius: var(--radius-pill);
       background: var(--c-accent);
-      color: #fff;
+      color: var(--white-color);
       font: inherit;
       font-weight: 600;
       cursor: pointer;
@@ -260,7 +261,7 @@
     }
 
     .search__btn:hover {
-      background: #0b3a47;
+      background: var(--main-color-dark, #102D49);
     }
 
     .search__btn:active {
@@ -298,7 +299,7 @@
     .preset.is-active {
       background: var(--c-accent);
       border-color: var(--c-accent);
-      color: #fff;
+      color: var(--white-color);
     }
 
     :is(.search__btn, .preset):focus-visible {
@@ -472,7 +473,7 @@
       min-width: 150px;
       padding: 8px 12px;
       background: #1f2a37;
-      color: #fff;
+      color: var(--white-color);
       border-radius: 8px;
       font-size: .78rem;
       line-height: 1.5;
@@ -1919,7 +1920,7 @@
   <!--=====================================
        Start: Featured Tours
    ===================================== -->
-  <section class="featured-tickets section section-spacing" aria-labelledby="featured-ticket-title">
+  <!-- <section class="featured-tickets section section-spacing" aria-labelledby="featured-ticket-title">
     <img class="featured-tickets__background" src="assets/images/tours/aswan4545.webp"
       alt="Feluccas on the Nile in Aswan" title="The Nile in Aswan" width="2200" height="1293" loading="lazy"
       decoding="async">
@@ -2015,10 +2016,178 @@
         </article>
       </div>
     </div>
-  </section>
+  </section> -->
   <!--=====================================
        End: Featured Tours
    ===================================== -->
+  <!-- Start: Tabbed Featured Tours -->
+  <section class="tour-tabs" id="tour-tabs" aria-labelledby="tours-title">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__copy">
+          <span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon" title="Pill Icon"> Featured Tours</span>
+          <h2 id="tours-title" class="section-header__title">Your ticket to Egypt</h2>
+          <p class="section-header__description">Explore Egypt with multi-day packages, Nile cruises and guided day trips.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-tabs__inner">
+
+        <!-- Tabs -->
+        <div class="tour-tabs__nav">
+            <div class="tour-tabs__tablist" role="tablist" aria-label="Trip categories">
+                <button class="tour-tabs__tab" role="tab" id="tab-packages" aria-selected="true" aria-controls="panel-packages">
+                    <span class="tour-tabs__tab-num">01</span>
+                    <span class="tour-tabs__tab-count">3 trips</span>
+                    <span class="tour-tabs__tab-label">Packages and circuits</span>
+                    <span class="tour-tabs__tab-desc">5 to 12 days through Cairo, the Nile and the Red Sea, privately or in a small group.</span>
+                </button>
+                <button class="tour-tabs__tab" role="tab" id="tab-cruises" aria-selected="false" aria-controls="panel-cruises" tabindex="-1">
+                    <span class="tour-tabs__tab-num">02</span>
+                    <span class="tour-tabs__tab-count">1 cruise</span>
+                    <span class="tour-tabs__tab-label">Nile River Cruises</span>
+                    <span class="tour-tabs__tab-desc">3 to 7 nights sailing between Luxor and Aswan on hand-picked ships.</span>
+                </button>
+                <button class="tour-tabs__tab" role="tab" id="tab-day" aria-selected="false" aria-controls="panel-day" tabindex="-1">
+                    <span class="tour-tabs__tab-num">03</span>
+                    <span class="tour-tabs__tab-count">1 day trip</span>
+                    <span class="tour-tabs__tab-label">Day trips</span>
+                    <span class="tour-tabs__tab-desc">Single-day tour-tabs with a guide and transport from your hotel.</span>
+                </button>
+            </div>
+
+            <a class="tour-tabs__catalog" href="tours.html">
+                View the full catalog
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+
+        <!-- Panels -->
+        <div class="tour-tabs__panels">
+
+            <!-- ===== Panel 1 ===== -->
+            <div class="tour-tabs__panel" role="tabpanel" id="panel-packages" aria-labelledby="tab-packages" tabindex="0">
+                <div class="tour-tabs__grid">
+
+                    <!-- FIRST CARD = featured / most popular -->
+                    <article class="tab-trip tab-trip--featured">
+                        <div class="tab-trip__media">
+                            <img src="assets/images/tours/aswan4545.webp" alt="Sailing on the Nile in Aswan" title="Sailing on the Nile in Aswan" width="640" height="400" loading="lazy" decoding="async">
+                            <span class="tab-trip__duration">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                                8 days 7 nights
+                            </span>
+                        </div>
+                        <div class="tab-trip__body">
+                            <h3 class="tab-trip__title"><a href="tour-details.html">Egypt 8 Days All Inclusive: Cairo and Cruise with Abu Simbel</a></h3>
+                            <ul class="tab-trip__route" aria-label="Route"><li>Cairo</li><li class="line" aria-hidden="true"></li><li>Abu Simbel</li></ul>
+                            <p class="tab-trip__excerpt">Explore the pyramids and the Nile on an unparalleled journey. Book now and secure your place on this unique adventure.</p>
+                            <div class="tab-trip__foot">
+                                <div class="tab-trip__price"><small>From / per person</small><strong>€1,025</strong></div>
+                                <div class="tab-trip__actions">
+                                    
+                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tab-trip">
+                        <div class="tab-trip__media">
+                            <img src="assets/images/tours/cairo.webp" alt="Cairo in Egypt" title="Cairo in Egypt" width="640" height="400" loading="lazy" decoding="async">
+                            <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5 Days 4 Nights</span>
+                        </div>
+                        <div class="tab-trip__body">
+                            <h3 class="tab-trip__title"><a href="tour-details.html">Egypt in 5 days: Private trip to Cairo</a></h3>
+                            <ul class="tab-trip__route" aria-label="Route"><li>Cairo</li></ul>
+                            <p class="tab-trip__excerpt">Discover Cairo on a private five-day trip, with time to explore the city and its ancient landmarks.</p>
+                            <div class="tab-trip__foot">
+                                <div class="tab-trip__price"><small>From / per person</small><strong>€540</strong></div>
+                                <div class="tab-trip__actions">
+                                    
+                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tab-trip">
+                        <div class="tab-trip__media">
+                            <img src="assets/images/tours/alexandria.jpg" alt="Alexandria in Egypt" title="Alexandria in Egypt" width="640" height="400" loading="lazy" decoding="async">
+                            <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>14 Days 13 Nights</span>
+                        </div>
+                        <div class="tab-trip__body">
+                            <h3 class="tab-trip__title"><a href="tour-details.html">14-Day Egypt Package: Cairo, Alexandria, Cruise and Sharm</a></h3>
+                            <ul class="tab-trip__route" aria-label="Route"><li>Cairo, Alexandria, Sharm</li></ul>
+                            <p class="tab-trip__excerpt">Combine city discoveries, a Nile cruise and time by the Red Sea on a fourteen-day Egypt journey.</p>
+                            <div class="tab-trip__foot">
+                                <div class="tab-trip__price"><small>From / per person</small><strong>€1,890</strong></div>
+                                <div class="tab-trip__actions">
+                                    
+                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- ===== Panel 2 ===== -->
+            <div class="tour-tabs__panel" role="tabpanel" id="panel-cruises" aria-labelledby="tab-cruises" tabindex="0" hidden>
+                <div class="tour-tabs__grid">
+                    <article class="tab-trip tab-trip--featured">
+                        <div class="tab-trip__media">
+                            <img src="assets/images/tours/aswan547547.webp" alt="The Nile in Aswan" title="The Nile in Aswan" width="640" height="400" loading="lazy" decoding="async">
+                            <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5 days 4 nights</span>
+                        </div>
+                        <div class="tab-trip__body">
+                            <h3 class="tab-trip__title"><a href="tour-details.html">Luxor to Aswan Nile Cruise, Full Board</a></h3>
+                            <ul class="tab-trip__route" aria-label="Route"><li>Luxor</li><li class="line" aria-hidden="true"></li><li>Aswan</li></ul>
+                            <p class="tab-trip__excerpt">Sail past Edfu and Kom Ombo with temple visits and a private guide each day.</p>
+                            <div class="tab-trip__foot">
+                                <div class="tab-trip__price"><small>From / per person</small><strong>€420</strong></div>
+                                <div class="tab-trip__actions">
+                                    
+                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+            </div>
+
+            <!-- ===== Panel 3 ===== -->
+            <div class="tour-tabs__panel" role="tabpanel" id="panel-day" aria-labelledby="tab-day" tabindex="0" hidden>
+                <div class="tour-tabs__grid">
+                    <article class="tab-trip tab-trip--featured">
+                        <div class="tab-trip__media">
+                            <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="The Giza pyramids" title="The Giza pyramids" width="640" height="400" loading="lazy" decoding="async">
+                            <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Full day</span>
+                        </div>
+                        <div class="tab-trip__body">
+                            <h3 class="tab-trip__title"><a href="tour-details.html">Giza Pyramids and Sphinx Private Day Tour</a></h3>
+                            <ul class="tab-trip__route" aria-label="Route"><li>Giza</li><li class="line" aria-hidden="true"></li><li>Saqqara</li></ul>
+                            <p class="tab-trip__excerpt">Hotel pickup, an Egyptologist guide, lunch and entry tickets included.</p>
+                            <div class="tab-trip__foot">
+                                <div class="tab-trip__price"><small>From / per person</small><strong>€65</strong></div>
+                                <div class="tab-trip__actions">
+                                    
+                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+  <!-- End: Tabbed Featured Tours -->
   <section class="climate" id="climateWidget" aria-labelledby="climateTitle">
     <div class="climate__inner">
 
@@ -2080,163 +2249,7 @@
 
     </div>
   </section>
-  <!--=====================================
-       Start: FAQ Section
-   ===================================== -->
-  <section class="section section-spacing faq-section">
-    <div class="container">
-      <div class="faq-grid">
-        <div class="faq-visual">
-          <div class="section-header">
-            <div class="section-header__copy"><span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon"
-                  title="Pill Icon"> Got Questions?</span>
-              <h2 class="section-header__title">Frequently Asked</h2>
-              <p class="section-header__description">Everything travelers usually ask before booking a tour with us. Can't
-                find your
-                answer? Reach out and we'll help directly.</p>
-            </div>
-          </div>
-          <div class="faq-collage" aria-label="Discover Egypt">
-            <svg class="faq-collage__trail" viewBox="0 0 500 400" fill="none" aria-hidden="true">
-              <path d="M0 280C90 355 110 110 205 185S335 10 390 115S450 230 500 210" />
-              <circle cx="365" cy="40" r="7" />
-            </svg>
-            <img class="faq-collage__photo faq-collage__photo--top"
-              src="assets/images/tours/Pyramids-in-Egypt-webp.webp"
-              alt="The pyramids of Giza in Egypt" title="Discover the pyramids of Giza"
-              width="300" height="300" loading="lazy" decoding="async">
-            <img class="faq-collage__photo faq-collage__photo--left"
-              src="assets/images/tours/106896752__MG_7633-final_Pompeys_Pillar-webp.webp"
-              alt="Ancient Egyptian sphinx in Alexandria" title="Explore historic Alexandria"
-              width="300" height="320" loading="lazy" decoding="async">
-            <img class="faq-collage__photo faq-collage__photo--right"
-              src="assets/images/tours/aswan547547.webp"
-              alt="Scenery in Aswan, Egypt" title="Experience Aswan"
-              width="320" height="280" loading="lazy" decoding="async">
-          </div>
-        </div>
-        <div class="faq-list" id="faqList">
-          <div class="faq-item is-open">
-            <div class="faq-item__head">
-              <span class="faq-item__num">01.</span>
-              <h3 class="faq-item__q">What kinds of trips do you offer?</h3>
-              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke-width="2.3">
-                  <path d="M7 7h10v10M7 17L17 7" />
-                </svg></span>
-            </div>
-            <div class="faq-item__answer">
-              <p>From single-day city tours to multi-day Nile itineraries — day trips, private guided tours, and fully
-                customized multi-city packages.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-item__head">
-              <span class="faq-item__num">02.</span>
-              <h3 class="faq-item__q">How do I book a trip?</h3>
-              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke-width="2.3">
-                  <path d="M7 7h10v10M7 17L17 7" />
-                </svg></span>
-            </div>
-            <div class="faq-item__answer">
-              <p>Choose a tour, pick your dates and group size, and confirm with a deposit online — the rest is handled
-                by our local team.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-item__head">
-              <span class="faq-item__num">03.</span>
-              <h3 class="faq-item__q">What documents do I need for my trip?</h3>
-              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke-width="2.3">
-                  <path d="M7 7h10v10M7 17L17 7" />
-                </svg></span>
-            </div>
-            <div class="faq-item__answer">
-              <p>A passport valid for at least 6 months past your travel date, plus a visa — which most nationalities
-                can get on arrival.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-item__head">
-              <span class="faq-item__num">04.</span>
-              <h3 class="faq-item__q">Can I change my travel dates after booking?</h3>
-              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke-width="2.3">
-                  <path d="M7 7h10v10M7 17L17 7" />
-                </svg></span>
-            </div>
-            <div class="faq-item__answer">
-              <p>Yes, free of charge up to 14 days before departure, subject to availability on the new dates.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-item__head">
-              <span class="faq-item__num">05.</span>
-              <h3 class="faq-item__q">What's your refund policy?</h3>
-              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke-width="2.3">
-                  <path d="M7 7h10v10M7 17L17 7" />
-                </svg></span>
-            </div>
-            <div class="faq-item__answer">
-              <p>Full refund up to 30 days before your tour, 50% up to 7 days before, and no refund inside 7 days of
-                departure.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-item__head">
-              <span class="faq-item__num">06.</span>
-              <h3 class="faq-item__q">Can I get a custom trip tailored to my preferences?</h3>
-              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke-width="2.3">
-                  <path d="M7 7h10v10M7 17L17 7" />
-                </svg></span>
-            </div>
-            <div class="faq-item__answer">
-              <p>Absolutely — tell us your interests, pace, and budget, and our team will build a private itinerary
-                around them.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-item__head">
-              <span class="faq-item__num">07.</span>
-              <h3 class="faq-item__q">Do you offer group discounts?</h3>
-              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                  stroke-width="2.3">
-                  <path d="M7 7h10v10M7 17L17 7" />
-                </svg></span>
-            </div>
-            <div class="faq-item__answer">
-              <p>Yes, groups of 6 or more get tiered pricing — reach out with your group size and we'll send a custom
-                quote.</p>
-            </div>
-          </div>
-          <div class="BrandName-faq-controls">
-            <button class="BrandName-faq-toggle-btn">Show More ↓</button>
-            <a href="contact.html" class="BrandName-faq-cta-link" style="display: none; margin-left: 10px;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-              </svg>
-              Still have questions? Chat with our team →
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--=====================================
-       End: FAQ Section
-   ===================================== -->
-
-  <!--=====================================
+    <!--=====================================
        Start: Blog Section
    ===================================== -->
   <section class="blog-section section-spacing">
@@ -2411,8 +2424,161 @@
   <!--=====================================
        End: Blog Section
    ===================================== -->
+  <!--=====================================
+       Start: FAQ Section
+   ===================================== -->
+  <section class="section section-spacing faq-section">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-visual">
+          <div class="section-header">
+            <div class="section-header__copy"><span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon"
+                  title="Pill Icon"> Got Questions?</span>
+              <h2 class="section-header__title">Frequently Asked</h2>
+              <p class="section-header__description">Everything travelers usually ask before booking a tour with us. Can't
+                find your
+                answer? Reach out and we'll help directly.</p>
+            </div>
+          </div>
+          <div class="faq-collage" aria-label="Discover Egypt">
+            <svg class="faq-collage__trail" viewBox="0 0 500 400" fill="none" aria-hidden="true">
+              <path d="M0 280C90 355 110 110 205 185S335 10 390 115S450 230 500 210" />
+              <circle cx="365" cy="40" r="7" />
+            </svg>
+            <img class="faq-collage__photo faq-collage__photo--top"
+              src="assets/images/tours/Pyramids-in-Egypt-webp.webp"
+              alt="The pyramids of Giza in Egypt" title="Discover the pyramids of Giza"
+              width="300" height="300" loading="lazy" decoding="async">
+            <img class="faq-collage__photo faq-collage__photo--left"
+              src="assets/images/tours/106896752__MG_7633-final_Pompeys_Pillar-webp.webp"
+              alt="Ancient Egyptian sphinx in Alexandria" title="Explore historic Alexandria"
+              width="300" height="320" loading="lazy" decoding="async">
+            <img class="faq-collage__photo faq-collage__photo--right"
+              src="assets/images/tours/aswan547547.webp"
+              alt="Scenery in Aswan, Egypt" title="Experience Aswan"
+              width="320" height="280" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="faq-list" id="faqList">
+          <div class="faq-item is-open">
+            <div class="faq-item__head">
+              <span class="faq-item__num">01.</span>
+              <h3 class="faq-item__q">What kinds of trips do you offer?</h3>
+              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke-width="2.3">
+                  <path d="M7 7h10v10M7 17L17 7" />
+                </svg></span>
+            </div>
+            <div class="faq-item__answer">
+              <p>From single-day city tours to multi-day Nile itineraries — day trips, private guided tours, and fully
+                customized multi-city packages.</p>
+            </div>
+          </div>
 
+          <div class="faq-item">
+            <div class="faq-item__head">
+              <span class="faq-item__num">02.</span>
+              <h3 class="faq-item__q">How do I book a trip?</h3>
+              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke-width="2.3">
+                  <path d="M7 7h10v10M7 17L17 7" />
+                </svg></span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Choose a tour, pick your dates and group size, and confirm with a deposit online — the rest is handled
+                by our local team.</p>
+            </div>
+          </div>
 
+          <div class="faq-item">
+            <div class="faq-item__head">
+              <span class="faq-item__num">03.</span>
+              <h3 class="faq-item__q">What documents do I need for my trip?</h3>
+              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke-width="2.3">
+                  <path d="M7 7h10v10M7 17L17 7" />
+                </svg></span>
+            </div>
+            <div class="faq-item__answer">
+              <p>A passport valid for at least 6 months past your travel date, plus a visa — which most nationalities
+                can get on arrival.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-item__head">
+              <span class="faq-item__num">04.</span>
+              <h3 class="faq-item__q">Can I change my travel dates after booking?</h3>
+              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke-width="2.3">
+                  <path d="M7 7h10v10M7 17L17 7" />
+                </svg></span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Yes, free of charge up to 14 days before departure, subject to availability on the new dates.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-item__head">
+              <span class="faq-item__num">05.</span>
+              <h3 class="faq-item__q">What's your refund policy?</h3>
+              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke-width="2.3">
+                  <path d="M7 7h10v10M7 17L17 7" />
+                </svg></span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Full refund up to 30 days before your tour, 50% up to 7 days before, and no refund inside 7 days of
+                departure.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-item__head">
+              <span class="faq-item__num">06.</span>
+              <h3 class="faq-item__q">Can I get a custom trip tailored to my preferences?</h3>
+              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke-width="2.3">
+                  <path d="M7 7h10v10M7 17L17 7" />
+                </svg></span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Absolutely — tell us your interests, pace, and budget, and our team will build a private itinerary
+                around them.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-item__head">
+              <span class="faq-item__num">07.</span>
+              <h3 class="faq-item__q">Do you offer group discounts?</h3>
+              <span class="faq-item__arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke-width="2.3">
+                  <path d="M7 7h10v10M7 17L17 7" />
+                </svg></span>
+            </div>
+            <div class="faq-item__answer">
+              <p>Yes, groups of 6 or more get tiered pricing — reach out with your group size and we'll send a custom
+                quote.</p>
+            </div>
+          </div>
+          <div class="BrandName-faq-controls">
+            <button class="BrandName-faq-toggle-btn">Show More ↓</button>
+            <a href="contact.html" class="BrandName-faq-cta-link" style="display: none; margin-left: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              Still have questions? Chat with our team →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--=====================================
+       End: FAQ Section
+   ===================================== -->
   <!--=====================================
        Start: Testimonials Section
    ===================================== -->
@@ -2717,6 +2883,7 @@
   <script src="assets/js/librairies/swiper-bundle.min.js"></script>
   <script src="assets/js/weather-app.js"></script>
   <script src="assets/js/custom.js" defer></script>
+  <script src="assets/js/tour-tabs.js" defer></script>
   <script>
     (function () {
       var wrapper = document.getElementById('blogWrapper');

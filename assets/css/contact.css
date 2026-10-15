@@ -36,11 +36,11 @@
         gap: 8px;
         padding: 1.2rem 0 0.2rem;
         font-size: 0.82rem;
-        color: var(--color-gray-500);
+        color: var(--text-muted);
     }
 
     .breadcrumb a {
-        color: var(--color-gray-500);
+        color: var(--text-muted);
         text-decoration: none;
         display: inline-flex;
         align-items: center;
@@ -87,7 +87,7 @@
         align-items: end;
         gap: 7px;
         display: inline-flex;
-        color: var(--accent-color-dark);
+        color: var(--link-color);
         font-weight: 700;
         font-size: 0.78rem;
         letter-spacing: 0.18em;
@@ -108,7 +108,7 @@
     .contact-col>p.desc {
         font-size: 0.92rem;
         line-height: 1.7;
-        color: var(--color-gray-500);
+        color: var(--text-muted);
         max-width: 480px;
         margin: 0 0 1.8rem;
     }
@@ -178,7 +178,7 @@
 
     .contact-info-item__icon i {
         font-size: 1rem;
-        color: var(--accent-color-dark);
+        color: var(--link-color);
         line-height: 1;
     }
 
@@ -188,7 +188,7 @@
 
     .contact-info-item:hover .contact-info-item__icon,
     .contact-info-item:focus-visible .contact-info-item__icon {
-        background: var(--gradient-accent);
+        background: var(--button-primary-hover);
     }
 
     .contact-info-item:hover .contact-info-item__icon i,
@@ -197,14 +197,14 @@
     }
 
     .contact-info-item:focus-visible {
-        outline: 2px solid var(--accent-color);
+        outline: 2px solid var(--color-second-dark);
         outline-offset: 4px;
     }
 
     .contact-info-item span {
         display: block;
         font-size: 0.76rem;
-        color: var(--color-gray-500);
+        color: var(--text-muted);
     }
 
     .contact-info-item strong {
@@ -254,7 +254,7 @@
     }
 
     .contact-social a:hover {
-        background: var(--gradient-accent);
+        background: var(--button-primary-hover);
         border-color: transparent;
         transform: translateY(-3px);
     }
@@ -299,7 +299,7 @@
         left: 13px;
         top: 14px;
         font-size: 0.86rem;
-        color: var(--color-gray-500);
+        color: var(--text-muted);
         background: var(--white-color);
         padding: 0 5px;
         pointer-events: none;
@@ -335,7 +335,7 @@
         top: -9px;
         font-size: 0.7rem;
         font-weight: 700;
-        color: var(--accent-color-dark);
+        color: var(--link-color);
     }
 
     .ff-wrap.ff-focused .ff-field {
@@ -399,7 +399,7 @@
         align-items: center;
         gap: 6px;
         font-size: 0.74rem;
-        color: var(--color-gray-500);
+        color: var(--text-muted);
         line-height: 1.5;
         max-width: 220px;
     }
