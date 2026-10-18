@@ -5,7 +5,12 @@
 const $ = id => document.getElementById(id);
 const questions = document.querySelectorAll('.chat-question');
 const cities = document.querySelectorAll('.city-tab');
+const tours = document.querySelectorAll('.tour-option');
+const introVideo = $('intro-video');
+let selectedTour = null, introPhase = 'ready', introRun = 0;
+const introTimers = new Set();
 const stops = document.querySelectorAll('.attraction');
+stops.forEach(stop=>{stop.dataset.originalLabel=stop.querySelector('small').textContent;});
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const weather = window.TrippioWeather?.create();
 const markers = new Map();
@@ -43,7 +48,7 @@ function stage(name){
  document.body.dataset.stage=name;
  document.querySelectorAll('main>.stage').forEach(section=>section.hidden=section.id!==name+'-stage');
  if(name!=='map'){weather?.cancel();clearInterval(weatherTimer);}
- if(name!=='intro')$('intro-video').pause();
+ if(name!=='intro'){introRun++;introTimers.forEach(clearTimeout);introTimers.clear();introVideo.pause();}
 }
 function message(text,who,index){
  const item=document.createElement('div');item.className='message '+who;item.dataset.question=String(index);
@@ -97,7 +102,7 @@ questions.forEach((form,index)=>form.addEventListener('submit',event=>{
  else{
   questions.forEach(question=>question.hidden=true);
   stage('intro');$('intro-title').textContent='Your Egyptian adventure starts here, '+state.full_name+'.';$('intro-title').focus();
-  if(!reduceMotion)$('intro-video').play().catch(()=>{});
+  prepareIntro();
  }
 }));
 $('arrival').addEventListener('input',()=>{
@@ -122,10 +127,12 @@ $('previous-question').addEventListener('click',()=>{
  gather();ask(previous,true);
 });
 function latLng(element){return L.latLng(Number(element.dataset.lat),Number(element.dataset.lon));}
-function pinIcon(name,city=false){
+function cityTours(city){return Array.from(tours).filter(tour=>tour.dataset.cities.split(' ').includes(city.dataset.city));}
+function pinIcon(name,city=false,count=0){
  const container=document.createElement('div');
  const core=document.createElement('span');core.className='pin-core';container.appendChild(core);
  const label=document.createElement('span');label.className='pin-label';label.textContent=name;container.appendChild(label);
+ if(city){const badge=document.createElement('span');badge.className='tour-count';badge.textContent=count+' '+(count===1?'tour':'tours');label.appendChild(badge);}
  return L.divIcon({className:'map-pin'+(city?' map-city-pin':''),html:container,iconSize:L.point(20,20),iconAnchor:L.point(10,10)});
 }
 function showMarkerSelection(element){
@@ -149,7 +156,7 @@ function initMap(){
  });
  cities.forEach(city=>{
   const title=city.querySelector('strong').textContent;
-  const marker=L.marker(latLng(city),{icon:pinIcon(title,true),title,keyboard:true,zIndexOffset:500}).addTo(map);
+  const marker=L.marker(latLng(city),{icon:pinIcon(title,true,cityTours(city).length),title,keyboard:true,zIndexOffset:500}).addTo(map);
   marker.on('click',()=>selectCity(city));markers.set(city,marker);
  });
  map.on('zoomend',()=>{
@@ -176,15 +183,22 @@ function updateMarkerVisibility(all=false){
  });
 }
 function selectCity(city,autoplay=true){
- activeCity=city;activeStop=null;city.hidden=false;
+ activeCity=city;activeStop=null;city.hidden=false;selectedTour=null;
+ const available=cityTours(city);
+ tours.forEach(tour=>{tour.hidden=!available.includes(tour);tour.classList.remove('is-selected');tour.querySelector('.select-tour').setAttribute('aria-pressed','false');});
+ $('tour-list-title').textContent=city.querySelector('strong').textContent+' · '+available.length+' '+(available.length===1?'tour':'tours');
+ document.querySelector('.itinerary-panel').hidden=true;
+ $('selected-tour-summary').hidden=true;
+ document.querySelectorAll('.tour-price').forEach(price=>price.hidden=true);
+ updateMarkerVisibility();
  cities.forEach(item=>item.setAttribute('aria-pressed',String(item===city)));
  stops.forEach(stop=>{
-  stop.hidden=stop.dataset.city!==city.dataset.city;
+  stop.hidden=true;
   stop.querySelector('button').setAttribute('aria-pressed','false');stop.querySelector('p').hidden=true;
  });
  const name=city.querySelector('strong').textContent;
  $('itinerary-title').textContent=name;
- story(name,city.querySelector('small').textContent+'. Select a stop to explore the places on your itinerary.',autoplay);
+ story(name,city.querySelector('small').textContent+'. Choose a tour to see its itinerary and hear its story.',autoplay);
  weather?.load(city,state.check_in);
  showMarkerSelection(city);
  if(map){
@@ -196,7 +210,10 @@ function selectCity(city,autoplay=true){
 }
 function selectStop(stop){
  const city=Array.from(cities).find(item=>item.dataset.city===stop.dataset.city);
- if(city!==activeCity)selectCity(city,false);
+ if(selectedTour&&!selectedTour.dataset.stops.split(' ').includes(stop.dataset.stop))selectCity(city,false);
+ if(!selectedTour&&city!==activeCity)selectCity(city,false);
+ if(selectedTour&&city!==activeCity){activeCity=city;cities.forEach(item=>item.setAttribute('aria-pressed',String(item===city)));weather?.load(city,state.check_in);}
+ if(!selectedTour){const tour=cityTours(city).find(item=>item.dataset.stops.split(' ').includes(stop.dataset.stop));if(tour)selectTour(tour,false);}
  activeStop=stop;
  stops.forEach(item=>{const chosen=item===stop;item.querySelector('button').setAttribute('aria-pressed',String(chosen));item.querySelector('p').hidden=!chosen;});
  const title=stop.querySelector('strong').textContent;
@@ -211,7 +228,7 @@ function selectStop(stop){
 cities.forEach(city=>city.addEventListener('click',()=>selectCity(city)));
 stops.forEach(stop=>stop.querySelector('button').addEventListener('click',()=>selectStop(stop)));
 function explore(){
- gather();stage('map');
+ gather();$('map-stage').classList.remove('map-entering');stage('map');
  $('trip-summary').textContent=state.full_name+' · '+formattedDate(state.check_in)+' – '+formattedDate(state.check_out)+' · '+state.adults+' adults · '+state.children+' children · '+state.infants+' infants';
  let recommendationCount=0;
  cities.forEach(city=>{
@@ -235,9 +252,60 @@ function explore(){
  clearInterval(weatherTimer);
  weatherTimer=setInterval(()=>{if(activeCity&&!document.hidden)weather?.load(activeCity,state.check_in,true);},300000);
 }
-$('explore-map').addEventListener('click',explore);$('skip-intro').addEventListener('click',explore);
+function later(callback,delay){
+ const timer=setTimeout(()=>{introTimers.delete(timer);callback();},delay);introTimers.add(timer);
+}
+function prepareIntro(){
+ introRun++;introTimers.forEach(clearTimeout);introTimers.clear();introPhase='ready';
+ $('intro-stage').classList.remove('intro-playing','intro-revealing');
+ $('intro-copy').inert=false;introVideo.loop=false;introVideo.pause();
+ try{introVideo.currentTime=0;}catch(_){}
+ $('intro-status').textContent='';$('explore-map').disabled=false;
+}
+function revealMap(run){
+ if(run!==introRun||introPhase==='revealing'||introPhase==='done'||document.body.dataset.stage!=='intro')return;
+ introPhase='revealing';introTimers.forEach(clearTimeout);introTimers.clear();introVideo.pause();
+ $('intro-stage').classList.add('intro-revealing');
+ later(()=>{if(run!==introRun||document.body.dataset.stage!=='intro')return;introPhase='done';explore();$('map-stage').classList.add('map-entering');},reduceMotion?0:250);
+}
+function beginIntro(){
+ if(introPhase!=='ready')return;
+ introPhase='playing';const run=++introRun;
+ $('explore-map').disabled=true;$('intro-copy').inert=true;$('skip-intro').focus({preventScroll:true});
+ $('intro-stage').classList.add('intro-playing');$('intro-status').textContent='';
+ later(()=>{
+  if(run!==introRun||introPhase!=='playing')return;
+  try{introVideo.currentTime=0;}catch(_){}
+  introVideo.play().catch(()=>{if(run===introRun){$('intro-status').textContent='Video unavailable. Opening your journey…';revealMap(run);}});
+  const wait=Number.isFinite(introVideo.duration)?Math.min(90000,introVideo.duration*1000+8000):30000;
+  later(()=>revealMap(run),wait);
+ },reduceMotion?0:500);
+}
+introVideo.addEventListener('ended',()=>{if(introPhase==='playing')revealMap(introRun);});
+introVideo.addEventListener('error',()=>{if(introPhase==='playing')revealMap(introRun);});
+$('explore-map').addEventListener('click',beginIntro);
+$('skip-intro').addEventListener('click',()=>{introPhase='done';explore();$('map-stage').classList.add('map-entering');});
+function selectTour(tour,autoplay=true){
+ selectedTour=tour;
+ const ids=tour.dataset.stops.split(' ');
+ tours.forEach(item=>{item.classList.toggle('is-selected',item===tour);item.querySelector('.select-tour').setAttribute('aria-pressed',String(item===tour));item.querySelector('.tour-price')?.setAttribute('hidden','');});
+ tour.querySelector('.tour-price')?.removeAttribute('hidden');
+ document.querySelector('.itinerary-panel').hidden=false;
+ $('attraction-list').hidden=false;$('toggle-itinerary').setAttribute('aria-expanded','true');$('toggle-itinerary').textContent='−';$('toggle-itinerary').setAttribute('aria-label','Collapse itinerary');
+ const title=tour.querySelector('h4').textContent;
+ $('itinerary-title').textContent=title;
+ const bounds=map?L.latLngBounds():null;
+ ids.forEach(id=>{const stop=Array.from(stops).find(item=>item.dataset.stop===id);if(stop){$('attraction-list').appendChild(stop);if(bounds)bounds.extend(latLng(stop));}});
+ stops.forEach(stop=>{stop.hidden=!ids.includes(stop.dataset.stop);stop.querySelector('small').textContent=tour.dataset.tour==='nile-cruise-8-days'?stop.dataset.originalLabel:'Stop '+(ids.indexOf(stop.dataset.stop)+1);stop.querySelector('p').hidden=true;stop.querySelector('button').setAttribute('aria-pressed','false');});
+ markers.forEach((marker,node)=>{if(!map)return;const show=node.classList.contains('city-tab')?(!node.hidden||tour.dataset.cities.split(' ').includes(node.dataset.city)):ids.includes(node.dataset.stop);if(show){if(!map.hasLayer(marker))marker.addTo(map);}else if(map.hasLayer(marker))map.removeLayer(marker);});
+ $('selected-tour-name').textContent=title;$('selected-tour-description').textContent=tour.dataset.description;$('selected-tour-summary').hidden=false;
+ story(title,tour.dataset.description+' Your itinerary includes '+ids.map(id=>Array.from(stops).find(stop=>stop.dataset.stop===id)?.querySelector('strong').textContent).filter(Boolean).join(', ')+'.',autoplay);
+ if(map&&bounds.isValid()){const mobile=matchMedia('(max-width:600px)').matches;map.fitBounds(bounds,{paddingTopLeft:L.point(mobile?35:330,mobile?110:120),paddingBottomRight:L.point(mobile?35:330,mobile?140:260),maxZoom:12,animate:!reduceMotion});}
+}
+tours.forEach(tour=>tour.querySelector('.select-tour').addEventListener('click',()=>selectTour(tour)));
+cities.forEach(city=>{const count=document.createElement('span');count.className='city-tour-count';const total=cityTours(city).length;count.textContent=total+' '+(total===1?'tour':'tours');city.appendChild(count);});
 $('guide-toggle').addEventListener('click',()=>speaking?stopVoice():speak(activeStory));
-$('show-all').addEventListener('click',()=>{updateMarkerVisibility(true);fitRoute(true);$('map-status').textContent='Showing all '+stops.length+' attractions from the eight-day tour. Select a marker to explore.';});
+$('show-all').addEventListener('click',()=>{updateMarkerVisibility(true);fitRoute(true);$('map-status').textContent='Showing all '+stops.length+' places from the tour catalogue. Select a marker to explore.';});
 $('toggle-labels').addEventListener('click',event=>{
  const on=event.currentTarget.getAttribute('aria-pressed')!=='true';event.currentTarget.setAttribute('aria-pressed',String(on));$('map-stage').classList.toggle('hide-labels',!on);
  if(map&&labelLayer){if(on)labelLayer.addTo(map);else map.removeLayer(labelLayer);}
@@ -258,18 +326,19 @@ $('toggle-itinerary').addEventListener('click',event=>{
  const open=event.currentTarget.getAttribute('aria-expanded')==='true';$('attraction-list').hidden=open;event.currentTarget.setAttribute('aria-expanded',String(!open));event.currentTarget.textContent=open?'+':'−';event.currentTarget.setAttribute('aria-label',open?'Expand itinerary':'Collapse itinerary');
 });
 $('toggle-tour').addEventListener('click',event=>{
- const open=event.currentTarget.getAttribute('aria-expanded')==='true';$('tour-options').hidden=open;event.currentTarget.setAttribute('aria-expanded',String(!open));event.currentTarget.textContent=open?'+':'−';event.currentTarget.setAttribute('aria-label',open?'Expand tours':'Collapse tours');document.querySelector('.tour-dock').classList.toggle('collapsed',open);$('map-stage').classList.toggle('tour-collapsed',open);
+ const open=event.currentTarget.getAttribute('aria-expanded')==='true';$('tour-options').hidden=open;$('selected-tour-summary').hidden=open||!selectedTour;document.querySelector('.tour-dock-footer').hidden=open;event.currentTarget.setAttribute('aria-expanded',String(!open));event.currentTarget.textContent=open?'+':'−';event.currentTarget.setAttribute('aria-label',open?'Expand tours':'Collapse tours');document.querySelector('.tour-dock').classList.toggle('collapsed',open);$('map-stage').classList.toggle('tour-collapsed',open);
 });
-$('choose-tour').addEventListener('click',event=>{
+document.querySelectorAll('[data-assistant-booking]').forEach(link=>link.addEventListener('click',event=>{
  if(event.currentTarget.getAttribute('aria-disabled')==='true'){event.preventDefault();$('handoff-status').textContent='Choose at least 8 travel days, or use the tailor-made trip link.';return;}
  gather();const details={};
  for(const input of document.querySelectorAll('.chat-question input[name]:not([type=checkbox]),.chat-question textarea[name]'))details[input.name]=input.value;
  details.message='AI planner interests: '+(state.interests.join(', ')||'Open to suggestions')+'. Cities: '+selectedCities().map(city=>city.querySelector('strong').textContent).join(', ')+'. '+details.message;
- details.savedAt=Date.now();details.tour=document.querySelector('.tour-option').dataset.tour;
+ details.savedAt=Date.now();details.tour=event.currentTarget.closest('.tour-option').dataset.tour;
+ details.message='Selected tour: '+event.currentTarget.closest('.tour-option').querySelector('h4').textContent+'. '+details.message;
  try{sessionStorage.setItem('trippio-assistant-booking',JSON.stringify(details));}
  catch(_){event.preventDefault();$('handoff-status').textContent='Your browser blocked session storage. Enable it to carry your answers, or open tour-details.html and enter them manually.';}
-});
-window.addEventListener('pagehide',()=>{stopVoice();weather?.cancel();clearInterval(weatherTimer);});
+}));
+window.addEventListener('pagehide',()=>{introRun++;introTimers.forEach(clearTimeout);introVideo.pause();stopVoice();weather?.cancel();clearInterval(weatherTimer);});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopVoice();});
 window.addEventListener('resize',()=>{if(map&&document.body.dataset.stage==='map')map.invalidateSize();});
 ask(0,true);

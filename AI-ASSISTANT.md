@@ -47,3 +47,14 @@ Selected dates, guest counts, optional name/email and preference message pass vi
 - `python deliverables/verify-assistant-services.py` checks the real forecast, historical, satellite, label and Leaflet endpoints. All five returned successful responses during verification.
 - DOM integration checks cover the seven-question sequence, invalid dates, intro, city filtering, landmark zoom, tour handoff, editing, weather classification, forecast horizon, stale responses, preview effects, offline failure and historical reference fetching. To rerun: `npm install --prefix .assistant-qa --no-save --no-package-lock linkedom`, then `node deliverables/verify-assistant-dom.cjs`. The helper dependency was removed after verification.
 - No browser was connected for visual rendering QA; DOM tests do not verify pixel layout or actual voice/video playback.
+
+
+## Single-play intro and per-city tour selection
+
+The intro now begins with the guide video paused on its opening frame and the heading/CTA floating above it. The CTA fades the copy away, plays the video once, and reveals the satellite map when playback ends. Skip, failed playback, stalled media, duplicate clicks, and cancellation are handled; reduced-motion settings suppress the visual animations.
+
+Five authored tour cards are available: the eight-day cruise and the existing Giza Pyramids & Sphinx, Aswan Felucca Sunset Sail, Karnak & Valley of Kings, and Diving in Hurghada catalogue entries. City marker labels and city buttons count matching cards. Selecting a city filters the card rail. Selecting a tour opens its ordered itinerary, fits its map stops, and starts English narration. Selecting an individual stop zooms in and narrates that place. Aswan now has an additional general felucca reference marker, with the exact sailing departure point explicitly left to operator confirmation.
+
+Each day tour has its own static tour-<slug>.html detail page and enquiry form. The shared assistant-booking.js validates the form’s authored tour identity before prefilling the quiz draft. The original eight-day tour continues to use tour-details.html. All enquiry forms remain previews; they do not send requests.
+
+Updated integration checks cover normal and reduced-motion intro timing, one-play behaviour, skip/error/cancel handling, city tour counts, per-tour stops, narration, the original cruise handoff and every day-tour form prefill. No connected browser was available for visual/video playback QA.

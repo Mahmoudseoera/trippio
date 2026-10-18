@@ -5,7 +5,7 @@
  if (!form) return;
  let draft;
  try {draft = JSON.parse(sessionStorage.getItem('trippio-assistant-booking'));} catch (_) {return;}
- if (!draft || draft.tour !== 'nile-cruise-8-days' || !Number.isFinite(draft.savedAt) || Date.now() - draft.savedAt > 7200000) return;
+ if (!draft || draft.tour !== (form.dataset.assistantTour || 'nile-cruise-8-days') || !Number.isFinite(draft.savedAt) || Date.now() - draft.savedAt > 7200000) return;
  for (const input of form.querySelectorAll('input[name], textarea[name]')) {
   const name = input.name;
   if (!Object.hasOwn(draft, name) || typeof draft[name] !== 'string') continue;
