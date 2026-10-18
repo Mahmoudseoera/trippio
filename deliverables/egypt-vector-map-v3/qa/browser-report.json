@@ -1,0 +1,128 @@
+{
+  "viewer": "file:///F:/projects/trippio/deliverables/egypt-vector-map-v3/viewer.html",
+  "checks": [
+    {
+      "name": "Direct file URL initializes actual inline SVG",
+      "passed": true,
+      "viewBox": [
+        0,
+        0,
+        2400,
+        2378
+      ]
+    },
+    {
+      "name": "Single page H1",
+      "passed": true
+    },
+    {
+      "name": "No raster SVG image elements",
+      "passed": true
+    },
+    {
+      "name": "Desktop has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Controls enable after load",
+      "passed": true
+    },
+    {
+      "name": "Zoom button changes actual viewBox",
+      "passed": true,
+      "viewBox": [
+        400,
+        396.33333333333337,
+        1600,
+        1585.3333333333333
+      ]
+    },
+    {
+      "name": "Wheel zoom remains anchored under pointer",
+      "passed": true,
+      "anchor_drift_units": 0.00017263349150062197,
+      "viewBox": [
+        643.6317584344075,
+        601.8448157935698,
+        1185.3091530907486,
+        1174.443819187417
+      ]
+    },
+    {
+      "name": "Dragging pans the vector viewport",
+      "passed": true,
+      "viewBox": [
+        521.6116168328449,
+        540.8346839576323,
+        1185.3091530907486,
+        1174.443819187417
+      ]
+    },
+    {
+      "name": "Reset restores full map",
+      "passed": true
+    },
+    {
+      "name": "Keyboard plus zooms",
+      "passed": true
+    },
+    {
+      "name": "Keyboard arrow pans",
+      "passed": true
+    },
+    {
+      "name": "Home restores full map",
+      "passed": true
+    },
+    {
+      "name": "Zoom is capped at 1600 percent",
+      "passed": true,
+      "viewBox": [
+        1125,
+        1114.6875,
+        150,
+        148.625
+      ]
+    },
+    {
+      "name": "High zoom culls offscreen artwork and preserves defs",
+      "passed": true,
+      "total": 105,
+      "hidden": 104,
+      "defsHidden": 0
+    },
+    {
+      "name": "Reset restores visible artwork",
+      "passed": true,
+      "hidden": 0
+    },
+    {
+      "name": "390px layout has no horizontal overflow",
+      "passed": true,
+      "width": 390
+    },
+    {
+      "name": "Mobile controls remain visible and usable",
+      "passed": true
+    },
+    {
+      "name": "Two-finger pinch updates vector viewBox",
+      "passed": true,
+      "viewBox": [
+        600,
+        594.5,
+        1200,
+        1189
+      ]
+    },
+    {
+      "name": "No console, script, or loading errors",
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "browser": "155.0.8059.40",
+  "passed": true,
+  "elapsed_seconds": 102.48
+}

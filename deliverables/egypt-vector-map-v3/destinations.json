@@ -1,0 +1,655 @@
+{
+  "version": 3,
+  "viewBox": [
+    0,
+    0,
+    2400,
+    2378
+  ],
+  "coordinateSystem": {
+    "name": "Equirectangular with standard parallel 27 degrees north",
+    "orientation": "north-up",
+    "standard_parallel": 27.0,
+    "bbox": [
+      24.0,
+      21.4,
+      36.8,
+      32.7
+    ],
+    "suggested_width": 2400,
+    "suggested_height": 2377.928715987803,
+    "suggested_viewBox": [
+      0,
+      0,
+      2400,
+      2378
+    ],
+    "forward_x": "(longitude - 24) * 2400 / 12.8",
+    "forward_y": "(32.7 - latitude) * 2400 / (12.8 * cos(27 degrees))",
+    "note": "Uniform local geographic scale at 27N; north-south distances are not squeezed into a panorama. Longitude distortion varies modestly with latitude."
+  },
+  "warning": "Actual anchor positions are distinct from enlarged illustrated footprints. No marker coordinates from v1/v2 are compatible. Unverified geographic anchors are explicitly flagged.",
+  "destinations": [
+    {
+      "id": "siwa",
+      "name": "Siwa",
+      "kind": "destination",
+      "longitude": 25.516675,
+      "latitude": 29.200012,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Siwa",
+      "svg": {
+        "x": 284.377,
+        "y": 736.524
+      },
+      "groupId": "destination-siwa",
+      "artwork": {
+        "symbolId": "art-oasis",
+        "offset": [
+          0,
+          0
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          209.38,
+          646.3,
+          150,
+          110.02
+        ]
+      }
+    },
+    {
+      "id": "bahariya",
+      "name": "Bahariya",
+      "kind": "destination",
+      "longitude": 28.87,
+      "latitude": 28.35,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 913.125,
+        "y": 915.397
+      },
+      "groupId": "destination-bahariya",
+      "artwork": {
+        "symbolId": "art-oasis",
+        "offset": [
+          0,
+          0
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          847.13,
+          836.0,
+          132,
+          96.82
+        ]
+      }
+    },
+    {
+      "id": "farafra",
+      "name": "Farafra",
+      "kind": "destination",
+      "longitude": 27.966551,
+      "latitude": 27.067145,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Qasr Farafra",
+      "svg": {
+        "x": 743.728,
+        "y": 1185.356
+      },
+      "groupId": "destination-farafra",
+      "artwork": {
+        "symbolId": "art-oasis",
+        "offset": [
+          0,
+          0
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          677.73,
+          1105.96,
+          132,
+          96.82
+        ]
+      }
+    },
+    {
+      "id": "dakhla",
+      "name": "Dakhla",
+      "kind": "destination",
+      "longitude": 29.0,
+      "latitude": 25.5,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 937.5,
+        "y": 1515.14
+      },
+      "groupId": "destination-dakhla",
+      "artwork": {
+        "symbolId": "art-oasis",
+        "offset": [
+          0,
+          0
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          860.0,
+          1421.91,
+          155,
+          113.69
+        ]
+      }
+    },
+    {
+      "id": "kharga",
+      "name": "Kharga",
+      "kind": "destination",
+      "longitude": 30.550011,
+      "latitude": 25.440009,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "El Kharga",
+      "svg": {
+        "x": 1228.127,
+        "y": 1527.765
+      },
+      "groupId": "destination-kharga",
+      "artwork": {
+        "symbolId": "art-oasis",
+        "offset": [
+          0,
+          0
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1160.63,
+          1446.57,
+          135,
+          99.02
+        ]
+      }
+    },
+    {
+      "id": "fayoum",
+      "name": "Fayoum",
+      "kind": "destination",
+      "longitude": 30.839967,
+      "latitude": 29.310031,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "El Faiyum",
+      "svg": {
+        "x": 1282.494,
+        "y": 713.372
+      },
+      "groupId": "destination-fayoum",
+      "artwork": {
+        "symbolId": "art-oasis",
+        "offset": [
+          -15,
+          0
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1233.49,
+          672.47,
+          68,
+          49.88
+        ]
+      }
+    },
+    {
+      "id": "alexandria",
+      "name": "Alexandria",
+      "kind": "destination",
+      "longitude": 29.94805,
+      "latitude": 31.201965,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Alexandria",
+      "svg": {
+        "x": 1115.259,
+        "y": 315.241
+      },
+      "groupId": "destination-alexandria"
+    },
+    {
+      "id": "cairo",
+      "name": "Cairo",
+      "kind": "destination",
+      "longitude": 31.248022,
+      "latitude": 30.051906,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Cairo",
+      "svg": {
+        "x": 1359.004,
+        "y": 557.255
+      },
+      "groupId": "destination-cairo"
+    },
+    {
+      "id": "giza",
+      "name": "Giza Pyramids",
+      "kind": "attraction",
+      "longitude": 31.1342,
+      "latitude": 29.9792,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1337.663,
+        "y": 572.555
+      },
+      "groupId": "destination-giza",
+      "artwork": {
+        "symbolId": "art-giza",
+        "offset": [
+          -80,
+          10
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1093.36,
+          409.73,
+          265,
+          205.75
+        ]
+      }
+    },
+    {
+      "id": "luxor",
+      "name": "Luxor",
+      "kind": "destination",
+      "longitude": 32.650038,
+      "latitude": 25.700019,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Luxor",
+      "svg": {
+        "x": 1621.882,
+        "y": 1473.049
+      },
+      "groupId": "destination-luxor",
+      "artwork": {
+        "symbolId": "art-luxor",
+        "offset": [
+          55,
+          58
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1611.88,
+          1442.85,
+          130,
+          107.56
+        ]
+      }
+    },
+    {
+      "id": "karnak",
+      "name": "Karnak",
+      "kind": "attraction",
+      "longitude": 32.6573,
+      "latitude": 25.7188,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1623.244,
+        "y": 1469.097
+      },
+      "groupId": "destination-karnak",
+      "artwork": {
+        "symbolId": "art-karnak",
+        "offset": [
+          75,
+          -55
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1615.74,
+          1294.71,
+          165,
+          145.59
+        ]
+      }
+    },
+    {
+      "id": "valley-of-the-kings",
+      "name": "Valley of the Kings",
+      "kind": "attraction",
+      "longitude": 32.6014,
+      "latitude": 25.7402,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1612.762,
+        "y": 1464.594
+      },
+      "groupId": "destination-valley-of-the-kings",
+      "artwork": {
+        "symbolId": "art-plateau",
+        "offset": [
+          -145,
+          33
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1422.76,
+          1453.17,
+          90,
+          54.18
+        ]
+      }
+    },
+    {
+      "id": "edfu",
+      "name": "Edfu",
+      "kind": "attraction",
+      "longitude": 32.873,
+      "latitude": 24.978,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1663.687,
+        "y": 1624.988
+      },
+      "groupId": "destination-edfu",
+      "artwork": {
+        "symbolId": "art-edfu",
+        "offset": [
+          -64,
+          8
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1530.69,
+          1551.0,
+          138,
+          99.99
+        ]
+      }
+    },
+    {
+      "id": "kom-ombo",
+      "name": "Kom Ombo",
+      "kind": "attraction",
+      "longitude": 32.928,
+      "latitude": 24.452,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1674.0,
+        "y": 1735.678
+      },
+      "groupId": "destination-kom-ombo",
+      "artwork": {
+        "symbolId": "art-kom-ombo",
+        "offset": [
+          55,
+          -8
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1666.5,
+          1652.55,
+          125,
+          91.62
+        ]
+      }
+    },
+    {
+      "id": "aswan",
+      "name": "Aswan",
+      "kind": "destination",
+      "longitude": 32.898911,
+      "latitude": 24.087508,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Aswan",
+      "svg": {
+        "x": 1668.546,
+        "y": 1812.38
+      },
+      "groupId": "destination-aswan",
+      "artwork": {
+        "symbolId": "art-nubian-village",
+        "offset": [
+          -18,
+          -3
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1609.55,
+          1755.34,
+          82,
+          65.9
+        ]
+      }
+    },
+    {
+      "id": "philae",
+      "name": "Philae",
+      "kind": "attraction",
+      "longitude": 32.884,
+      "latitude": 24.025,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1665.75,
+        "y": 1825.534
+      },
+      "groupId": "destination-philae",
+      "artwork": {
+        "symbolId": "art-philae",
+        "offset": [
+          38,
+          45
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1638.75,
+          1783.13,
+          130,
+          106.59
+        ]
+      }
+    },
+    {
+      "id": "abu-simbel",
+      "name": "Abu Simbel",
+      "kind": "attraction",
+      "longitude": 31.6258,
+      "latitude": 22.3372,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1429.838,
+        "y": 2180.708
+      },
+      "groupId": "destination-abu-simbel",
+      "artwork": {
+        "symbolId": "art-abu-simbel",
+        "offset": [
+          -95,
+          -5
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1229.84,
+          2026.82,
+          210,
+          181.57
+        ]
+      }
+    },
+    {
+      "id": "hurghada",
+      "name": "Hurghada",
+      "kind": "destination",
+      "longitude": 33.830017,
+      "latitude": 27.230003,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Hurghada",
+      "svg": {
+        "x": 1843.128,
+        "y": 1151.085
+      },
+      "groupId": "destination-hurghada"
+    },
+    {
+      "id": "marsa-alam",
+      "name": "Marsa Alam",
+      "kind": "destination",
+      "longitude": 34.9,
+      "latitude": 25.067,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 2043.75,
+        "y": 1606.259
+      },
+      "groupId": "destination-marsa-alam"
+    },
+    {
+      "id": "sharm-el-sheikh",
+      "name": "Sharm el-Sheikh",
+      "kind": "destination",
+      "longitude": 34.33,
+      "latitude": 27.91,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1936.875,
+        "y": 1007.989
+      },
+      "groupId": "destination-sharm-el-sheikh"
+    },
+    {
+      "id": "dahab",
+      "name": "Dahab",
+      "kind": "destination",
+      "longitude": 34.513,
+      "latitude": 28.493,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1971.188,
+        "y": 885.305
+      },
+      "groupId": "destination-dahab"
+    },
+    {
+      "id": "suez",
+      "name": "Suez",
+      "kind": "destination",
+      "longitude": 32.549941,
+      "latitude": 30.004976,
+      "status": "Verified against local Natural Earth 10m populated places source; generalized city center, not monument footprint",
+      "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "source_name": "Suez",
+      "svg": {
+        "x": 1603.114,
+        "y": 567.131
+      },
+      "groupId": "destination-suez"
+    },
+    {
+      "id": "saint-catherine",
+      "name": "Saint Catherine",
+      "kind": "attraction",
+      "longitude": 33.975,
+      "latitude": 28.556,
+      "status": "Approximate editorial reference point; not surveyed or independently source-verified in this revision",
+      "source": null,
+      "illustration_note": "Illustration may be enlarged and displaced for legibility; the geographic anchor must remain fixed.",
+      "svg": {
+        "x": 1870.313,
+        "y": 872.047
+      },
+      "groupId": "destination-saint-catherine"
+    },
+    {
+      "id": "hatshepsut",
+      "name": "Temple of Hatshepsut",
+      "kind": "attraction",
+      "longitude": 32.6064,
+      "latitude": 25.7383,
+      "status": "Approximate editorial reference point; not independently source-verified",
+      "source": null,
+      "svg": {
+        "x": 1613.7,
+        "y": 1464.993
+      },
+      "groupId": "destination-hatshepsut",
+      "artwork": {
+        "symbolId": "art-hatshepsut",
+        "offset": [
+          -92,
+          -42
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1444.2,
+          1311.7,
+          155,
+          135.72
+        ]
+      }
+    },
+    {
+      "id": "qaitbay",
+      "name": "Citadel of Qaitbay",
+      "kind": "attraction",
+      "longitude": 29.8856,
+      "latitude": 31.2139,
+      "status": "Approximate editorial reference point; not independently source-verified",
+      "source": null,
+      "svg": {
+        "x": 1103.55,
+        "y": 312.729
+      },
+      "groupId": "destination-qaitbay",
+      "artwork": {
+        "symbolId": "art-qaitbay",
+        "offset": [
+          -12,
+          -4
+        ],
+        "note": "Architectural footprint is exaggerated. Use svg anchor for markers, not artwork center.",
+        "bounds": [
+          1025.05,
+          221.48,
+          133,
+          106.4
+        ]
+      }
+    }
+  ]
+}

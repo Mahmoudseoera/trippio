@@ -1,0 +1,400 @@
+{
+  "version": 1,
+  "viewBox": [
+    0,
+    0,
+    1920,
+    1120
+  ],
+  "orientation": "north-up",
+  "projection": {
+    "name": "affine equirectangular illustration",
+    "longitudeBounds": [
+      24.0,
+      36.8
+    ],
+    "latitudeBounds": [
+      21.7,
+      32.8
+    ],
+    "forward": {
+      "x": "(longitude - 24.0) / 12.8 * 1920",
+      "y": "(32.8 - latitude) / 11.1 * 1120"
+    },
+    "inverse": {
+      "longitude": "24.0 + x / 1920 * 12.8",
+      "latitude": "32.8 - y / 1120 * 11.1"
+    },
+    "warning": "Unequal axis scale is intentional for panorama. Not distance preserving. Shorelines/rivers generalized at 1:50m; monument footprints are exaggerated. Anchors are geographic reference points, not the visual centroid of enlarged illustrations."
+  },
+  "destinations": [
+    {
+      "id": "siwa",
+      "description": "Siwa oasis",
+      "kind": "destination",
+      "svg": {
+        "x": 228.0,
+        "y": 363.24
+      },
+      "geographic": {
+        "longitude": 25.52,
+        "latitude": 29.2,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-siwa"
+    },
+    {
+      "id": "bahariya",
+      "description": "Bahariya oasis",
+      "kind": "destination",
+      "svg": {
+        "x": 730.5,
+        "y": 449.01
+      },
+      "geographic": {
+        "longitude": 28.87,
+        "latitude": 28.35,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-bahariya"
+    },
+    {
+      "id": "farafra",
+      "description": "Farafra oasis",
+      "kind": "destination",
+      "svg": {
+        "x": 595.5,
+        "y": 579.17
+      },
+      "geographic": {
+        "longitude": 27.97,
+        "latitude": 27.06,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-farafra"
+    },
+    {
+      "id": "dakhla",
+      "description": "Dakhla oasis",
+      "kind": "destination",
+      "svg": {
+        "x": 750.0,
+        "y": 736.58
+      },
+      "geographic": {
+        "longitude": 29.0,
+        "latitude": 25.5,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-dakhla"
+    },
+    {
+      "id": "kharga",
+      "description": "Kharga oasis",
+      "kind": "destination",
+      "svg": {
+        "x": 982.5,
+        "y": 742.63
+      },
+      "geographic": {
+        "longitude": 30.55,
+        "latitude": 25.44,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-kharga"
+    },
+    {
+      "id": "fayoum",
+      "description": "Fayoum agricultural basin",
+      "kind": "destination",
+      "svg": {
+        "x": 997.5,
+        "y": 352.14
+      },
+      "geographic": {
+        "longitude": 30.65,
+        "latitude": 29.31,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-fayoum"
+    },
+    {
+      "id": "alexandria",
+      "description": "Alexandria city and Mediterranean harbor",
+      "kind": "destination",
+      "svg": {
+        "x": 892.21,
+        "y": 161.24
+      },
+      "geographic": {
+        "longitude": 29.94805,
+        "latitude": 31.201965,
+        "status": "source-verified city center",
+        "source": "https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_populated_places.geojson"
+      },
+      "landmarkGroupId": "landmark-alexandria"
+    },
+    {
+      "id": "cairo",
+      "description": "Greater Cairo; anchor refers to city center",
+      "kind": "destination",
+      "svg": {
+        "x": 1087.2,
+        "y": 277.29
+      },
+      "geographic": {
+        "longitude": 31.248022,
+        "latitude": 30.051906,
+        "status": "source-verified city center",
+        "source": "https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_populated_places.geojson"
+      },
+      "landmarkGroupId": "landmark-cairo"
+    },
+    {
+      "id": "giza",
+      "description": "Giza pyramid complex; enlarged architectural vignette",
+      "kind": "attraction",
+      "svg": {
+        "x": 1070.13,
+        "y": 284.62
+      },
+      "geographic": {
+        "longitude": 31.1342,
+        "latitude": 29.9792,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-giza"
+    },
+    {
+      "id": "luxor",
+      "description": "Luxor city; Luxor Temple is artistically enlarged on east bank",
+      "kind": "destination",
+      "svg": {
+        "x": 1297.51,
+        "y": 716.39
+      },
+      "geographic": {
+        "longitude": 32.650038,
+        "latitude": 25.700019,
+        "status": "source-verified city center",
+        "source": "https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_populated_places.geojson"
+      },
+      "landmarkGroupId": "landmark-luxor"
+    },
+    {
+      "id": "karnak",
+      "description": "Karnak temple complex; architectural footprint exaggerated",
+      "kind": "attraction",
+      "svg": {
+        "x": 1298.6,
+        "y": 714.5
+      },
+      "geographic": {
+        "longitude": 32.6573,
+        "latitude": 25.7188,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-karnak"
+    },
+    {
+      "id": "valley-of-the-kings",
+      "description": "Valley of the Kings on the west bank",
+      "kind": "attraction",
+      "svg": {
+        "x": 1290.21,
+        "y": 712.34
+      },
+      "geographic": {
+        "longitude": 32.6014,
+        "latitude": 25.7402,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-valley-of-the-kings"
+    },
+    {
+      "id": "edfu",
+      "description": "Edfu, Temple of Horus",
+      "kind": "attraction",
+      "svg": {
+        "x": 1330.95,
+        "y": 789.25
+      },
+      "geographic": {
+        "longitude": 32.873,
+        "latitude": 24.978,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-edfu"
+    },
+    {
+      "id": "kom-ombo",
+      "description": "Kom Ombo double temple on east bank",
+      "kind": "attraction",
+      "svg": {
+        "x": 1339.2,
+        "y": 842.32
+      },
+      "geographic": {
+        "longitude": 32.928,
+        "latitude": 24.452,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-kom-ombo"
+    },
+    {
+      "id": "aswan",
+      "description": "Aswan, granite islands and Nubian riverside settlements",
+      "kind": "destination",
+      "svg": {
+        "x": 1334.84,
+        "y": 879.1
+      },
+      "geographic": {
+        "longitude": 32.898911,
+        "latitude": 24.087508,
+        "status": "source-verified city center",
+        "source": "https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_populated_places.geojson"
+      },
+      "landmarkGroupId": "landmark-aswan"
+    },
+    {
+      "id": "philae",
+      "description": "Philae temple, island south of Aswan",
+      "kind": "attraction",
+      "svg": {
+        "x": 1332.6,
+        "y": 885.41
+      },
+      "geographic": {
+        "longitude": 32.884,
+        "latitude": 24.025,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-philae"
+    },
+    {
+      "id": "abu-simbel",
+      "description": "Abu Simbel rock-cut temples on the west bank of Lake Nasser",
+      "kind": "attraction",
+      "svg": {
+        "x": 1143.87,
+        "y": 1055.71
+      },
+      "geographic": {
+        "longitude": 31.6258,
+        "latitude": 22.3372,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-abu-simbel"
+    },
+    {
+      "id": "hurghada",
+      "description": "Hurghada coastal resort and reef waters",
+      "kind": "destination",
+      "svg": {
+        "x": 1471.5,
+        "y": 558.99
+      },
+      "geographic": {
+        "longitude": 33.81,
+        "latitude": 27.26,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-hurghada"
+    },
+    {
+      "id": "marsa-alam",
+      "description": "Marsa Alam Red Sea coast",
+      "kind": "destination",
+      "svg": {
+        "x": 1635.0,
+        "y": 780.27
+      },
+      "geographic": {
+        "longitude": 34.9,
+        "latitude": 25.067,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-marsa-alam"
+    },
+    {
+      "id": "sharm-el-sheikh",
+      "description": "Sharm el Sheikh at the southern tip of Sinai",
+      "kind": "destination",
+      "svg": {
+        "x": 1549.5,
+        "y": 493.41
+      },
+      "geographic": {
+        "longitude": 34.33,
+        "latitude": 27.91,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-sharm-el-sheikh"
+    },
+    {
+      "id": "dahab",
+      "description": "Dahab on the Gulf of Aqaba",
+      "kind": "destination",
+      "svg": {
+        "x": 1576.95,
+        "y": 434.58
+      },
+      "geographic": {
+        "longitude": 34.513,
+        "latitude": 28.493,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-dahab"
+    },
+    {
+      "id": "suez",
+      "description": "Suez at the head of the Gulf of Suez",
+      "kind": "destination",
+      "svg": {
+        "x": 1282.49,
+        "y": 282.02
+      },
+      "geographic": {
+        "longitude": 32.549941,
+        "latitude": 30.004976,
+        "status": "source-verified city center",
+        "source": "https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_populated_places.geojson"
+      },
+      "landmarkGroupId": "landmark-suez"
+    },
+    {
+      "id": "saint-catherine",
+      "description": "Saint Catherine monastery in southern Sinai",
+      "kind": "attraction",
+      "svg": {
+        "x": 1496.25,
+        "y": 428.22
+      },
+      "geographic": {
+        "longitude": 33.975,
+        "latitude": 28.556,
+        "status": "approximate editorial location; not surveyed",
+        "source": null
+      },
+      "landmarkGroupId": "landmark-saint-catherine"
+    }
+  ]
+}

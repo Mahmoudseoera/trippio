@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "svgBytes": 9281287,
+  "svgGzipBytes": 3105391,
+  "elements": 16482,
+  "paths": 15708,
+  "symbolDefinitions": 18,
+  "illustrationInstances": 105,
+  "destinations": 25,
+  "embeddedRasterElements": 0,
+  "externalReferences": 0,
+  "filters": 0,
+  "passed": [
+    "XML parse",
+    "unique IDs",
+    "internal reference targets",
+    "no embedded images or scripts",
+    "anchor bounds",
+    "coordinate round trips",
+    "destination group references"
+  ],
+  "limits": [
+    "Illustrated landmarks are enlarged and offset with metadata; geography follows generalized Natural Earth sources.",
+    "Tracing has finite artistic detail; smooth zoom does not create new source detail.",
+    "Actual low-powered devices and other browser engines were not benchmarked."
+  ],
+  "browserQA": {
+    "passed": true,
+    "checks": 19,
+    "report": "qa/browser-report.json",
+    "scope": "Chrome desktop and mobile emulation; file URL"
+  }
+}

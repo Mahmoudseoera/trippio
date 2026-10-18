@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="معاينة خريطة مصر المصوّرة بصيغة SVG متجهية، مع التكبير والتحريك وتنزيل الرسم وبيانات المواقع.">
+  <title>خريطة مصر المصوّرة · Egypt vector map</title>
+  <style>
+    :root { color-scheme: light; font-family: Tahoma, Arial, sans-serif; color: #143c48; background: #f5f1e8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: clamp(14px, 3vw, 44px); }
+    button, input, output { font: inherit; }
+    button, .file-button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: #155b68; text-underline-offset: 4px; }
+    a:hover { color: #083b44; }
+    button:focus-visible, a:focus-visible, .map-stage:focus-visible, .file-button:focus-within { outline: 3px solid #147a98; outline-offset: 4px; }
+    .page { max-width: 1600px; margin-inline: auto; }
+    .header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 22px; }
+    .eyebrow { margin: 0 0 9px; font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #467079; }
+    h1 { margin: 0; font-size: clamp(25px, 3.5vw, 40px); font-weight: 700; line-height: 1.5; }
+    .intro { margin: 7px 0 0; max-width: 720px; color: #50656b; font-size: 13px; line-height: 1.9; }
+    .downloads { display: flex; gap: 10px 20px; flex-wrap: wrap; font-size: 13px; flex-shrink: 0; padding-bottom: 5px; }
+    .map-shell { border: 1px solid #c7d9d6; border-radius: 18px; overflow: hidden; background: #e6f4f3; box-shadow: 0 14px 45px #244b5210; }
+    .toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 11px 16px; background: #fffdf7; border-bottom: 1px solid #c7d9d6; }
+    .controls { display: flex; gap: 7px; align-items: center; direction: ltr; }
+    .control { min-width: 42px; height: 40px; border: 1px solid #c6d3d0; border-radius: 9px; color: #143c48; background: white; cursor: pointer; touch-action: manipulation; }
+    .control:hover:enabled { background: #e6f4f3; border-color: #609b9e; }
+    .control:disabled { opacity: .38; cursor: default; }
+    .symbol { font-size: 24px; line-height: 1; }
+    .reset { padding-inline: 14px; font-size: 12px; }
+    .zoom-level { min-width: 60px; text-align: center; font-size: 12px; font-variant-numeric: tabular-nums; }
+    .hint { margin: 0; color: #526e73; font-size: 11px; line-height: 1.8; }
+    .map-stage { position: relative; width: 100%; height: min(1050px, 77vh); min-height: 390px; overflow: hidden; background: #5dbfd6; direction: ltr; outline-offset: -5px !important; }
+    .map-stage.ready { cursor: grab; touch-action: none; }
+    .map-stage.dragging { cursor: grabbing; }
+    .map-stage > svg, .map-stage > object { display: block; width: 100%; height: 100%; }
+    .map-stage > svg { user-select: none; -webkit-user-select: none; }
+    .loading { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; background: #e6f4f3; color: #315e67; font-size: 14px; direction: rtl; pointer-events: none; }
+    .fallback { padding: 20px; background: #fff6de; font-size: 13px; line-height: 1.9; }
+    .fallback p { margin: 0 0 12px; }
+    .file-button { position: relative; display: inline-block; padding: 8px 15px; border: 1px solid #87aaa7; border-radius: 8px; background: #fffdf7; color: #143c48; cursor: pointer; overflow: hidden; }
+    .file-button input { position: absolute; inset: 0; opacity: 0; width: 100%; cursor: pointer; }
+    .notes { display: flex; justify-content: space-between; gap: 12px 28px; padding: 13px 3px; }
+    .notes p { margin: 0; color: #566a6d; font-size: 11px; line-height: 1.9; }
+    .notes .format { flex-shrink: 0; letter-spacing: .7px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    [hidden] { display: none !important; }
+    @media (max-width: 700px) {
+      body { padding: 15px 10px; }
+      .header { display: block; margin: 4px 5px 17px; }
+      .downloads { margin-top: 14px; }
+      .toolbar { padding: 10px; }
+      .hint { width: 100%; }
+      .map-stage { min-height: 420px; height: 69vh; }
+      .notes { display: block; padding-inline: 6px; }
+      .notes .format { margin-top: 5px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+  </style>
+  <script src="viewer.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div>
+        <p class="eyebrow" lang="en" dir="ltr">EGYPT · ILLUSTRATED VECTOR MAP</p>
+        <h1>خريطة مصر المصوّرة</h1>
+        <p class="intro">استكشف تفاصيل الرسم بالتكبير والتحريك. الرسم بصيغة SVG متجهية، وتظل مساراته واضحة عند التكبير.</p>
+      </div>
+      <nav class="downloads" aria-label="تنزيل الملفات">
+        <a href="egypt-tourism-vector.svg" download>تنزيل SVG</a>
+        <a href="destinations.json" download>بيانات المواقع</a>
+      </nav>
+    </header>
+    <section class="map-shell" aria-label="معاينة الخريطة">
+      <div class="toolbar">
+        <div class="controls" role="group" aria-label="التحكم في التكبير">
+          <button id="zoom-out" class="control symbol" type="button" aria-label="تصغير · Zoom out" disabled>−</button>
+          <output id="zoom-level" class="zoom-level" aria-label="مستوى التكبير">100%</output>
+          <button id="zoom-in" class="control symbol" type="button" aria-label="تكبير · Zoom in" disabled>+</button>
+          <button id="reset-view" class="control reset" type="button" disabled>عرض كامل</button>
+        </div>
+        <p id="map-help" class="hint">اسحب للتحريك · عجلة الماوس أو إصبعان للتكبير · لوحة المفاتيح: + − والأسهم وHome</p>
+      </div>
+      <div id="map-stage" class="map-stage" tabindex="0" role="region" aria-label="خريطة مصر التفاعلية · Interactive Egypt map" aria-describedby="map-help">
+        <!-- MAP_SVG -->
+        <p id="loading" class="loading">جارٍ تحميل الرسم المتجهي…</p>
+      </div>
+      <div id="fallback" class="fallback" hidden>
+        <p id="fallback-message">منع المتصفح التحكم في الملف المحلي. اختر ملف <bdi>egypt-tourism-vector.svg</bdi> من هذا المجلد لعرضه مع التكبير والتحريك، أو <a href="egypt-tourism-vector.svg">افتح الرسم مباشرة</a>.</p>
+        <label class="file-button">اختيار ملف SVG<input id="svg-file" type="file" accept=".svg,image/svg+xml" aria-label="اختيار ملف خريطة SVG"></label>
+      </div>
+    </section>
+    <footer class="notes">
+      <p>المعالم مرسومة بأحجام أكبر لإظهار تفاصيلها. مواقع الوجهات الجغرافية محفوظة بصورة مستقلة في ملف البيانات؛ هذا رسم سياحي توضيحي.</p>
+      <p class="format" lang="en" dir="ltr">SVG · 100–1600% · Pan &amp; zoom</p>
+    </footer>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+    <noscript><p>معاينة التكبير تحتاج إلى JavaScript. <a href="egypt-tourism-vector.svg">افتح رسم SVG</a> مباشرة.</p></noscript>
+  </main>
+</body>
+</html>

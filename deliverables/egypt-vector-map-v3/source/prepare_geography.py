@@ -10,7 +10,6 @@ import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-OLD = ROOT.parent.parent / 'egypt-vector-map'
 BBOX = (24.0, 21.4, 36.8, 32.7)
 STANDARD_PARALLEL = 27.0
 WIDTH = 2400
@@ -156,8 +155,8 @@ fc={'type':'FeatureCollection','bbox':list(BBOX),'metadata':metadata,'features':
 
 # Retain the established 23 ids, improve city anchors from checked source records,
 # and clearly distinguish unsurveyed monument/oasis reference points.
-old=json.loads((OLD/'destinations.json').read_text(encoding='utf-8'))['destinations']
-towns=json.loads((OLD/'source/ne_10m_populated_places.geojson').read_text(encoding='utf-8'))['features']
+old=json.loads((ROOT/'anchor-seed.json').read_text(encoding='utf-8'))['destinations']
+towns=json.loads((ROOT/'egypt-populated-places.json').read_text(encoding='utf-8'))['features']
 towns={f['properties']['NAME']:f for f in towns if f['properties'].get('ADM0NAME')=='Egypt'}
 city_names={'siwa':'Siwa','farafra':'Qasr Farafra','kharga':'El Kharga','fayoum':'El Faiyum','alexandria':'Alexandria','cairo':'Cairo','luxor':'Luxor','aswan':'Aswan','hurghada':'Hurghada','suez':'Suez'}
 display_names={'siwa':'Siwa','bahariya':'Bahariya','farafra':'Farafra','dakhla':'Dakhla','kharga':'Kharga','fayoum':'Fayoum','alexandria':'Alexandria','cairo':'Cairo','giza':'Giza Pyramids','luxor':'Luxor','karnak':'Karnak','valley-of-the-kings':'Valley of the Kings','edfu':'Edfu','kom-ombo':'Kom Ombo','aswan':'Aswan','philae':'Philae','abu-simbel':'Abu Simbel','hurghada':'Hurghada','marsa-alam':'Marsa Alam','sharm-el-sheikh':'Sharm el-Sheikh','dahab':'Dahab','suez':'Suez','saint-catherine':'Saint Catherine'}

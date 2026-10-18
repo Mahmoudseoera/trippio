@@ -1,0 +1,913 @@
+{
+  "assets": [
+    {
+      "path_count": 671,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "giza-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "giza",
+      "category": "landmarks",
+      "file": "symbols\\landmarks\\giza.svg",
+      "viewBox": [
+        0,
+        0,
+        407,
+        316
+      ],
+      "anchor": [
+        203.5,
+        316
+      ],
+      "bytes": 419364,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        814,
+        632
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        814,
+        632
+      ],
+      "nontransparent_pixels": 322545,
+      "distinct_rgb_colors": 13775,
+      "raster_free": true
+    },
+    {
+      "path_count": 767,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "karnak-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "karnak",
+      "category": "landmarks",
+      "file": "symbols\\landmarks\\karnak.svg",
+      "viewBox": [
+        0,
+        0,
+        391,
+        345
+      ],
+      "anchor": [
+        195.5,
+        345
+      ],
+      "bytes": 473677,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        782,
+        690
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        782,
+        690
+      ],
+      "nontransparent_pixels": 384312,
+      "distinct_rgb_colors": 18944,
+      "raster_free": true
+    },
+    {
+      "path_count": 824,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "hatshepsut-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "hatshepsut",
+      "category": "landmarks",
+      "file": "symbols\\landmarks\\hatshepsut.svg",
+      "viewBox": [
+        0,
+        0,
+        394,
+        345
+      ],
+      "anchor": [
+        197.0,
+        345
+      ],
+      "bytes": 470830,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        788,
+        690
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        788,
+        690
+      ],
+      "nontransparent_pixels": 391687,
+      "distinct_rgb_colors": 19223,
+      "raster_free": true
+    },
+    {
+      "path_count": 714,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "luxor-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "luxor",
+      "category": "landmarks",
+      "file": "symbols\\landmarks\\luxor.svg",
+      "viewBox": [
+        0,
+        0,
+        394,
+        326
+      ],
+      "anchor": [
+        197.0,
+        326
+      ],
+      "bytes": 435764,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        788,
+        652
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        788,
+        652
+      ],
+      "nontransparent_pixels": 329750,
+      "distinct_rgb_colors": 17455,
+      "raster_free": true
+    },
+    {
+      "path_count": 814,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "edfu-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "edfu",
+      "category": "landmarks",
+      "file": "symbols\\landmarks\\edfu.svg",
+      "viewBox": [
+        0,
+        0,
+        432,
+        313
+      ],
+      "anchor": [
+        216.0,
+        313
+      ],
+      "bytes": 497673,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        864,
+        626
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        864,
+        626
+      ],
+      "nontransparent_pixels": 401840,
+      "distinct_rgb_colors": 15354,
+      "raster_free": true
+    },
+    {
+      "path_count": 677,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "kom-ombo-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "kom-ombo",
+      "category": "landmarks",
+      "file": "symbols\\landmarks\\kom-ombo.svg",
+      "viewBox": [
+        0,
+        0,
+        397,
+        291
+      ],
+      "anchor": [
+        198.5,
+        291
+      ],
+      "bytes": 389215,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        794,
+        582
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        794,
+        582
+      ],
+      "nontransparent_pixels": 313650,
+      "distinct_rgb_colors": 16305,
+      "raster_free": true
+    },
+    {
+      "path_count": 885,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "philae-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "philae",
+      "category": "landmarks",
+      "file": "symbols\\landmarks\\philae.svg",
+      "viewBox": [
+        0,
+        0,
+        411,
+        337
+      ],
+      "anchor": [
+        205.5,
+        337
+      ],
+      "bytes": 542739,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        822,
+        674
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        822,
+        674
+      ],
+      "nontransparent_pixels": 408683,
+      "distinct_rgb_colors": 25369,
+      "raster_free": true
+    },
+    {
+      "path_count": 961,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "abu-simbel-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "abu-simbel",
+      "category": "landmarks",
+      "file": "symbols\\landmarks\\abu-simbel.svg",
+      "viewBox": [
+        0,
+        0,
+        421,
+        364
+      ],
+      "anchor": [
+        210.5,
+        364
+      ],
+      "bytes": 575316,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        842,
+        728
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        842,
+        728
+      ],
+      "nontransparent_pixels": 473049,
+      "distinct_rgb_colors": 17274,
+      "raster_free": true
+    },
+    {
+      "path_count": 785,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "qaitbay-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "qaitbay",
+      "category": "landmarks",
+      "file": "symbols\\landmarks\\qaitbay.svg",
+      "viewBox": [
+        0,
+        0,
+        405,
+        324
+      ],
+      "anchor": [
+        202.5,
+        324
+      ],
+      "bytes": 480834,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        810,
+        648
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        810,
+        648
+      ],
+      "nontransparent_pixels": 359204,
+      "distinct_rgb_colors": 20604,
+      "raster_free": true
+    },
+    {
+      "path_count": 776,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "eastern-ridge-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "eastern-ridge",
+      "category": "terrain",
+      "file": "symbols\\terrain\\eastern-ridge.svg",
+      "viewBox": [
+        0,
+        0,
+        410,
+        339
+      ],
+      "anchor": [
+        205.0,
+        339
+      ],
+      "bytes": 486714,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        820,
+        678
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        820,
+        678
+      ],
+      "nontransparent_pixels": 368190,
+      "distinct_rgb_colors": 19375,
+      "raster_free": true
+    },
+    {
+      "path_count": 839,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "sinai-ridge-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "sinai-ridge",
+      "category": "terrain",
+      "file": "symbols\\terrain\\sinai-ridge.svg",
+      "viewBox": [
+        0,
+        0,
+        395,
+        354
+      ],
+      "anchor": [
+        197.5,
+        354
+      ],
+      "bytes": 539309,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        790,
+        708
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        790,
+        708
+      ],
+      "nontransparent_pixels": 407821,
+      "distinct_rgb_colors": 21867,
+      "raster_free": true
+    },
+    {
+      "path_count": 615,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "plateau-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "plateau",
+      "category": "terrain",
+      "file": "symbols\\terrain\\plateau.svg",
+      "viewBox": [
+        0,
+        0,
+        407,
+        245
+      ],
+      "anchor": [
+        203.5,
+        245
+      ],
+      "bytes": 406529,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        814,
+        490
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        814,
+        490
+      ],
+      "nontransparent_pixels": 302060,
+      "distinct_rgb_colors": 15037,
+      "raster_free": true
+    },
+    {
+      "path_count": 405,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "dunes-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "dunes",
+      "category": "terrain",
+      "file": "symbols\\terrain\\dunes.svg",
+      "viewBox": [
+        0,
+        0,
+        407,
+        310
+      ],
+      "anchor": [
+        203.5,
+        310
+      ],
+      "bytes": 318928,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        814,
+        620
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        814,
+        620
+      ],
+      "nontransparent_pixels": 393694,
+      "distinct_rgb_colors": 9486,
+      "raster_free": true
+    },
+    {
+      "path_count": 865,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "oasis-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "oasis",
+      "category": "terrain",
+      "file": "symbols\\terrain\\oasis.svg",
+      "viewBox": [
+        0,
+        0,
+        424,
+        311
+      ],
+      "anchor": [
+        212.0,
+        311
+      ],
+      "bytes": 559635,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        848,
+        622
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        848,
+        622
+      ],
+      "nontransparent_pixels": 399983,
+      "distinct_rgb_colors": 26338,
+      "raster_free": true
+    },
+    {
+      "path_count": 897,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "palms-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "palms",
+      "category": "terrain",
+      "file": "symbols\\terrain\\palms.svg",
+      "viewBox": [
+        0,
+        0,
+        370,
+        372
+      ],
+      "anchor": [
+        185.0,
+        372
+      ],
+      "bytes": 625316,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        740,
+        744
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        740,
+        744
+      ],
+      "nontransparent_pixels": 335897,
+      "distinct_rgb_colors": 26016,
+      "raster_free": true
+    },
+    {
+      "path_count": 1054,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "nubian-village-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "nubian-village",
+      "category": "terrain",
+      "file": "symbols\\terrain\\nubian-village.svg",
+      "viewBox": [
+        0,
+        0,
+        494,
+        397
+      ],
+      "anchor": [
+        247.0,
+        397
+      ],
+      "bytes": 651149,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        988,
+        794
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        987,
+        794
+      ],
+      "nontransparent_pixels": 511557,
+      "distinct_rgb_colors": 30562,
+      "raster_free": true
+    },
+    {
+      "path_count": 432,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "felucca-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "felucca",
+      "category": "terrain",
+      "file": "symbols\\terrain\\felucca.svg",
+      "viewBox": [
+        0,
+        0,
+        287,
+        438
+      ],
+      "anchor": [
+        143.5,
+        438
+      ],
+      "bytes": 282447,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        574,
+        876
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        574,
+        876
+      ],
+      "nontransparent_pixels": 212486,
+      "distinct_rgb_colors": 12039,
+      "raster_free": true
+    },
+    {
+      "path_count": 893,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "granite-island-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "id": "granite-island",
+      "category": "terrain",
+      "file": "symbols\\terrain\\granite-island.svg",
+      "viewBox": [
+        0,
+        0,
+        428,
+        364
+      ],
+      "anchor": [
+        214.0,
+        364
+      ],
+      "bytes": 570651,
+      "paths_match_metadata": true,
+      "contains_data_uri": false,
+      "rendered_size": [
+        856,
+        728
+      ],
+      "visible_bbox": [
+        0,
+        0,
+        856,
+        728
+      ],
+      "nontransparent_pixels": 406221,
+      "distinct_rgb_colors": 27736,
+      "raster_free": true
+    }
+  ],
+  "libraries": [
+    {
+      "path_count": 7098,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "giza",
+        "giza-alpha",
+        "karnak",
+        "karnak-alpha",
+        "hatshepsut",
+        "hatshepsut-alpha",
+        "luxor",
+        "luxor-alpha",
+        "edfu",
+        "edfu-alpha",
+        "kom-ombo",
+        "kom-ombo-alpha",
+        "philae",
+        "philae-alpha",
+        "abu-simbel",
+        "abu-simbel-alpha",
+        "qaitbay",
+        "qaitbay-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "category": "landmarks",
+      "symbol_ids": [
+        "giza",
+        "karnak",
+        "hatshepsut",
+        "luxor",
+        "edfu",
+        "kom-ombo",
+        "philae",
+        "abu-simbel",
+        "qaitbay"
+      ]
+    },
+    {
+      "path_count": 6776,
+      "image_count": 0,
+      "foreign_object_count": 0,
+      "filter_count": 0,
+      "ids": [
+        "eastern-ridge",
+        "eastern-ridge-alpha",
+        "sinai-ridge",
+        "sinai-ridge-alpha",
+        "plateau",
+        "plateau-alpha",
+        "dunes",
+        "dunes-alpha",
+        "oasis",
+        "oasis-alpha",
+        "palms",
+        "palms-alpha",
+        "nubian-village",
+        "nubian-village-alpha",
+        "felucca",
+        "felucca-alpha",
+        "granite-island",
+        "granite-island-alpha"
+      ],
+      "duplicate_ids": [],
+      "unresolved_local_references": [],
+      "external_references": [],
+      "category": "terrain",
+      "symbol_ids": [
+        "eastern-ridge",
+        "sinai-ridge",
+        "plateau",
+        "dunes",
+        "oasis",
+        "palms",
+        "nubian-village",
+        "felucca",
+        "granite-island"
+      ]
+    }
+  ],
+  "issues": [],
+  "render_engine": "resvg_py 0.5.0",
+  "summary": {
+    "asset_count": 18,
+    "paths": 13874,
+    "bytes": 8726090,
+    "raster_free": true,
+    "structural_issues": 0
+  },
+  "geography": {
+    "bounds": [
+      24.0,
+      21.4,
+      36.8,
+      32.7
+    ],
+    "projection": {
+      "name": "Equirectangular with standard parallel 27 degrees north",
+      "orientation": "north-up",
+      "standard_parallel": 27.0,
+      "bbox": [
+        24.0,
+        21.4,
+        36.8,
+        32.7
+      ],
+      "suggested_width": 2400,
+      "suggested_height": 2377.928715987803,
+      "suggested_viewBox": [
+        0,
+        0,
+        2400,
+        2378
+      ],
+      "forward_x": "(longitude - 24) * 2400 / 12.8",
+      "forward_y": "(32.7 - latitude) * 2400 / (12.8 * cos(27 degrees))",
+      "note": "Uniform local geographic scale at 27N; north-south distances are not squeezed into a panorama. Longitude distortion varies modestly with latitude."
+    },
+    "layers": {
+      "land": 6,
+      "egypt": 1,
+      "rivers": 7,
+      "lakes": 4
+    },
+    "feature_names": [
+      "Land",
+      "Land",
+      "Land",
+      "Land",
+      "Land",
+      "Land",
+      "Egypt",
+      "Rosetta Branch",
+      "Suez Canal",
+      "Suez Canal",
+      "Damietta Branch",
+      "Ismailiya Canal",
+      "Nile",
+      "Nile",
+      "Lake Nasser",
+      "Dead Sea",
+      "Dead Sea",
+      "Great Bitter Lake"
+    ],
+    "points": 5904,
+    "nonfinite_coordinates": 0,
+    "coordinates_outside_bounds": 0,
+    "anchors": 23,
+    "anchor_ids_unique": true,
+    "anchors_outside_bounds": [],
+    "source_scale": "1:10,000,000 generalized cartography; 10m means ten million scale, not ten-meter accuracy",
+    "coverage_note": "Both Nile delta branches, Nile river plus Lake Nasser centerline, Suez and Ismailiya canals, and Lake Nasser are included. The source omits several smaller Egyptian lakes including Lake Qarun; no invented lake geometry is added."
+  },
+  "visual_review": {
+    "contact_sheet_inspected": true,
+    "missing_or_visibly_clipped_assets": [],
+    "visible_color_fringe_on_sand_background": false,
+    "style": "Coherent warm, dimensional illustration with simplified color regions from vector tracing.",
+    "geography_preview_inspected": true,
+    "geography_observations": "North-up Egypt outline, Sinai between the gulfs, Nile meanders, delta branches, and Lake Nasser are clearly preserved in the source diagnostic.",
+    "limitations": [
+      "Illustrative monument shapes are not verified architectural reconstructions.",
+      "Paths scale without raster pixels; zoom does not restore source detail omitted by tracing.",
+      "Water around Qaitbay, Philae, felucca, and granite islands is part of the symbol artwork and needs deliberate compositing.",
+      "The source geography is generalized 1:10 million cartography, not surveying accuracy."
+    ]
+  }
+}
