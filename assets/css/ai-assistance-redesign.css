@@ -1,0 +1,88 @@
+:root{color-scheme:light}
+.tour-dock.glass-panel{width:max-content;max-width:calc(100% - 48px);right:auto}
+.tour-dock #tour-options{width:max-content;max-width:100%}
+.tour-dock #selected-tour-summary{max-width:780px}
+.tour-dock.collapsed{width:max-content}
+@media(min-width:601px){.left-dock{top:90px!important}}
+@media(max-width:600px){.tour-dock.glass-panel{width:calc(100% - 24px);max-width:calc(100% - 24px)}}
+.map-entering #satellite-map{animation:none!important}
+.tablet-launch{position:absolute;z-index:4;right:7vw;top:34%;width:min(46vw,700px);aspect-ratio:1.79;border:14px solid #182a31;border-radius:26px;padding:0;background:#182a31;box-shadow:0 25px 90px #0009,0 0 0 2px #9aada7;transform:perspective(1400px) rotateY(-8deg) rotateX(5deg);overflow:hidden;cursor:zoom-in}
+.tablet-launch img,.tablet-expansion img{display:block;width:100%;height:100%;object-fit:cover}
+.tablet-launch span{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#173b38ed;color:white;border:1px solid #c5a164;border-radius:30px;padding:10px 18px;font-size:13px}
+.tablet-expansion{position:fixed;z-index:3000;padding:0;border:0;background:#192f34;overflow:hidden;pointer-events:none;box-shadow:0 0 100px #e6be6577}
+.tablet-expansion span{display:none}
+#intro-stage .intro-copy{left:5vw;max-width:36vw}
+#intro-stage .intro-copy h2{font-size:clamp(28px,3.5vw,50px)}
+#map-coordinate{display:block;font-size:10px;margin-top:5px;max-width:350px}
+.map-heading h2{color:#253d38!important}
+.chat-question{max-height:55vh;overflow-y:auto}
+.confirm-trip{border:0;border-radius:24px;padding:10px 18px;background:#a5793d;color:white}
+#booking-review{border:1px solid #d8c9ab;border-radius:24px;background:#fffcf5;color:#253d38;padding:28px;width:min(640px,92vw);max-height:88dvh;overflow:auto}
+#booking-review::backdrop{background:#0c252bbf;backdrop-filter:blur(8px)}
+#booking-review h2{font-size:28px;margin-bottom:14px}
+#booking-review p{margin:10px 0;line-height:1.6}
+#booking-review label{display:block;font-size:13px;margin-top:14px}
+#booking-review input:not([type=checkbox]),#booking-review textarea{display:block;border:1px solid #cabc9e;border-radius:9px;padding:11px;width:100%;margin-top:5px;background:#fff;font-size:16px}
+#close-booking{float:right;background:none;border:0;font-size:27px;color:inherit}
+.review-consent{display:flex!important;gap:10px;align-items:flex-start}
+.preview-notice{background:#f4ead6;padding:12px;border-radius:10px;font-size:13px}
+#booking-error{color:#9a3026}
+.chat-backdrop{background-image:linear-gradient(90deg,#f7f1e3ed,#f7f1e3a6),url('../images/assistant/egypt-illustrated-v2.png')}
+.confirmation-page{overflow:auto;min-height:100dvh;height:auto;padding:40px 20px}
+.confirmation-card{max-width:720px;margin:5vh auto;background:#fffdf5;border:1px solid #decca8;border-radius:26px;padding:clamp(24px,5vw,50px);box-shadow:0 24px 80px #705b291c}
+.confirmation-card h1{font-size:clamp(28px,5vw,44px);margin:18px 0}
+.confirmation-card p{margin:16px 0;line-height:1.7}
+.confirmation-card dl{display:grid;grid-template-columns:140px 1fr;gap:12px;margin:25px 0}
+.confirmation-card dt{font-weight:bold}.confirmation-card dd{margin:0;overflow-wrap:anywhere}
+.confirmation-actions{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;align-items:center}
+.confirmation-actions a,.confirmation-actions button{border:1px solid #bba16e;border-radius:24px;padding:10px 18px;color:#254b46;background:none;text-decoration:none}
+@media(max-width:900px){#intro-stage .intro-copy{left:6vw;top:8%;max-width:88vw;transform:none;padding:18px}.tablet-launch{top:47%;right:10vw;width:80vw;max-height:44vh;border-width:9px}.tablet-launch span{font-size:12px;padding:8px 13px}}
+@media(max-width:600px){#map-coordinate{font-size:9px}.chat-question{max-height:56vh}#booking-review{padding:20px}.confirmation-card dl{grid-template-columns:1fr;gap:6px}.confirmation-card dd{margin-bottom:12px}.tablet-launch{top:51%}#intro-stage .intro-copy h2{font-size:28px}}
+body[data-heat=hot][data-weather=sunny] .weather-vignette{background:linear-gradient(150deg,#ffb63240,transparent 65%)}
+body{--ink:#203c3a;--panel-bg:#fffdf5f2;--panel-ink:#253d38;--panel-border:#e5d8bc;font-family:Arial,sans-serif;background:#f7f1e3}
+button,input,textarea{font:inherit}
+[hidden]{display:none!important}
+.planner-header{background:#fffdf5;border-bottom:1px solid #e5d8bc}
+.planner-brand{color:#967139}
+.chat-backdrop{background:linear-gradient(90deg,#f7f1e3ed,#f7f1e3a6),url('../images/assistant/egypt-illustrated.jpg') center/cover;opacity:1}
+.chat-layout{max-width:1190px;grid-template-columns:300px minmax(0,650px);gap:60px}
+.chat-guide h1{font-family:PlannerSans,Georgia,serif;color:#203c3a;font-size:46px}
+.guide-portrait{border:1px solid #b98a2e;background:#fffdf5;box-shadow:0 15px 60px #6e552024}
+.chat-window{background:#fffdf5ed;border:1px solid #dccbaa;border-radius:26px;box-shadow:0 24px 80px #705b291c}
+.chat-window-heading{background:#f3ecd9;border-bottom:1px solid #e5d8bc}
+.message.bot{background:#f6f0e3;border-color:#e5d8bc}
+.message.user{background:#254b46;color:#fffdf5}
+.continue,.composer button{background:#254b46;color:white}
+.choices span{border-radius:24px;border-color:#dfcfad;background:#fffdf5}
+.choices input:checked+span{background:#254b46;color:#fff}
+.chat-question input,.chat-question textarea{background:#fffdf8}
+.request-choice{display:flex!important;gap:8px;align-items:center}
+.request-choice input{width:auto!important}
+.glass-panel{border:1px solid #ddcba8;border-radius:20px;box-shadow:0 10px 35px #46351525}
+.map-heading{background:#fffdf5eb;border:1px solid #e5d8bc;border-radius:18px;padding:12px 18px;color:#253d38}
+.map-heading h2,.map-heading p,.map-heading .eyebrow{color:#253d38;text-shadow:none}
+#satellite-map{background:#d8bc87}
+.route-number{display:grid;place-items:center;background:#254b46;border:2px solid #fff7df;border-radius:50%;color:white;font-weight:bold;font-size:11px;box-shadow:0 2px 8px #0004}
+.tour-route{animation:route-travel 25s linear infinite}
+@keyframes route-travel{to{stroke-dashoffset:-170}}
+.tour-photo-button{padding:0;border:0;border-radius:12px;background:none;overflow:hidden;width:76px;height:100px}
+.tour-photo-button img{width:100%;height:100%;object-fit:cover}
+.tour-title-button{font:inherit;color:inherit;text-align:left;background:none;border:0;padding:0;cursor:pointer}
+.tour-description,.attraction-story{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.attraction-story.expanded{-webkit-line-clamp:unset}
+.story-more{border:0;background:none;color:#89672d;padding:4px 0;cursor:pointer}
+.attraction-story[hidden]+.story-more{display:none}
+#tour-options>.tour-option{background:#fffdf5;flex-basis:390px}
+#tour-options .tour-option p{font-size:12px}
+.tour-price>span,.price-label{font-size:12px!important;color:#795926!important}
+.tour-count{display:inline;border:0;margin-left:6px}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #b48235;outline-offset:3px}
+@media(max-width:900px){.chat-layout{grid-template-columns:1fr;gap:14px}.chat-guide h1{font-size:28px}.map-heading{padding:8px 12px}.map-heading h2{font-size:20px}}
+@media(max-width:600px){.chat-guide h1{font-size:24px}.map-heading{max-width:65%}#tour-options>.tour-option{flex-basis:290px}.tour-photo-button{width:64px;height:92px}.chat-question input:not([type=checkbox]):not([type=file]),.chat-question textarea{font-size:16px}.choices span{font-size:12px}.message{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.tour-route{animation:none}}
+.tablet-launch{right:auto;border:0;border-radius:5px;transform:none;box-shadow:none;max-height:none}
+.tablet-launch span{font-size:11px;padding:8px 12px;bottom:10px}
+@media(min-width:901px){#intro-stage .intro-copy{max-width:28vw;left:4vw}#intro-stage .intro-copy h2{font-size:clamp(28px,3vw,44px)}}
+@media(max-width:900px){#intro-stage>video{object-position:49.2% center}}
+.chat-backdrop{background-image:linear-gradient(90deg,#f7f1e3ed,#f7f1e3a6),url('../images/assistant/egypt-illustrated-v2.png')}
+@media(min-width:601px){.tour-dock{max-height:32vh}.left-dock{top:160px}.map-stage:has(.tour-option.is-selected) .left-dock,.map-stage:has(.tour-option.is-selected) .right-dock{bottom:calc(32vh + 45px)}.map-stage:has(.tour-option.is-selected) .city-tabs{max-height:125px}.itinerary-panel{min-height:130px}.left-dock{overflow:auto;scrollbar-width:thin}}

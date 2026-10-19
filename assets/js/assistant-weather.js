@@ -34,6 +34,7 @@ function create(options) {
  function render(payload) {
   const condition = classify(payload.code, payload.isDay);
   applyTheme(condition.theme);
+  document.body.dataset.heat = condition.theme === 'sunny' && finite(payload.temperature) && payload.temperature >= 30 ? 'hot' : 'normal';
   $('weather-source').textContent = payload.source;
   $('weather-temp').textContent = finite(payload.temperature) ? Math.round(payload.temperature) + '°C' : '—';
   $('weather-icon').textContent = condition.icon;
