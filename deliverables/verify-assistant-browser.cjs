@@ -47,7 +47,7 @@ const server = http.createServer((request, response) => {
    await page.locator('[data-answer=contact] [data-next-question]').click();
    await page.waitForTimeout(800);
    console.log('Intro media',await page.locator('#intro-video').evaluate(video=>({width:video.videoWidth,height:video.videoHeight,rect:video.getBoundingClientRect().toJSON()})));
-   await page.screenshot({path:path.join(__dirname,'assistant-tablet-'+viewport.width+'.png')});
+   await page.screenshot({path:path.join(__dirname,'assistant-v3-tablet-'+viewport.width+'.png')});
    await page.locator('#explore-map').evaluate(button=>{button.click();button.click();});
    await page.waitForFunction(()=>document.body.dataset.stage==='map');
    await page.locator('.tablet-expansion').waitFor({state:'detached'});
@@ -92,7 +92,7 @@ const server = http.createServer((request, response) => {
    assert.equal(await page.locator('.route-number').count(),13);
    assert.equal(await page.locator('[data-stop=giza] .attraction-story').isVisible(),true);
    if(viewport.width>1000)assert((await page.locator('.tour-dock').boundingBox()).width<viewport.width-100);
-   await page.screenshot({path:path.join(__dirname,'assistant-map-'+viewport.width+'.png')});
+   await page.screenshot({path:path.join(__dirname,'assistant-v3-map-'+viewport.width+'.png')});
    await page.locator('[data-tour=nile-cruise-8-days] .confirm-trip').click();
    assert.equal(await page.locator('#assistant-confirm-form [name=phone]').inputValue(),'0000000000');
    assert.equal(await page.locator('#assistant-confirm-form [name=message]').inputValue(),'Quiet room');

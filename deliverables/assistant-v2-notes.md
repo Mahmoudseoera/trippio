@@ -1,5 +1,34 @@
 # Egypt planner update
 
+## Latest revision: illustrated map only
+
+The user's latest request supersedes the geographic-basemap section below.
+The expanded view now uses the edited artwork, with Leaflet image panning, wheel
+zoom, touch/pinch and +/- controls. No external road or satellite tiles are used.
+Each destination retains its actual latitude/longitude for weather and the visible
+coordinate readout. Authored artwork anchors connect those geographic values to
+locations in the perspective illustration; nearby locations use inverse-distance
+interpolation, following the supplied example's anchor-based approach.
+
+These are approximate artwork positions, not survey-accurate image pixels. The
+illustration has distorted perspective and cannot be made geographically exact
+without redrawing or warping its geography.
+
+The tablet transition waits for the image to decode, expands a fixed overlay from
+the actual tablet bounds, initializes the map without camera animation underneath,
+then fades the overlay. The old second clip/zoom animation has been removed from
+this path. Repeated clicks and cancellation invalidate the active transition.
+
+The map-heading element is removed, and the tour dock shrink-wraps its contents
+on desktop with a viewport cap and horizontal scrolling. Mobile remains bounded
+to the available width.
+
+Latest desktop/mobile browser checks passed: image-only rendering (no map tiles),
+zoom in/out, double-click protection, restart during expansion, reopening the
+tablet, content-width desktop dock, itinerary routes and preview confirmation.
+Zero JavaScript errors were reported. Latest screenshots use assistant-v3-tablet-
+and assistant-v3-map- prefixes.
+
 - Active entry: ../ai-assistance.html.
 - Artwork: ../assets/images/assistant/egypt-illustrated-v2.png.
 - Confirmation: ../assistant-confirmation.html.
