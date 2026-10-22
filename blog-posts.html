@@ -82,6 +82,7 @@
   }
 }
   </script>
+  <link rel="stylesheet" href="assets/css/page-banner.css">
 </head>
 
 <body>
@@ -638,9 +639,12 @@
   <!--==================================================
           Start: desktop Header
  ================================================== -->
-  <!-- Start: Breadcrumb -->
-  <div class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
+  <!-- Start: Category Hero -->
+  <section class="category-hero-section category-hero-section--inverted" style="background-image: linear-gradient(90deg, rgba(0, 45, 40, .22), rgba(0, 30, 28, .35)), url('assets/images/tours/egypt%20temples%20banner567657.webp')">
+    <div class="category-hero border-inverted">
+      <div class="category-hero__content">
+        <!-- Start: Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 12l9-9 9 9" />
@@ -649,37 +653,20 @@
         Home
       </a>
       <span class="sep">/</span>
-      <a href="index.html">
+      <a href="blog-category.html">
         Blog Category
       </a>
       <span class="sep">/</span>
-      <span class="current">Travel Blog</span>
+      <span class="current" aria-current="page">Travel Blog</span>
     </nav>
-  </div>
-  <!-- End: Breadcrumb -->
-
-  <!-- Start: Blog Hero -->
-  <section class="blog-hero-section">
-    <div class="container">
-      <div class="blog-hero">
-        <div class="blog-hero__bg">
-          <picture>
-            <source media="(min-width: 769px)" srcset="assets/images/tours/egypt%20temples%20banner567657.webp"
-              sizes="100vw" width="1400" height="380" type="image/webp"><img title="image"
-              src="assets/images/tours/egypt%20temples%20banner567657.webp" alt="Sunset over an Egyptian temple"
-              width="1400" height="380" loading="eager" decoding="async" sizes="100vw" fetchpriority="high">
-          </picture>
-        </div>
-        <div class="blog-hero__content">
-          <span class="eyebrow">Brand Name Journal</span>
-          <h1>Travel Stories &amp; Guides</h1>
-          <p>Practical guides, packing lists, and honest advice from our local team — everything to help you plan a
+        <!-- End: Breadcrumb -->
+        <h1>Travel Stories &amp; Guides</h1>
+        <p class="desc">Practical guides, packing lists, and honest advice from our local team — everything to help you plan a
             smarter trip to Cairo, Luxor, Aswan and the Red Sea coast.</p>
-        </div>
       </div>
     </div>
   </section>
-  <!-- End: Blog Hero -->
+  <!-- End: Category Hero -->
 
   <!-- Start: Blog Layout -->
   <section class="blog-layout-section">

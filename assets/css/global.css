@@ -1183,8 +1183,8 @@ picture {
   content: "";
   text-align: center;
   line-height: 46px;
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
   color: var(--link-color);
   cursor: pointer;
   display: block;
@@ -1194,7 +1194,7 @@ picture {
   animation: float 1500ms infinite ease-in-out;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
-  background-image: url(../images/svg/pryamids.svg);
+  background-image: url(../images/sphinx.svg);
   background-repeat: no-repeat;
   margin: 10px;
 }
@@ -2402,7 +2402,7 @@ picture {
 ======================================================*/
 
 /* Homepage header: gold contact strip above the floating white navigation. */
-.header-wrap--home:not(.is-fixed) .topbar {width:calc(100% - 24px);max-width: 100%;margin:0 auto;background:var(--color-second-light);border-radius:0 0 18px 18px;padding:11px 40px;color:var(--white-color);font-size:14px;font-weight:600;}
+.header-wrap--home:not(.is-fixed) .topbar {width:auto;max-width: 100%;margin:0 auto;background:var(--color-second-light);border-radius:0 0 18px 18px;padding:11px 40px;color:var(--white-color);font-size:14px;font-weight:600;}
 .header-wrap--home .topbar__inner {width:100%;max-width:none;padding:0;}
 .header-wrap--home .topbar__social a {color:var(--main-color);}
 .header-wrap--home:not(.is-fixed) .nav-pill-wrap {padding: 0;}

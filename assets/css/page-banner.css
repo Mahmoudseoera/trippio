@@ -1,0 +1,107 @@
+/* Start: Shared inner-page image banner and inverted content panel */
+.category-hero-section.category-hero-section--inverted {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 400px;
+    padding: 190px 0 0;
+    margin: auto;
+    margin-bottom: 60px;
+    background-color: #214d48;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100% - 20px);
+    border-radius: 14px;
+}
+
+.category-hero-section--inverted .border-inverted {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 14px 14px 0 0;
+  background: var(--white-color, #fff);
+  box-shadow: none;
+  overflow: visible;
+}
+
+.category-hero-section--inverted .border-inverted::before,
+.category-hero-section--inverted .border-inverted::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 0;
+  background: transparent;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.category-hero-section--inverted .border-inverted::before {
+  left: -25px;
+  box-shadow: 10px 10px 0 var(--white-color, #fff);
+}
+
+.category-hero-section--inverted .border-inverted::after {
+  right: -25px;
+  box-shadow: -10px 10px 0 var(--white-color, #fff);
+}
+
+.category-hero-section--inverted .category-hero__content {
+  padding: 20px 30px 0;
+  width: 100%;
+  max-width: none;
+}
+
+.category-hero-section--inverted .breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  padding: 0 0 10px;
+  margin: 0;
+  font-size: .8rem;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.category-hero-section--inverted .breadcrumb > * { flex-shrink: 0; }
+.category-hero-section--inverted .breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-muted, #667085);
+  text-decoration: none;
+}
+.category-hero-section--inverted .breadcrumb .current { color: var(--main-color, #143c58); }
+
+.category-hero-section--inverted .category-hero__content h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--main-color, #143c58);
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.category-hero-section--inverted .category-hero__content p.desc {
+  color: var(--text-color, #333);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: none;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .category-hero-section.category-hero-section--inverted {
+    min-height: 360px;
+    padding-top: 160px;
+    margin-bottom: 36px;
+  }
+  .category-hero-section--inverted .border-inverted { width: calc(100% - 50px); }
+  .category-hero-section--inverted .category-hero__content { padding: 16px 16px 0; }
+  .category-hero-section--inverted .category-hero__content p.desc { font-size: .9rem; }
+}
+/* End: Shared inner-page image banner */

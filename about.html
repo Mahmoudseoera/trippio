@@ -161,6 +161,7 @@
   ]
 }
 </script>
+  <link rel="stylesheet" href="assets/css/page-banner.css">
 </head>
 
 <body>
@@ -718,9 +719,12 @@
           Start: desktop Header
  ================================================== -->
 
-  <!-- Start: Breadcrumb -->
-<div class="inner-banner">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
+  <!-- Start: Category Hero -->
+  <section class="category-hero-section category-hero-section--inverted" style="background-image: linear-gradient(90deg, rgba(0, 45, 40, .22), rgba(0, 30, 28, .35)), url('assets/images/tours/visiting-place2.jpg')">
+    <div class="category-hero border-inverted">
+      <div class="category-hero__content">
+        <!-- Start: Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 12l9-9 9 9" />
@@ -729,100 +733,17 @@
         Home
       </a>
       <span class="sep">/</span>
-      <span class="current">About Us</span>
+      <span class="current" aria-current="page">About Us</span>
     </nav>
-  </div>
-  <!-- End: Breadcrumb -->
-
-  <!-- Start: About Hero -->
-  <section class="category-hero-section">
-    <div class="inner-banner ">
-      <div class="category-hero">
-        <div class="category-hero__bg">
-          <picture>
-            <source media="(min-width: 769px)" srcset="assets/images/tours/visiting-place2.jpg" sizes="100vw"
-              width="1400" height="520" type="image/jpeg"><img title="image"
-              src="assets/images/tours/visiting-place2.jpg"
-              alt="Travelers exploring ancient ruins in Egypt with a local guide" width="1400" height="520"
-              loading="eager" fetchpriority="high" decoding="async" sizes="100vw">
-          </picture>
-        </div>
-
-        <div class="category-hero__grid">
-          <div class="category-hero__content">
-            <span class="about-hero-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <path d="M12 2C8 2 6 6 6 10a6 6 0 0 0 4 5.6L9 18h6l-1-2.4A6 6 0 0 0 18 10c0-4-2-8-6-8z" />
-                <rect x="10" y="18" width="4" height="3" rx="0.5" />
-              </svg>
-              About Brand Name
-            </span>
-            <h1>A Local Team, Not a Booking Engine</h1>
-
-            <div class="category-hero__rating">
-              <span class="category-hero__stars">
-                <svg width="15" height="15" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                </svg>
-                <svg width="15" height="15" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                </svg>
-                <svg width="15" height="15" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                </svg>
-                <svg width="15" height="15" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                </svg>
-                <svg width="15" height="15" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z" />
-                </svg>
-              </span>
-              <span class="category-hero__score">4.9</span>
-              <span class="category-hero__reviews"><strong>1,240</strong> reviews on TripAdvisor</span>
-            </div>
-
-            <p class="desc">We're a Cairo-based team of licensed Egyptologists and travel planners who've spent over two
+        <!-- End: Breadcrumb -->
+        <h1>A Local Team, Not a Booking Engine</h1>
+        <p class="desc">We're a Cairo-based team of licensed Egyptologists and travel planners who've spent over two
               decades building trips around what travelers actually want — not a fixed script. Every itinerary is
               planned, guided, and supported by people who live here.</p>
-
-            <div class="category-hero__cta-row">
-              <a class="category-hero__btn-outline" href="tailor-made.html">Plan My Trip</a>
-              <a href="category.html" class="btn btn--primary">
-                <span>See Our Tours</span>
-                <span class="btn__arrow">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                    <path d="M7 17L17 7M9 7h8v8" />
-                  </svg>
-                </span>
-              </a>
-            </div>
-
-            <div class="category-hero__trust">
-              <span class="category-hero__trust-item">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.4">
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                <strong>20+ Years</strong>&nbsp;of Experience
-              </span>
-              <span class="category-hero__trust-item">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.4">
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                <strong>12,000+</strong>&nbsp;Happy Travelers
-              </span>
-              <span class="category-hero__trust-item">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.4">
-                  <path d="M5 13l4 4L19 7" />
-                </svg>
-                Licensed&nbsp;<strong>Egyptologist Guides</strong>
-              </span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
-  <!-- End: About Hero -->
+  <!-- End: Category Hero -->
 
   <!-- Start: About Section -->
   <section class="about-section">

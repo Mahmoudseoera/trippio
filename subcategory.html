@@ -104,7 +104,9 @@
   <script src="assets/js/tour-comparison.js" defer></script>
 <link rel="stylesheet" href="assets/css/trip-intent.css" />
 <script src="assets/js/trip-intent.js" defer></script>
+  <link rel="stylesheet" href="assets/css/page-banner.css">
 </head>
+
 
 </head>
 <body class="subcategory-page">
@@ -661,138 +663,28 @@
   <!--==================================================
           Start: desktop Header
  ================================================== -->
-  <!-- Start: Breadcrumb -->
-  <div class="inner-banner">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
+  <!-- Start: Category Hero -->
+  <section class="category-hero-section category-hero-section--inverted" style="background-image: linear-gradient(90deg, rgba(0, 45, 40, .22), rgba(0, 30, 28, .35)), url('assets/images/tours/great-pyramid-webp.webp')">
+    <div class="category-hero border-inverted">
+      <div class="category-hero__content">
+        <!-- Start: Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>
         Home
       </a>
       <span class="sep">/</span>
 
-      <div class="breadcrumb__item has-dropdown">
-        <a href="category.html">Cairo &amp; Giza Tours</a>
-        <button type="button" aria-expanded="false" aria-label="Show subcategories">
-          <svg class="breadcrumb__caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="breadcrumb__dropdown">
-          <p class="breadcrumb__dropdown-label">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4 5.7 20.8 8 13.6l-6-4.4h7.6z"/></svg>
-            Featured Subcategories
-          </p>
-          <div class="breadcrumb__dgrid">
-            <a href="subcategory.html" class="breadcrumb__dchip">
-              <picture><source media="(min-width: 769px)" srcset="assets/images/tours/great-pyramid-webp.webp" sizes="100vw" type="image/webp" width="1921" height="1080"><img title="image" src="assets/images/tours/great-pyramid-webp.webp" alt="Giza Pyramids &amp; Sphinx" sizes="100vw" decoding="async" loading="eager" fetchpriority="high" width="1921" height="1080"></picture>
-              <span class="breadcrumb__dchip-body"><strong>Giza Pyramids &amp; Sphinx</strong><span>9 Tours</span></span>
-            </a>
-            <a href="#" class="breadcrumb__dchip">
-              <picture><source media="(min-width: 769px)" srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp" sizes="100vw" type="image/webp" width="1920" height="1200"><img title="image" src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Egyptian Museum" sizes="100vw" decoding="async" loading="lazy" fetchpriority="low" width="1920" height="1200"></picture>
-              <span class="breadcrumb__dchip-body"><strong>Egyptian Museum</strong><span>5 Tours</span></span>
-            </a>
-            <a href="#" class="breadcrumb__dchip">
-              <picture><source media="(min-width: 769px)" srcset="assets/images/tours/aswan4545.webp" sizes="100vw" type="image/webp" width="2200" height="1293"><img title="image" src="assets/images/tours/aswan4545.webp" alt="Old Cairo &amp; Khan El Khalili" sizes="100vw" decoding="async" loading="lazy" fetchpriority="low" width="2200" height="1293"></picture>
-              <span class="breadcrumb__dchip-body"><strong>Old Cairo &amp; Bazaar</strong><span>6 Tours</span></span>
-            </a>
-            <a href="#" class="breadcrumb__dchip">
-              <picture><source media="(min-width: 769px)" srcset="assets/images/tours/9-Days-Marsa-Alam-Holiday-With-A-Tour-To-Pyramids-And-Old-Cairo-Egypt-Tours-Portal-webp.webp" sizes="100vw" type="image/webp" width="1920" height="1280"><img title="image" src="assets/images/tours/9-Days-Marsa-Alam-Holiday-With-A-Tour-To-Pyramids-And-Old-Cairo-Egypt-Tours-Portal-webp.webp" alt="Saqqara &amp; Dahshur" sizes="100vw" decoding="async" loading="lazy" fetchpriority="low" width="1920" height="1280"></picture>
-              <span class="breadcrumb__dchip-body"><strong>Saqqara &amp; Dahshur</strong><span>4 Tours</span></span>
-            </a>
-          </div>
-          <a href="category.html" class="breadcrumb__dropdown-all">
-            View all Cairo &amp; Giza tours
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
+      <a href="category.html">Cairo &amp; Giza Tours</a>
       <span class="sep">/</span>
-      <span class="current">Giza Pyramids &amp; Sphinx</span>
+      <span class="current" aria-current="page">Giza Pyramids &amp; Sphinx</span>
     </nav>
-  </div>
-  <!-- End: Breadcrumb -->
-
-  <!-- Start: Category Hero (subcategory variant) -->
-  <section class="category-hero-section">
-    <div class="inner-banner">
-      <div class="category-hero">
-        <div class="category-hero__bg">
-          <picture><source media="(min-width: 769px)" srcset="assets/images/tours/great-pyramid-webp.webp" sizes="100vw" width="1400" height="520" type="image/webp"><img title="image" src="assets/images/tours/great-pyramid-webp.webp" alt="Great Pyramid of Giza at sunrise" width="1400" height="520" loading="lazy" decoding="async" sizes="100vw" fetchpriority="low"></picture>
-        </div>
-
-        <div class="category-hero__grid">
-          <div class="category-hero__content">
-            <h1>
+        <!-- End: Breadcrumb -->
+        <h1>
               <span class="title-switch" id="titleSwitch">
                 Giza Pyramids &amp; Sphinx              </span>
             </h1>
-
-            <div class="category-hero__rating">
-              <span class="category-hero__stars">
-                <svg width="15" height="15" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
-                <svg width="15" height="15" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
-                <svg width="15" height="15" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
-                <svg width="15" height="15" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
-                <svg width="15" height="15" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/></svg>
-              </span>
-              <span class="category-hero__score">4.9</span>
-              <span class="category-hero__reviews"><strong>860</strong> reviews on TripAdvisor</span>
-            </div>
-
-            <p class="desc">The last surviving wonder of the ancient world, up close. These tours cover the Great Pyramid, Khafre and Menkaure, the Sphinx, and the Solar Boat Museum — with options for camel rides, private Egyptologist guides, and early sunrise access before the crowds and heat arrive.</p>
-
-            <div class="category-hero__cta-row">
-              <button class="category-hero__btn-outline" type="button">Talk to a Travel Advisor</button>
-              <button class="btn btn--primary" type="button">
-                <span>See all Pyramid Tours</span>
-                <span class="btn__arrow">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8"/></svg>
-                </span>
-              </button>
-            </div>
-
-            <div class="category-hero__trust">
-              <span class="category-hero__trust-item">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>
-                <strong>Best Price</strong>&nbsp;Guarantee
-              </span>
-              <span class="category-hero__trust-item">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>
-                <strong>4.9 stars</strong>&nbsp;on Reviews.io
-              </span>
-              <span class="category-hero__trust-item">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg>
-                Select from&nbsp;<strong>9 tours</strong>
-              </span>
-            </div>
-          </div>
-
-          <div class="featured-ticket">
-            <div class="featured-ticket__image">
-              <a href="tour-details.html" aria-label="View Giza Pyramids and Sphinx tour">
-                <picture><source media="(min-width: 769px)" srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp" sizes="100vw" width="360" height="130" type="image/webp"><img title="Giza Pyramids and Sphinx tour" src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Giza Pyramids and Sphinx tour" width="360" height="130" loading="lazy" decoding="async" sizes="100vw" fetchpriority="low"></picture>
-              </a>
-              <span class="featured-ticket__badge">Featured Tour</span>
-            </div>
-            <div class="featured-ticket__body">
-              <h3><a href="tour-details.html">Giza Pyramids &amp; Sphinx Tour</a></h3>
-              <div class="featured-ticket__meta">
-                <span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                  Full day · 8 hrs
-                </span>
-                <span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-                  Cairo, Giza
-                </span>
-              </div>
-              <div class="featured-ticket__price"><span>From</span><strong>$89</strong><small>per person</small></div>
-            </div>
-            <a href="tour-details.html" class="featured-ticket__cta">
-              View Tour Details
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </div>
+        <p class="desc">The last surviving wonder of the ancient world, up close. These tours cover the Great Pyramid, Khafre and Menkaure, the Sphinx, and the Solar Boat Museum — with options for camel rides, private Egyptologist guides, and early sunrise access before the crowds and heat arrive.</p>
       </div>
     </div>
   </section>
