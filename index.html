@@ -146,7 +146,15 @@
   <link rel="stylesheet" href="assets/css/tour-comparison.css" />
   <script src="assets/js/tour-comparison.js" defer></script>
   <link rel="stylesheet" href="assets/css/trip-intent.css" />
+  <link rel="stylesheet" href="assets/css/travel-search.css" />
   <script src="assets/js/trip-intent.js" defer></script>
+  <script src="assets/js/travel-search/lexicon.js" defer></script>
+  <script src="assets/js/travel-search/catalog.js" defer></script>
+  <script src="assets/js/travel-search/intent.js" defer></script>
+  <script src="assets/js/travel-search/matcher.js" defer></script>
+  <script src="assets/js/travel-search/planner.js" defer></script>
+  <script src="assets/js/travel-search/provider.js" defer></script>
+  <script src="assets/js/travel-search/ui.js" defer></script>
   <style>
     /* ---------- Tokens ---------- */
     .climate {
@@ -1272,6 +1280,14 @@
           </a>
         </div>
       </div>
+    </div>
+  </section>
+  <!--=====================================
+       Start: Travel search (Find Tours / Build My Trip / Search by Image)
+   ===================================== -->
+  <section class="ts-section" id="travel-search" aria-labelledby="ts-title">
+    <div data-travel-search>
+      <noscript><p class="ts-wrap">Trip search needs JavaScript. You can <a href="subcategory.html">browse all tours</a> or <a href="tailor-made.html">request a tailor-made trip</a>.</p></noscript>
     </div>
   </section>
   <!--=====================================
