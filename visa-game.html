@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tailor-made Passport</title>
+  <meta name="description" content="Plan your tailor-made trip by collecting four passport stamps, then send your private request.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ink texture applied to every stamp. Remove the CSS `filter` on .slot__stamp svg for clean vector stamps. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.5" result="displaced"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="1" seed="8" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.4 0 0 0 1.9" result="mask"/>
+      <feComposite in="displaced" in2="mask" operator="in"/>
+    </filter>
+  </svg>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <div class="app">
+
+    <!-- ============ CLOSED PASSPORT (start and end state) ============ -->
+    <section class="closed" id="closed" aria-labelledby="closed-title">
+      <div class="scene" id="scene">
+        <div class="cover-wrap">
+          <!-- Swap this whole .cover for your own cover artwork. Keep the id="cover" for the animation. -->
+          <div class="cover" id="cover" aria-hidden="true">
+            <span class="cover__spine"></span>
+            <span class="cover__inner">
+              <span class="cover__top foil">Tailor-made journey</span>
+              <svg class="cover__emblem" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="60" cy="60" r="54" stroke-width="2"/>
+                <circle cx="60" cy="60" r="48" stroke-width="0.8"/>
+                <circle cx="60" cy="60" r="20" stroke-width="1.2"/>
+                <path d="M60 8 66 54 112 60 66 66 60 112 54 66 8 60 54 54Z" stroke-width="1.6"/>
+                <path d="M23 23l22 22M97 23L75 45M23 97l22-22M97 97L75 75" stroke-width="1"/>
+                <circle cx="60" cy="60" r="3.5" fill="currentColor" stroke="none"/>
+              </svg>
+              <span class="cover__title foil">Passport</span>
+            </span>
+            <span class="cover__seal" id="cover-seal">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="closed__text">
+        <h1 id="closed-title">Your journey starts with a passport.</h1>
+        <p class="card__lead">Answer four quick questions and collect a stamp for each one. Then send your private request.</p>
+        <button type="button" class="btn" id="open-btn">Open your passport</button>
+      </div>
+    </section>
+
+    <!-- ============ OPEN PASSPORT + GAME ============ -->
+    <div class="book" id="book" hidden>
+
+      <!-- TOP: the passport -->
+      <header class="passport" id="passport" aria-labelledby="passport-title">
+        <div class="passport__sheen" id="sheen" aria-hidden="true"></div>
+        <div class="passport__page">
+          <div class="passport__head">
+            <div>
+              <h1 id="passport-title">Tailor-made passport</h1>
+              <p class="passport__sub" id="passport-sub">Collect 4 stamps to unlock your request.</p>
+            </div>
+            <p class="passport__count" aria-hidden="true"><span id="stamp-count">0</span>/4</p>
+          </div>
+
+          <!-- Swap the placeholder stamps by editing Stamps.build() in script.js, or drop your own SVG into .slot__stamp -->
+          <ol class="slots" id="slots">
+            <li class="slot" data-slot="0"><div class="slot__ring"><span class="slot__splash"></span><span class="slot__hint">1</span><div class="slot__stamp"></div></div><span class="slot__label">Journey</span></li>
+            <li class="slot" data-slot="1"><div class="slot__ring"><span class="slot__splash"></span><span class="slot__hint">2</span><div class="slot__stamp"></div></div><span class="slot__label">Dates</span></li>
+            <li class="slot" data-slot="2"><div class="slot__ring"><span class="slot__splash"></span><span class="slot__hint">3</span><div class="slot__stamp"></div></div><span class="slot__label">Travelers</span></li>
+            <li class="slot" data-slot="3"><div class="slot__ring"><span class="slot__splash"></span><span class="slot__hint">4</span><div class="slot__stamp"></div></div><span class="slot__label">Final touch</span></li>
+          </ol>
+
+          <p class="passport__mrz" aria-hidden="true">P&lt;TLR&lt;&lt;TAILOR&lt;MADE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>JOURNEY0001&lt;TLR&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
+        </div>
+      </header>
+
+      <p class="sr-only" id="live" role="status" aria-live="polite"></p>
+
+      <main>
+        <!-- MIDDLE: one question at a time -->
+        <section class="game" id="game" aria-label="Trip questions">
+          <div class="stage" id="stage">
+
+            <!-- Step 1: Journey -->
+            <article class="card" data-step="0" aria-labelledby="t0">
+              <h2 id="t0" tabindex="-1">Tell us about your journey</h2>
+              <p class="card__lead">Pick the vibe that fits best, then add anything that matters to you.</p>
+
+              <div class="tags" id="vibe-grid" role="group" aria-label="Trip vibe"></div>
+
+              <div class="field field--note">
+                <label for="journey">Tell us about your journey <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="journey" rows="4" required placeholder="Who is travelling, what you love, anything we should plan around."></textarea>
+                <p class="msg msg--error" id="journey-msg" role="alert"></p>
+              </div>
+
+              <button type="button" class="btn" id="journey-confirm">Continue</button>
+            </article>
+
+            <!-- Step 2: Dates -->
+            <article class="card" data-step="1" aria-labelledby="t1" hidden>
+              <h2 id="t1" tabindex="-1">When are you travelling?</h2>
+              <p class="card__lead">Tap your arrival day, then your departure day.</p>
+
+              <div class="readouts">
+                <div class="readout" id="rd-arrival"><span class="readout__label">Arrival date</span><span class="readout__value">Not set</span></div>
+                <div class="readout" id="rd-departure"><span class="readout__label">Departure date</span><span class="readout__value">Not set</span></div>
+              </div>
+
+              <div class="cal">
+                <div class="cal__nav">
+                  <button type="button" class="icon-btn" id="cal-prev" aria-label="Previous month">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+                  </button>
+                  <p class="cal__month" id="cal-month" aria-live="polite"></p>
+                  <button type="button" class="icon-btn" id="cal-next" aria-label="Next month">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
+                <div class="cal__week" aria-hidden="true"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+                <div class="cal__grid" id="cal-grid"></div>
+              </div>
+
+              <p class="cal__summary" id="cal-summary">Choose an arrival date.</p>
+              <button type="button" class="btn" id="dates-confirm" disabled>Confirm dates</button>
+            </article>
+
+            <!-- Step 3: Travelers -->
+            <article class="card" data-step="2" aria-labelledby="t2" hidden>
+              <h2 id="t2" tabindex="-1">Who's coming along?</h2>
+              <p class="card__lead">Add a seat for everyone on the trip.</p>
+
+              <div class="pax">
+                <div class="pax__row" data-pax="adults">
+                  <div class="pax__info"><p class="pax__name">Number of adults</p><p class="pax__hint">12 and over</p></div>
+                  <div class="stepper">
+                    <button type="button" class="icon-btn" data-dir="-1" aria-label="Remove an adult"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+                    <output class="pax__count" aria-live="polite">1</output>
+                    <button type="button" class="icon-btn" data-dir="1" aria-label="Add an adult"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
+                  </div>
+                  <div class="pax__seats" aria-hidden="true"></div>
+                </div>
+
+                <div class="pax__row" data-pax="children">
+                  <div class="pax__info"><p class="pax__name">Number of children</p><p class="pax__hint">2 to 11</p></div>
+                  <div class="stepper">
+                    <button type="button" class="icon-btn" data-dir="-1" aria-label="Remove a child"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+                    <output class="pax__count" aria-live="polite">0</output>
+                    <button type="button" class="icon-btn" data-dir="1" aria-label="Add a child"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
+                  </div>
+                  <div class="pax__seats" aria-hidden="true"></div>
+                </div>
+
+                <div class="pax__row" data-pax="infants">
+                  <div class="pax__info"><p class="pax__name">Number of infants</p><p class="pax__hint">Under 2, one per adult</p></div>
+                  <div class="stepper">
+                    <button type="button" class="icon-btn" data-dir="-1" aria-label="Remove an infant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+                    <output class="pax__count" aria-live="polite">0</output>
+                    <button type="button" class="icon-btn" data-dir="1" aria-label="Add an infant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
+                  </div>
+                  <div class="pax__seats" aria-hidden="true"></div>
+                </div>
+              </div>
+
+              <p class="pax__note" id="pax-note">Up to 9 travelers per booking.</p>
+              <button type="button" class="btn" id="pax-confirm">Confirm travelers</button>
+            </article>
+
+            <!-- Step 4: Final touch -->
+            <article class="card" data-step="3" aria-labelledby="t3" hidden>
+              <h2 id="t3" tabindex="-1">One last touch</h2>
+              <p class="card__lead">Add a promo code if you have one, then tell us your nationality.</p>
+
+              <div class="field">
+                <label for="promo-input">Promo code</label>
+                <div class="promo" id="promo">
+                  <div class="promo__box">
+                    <svg class="promo__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9a2 2 0 0 0 0 6v3h18v-3a2 2 0 0 1 0-6V6H3z"/><path d="M9 6v12" stroke-dasharray="2 2.4"/></svg>
+                    <input id="promo-input" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Insert promo code" maxlength="16">
+                  </div>
+                  <button type="button" class="promo__apply" id="promo-apply">Apply</button>
+                </div>
+                <p class="msg" id="promo-msg" role="status" aria-live="polite"></p>
+              </div>
+
+              <div class="field">
+                <label for="nationality">Nationality <span class="req" aria-hidden="true">*</span></label>
+                <div class="select">
+                  <select id="nationality" required>
+                    <option value="" selected disabled>Select country</option>
+                  </select>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <p class="msg msg--error" id="nat-msg" role="alert"></p>
+              </div>
+
+              <button type="button" class="btn" id="final-confirm">Stamp my passport</button>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- BOTTOM: final action, hidden until 4 stamps -->
+        <section class="checkin" id="checkin" aria-labelledby="checkin-title" hidden>
+          <h2 id="checkin-title" tabindex="-1">Who should we send this to?</h2>
+          <p class="card__lead">Your passport is full. Add your contact details and we'll take it from here.</p>
+          <div class="summary" id="checkin-summary"></div>
+
+          <p class="rule">Traveler details</p>
+
+          <form id="checkin-form" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required placeholder="First name">
+                <p class="msg msg--error" data-for="name" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="email">E-mail <span class="req" aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="name@example.com">
+                <p class="msg msg--error" data-for="email" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="dial">Country code <span class="req" aria-hidden="true">*</span></label>
+                <div class="select">
+                  <select id="dial" name="dial" required autocomplete="tel-country-code">
+                    <option value="" selected disabled>Country code</option>
+                  </select>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <p class="msg msg--error" data-for="dial" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="phone">Phone number <span class="req" aria-hidden="true">*</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" required placeholder="Phone number">
+                <p class="msg msg--error" data-for="phone" role="alert"></p>
+              </div>
+            </div>
+
+            <label class="check">
+              <input type="checkbox" id="consent" name="consent">
+              <span class="check__box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+              <span>I agree to be contacted</span>
+            </label>
+
+            <button type="submit" class="btn btn--issue" id="issue">Send private request</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <!-- ============ CONFIRMATION (after the passport closes) ============ -->
+    <section class="ticket" id="ticket" aria-labelledby="ticket-title" hidden>
+      <div class="ticket__main">
+        <h2 id="ticket-title" tabindex="-1">Request sent</h2>
+        <p class="ticket__name" id="ticket-name"></p>
+        <dl class="ticket__list" id="ticket-list"></dl>
+      </div>
+      <div class="ticket__stub" aria-hidden="true"><span>4 of 4 stamps</span></div>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+body{background:#fbfaf6;color:var(--main-color);}
+.visa-intro{max-width:1240px;margin:54px auto 40px;padding:0 24px;display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;}
+.visa-eyebrow{font:700 11px var(--font-body);letter-spacing:.2em;color:var(--color-second-dark);margin-bottom:22px;}
+.visa-intro h1{font:600 clamp(40px,4.7vw,68px)/1.05 var(--font-heading);letter-spacing:-.045em;margin:0 0 24px;}
+.visa-intro h1 em{font-style:normal;color:var(--color-second-dark);}
+.visa-intro p:not(.visa-eyebrow){font:400 15px/1.85 var(--font-body);max-width:490px;color:#536773;}
+.visa-start{display:inline-flex;gap:35px;align-items:center;color:var(--main-color);font-weight:700;border-bottom:1px solid #bccdca;padding:12px 0;margin-top:10px;}
+.visa-benefits{display:flex;gap:18px;font-size:11px;color:#526772;margin-top:28px;flex-wrap:wrap;}
+.visa-photo{height:335px;border-radius:90px 18px 90px 18px;position:relative;background:#e8d8b6;overflow:hidden;transform:rotate(2deg);}
+.visa-photo img{width:100%;height:100%;object-fit:cover;}
+.visa-photo:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 40%,#153b6099);}
+.visa-photo>span{position:absolute;left:30px;bottom:24px;color:white;font:600 40px var(--font-heading);letter-spacing:.12em;z-index:1;}
+.visa-photo small{display:block;font:500 10px var(--font-body);letter-spacing:.3em;}
+.visa-builder{--ink:#153b60;--ink-soft:#153b60;--page:#edf5f2;--line:#dce5e2;--text:#153b60;--muted:#526773;--lapis:#176f78;--vermilion:#9c7040;--emerald:#176f78;--gold:#e8d8b6;--gold-deep:#8a6936;--font-display:var(--font-heading);--font-body:Manrope,sans-serif;background:transparent;max-width:1240px;margin:auto;}
+.visa-builder .app{width:100%;padding:20px 24px 80px;display:grid;grid-template-columns:390px minmax(0,1fr);gap:30px;overflow:visible;align-items:start;}
+.visa-builder .passport{position:sticky;top:115px;padding:30px 26px 24px;box-shadow:0 14px 40px #153b600a;border:1px solid #c9dbd3;background:repeating-radial-gradient(ellipse at 15% 0,transparent 0 12px,#176f7809 12px 13px),#edf5f2;border-radius:20px;}
+.visa-builder .passport__head{margin-bottom:35px;}
+.visa-builder .passport h2{font-size:25px;font-weight:600;}
+.visa-builder .passport__sub{font-size:12px;line-height:1.8;margin-top:12px;max-width:210px;}
+.visa-builder .passport__count{font-size:23px;color:#176f78;}
+.visa-builder .slots{grid-template-columns:repeat(2,1fr);gap:24px 30px;}
+.visa-builder .slot__ring{max-width:125px;border-color:#a9c4b8;}
+.visa-builder .slot__label{font-size:12px;}
+.visa-builder .passport__mrz{margin-top:30px;line-height:1.8;}
+.visa-builder .visa-card,.visa-builder .checkin{box-shadow:0 14px 48px #153b6008;border:1px solid #e1e7e3;background:#fff;padding:34px;border-radius:20px;}
+.visa-builder h2{font-size:30px;line-height:1.15;font-weight:600;letter-spacing:-.035em;}
+.visa-builder .card__lead{font-size:13px;line-height:1.8;margin:12px 0 26px;}
+.visa-builder .tag{min-height:120px;border-width:1px;font-size:13px;border-radius:13px;padding:18px;background:#fcfdfb;}
+.vibe-symbol{font-size:30px;font-weight:400;color:#176f78;}
+.visa-builder .tag[aria-pressed=true] .vibe-symbol{color:white;}
+.visa-builder .btn{background:#153b60;border-radius:10px;min-height:50px;width:100%;font-size:13px;margin-top:22px;box-shadow:none;animation:none;gap:20px;}
+.visa-builder .btn--issue{background:#e8d8b6;color:#153b60;}
+.visa-builder .visa-back{display:block;border:0;background:none;padding:18px 0 0;font:600 12px var(--font-body);color:#536773;cursor:pointer;}
+.stamp-edit{border:0;background:transparent;color:#176f78;font:600 10px var(--font-body);text-decoration:underline;cursor:pointer;padding:3px 14px;}
+.visa-builder .visa-stamp{width:100%;aspect-ratio:1;border:3px double currentColor;border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center;transform:rotate(-12deg);color:var(--c);padding:8px;text-align:center;animation:stamp-in .35s ease-out;}
+.visa-stamp b{font:400 38px var(--font-heading);}.visa-stamp small{font-size:9px;text-transform:uppercase;letter-spacing:.08em;}
+.visa-builder .field label{font-size:11px;letter-spacing:.025em;margin-bottom:8px;}
+.visa-builder input:not([type=checkbox]),.visa-builder select,.visa-builder textarea{font:400 13px var(--font-body);border:1px solid #d8dfdc;border-radius:8px;min-height:48px;background:#fbfcfa;padding:12px;width:100%;color:#153b60;}
+.visa-builder textarea{resize:vertical;min-height:130px;}
+.visa-builder .phone{grid-template-columns:minmax(125px,.8fr) 1fr;}
+.visa-builder .review-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+.review-pax,.review-wide{grid-column:1/-1;}
+.review-pax{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.review-stepper{display:flex;align-items:center;border:1px solid #d8dfdc;border-radius:8px;overflow:hidden;background:#fbfcfa;}
+.visa-builder .review-stepper input{border:0;text-align:center;min-width:0;padding:10px 0;appearance:textfield;}
+.review-stepper input::-webkit-inner-spin-button{appearance:none;}
+.review-stepper button{border:0;background:transparent;min-width:30px;min-height:44px;color:#153b60;cursor:pointer;}
+.review-promo{display:flex;gap:8px;}.review-promo button{border:0;border-radius:8px;background:#e8d8b6;padding:0 14px;color:#153b60;cursor:pointer;}
+#review-promo-msg{font-size:11px;color:#536773;}
+.consent{display:flex;gap:10px;font-size:12px;align-items:center;}.consent input{accent-color:#176f78;width:16px;height:16px;}
+#request-error{color:#a82a14;font-size:12px;}
+.footer-label{font:700 15px var(--font-body);color:white;margin:0 0 18px;}
+.visa-mobile{display:none;}
+@keyframes stamp-in{from{opacity:0;transform:scale(1.4) rotate(-20deg)}to{opacity:1;transform:scale(1) rotate(-12deg)}}
+@media(max-width:900px){.visa-intro{gap:30px}.visa-builder .app{grid-template-columns:300px minmax(0,1fr);gap:20px}.visa-builder .visa-card,.visa-builder .checkin{padding:24px}.visa-builder .tags{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.visa-intro{grid-template-columns:1fr;margin-top:30px;gap:24px;padding:0 18px}.visa-intro h1{font-size:43px}.visa-photo{height:200px;border-radius:45px 14px}.visa-benefits{gap:12px}.visa-builder .app{grid-template-columns:1fr;padding:0 16px 40px;gap:20px}.visa-builder .passport{position:relative;top:0;padding:22px 18px}.visa-builder .passport__head{margin-bottom:18px}.visa-builder .passport__sub{max-width:none}.visa-builder .slots{grid-template-columns:repeat(4,1fr);gap:10px}.visa-builder .passport__mrz{margin-top:16px}.visa-builder .visa-card,.visa-builder .checkin{padding:24px 18px}.visa-builder h2{font-size:27px}.visa-builder .review-fields{grid-template-columns:1fr}.visa-builder .review-pax{gap:8px}.visa-builder .review-pax label{font-size:10px}.visa-stamp b{font-size:24px}.visa-stamp small{font-size:7px}.visa-mobile{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;z-index:100;background:#fff;border-top:1px solid #dce5e2;padding:8px 10px max(8px,env(safe-area-inset-bottom));box-shadow:0 -3px 20px #153b600a}.visa-mobile a{display:flex;flex-direction:column;align-items:center;color:#153b60;font-size:20px;gap:3px}.visa-mobile span{font-size:10px}body{padding-bottom:72px}}
+@media(prefers-reduced-motion:reduce){.visa-builder *{animation:none!important;scroll-behavior:auto!important}}

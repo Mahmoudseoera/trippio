@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>Build Your Trip</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Marcellus&display=swap">
+  <style>
+    /* Layout: the jigsaw board is the hero on the left (about 60% width), the current question and its
+   puzzle-shaped answer pieces sit beside it. On narrow screens the board stacks above the pieces.
+   Palette: deep teal, warm sand, white and gold. Type: Marcellus (display, inscriptional) + Figtree (body). */
+    :root {
+      --bg: #f1e8d6;
+      --surface: #ffffff;
+      --surface-2: #f8f1e2;
+      --ink: #10302f;
+      --muted: #4a6361;
+      --teal: #0e5a5f;
+      --teal-2: #167478;
+      --on-teal: #ffffff;
+      --gold: #8f6a14;
+      --gold-2: #d9b45a;
+      --line: rgba(16, 48, 47, .16);
+      --slot: #e4d6b8;
+      --slot-line: #a99366;
+      --board-back: #fbf7ee;
+      --focus: #7a4a00;
+      --err: #a3281d;
+      --shadow: 0 18px 40px -22px rgba(16, 48, 47, .55);
+      --display: 'Marcellus', 'Palatino Linotype', Georgia, serif;
+      --body: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0b1d1f;
+        --surface: #12292b;
+        --surface-2: #0f2325;
+        --ink: #eaf1ef;
+        --muted: #a2bbb8;
+        --teal: #4fc0bf;
+        --teal-2: #2f9a9c;
+        --on-teal: #062123;
+        --gold: #e0b95c;
+        --gold-2: #e0b95c;
+        --line: rgba(234, 241, 239, .18);
+        --slot: #17363a;
+        --slot-line: #5a8284;
+        --board-back: #0f2528;
+        --focus: #ffd77a;
+        --err: #ff9d92;
+        --shadow: 0 18px 40px -22px rgba(0, 0, 0, .8);
+        color-scheme: dark;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0b1d1f;
+      --surface: #12292b;
+      --surface-2: #0f2325;
+      --ink: #eaf1ef;
+      --muted: #a2bbb8;
+      --teal: #4fc0bf;
+      --teal-2: #2f9a9c;
+      --on-teal: #062123;
+      --gold: #e0b95c;
+      --gold-2: #e0b95c;
+      --line: rgba(234, 241, 239, .18);
+      --slot: #17363a;
+      --slot-line: #5a8284;
+      --board-back: #0f2528;
+      --focus: #ffd77a;
+      --err: #ff9d92;
+      --shadow: 0 18px 40px -22px rgba(0, 0, 0, .8);
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.5;
+      padding-left: max(16px, env(safe-area-inset-left, 0px));
+      padding-right: max(16px, env(safe-area-inset-right, 0px));
+      padding-block: 20px 48px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--display);
+      font-weight: 400;
+      text-wrap: balance;
+      margin: 0;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+      color: inherit;
+    }
+
+    .app {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* header */
+    .top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px 24px;
+      padding-bottom: 18px;
+    }
+
+    .top h1 {
+      font-size: clamp(30px, 4.4vw, 44px);
+      line-height: 1.05;
+      color: var(--teal);
+    }
+
+    .top .sub {
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    .top-r {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 12px;
+    }
+
+    /* buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform .15s, background .2s;
+    }
+
+    .btn.primary {
+      background: var(--teal);
+      color: var(--on-teal);
+    }
+
+    .btn.primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .btn.primary:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .btn.ghost:hover:not(:disabled) {
+      background: color-mix(in srgb, var(--teal) 10%, transparent);
+    }
+
+    .btn.ghost:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .btn.text {
+      background: none;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding-inline: 8px;
+    }
+
+    :is(.btn, input, select, .stepper button):focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* stage layout */
+    .stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
+    }
+
+    .board-col {
+      min-width: 0;
+    }
+
+    #board svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 22px 30px rgba(16, 48, 47, .28));
+    }
+
+    .meter {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .meter-top {
+      font-size: 14px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .bar {
+      height: 6px;
+      border-radius: 3px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--teal-2), var(--gold-2));
+      transition: width .5s ease;
+    }
+
+    .cap {
+      margin: 12px 0 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* board svg */
+    .board-back {
+      fill: var(--board-back);
+      stroke: var(--line);
+      stroke-width: 1.5;
+      transition: stroke .8s;
+    }
+
+    .cell .slot-empty {
+      fill: var(--slot);
+      stroke: var(--slot-line);
+      stroke-width: 2;
+      stroke-dasharray: 7 5;
+      transition: opacity .4s;
+    }
+
+    .cell .ghost {
+      opacity: .13;
+      transition: opacity .4s;
+    }
+
+    .cell .art {
+      opacity: 0;
+      transition: opacity .35s;
+    }
+
+    .cell .seam-dark {
+      fill: none;
+      stroke: rgba(8, 40, 42, .4);
+      stroke-width: 4;
+      opacity: 0;
+      transition: opacity 1.2s;
+    }
+
+    .cell .seam-set {
+      fill: none;
+      stroke: rgba(255, 255, 255, .75);
+      stroke-width: 1.8;
+      opacity: 0;
+      transition: opacity 1.2s;
+    }
+
+    .cell.is-filled .slot-empty,
+    .cell.is-filled .ghost {
+      opacity: 0;
+    }
+
+    .cell.is-filled .art,
+    .cell.is-filled .seam-dark,
+    .cell.is-filled .seam-set {
+      opacity: 1;
+    }
+
+    .cell.settle .art {
+      animation: settle .55s ease both;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    @keyframes settle {
+      from {
+        opacity: 0;
+        transform: scale(.93);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    #board.done .seam-dark,
+    #board.done .seam-set {
+      opacity: .22;
+    }
+
+    #board.done .board-back {
+      stroke: var(--gold-2);
+      stroke-width: 3;
+    }
+
+    /* panel */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 24px 26px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .panel.busy {
+      pointer-events: none;
+    }
+
+    .panel h2 {
+      font-size: clamp(24px, 3vw, 31px);
+      line-height: 1.15;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .panel .hint {
+      margin: 8px 0 0;
+      color: var(--muted);
+      max-width: 46ch;
+    }
+
+    .needed {
+      margin: 0 0 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .needed b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .enter {
+      animation: enter .35s ease both;
+    }
+
+    @keyframes enter {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* puzzle-shaped answer pieces */
+    .tray {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 4px;
+      margin: 18px -10px 4px;
+    }
+
+    .tp {
+      appearance: none;
+      border: 0;
+      background: none;
+      padding: 0;
+      width: 158px;
+      cursor: pointer;
+      position: relative;
+      transition: opacity .2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .tp svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      transition: transform .2s ease, filter .2s;
+    }
+
+    .tp:hover svg {
+      transform: translateY(-4px) rotate(-1.2deg);
+    }
+
+    .tp:focus-visible {
+      outline: none;
+    }
+
+    .tp:focus-visible svg {
+      filter: drop-shadow(0 0 3px var(--focus)) drop-shadow(0 0 1px var(--focus));
+    }
+
+    .tp:focus-visible .tp-body {
+      stroke: var(--focus);
+      stroke-width: 4.5;
+    }
+
+    .tp-shadow {
+      fill: rgba(8, 40, 42, .22);
+    }
+
+    .tp-body {
+      stroke: rgba(255, 255, 255, .6);
+      stroke-width: 2;
+      transition: stroke .2s;
+    }
+
+    .tp text {
+      font-family: var(--body);
+      text-anchor: middle;
+    }
+
+    .tp .l1 {
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .tp .l2 {
+      font-size: 11.5px;
+      font-weight: 500;
+    }
+
+    .tp .chk {
+      opacity: 0;
+      transition: opacity .15s;
+    }
+
+    .tp.on .chk {
+      opacity: 1;
+    }
+
+    .tp.on .tp-body {
+      stroke: var(--gold-2);
+      stroke-width: 4;
+    }
+
+    .tp.on svg {
+      transform: translateY(-3px);
+    }
+
+    .tp.gone {
+      opacity: 0;
+    }
+
+    .flyer {
+      filter: drop-shadow(0 14px 14px rgba(8, 40, 42, .35));
+    }
+
+    /* forms inside panel and modal */
+    .fields {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .fields.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .f {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .f>span,
+    .row>span {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    select {
+      width: 100%;
+      min-height: 46px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      border: 1.5px solid var(--line);
+      background: var(--surface-2);
+      color: var(--ink);
+    }
+
+    input[aria-invalid="true"],
+    select[aria-invalid="true"] {
+      border-color: var(--err);
+    }
+
+    .err {
+      margin: 4px 0 0;
+      min-height: 1.2em;
+      font-size: 14px;
+      color: var(--err);
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stepper {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stepper button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--teal);
+      background: none;
+      color: var(--teal);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .stepper button:hover {
+      background: color-mix(in srgb, var(--teal) 12%, transparent);
+    }
+
+    .stepper output {
+      min-width: 34px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 18px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    /* reward: the scratch card sits on top of the finished photo */
+    .board-wrap {
+      position: relative;
+    }
+
+    .reward-slot {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .reward-slot .scratch {
+      pointer-events: auto;
+      margin: 0;
+      height: auto;
+      aspect-ratio: 2.5 / 1;
+      width: min(66%, 440px);
+      border: 2px solid var(--gold-2);
+      box-shadow: 0 0 0 5px rgba(255, 255, 255, .6), 0 26px 60px -10px rgba(0, 0, 0, .6);
+      animation: card-in .7s cubic-bezier(.2, .9, .3, 1.15) both;
+    }
+
+    .reward-slot .prize strong {
+      font-size: clamp(26px, 5.4vw, 42px);
+    }
+
+    .reward-slot .prize .note {
+      font-size: 11.5px;
+    }
+
+    @keyframes card-in {
+      from {
+        opacity: 0;
+        transform: scale(.82) translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .reward-slot .scratch {
+        width: 84%;
+      }
+
+      .reward-slot .prize {
+        padding: 8px;
+        gap: 2px;
+      }
+    }
+
+    .scratch {
+      position: relative;
+      height: 156px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 18px;
+      border: 1px solid var(--gold-2);
+      background: radial-gradient(circle at 30% 20%, var(--surface), var(--surface-2));
+    }
+
+    .prize {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      gap: 4px;
+      padding: 12px;
+    }
+
+    .prize .lab {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .prize strong {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(32px, 6vw, 44px);
+      letter-spacing: .14em;
+      color: var(--teal);
+      user-select: all;
+    }
+
+    .prize .note {
+      font-size: 12.5px;
+      color: var(--muted);
+      max-width: 30ch;
+      margin-inline: auto;
+    }
+
+    .scratch {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    #scratch-canvas {
+      position: absolute;
+      inset: 0;
+      touch-action: none;
+      cursor: crosshair;
+      transition: opacity .6s ease;
+    }
+
+    #scratch-canvas.gone {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .status {
+      min-height: 1.4em;
+      margin: 10px 0 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .sum {
+      margin: 22px 0 0;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 16px;
+      font-size: 14px;
+    }
+
+    .sum dt {
+      color: var(--muted);
+    }
+
+    .sum dd {
+      margin: 0;
+      font-weight: 500;
+      overflow-wrap: anywhere;
+    }
+
+    .sum-h {
+      margin-top: 22px;
+      font-family: var(--display);
+      font-size: 19px;
+    }
+
+    /* modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+      background: rgba(6, 30, 32, .62);
+      backdrop-filter: blur(5px);
+      overflow-y: auto;
+    }
+
+    .modal[hidden] {
+      display: none;
+    }
+
+    .sheet {
+      width: 100%;
+      max-width: 520px;
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 30px 28px 26px;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .6);
+      border-top: 5px solid var(--gold-2);
+      margin: auto;
+    }
+
+    .sheet h2 {
+      font-size: 30px;
+      color: var(--teal);
+    }
+
+    .sheet p.lead {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .phone {
+      display: grid;
+      grid-template-columns: minmax(96px, 128px) minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .sheet .foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 16px;
+      margin-top: 22px;
+    }
+
+    .sheet .small {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 14px 0 0;
+    }
+
+    @media (max-width: 960px) {
+      .stage {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .panel {
+        padding: 22px 16px;
+      }
+
+      .tray {
+        margin-inline: -6px;
+      }
+
+      .tp {
+        width: calc(50% - 4px);
+        max-width: 170px;
+      }
+
+      .fields.two {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .sheet {
+        padding: 24px 18px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-delay: 0s !important;
+        transition-duration: .001ms !important;
+      }
+
+      .tp:hover svg {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!--==================================================
+          Start: desktop Header
+ ================================================== -->
+  <header>
+    <!-- Start: desktop Header -->
+    <div class="header-wrap header-wrap--home" id="headerWrap">
+      <div class="topbar">
+        <div class="container topbar__inner">
+          <div class="topbar__left">
+            <a href="mailto:info@BrandName.com">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+              info@BrandName.com
+            </a>
+            <a href="tel:+201067865053">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              +201067865053
+            </a>
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              Zahraa Maadi, Cairo, Egypt
+            </span>
+          </div>
+
+          <div class="topbar__right">
+            <div class="topbar__dropdown">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+              </svg>
+              EN
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+              <div class="top-dropdown-menu">
+                <a href="#">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="https://flagcdn.com/w40/gb.png" sizes="100vw"
+                      type="image/png"><img src="https://flagcdn.com/w40/gb.png" alt="EN" sizes="100vw" decoding="async"
+                      loading="lazy" fetchpriority="low">
+                  </picture> English
+                </a>
+                <a href="#">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="https://flagcdn.com/w40/eg.png" sizes="100vw"
+                      type="image/png"><img src="https://flagcdn.com/w40/eg.png" alt="AR" sizes="100vw" decoding="async"
+                      loading="lazy" fetchpriority="low">
+                  </picture> العربية
+                </a>
+                <a href="#">
+                  <picture>
+                    <source media="(min-width: 769px)" srcset="https://flagcdn.com/w40/de.png" sizes="100vw"
+                      type="image/png"><img src="https://flagcdn.com/w40/de.png" alt="DE" sizes="100vw" decoding="async"
+                      loading="lazy" fetchpriority="low">
+                  </picture> Deutsch
+                </a>
+              </div>
+            </div>
+            <div class="topbar__dropdown">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9" />
+                <path
+                  d="M12 6v12M9 9.5c0-1.4 1.3-2.5 3-2.5s3 1.1 3 2.5-1.3 2.5-3 2.5-3 1.1-3 2.5 1.3 2.5 3 2.5 3-1.1 3-2.5" />
+              </svg>
+              $
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+              <div class="top-dropdown-menu">
+                <a href="#"><i class="fa-solid fa-dollar-sign"></i> USD</a>
+                <a href="#"><i class="fa-solid fa-euro-sign"></i> EUR</a>
+                <a href="#"><i class="fa-solid fa-sterling-sign"></i> GBP</a>
+                <a href="#">E£ EGP</a>
+              </div>
+            </div>
+            <div class="topbar__social">
+              <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-pill-wrap">
+        <div class="mx-auto flex max-w-7xl">
+          <div class="nav-pill w-full">
+            <a href="index.html" class="logo">
+              <picture>
+                <source media="(min-width: 769px)" srcset="assets/images/BrandName-logo.png" sizes="100vw"
+                  type="image/png" width="874" height="500"><img title="image" src="assets/images/BrandName-logo.png"
+                  alt="Brand Name" sizes="100vw" decoding="async" loading="lazy" fetchpriority="low" width="874"
+                  height="500">
+              </picture>
+            </a>
+
+            <nav>
+              <ul class="main-nav" id="mainNav">
+                <!--<li><a href="ai-assistance.html" class="nav-link">AI Smart Assistant</a></li> -->
+                <li><a href="index.html" class="nav-link is-active" aria-current="page">Home</a></li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Day Tours
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown nav-dropdown--mega">
+
+                    <div class="mega-col mega-col--1">
+                      <a href="subcategory.html">Giza Pyramids &amp; Sphinx Tour</a>
+                      <a href="subcategory.html">Egyptian Museum Tour</a>
+                      <a href="subcategory.html">Old Cairo &amp; Khan El Khalili</a>
+                    </div>
+                    <div class="mega-col mega-col--2">
+                      <a href="subcategory.html">Luxor Day Trip from Cairo</a>
+                      <a href="subcategory.html">Alexandria Day Trip</a>
+                      <a href="subcategory.html">Abu Simbel Day Trip</a>
+                    </div>
+                    <a href="category.html" class="mega-view-all">
+                      Show All Day Tours
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.4">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                  </div>
+                </li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Travel Packages
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown nav-dropdown--mega">
+                    <div class="mega-col mega-col--1">
+                      <a href="subcategory.html">5-Day Cairo &amp; Luxor</a>
+                      <a href="subcategory.html">8-Day Nile Explorer</a>
+                      <a href="subcategory.html">12-Day Grand Egypt</a>
+                    </div>
+                    <div class="mega-col mega-col--2">
+                      <a href="subcategory.html">Honeymoon Package</a>
+                      <a href="subcategory.html">Family Package</a>
+                    </div>
+                    <a href="category.html" class="mega-view-all">
+                      Show All Travel Packages
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.4">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+
+                  </div>
+                </li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Nile Cruises
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown nav-dropdown--mega">
+                    <div class="mega-col mega-col--1">
+                      <a href="subcategory.html">4-Day Luxor to Aswan</a>
+                      <a href="subcategory.html">5-Day Aswan to Luxor</a>
+                    </div>
+                    <div class="mega-col mega-col--2">
+                      <a href="subcategory.html">7-Day Nile &amp; Lake Nasser</a>
+                      <a href="subcategory.html">Luxury Dahabiya Cruise</a>
+                    </div>
+                    <a href="category.html" class="mega-view-all">
+                      Show All Nile Cruises
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.4">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+
+                  </div>
+                </li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Travel Style
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown nav-dropdown--mega">
+                    <div class="mega-col mega-col--1">
+                      <a href="subcategory.html">Private Tours</a>
+                      <a href="subcategory.html">Small Group Tours</a>
+                      <a href="subcategory.html">Luxury Travel</a>
+                    </div>
+                    <div class="mega-col mega-col--2">
+                      <a href="subcategory.html">Budget Friendly</a>
+                      <a href="subcategory.html">Family Friendly</a>
+                    </div>
+                    <a href="category.html" class="mega-view-all">
+                      Show All Travel Styles
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.4">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+
+                  </div>
+                </li>
+
+                <li>
+                  <a href="category.html" class="nav-link">Play & Win
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </a>
+                  <div class="nav-dropdown">
+                    <a href="visa-game.html">Visa Game</a>
+                    <a href="puzzles-game.html">Puzzle</a>
+                  </div>
+                </li>
+
+                <li>
+                  <span class="nav-link">Pages
+                    <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </span>
+                  <div class="nav-dropdown">
+                    <a href="about.html">About Us</a>
+                    <a href="blog-category.html">Blogs</a>
+                    <a href="free-page.html">Free Page</a>
+                    <a href="contact.html">Contact</a>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="nav-pill__actions">
+              <a class="btn btn--primary" href="tailor-made.html">
+                <span>Plan Your Trip</span>
+                <span class="btn__arrow">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </span>
+              </a>
+              <button class="burger" type="button" id="burgerBtn" aria-label="Open menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M4 7h16M4 12h16M4 17h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End: desktop Header -->
+
+    <!-- Start: Mobile Menu (Viator-style slide-in with drill-down) -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+      <a href="index.html" class="mobile-menu__logo">
+        <img src="assets/images/BrandName-logo.png" alt="Brand Name">
+      </a>
+      <div class="mobile-menu__views" id="mobileMenuViews">
+        <div class="mobile-menu__panel mobile-menu__panel--main">
+          <nav id="mobileCategoryList">
+            <div class="mobile-menu__cat-row"><a href="ai-assistance.html" class="mobile-menu__cat-link">AI Smart
+                Assistant</a></div>
+            <div class="mobile-menu__cat-row">
+              <a href="index.html" class="mobile-menu__cat-link">Home</a>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="day-tours">
+              <a href="category.html" class="mobile-menu__cat-link">Day Tours</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Day Tours subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="travel-packages">
+              <a href="category.html" class="mobile-menu__cat-link">Travel Packages</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Travel Packages subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="nile-cruises">
+              <a href="category.html" class="mobile-menu__cat-link">Nile Cruises</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Nile Cruises subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="travel-style">
+              <a href="category.html" class="mobile-menu__cat-link">Travel Style</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Travel Style subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="destinations">
+              <a href="category.html" class="mobile-menu__cat-link">Destinations</a>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Destinations subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="mobile-menu__cat-row" data-cat="pages">
+              <span class="mobile-menu__cat-link">Pages</span>
+              <button class="mobile-menu__cat-arrow" aria-label="Show Pages subcategories">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+          </nav>
+
+          <div class="mobile-menu__utilities">
+            <div class="mobile-menu__dropdown">
+              <button class="mobile-menu__dropdown-toggle" type="button" aria-expanded="false"
+                aria-controls="mobileLanguageMenu">
+                <span class="mobile-menu__dropdown-label">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                  Language <span class="mobile-menu__current-value">EN</span>
+                </span>
+                <svg class="mobile-menu__dropdown-caret" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.4">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mobile-menu__dropdown-menu" id="mobileLanguageMenu" hidden>
+                <a href="EN" type="button" data-value="EN">
+                  <img src="https://flagcdn.com/w40/gb.png" alt="English flag" title="English flag" width="20"
+                    height="14" loading="lazy"> English
+                </a>
+                <a href="AR" type="button" data-value="AR">
+                  <img src="https://flagcdn.com/w40/eg.png" alt="Arabic flag" title="Arabic flag" width="20" height="14"
+                    loading="lazy"> Arabic
+                </a>
+                <a href="DE" type="button" data-value="DE">
+                  <img src="https://flagcdn.com/w40/de.png" alt="German flag" title="German flag" width="20" height="14"
+                    loading="lazy"> Deutsch
+                </a>
+              </div>
+            </div>
+
+            <div class="mobile-menu__dropdown">
+              <button class="mobile-menu__dropdown-toggle" type="button" aria-expanded="false"
+                aria-controls="mobileCurrencyMenu">
+                <span class="mobile-menu__dropdown-label">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="9" />
+                    <path
+                      d="M12 6v12M9 9.5c0-1.4 1.3-2.5 3-2.5s3 1.1 3 2.5-1.3 2.5-3 2.5-3 1.1-3 2.5 1.3 2.5 3 2.5 3-1.1 3-2.5" />
+                  </svg>
+                  Currency <span class="mobile-menu__current-value">USD</span>
+                </span>
+                <svg class="mobile-menu__dropdown-caret" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.4">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="mobile-menu__dropdown-menu" id="mobileCurrencyMenu" hidden>
+                <a href="USD" data-value="USD"><span aria-hidden="true">$</span> USD</a>
+                <a href="EUR" data-value="EUR"><span aria-hidden="true">€</span> EUR</a>
+                <a href="GBP" data-value="GBP"><span aria-hidden="true">£</span> GBP</a>
+                <a href="EGP" data-value="EGP"><span aria-hidden="true">E£</span> EGP</a>
+              </div>
+            </div>
+
+            <a class="btn btn--primary mobile-menu__cta" href="tailor-made.html">
+              <span>Plan Your Trip</span>
+              <span class="btn__arrow">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile-menu__panel mobile-menu__panel--sub">
+          <button class="mobile-menu__back" id="mobileMenuBack">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+            Back
+          </button>
+
+          <div class="mobile-menu__subpanel is-active" data-subpanel="day-tours">
+            <p class="mobile-menu__sub-title">Day Tours</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">Giza Pyramids &amp; Sphinx Tour</a></li>
+              <li><a href="subcategory.html">Egyptian Museum Tour</a></li>
+              <li><a href="subcategory.html">Old Cairo &amp; Khan El Khalili</a></li>
+              <li><a href="subcategory.html">Luxor Day Trip from Cairo</a></li>
+              <li><a href="subcategory.html">Alexandria Day Trip</a></li>
+              <li><a href="subcategory.html">Abu Simbel Day Trip</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="travel-packages">
+            <p class="mobile-menu__sub-title">Travel Packages</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">5-Day Cairo &amp; Luxor</a></li>
+              <li><a href="subcategory.html">8-Day Nile Explorer</a></li>
+              <li><a href="subcategory.html">12-Day Grand Egypt</a></li>
+              <li><a href="subcategory.html">Honeymoon Package</a></li>
+              <li><a href="subcategory.html">Family Package</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="nile-cruises">
+            <p class="mobile-menu__sub-title">Nile Cruises</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">4-Day Luxor to Aswan</a></li>
+              <li><a href="subcategory.html">5-Day Aswan to Luxor</a></li>
+              <li><a href="subcategory.html">7-Day Nile &amp; Lake Nasser</a></li>
+              <li><a href="subcategory.html">Luxury Dahabiya Cruise</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="travel-style">
+            <p class="mobile-menu__sub-title">Travel Style</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">Private Tours</a></li>
+              <li><a href="subcategory.html">Small Group Tours</a></li>
+              <li><a href="subcategory.html">Luxury Travel</a></li>
+              <li><a href="subcategory.html">Budget Friendly</a></li>
+              <li><a href="subcategory.html">Family Friendly</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="destinations">
+            <p class="mobile-menu__sub-title">Destinations</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="subcategory.html">Cairo &amp; Giza</a></li>
+              <li><a href="subcategory.html">Luxor</a></li>
+              <li><a href="subcategory.html">Aswan</a></li>
+              <li><a href="subcategory.html">Alexandria</a></li>
+              <li><a href="subcategory.html">Sharm El Sheikh</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-menu__subpanel" data-subpanel="pages">
+            <p class="mobile-menu__sub-title">Pages</p>
+            <ul class="mobile-menu__sub-list">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="blog-category.html">Blog</a></li>
+              <li><a href="free-page.html">terms and conditions</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End: Mobile Menu -->
+  </header>
+  <!--==================================================
+          Start: desktop Header
+ ================================================== -->
+  <div class="app">
+    <header class="top">
+      <div>
+        <h1>Build Your Trip</h1>
+        <p class="sub">Egypt, one puzzle piece at a time</p>
+      </div>
+      <div class="top-r">
+        <span class="tag">Prototype with sample data</span>
+        <button type="button" class="btn text" id="restart-top">Start over</button>
+      </div>
+    </header>
+
+    <main id="main" class="stage">
+      <section class="board-col" aria-label="Puzzle board">
+        <div class="board-wrap">
+          <div id="board"></div>
+          <div id="reward-slot" class="reward-slot"></div>
+        </div>
+        <div class="meter">
+          <div class="meter-top" id="count">0 of 8 pieces placed</div>
+          <div class="bar" role="progressbar" aria-label="Puzzle progress" aria-valuemin="0" aria-valuemax="8"
+            aria-valuenow="0"><span id="bar-fill"></span></div>
+        </div>
+        <p class="cap">The Giza pyramids, Egypt. Photo: Ricardo Liberato, Wikimedia Commons (CC BY-SA 2.0).</p>
+      </section>
+      <section class="panel" id="panel" aria-label="Trip questions"></section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title" aria-describedby="m-desc">
+    <form class="sheet" id="traveler-form" novalidate>
+      <h2 id="m-title">Before we start</h2>
+      <p class="lead" id="m-desc">Tell us who is asking. Then you will build the trip piece by piece.</p>
+      <div class="fields">
+        <label class="f" for="t-name"><span>Full name</span>
+          <input type="text" id="t-name" autocomplete="name" placeholder="Lena Fischer" aria-describedby="e-name">
+          <p class="err" id="e-name"></p>
+        </label>
+        <label class="f" for="t-email"><span>Email address</span>
+          <input type="email" id="t-email" autocomplete="email" placeholder="lena.fischer@example.com"
+            aria-describedby="e-email">
+          <p class="err" id="e-email"></p>
+        </label>
+        <div class="f">
+          <span id="l-phone">Phone number</span>
+          <div class="phone">
+            <select id="t-cc" aria-label="Country calling code" autocomplete="tel-country-code"></select>
+            <input type="tel" id="t-phone" autocomplete="tel-national" inputmode="tel" placeholder="1512 3456789"
+              aria-labelledby="l-phone" aria-describedby="e-phone">
+          </div>
+          <p class="err" id="e-phone"></p>
+        </div>
+        <label class="f" for="t-nat"><span>Nationality</span>
+          <select id="t-nat" aria-describedby="e-nat"></select>
+          <p class="err" id="e-nat"></p>
+        </label>
+      </div>
+      <div class="foot">
+        <button type="submit" class="btn primary" id="start-btn">Start Building My Trip</button>
+        <button type="button" class="btn text" id="sample-btn">Use sample details</button>
+      </div>
+      <p class="small">Prototype only. Nothing you type here is sent anywhere.</p>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ------------------------------------------------------------------
+         COMPLETION RULES (the trip is complete only when ALL of these hold)
+         party : a group type is chosen, the traveler counts are confirmed,
+                 adults >= 1, and every child has an age between 2 and 17.
+                 Solo travelers skip the counts step (1 adult is assumed).
+         dates : EXACT mode needs arrival (tomorrow or later) and a departure
+                 after arrival. FLEXIBLE mode needs a month and a length of stay.
+                 Picking a mode alone never counts as an answer.
+         style : at least one style is selected and confirmed.
+         dest  : a region is chosen, or "Suggest a destination" is chosen
+                 explicitly. An unanswered question is never complete.
+         budget: a tier is chosen, or "Flexible" is chosen explicitly.
+         The next question is always the first stage that is not complete.
+         When every stage is complete the questions stop and the reward opens.
+      ------------------------------------------------------------------- */
+
+      var COLS = 4, ROWS = 2, CW = 200, CH = 262.5, W = COLS * CW, H = ROWS * CH, TOTAL = COLS * ROWS;
+      var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+      var reduced = !!(mq && mq.matches);
+      var SAMPLE_CODE = 'TRIP10'; /* demonstration value only */
+
+      function $(s, r) { return (r || document).querySelector(s); }
+      function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+      function wait(ms) { return new Promise(function (r) { setTimeout(r, reduced ? 0 : ms); }); }
+      function pad(n) { return (n < 10 ? '0' : '') + n; }
+      function iso(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+      var tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+      var TOMORROW = iso(tomorrow);
+
+      /* ---------- jigsaw geometry ---------- */
+      function r1(n) { return Math.round(n * 10) / 10; }
+      /* One edge from (x0,y0) to (x1,y1). s = +1 tab bulges outward, -1 notch cuts inward, 0 flat.
+         "Outward" is relative to a clockwise walk around the piece, so two neighbours that share an edge
+         use opposite signs and trace the exact same curve. */
+      function edge(x0, y0, x1, y1, s) {
+        if (!s) return 'L' + r1(x1) + ' ' + r1(y1);
+        var dx = x1 - x0, dy = y1 - y0, L = Math.sqrt(dx * dx + dy * dy), ux = dx / L, uy = dy / L, mx = -uy, my = ux;
+        function P(a, b) { return r1(x0 + ux * a * L + mx * b * L * s) + ' ' + r1(y0 + uy * a * L + my * b * L * s); }
+        return 'L' + P(.37, 0) +
+          ' C' + P(.42, 0) + ' ' + P(.44, -.04) + ' ' + P(.41, -.08) +
+          ' C' + P(.36, -.15) + ' ' + P(.42, -.22) + ' ' + P(.5, -.22) +
+          ' C' + P(.58, -.22) + ' ' + P(.64, -.15) + ' ' + P(.59, -.08) +
+          ' C' + P(.56, -.04) + ' ' + P(.58, 0) + ' ' + P(.63, 0) +
+          ' L' + r1(x1) + ' ' + r1(y1);
+      }
+      function piecePath(x, y, w, h, f) { /* f = [top, right, bottom, left] flags */
+        return 'M' + x + ' ' + y + ' ' + edge(x, y, x + w, y, f[0]) + ' ' + edge(x + w, y, x + w, y + h, f[1]) +
+          ' ' + edge(x + w, y + h, x, y + h, f[2]) + ' ' + edge(x, y + h, x, y, f[3]) + ' Z';
+      }
+      function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+      var rand = rng(20261026), hF = [], vF = [], r, c;
+      for (r = 0; r <= ROWS; r++) { hF[r] = []; for (c = 0; c < COLS; c++) hF[r][c] = (r === 0 || r === ROWS) ? 0 : (rand() < .5 ? 1 : -1); }
+      for (r = 0; r < ROWS; r++) { vF[r] = []; for (c = 0; c <= COLS; c++) vF[r][c] = (c === 0 || c === COLS) ? 0 : (rand() < .5 ? 1 : -1); }
+      var BOARD_PATHS = [];
+      for (r = 0; r < ROWS; r++) for (c = 0; c < COLS; c++) {
+        BOARD_PATHS.push(piecePath(c * CW, r * CH, CW, CH, [-hF[r][c] || 0, vF[r][c + 1], hF[r + 1][c], -vF[r][c] || 0]));
+      }
+
+      /* ---------- the travel picture (illustrated collage) ---------- */
+      var SCENE_ART =
+        '<g id="scene">' +
+        '<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#157079"/><stop offset=".45" stop-color="#6fbab4"/><stop offset=".72" stop-color="#f0dcae"/><stop offset="1" stop-color="#f4d9a0"/></linearGradient>' +
+        '<linearGradient id="nile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f9a9c"/><stop offset="1" stop-color="#0e5a5f"/></linearGradient></defs>' +
+        '<rect width="800" height="525" fill="url(#sky)"/>' +
+        '<circle cx="565" cy="250" r="104" fill="#fbe7b0" opacity=".38"/><circle cx="565" cy="250" r="62" fill="#f6d57c"/>' +
+        '<path d="M120 90c10-8 18-8 26 0 8-8 16-8 26 0M610 130c8-6 14-6 20 0 6-6 12-6 20 0" fill="none" stroke="#0e4a50" stroke-width="2.4" stroke-linecap="round"/>' +
+        '<path d="M0 345C120 305 230 335 350 322S610 304 800 340V525H0Z" fill="#e4c88f"/>' +
+        '<polygon points="420,352 540,212 662,352" fill="#c99a52"/><polygon points="420,352 540,212 540,352" fill="#edd198"/>' +
+        '<polygon points="150,356 332,146 522,356" fill="#c99a52"/><polygon points="150,356 332,146 332,356" fill="#ecce8e"/>' +
+        '<path d="M332 146L522 356" stroke="#b5873f" stroke-width="2" opacity=".5"/>' +
+        '<g fill="#cfa86a"><rect x="22" y="300" width="14" height="58"/><rect x="46" y="300" width="14" height="58"/><rect x="70" y="300" width="14" height="58"/><rect x="94" y="300" width="14" height="58"/><rect x="16" y="288" width="100" height="12"/><rect x="12" y="280" width="108" height="8" fill="#b88a4a"/></g>' +
+        '<path d="M0 420C100 382 220 410 320 442C240 472 120 502 0 492Z" fill="#dcb976"/>' +
+        '<path d="M800 374C700 382 600 412 500 442C420 466 330 502 260 525L560 525C650 492 722 472 800 464Z" fill="url(#nile)"/>' +
+        '<path d="M610 480c30-10 60-12 90-8M520 500c24-6 48-8 74-6M700 450c20-4 40-4 60 0" fill="none" stroke="#9fd8d2" stroke-width="2" stroke-linecap="round" opacity=".7"/>' +
+        '<path d="M556 456Q602 474 654 456L644 466Q602 482 568 468Z" fill="#6f4420"/><path d="M606 458V396" stroke="#4d2f14" stroke-width="3"/>' +
+        '<polygon points="608,400 608,452 672,452" fill="#fffaf0"/><polygon points="603,412 603,450 556,450" fill="#f2e5c8"/>' +
+        '<path d="M0 492C140 470 262 500 420 525H0Z" fill="#c99a52"/>' +
+        '<g fill="none" stroke-linecap="round"><path d="M116 440C120 412 126 392 134 370" stroke="#4a3320" stroke-width="6"/>' +
+        '<g stroke="#1c6a52" stroke-width="5"><path d="M134 370C112 356 94 360 78 378"/><path d="M134 370C124 348 138 334 160 330"/><path d="M134 370C154 356 176 360 188 380"/><path d="M134 370C114 372 102 392 98 410"/><path d="M134 370C154 376 166 394 168 412"/></g>' +
+        '<path d="M756 392C758 372 762 358 768 342" stroke="#4a3320" stroke-width="5"/>' +
+        '<g stroke="#1c6a52" stroke-width="4"><path d="M768 342C750 332 734 336 722 350"/><path d="M768 342C760 324 772 312 790 310"/><path d="M768 342C786 332 800 336 806 350"/><path d="M768 342C752 346 744 360 742 374"/></g></g>' +
+        '</g>';
+
+      /* The main picture is a real photograph (Giza pyramids, Wikimedia Commons, CC BY-SA 2.0, Ricardo Liberato).
+         To use your own photo, change PHOTO_URL. If the photo cannot load (offline, blocked), the board
+         falls back to the illustrated scene above so the prototype always works. */
+      var PHOTO_URL = 'https://commons.wikimedia.org/wiki/Special:FilePath/All_Gizah_Pyramids.jpg?width=1600';
+      var photoFailed = false;
+      var SCENE_PHOTO =
+        '<g id="scene"><rect width="800" height="525" fill="#d8c295"/>' +
+        '<image id="photo" href="' + PHOTO_URL + '" x="0" y="0" width="800" height="525" preserveAspectRatio="xMidYMid slice"/></g>';
+      function getScene() { return photoFailed ? SCENE_ART : SCENE_PHOTO; }
+
+      /* ---------- content ---------- */
+      var FILLS = [
+        { bg: '#0e5a5f', fg: '#ffffff' }, { bg: '#167478', fg: '#ffffff' },
+        { bg: '#ecd9b2', fg: '#10302f' }, { bg: '#d9b45a', fg: '#10302f' }
+      ];
+      var ICON = {
+        person: '<circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c0-3.8 2.9-6.2 6.5-6.2s6.5 2.4 6.5 6.2"/>',
+        couple: '<circle cx="8.5" cy="8.5" r="2.8"/><circle cx="15.5" cy="8.5" r="2.8"/><path d="M3 19.5c0-3 2.300-5 5.500-5M21 19.5c0-3-2.300-5-5.500-5M8.500 19.500c0-2.400 1.600-4 3.500-4s3.500 1.600 3.500 4"/>',
+        family: '<circle cx="8" cy="7" r="2.8"/><circle cx="17" cy="11" r="2.1"/><path d="M3 19c0-3.400 2.300-5.600 5-5.600s5 2.200 5 5.600M14 19c0-2.400 1.400-4 3-4s3 1.600 3 4"/>',
+        group: '<circle cx="6.5" cy="9" r="2.3"/><circle cx="12" cy="7" r="2.6"/><circle cx="17.5" cy="9" r="2.3"/><path d="M2.500 19c0-2.600 1.800-4.400 4-4.400M21.500 19c0-2.600-1.800-4.400-4-4.400M7.500 19c0-3 2-5 4.500-5s4.500 2 4.500 5"/>',
+        calendar: '<rect x="4" y="5.5" width="16" height="14.500" rx="2"/><path d="M4 10h16M8.500 3.500v4M15.500 3.500v4"/>',
+        flex: '<path d="M3 12c2.500-5 5.500-5 9 0s6.500 5 9 0"/>',
+        culture: '<path d="M3.500 10h17L12 4.500zM6 10v8M10 10v8M14 10v8M18 10v8M3.500 20h17"/>',
+        beach: '<circle cx="12" cy="8.500" r="3.300"/><path d="M3 16c3-2.600 6-2.600 9 0s6 2.600 9 0M3 20c3-2.600 6-2.600 9 0s6 2.600 9 0"/>',
+        adventure: '<path d="M3 19.500l6-11 4 6 2.500-3.500 5.500 8.500z"/>',
+        nature: '<path d="M5 19C5 10 10 5 19.500 5 19.500 14 14.500 19 5 19zM5 19l8-8"/>',
+        pyramid: '<path d="M3 19l9-14 9 14zM12 5v14"/>',
+        temple: '<path d="M4 8h16M5.500 8v11M10 8v11M14 8v11M18.500 8v11M3.500 19.500h17M4 8l8-3.500L20 8"/>',
+        waves: '<path d="M3 9c3-2.600 6-2.600 9 0s6 2.600 9 0M3 14c3-2.600 6-2.600 9 0s6 2.600 9 0M3 19c3-2.600 6-2.600 9 0s6 2.600 9 0"/>',
+        palm: '<path d="M12 20c0-5 .5-8 2-11M12 9c-3-2.500-6-2.500-8.500-.5M12 9c-1-3-.5-4.500 1.500-6M12 9c3-2 6-1.500 8 1M12 9c2.500 1 3.500 3 3.500 5M12 9c-2.500 1-3.500 3-3 5"/>',
+        compass: '<circle cx="12" cy="12" r="8.500"/><path d="M15.500 8.500l-2 5-5 2 2-5z"/>',
+        coin: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/>',
+        coins: '<ellipse cx="12" cy="7" rx="6.500" ry="2.800"/><path d="M5.500 7v5c0 1.500 3 2.800 6.500 2.800s6.500-1.300 6.500-2.800V7M5.500 12v5c0 1.500 3 2.800 6.500 2.800s6.500-1.300 6.500-2.800v-5"/>',
+        diamond: '<path d="M6 4h12l3.500 5.500L12 20.500 2.500 9.500zM2.500 9.500h19M9 4l-1.500 5.500L12 20.500M15 4l1.500 5.500L12 20.500"/>'
+      };
+      var PARTY = [
+        { id: 'solo', lines: ['Solo', 'Just me'], icon: 'person', a: 1, c: 0, i: 0, fill: 0, label: 'Solo traveler' },
+        { id: 'couple', lines: ['Couple', 'Two of us'], icon: 'couple', a: 2, c: 0, i: 0, fill: 1, label: 'Couple' },
+        { id: 'family', lines: ['Family', 'With children'], icon: 'family', a: 2, c: 2, i: 0, fill: 2, label: 'Family' },
+        { id: 'group', lines: ['Friends', 'or group'], icon: 'group', a: 4, c: 0, i: 0, fill: 3, label: 'Friends or group' }
+      ];
+      var DATEMODE = [
+        { id: 'exact', lines: ['Exact', 'dates'], icon: 'calendar', fill: 0, label: 'Exact dates' },
+        { id: 'flex', lines: ['Flexible', 'month'], icon: 'flex', fill: 3, label: 'Flexible' }
+      ];
+      var STYLES = [
+        { id: 'culture', lines: ['Culture', '& history'], icon: 'culture', fill: 2, label: 'Culture and history' },
+        { id: 'beach', lines: ['Beaches &', 'relaxation'], icon: 'beach', fill: 1, label: 'Beaches and relaxation' },
+        { id: 'adventure', lines: ['Adventure', 'outdoors'], icon: 'adventure', fill: 0, label: 'Adventure' },
+        { id: 'nature', lines: ['Nature &', 'local life'], icon: 'nature', fill: 3, label: 'Nature and local life' }
+      ];
+      var DESTS = [
+        { id: 'cairo', lines: ['Cairo', '& Giza'], icon: 'pyramid', fill: 3, label: 'Cairo and Giza' },
+        { id: 'luxor', lines: ['Luxor', '& Aswan'], icon: 'temple', fill: 0, label: 'Luxor and Aswan' },
+        { id: 'redsea', lines: ['Red Sea', 'coast'], icon: 'waves', fill: 1, label: 'Red Sea coast' },
+        { id: 'siwa', lines: ['Siwa', 'Oasis'], icon: 'palm', fill: 2, label: 'Siwa Oasis' },
+        { id: 'suggest', lines: ['Suggest a', 'destination'], icon: 'compass', fill: 0, label: 'Suggest a destination for me' }
+      ];
+      var BUDGETS = [
+        { id: 'ess', lines: ['Essential', 'to 1,200'], icon: 'coin', fill: 2, label: 'Essential, up to 1,200 USD' },
+        { id: 'comfort', lines: ['Comfort', '1,200 to 2,500'], icon: 'coins', fill: 1, label: 'Comfort, 1,200 to 2,500 USD' },
+        { id: 'premium', lines: ['Premium', '2,500 and up'], icon: 'diamond', fill: 0, label: 'Premium, 2,500 USD and up' },
+        { id: 'flex', lines: ['Flexible', 'budget'], icon: 'flex', fill: 3, label: 'Flexible budget' }
+      ];
+      var NIGHTS = [['4-6', '4 to 6 nights'], ['7-9', '7 to 9 nights'], ['10-14', '10 to 14 nights'], ['15+', '15 nights or more']];
+      var CCODES = [['+20', 'Egypt +20'], ['+44', 'United Kingdom +44'], ['+1', 'United States +1'], ['+49', 'Germany +49'], ['+33', 'France +33'], ['+39', 'Italy +39'], ['+971', 'UAE +971'], ['+966', 'Saudi Arabia +966'], ['+61', 'Australia +61']];
+      var NATS = ['German', 'British', 'American', 'French', 'Italian', 'Egyptian', 'Emirati', 'Saudi', 'Australian', 'Other'];
+
+      /* One choice = one piece. 8 pieces, 8 steps, each step fills exactly one slot:
+         traveler details -> party type -> traveler counts (auto for Solo) -> date type -> dates
+         -> style (all picked styles count as one step) -> destination -> budget. */
+      var SLOT = { traveler: 2, party: 5, counts: 0, mode: 7, dates: 3, style: 4, dest: 1, budget: 6 };
+      var STAGES = [
+        { id: 'party', needed: 'Travelers', flags: [1, 1, -1, -1] },
+        { id: 'dates', needed: 'Dates', flags: [1, -1, -1, 1] },
+        { id: 'style', needed: 'Style', flags: [1, 1, 1, -1] },
+        { id: 'dest', needed: 'Destination', flags: [1, -1, 1, 1] },
+        { id: 'budget', needed: 'Budget', flags: [1, 1, -1, 1] }
+      ];
+      var STAGE = {}; STAGES.forEach(function (s) { STAGE[s.id] = s; });
+
+      /* ---------- state ---------- */
+      var state = {
+        phase: 'modal',
+        traveler: { name: '', email: '', cc: '+44', phone: '', nat: '' },
+        busy: false
+      };
+      function freshTrip() {
+        state.party = { type: null, adults: 0, children: 0, infants: 0, ages: [], confirmed: false };
+        state.dates = { mode: null, arrival: '', departure: '', month: '', nights: '', confirmed: false };
+        state.style = []; state.styleConfirmed = false;
+        state.dest = null; state.budget = null;
+        state.filled = new Set(); state.revealed = false; state.busy = false;
+      }
+      freshTrip();
+
+      var complete = {
+        party: function () {
+          var p = state.party;
+          if (!p.type || !p.confirmed || p.adults < 1) return false;
+          if (p.children > 0) {
+            if (p.ages.length !== p.children) return false;
+            for (var i = 0; i < p.ages.length; i++) if (!(Number.isInteger(p.ages[i]) && p.ages[i] >= 2 && p.ages[i] <= 17)) return false;
+          }
+          return true;
+        },
+        dates: function () {
+          var d = state.dates;
+          if (!d.mode || !d.confirmed) return false;
+          if (d.mode === 'exact') return !!(d.arrival && d.departure && d.arrival >= TOMORROW && d.departure > d.arrival);
+          return !!(d.month && d.nights);
+        },
+        style: function () { return state.styleConfirmed && state.style.length > 0; },
+        dest: function () { return !!state.dest; },
+        budget: function () { return !!state.budget; }
+      };
+      function nextStage() { for (var i = 0; i < STAGES.length; i++) if (!complete[STAGES[i].id]()) return STAGES[i]; return null; }
+      function missing() { return STAGES.filter(function (s) { return !complete[s.id](); }).map(function (s) { return s.needed; }); }
+      function allComplete() { return missing().length === 0; }
+      function byId(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
+
+      /* ---------- board ---------- */
+      var boardEl = $('#board'), panel = $('#panel'), mainEl = $('#main'), modal = $('#modal');
+
+      function buildBoard() {
+        var clips = '', cells = '';
+        BOARD_PATHS.forEach(function (d, i) {
+          clips += '<clipPath id="cp-' + i + '"><path d="' + d + '"/></clipPath>';
+          cells += '<g class="cell" data-slot="' + i + '">' +
+            '<path class="slot-empty" d="' + d + '"/>' +
+            '<g class="ghost" clip-path="url(#cp-' + i + ')"><use href="#scene"/></g>' +
+            '<g class="art" clip-path="url(#cp-' + i + ')"><use href="#scene"/></g>' +
+            '<path class="seam-dark" d="' + d + '"/><path class="seam-set" d="' + d + '"/></g>';
+        });
+        boardEl.className = '';
+        boardEl.innerHTML = '<svg viewBox="-16 -16 ' + (W + 32) + ' ' + (H + 32) + '" role="img" id="board-svg" aria-label="Jigsaw puzzle of Egypt, 0 of ' + TOTAL + ' pieces placed">' +
+          '<defs>' + getScene() + clips + '</defs><rect class="board-back" x="-12" y="-12" width="' + (W + 24) + '" height="' + (H + 24) + '" rx="10"/>' + cells + '</svg>';
+        var rs = $('#reward-slot'); if (rs) rs.innerHTML = '';
+        var im = boardEl.querySelector('#photo');
+        if (im) im.addEventListener('error', function () {
+          photoFailed = true;
+          var sc = boardEl.querySelector('#scene'), tmp = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          tmp.innerHTML = SCENE_ART;
+          if (sc && tmp.firstChild) sc.parentNode.replaceChild(tmp.firstChild, sc);
+        });
+        updateCount();
+      }
+      function updateCount() {
+        var n = state.filled.size;
+        $('#count').textContent = n + ' of ' + TOTAL + ' pieces placed';
+        $('#bar-fill').style.width = (n / TOTAL * 100) + '%';
+        $('.bar').setAttribute('aria-valuenow', n);
+        var svg = $('#board-svg'); if (svg) svg.setAttribute('aria-label', 'Jigsaw puzzle of Egypt, ' + n + ' of ' + TOTAL + ' pieces placed');
+      }
+      function setFilled(i, mode) {
+        state.filled.add(i);
+        var g = boardEl.querySelector('[data-slot="' + i + '"]');
+        if (g) { if (mode === 'settle') g.classList.add('settle'); g.classList.add('is-filled'); }
+        updateCount();
+      }
+      function flyTo(btn, slotIdx) {
+        return new Promise(function (resolve) {
+          var cell = boardEl.querySelector('[data-slot="' + slotIdx + '"] .slot-empty');
+          var svg = btn && btn.querySelector('svg'), body = btn && btn.querySelector('.tp-body');
+          if (reduced || !svg || !body || !cell || !svg.animate) { resolve(); return; }
+          var sr = body.getBoundingClientRect(), tr = cell.getBoundingClientRect(), br = svg.getBoundingClientRect();
+          if (!sr.width || !tr.width) { resolve(); return; }
+          var clone = svg.cloneNode(true);
+          clone.classList.add('flyer');
+          clone.style.cssText = 'position:fixed;margin:0;pointer-events:none;z-index:60;left:' + br.left + 'px;top:' + br.top + 'px;width:' + br.width + 'px;height:' + br.height + 'px;';
+          var cx = sr.left + sr.width / 2, cy = sr.top + sr.height / 2;
+          clone.style.transformOrigin = (cx - br.left) + 'px ' + (cy - br.top) + 'px';
+          document.body.appendChild(clone);
+          var dx = tr.left + tr.width / 2 - cx, dy = tr.top + tr.height / 2 - cy, sc = tr.width / sr.width;
+          btn.classList.add('gone');
+          var a = clone.animate([
+            { transform: 'translate(0,0) scale(1)' },
+            { transform: 'translate(' + dx * .5 + 'px,' + (dy * .5 - 36) + 'px) scale(' + ((1 + sc) / 2 * 1.04) + ')', offset: .55 },
+            { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sc + ')' }
+          ], { duration: 780, easing: 'cubic-bezier(.5,0,.2,1)', fill: 'forwards' });
+          var done = false;
+          function fin() { if (done) return; done = true; clone.remove(); resolve(); }
+          a.onfinish = fin; a.oncancel = fin;
+          setTimeout(fin, 1600);
+        });
+      }
+
+      /* ---------- tray pieces ---------- */
+      var TRAY_BODY = { x: 30, y: 30, w: 130, h: 110 };
+      function trayPiece(stageId, o, extraClass, pressed) {
+        var f = STAGE[stageId].flags, d = piecePath(TRAY_BODY.x, TRAY_BODY.y, TRAY_BODY.w, TRAY_BODY.h, f);
+        var fl = FILLS[o.fill];
+        var svg = '<svg viewBox="0 0 190 170" aria-hidden="true" focusable="false">' +
+          '<path class="tp-shadow" d="' + d + '" transform="translate(0,5)"/>' +
+          '<path class="tp-body" d="' + d + '" fill="' + fl.bg + '"/>' +
+          '<g transform="translate(82,38) scale(1.1)" fill="none" stroke="' + fl.fg + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ICON[o.icon] + '</g>' +
+          '<text class="l1" x="95" y="88" fill="' + fl.fg + '">' + esc(o.lines[0]) + '</text>' +
+          '<text class="l2" x="95" y="104" fill="' + fl.fg + '">' + esc(o.lines[1]) + '</text>' +
+          '<g class="chk" transform="translate(142,48)"><circle r="10" fill="#10302f" stroke="#d9b45a" stroke-width="2"/><path d="M-4.500 0l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/></g>' +
+          '</svg>';
+        return '<button type="button" class="tp' + (extraClass ? ' ' + extraClass : '') + '" data-action="pick" data-stage="' + stageId + '" data-id="' + o.id + '" aria-label="' + esc(o.label) + '"' +
+          (pressed === undefined ? '' : ' aria-pressed="' + (pressed ? 'true' : 'false') + '"') + '>' + svg + '</button>';
+      }
+      function tray(stageId, list, label, multi) {
+        return '<div class="tray" role="group" aria-label="' + esc(label) + '">' + list.map(function (o) {
+          var on = multi && state.style.indexOf(o.id) > -1;
+          return trayPiece(stageId, o, on ? 'on' : '', multi ? on : undefined);
+        }).join('') + '</div>';
+      }
+
+      /* ---------- panel rendering ---------- */
+      function head(title, hint) {
+        var m = missing();
+        return '<p class="needed">Still to do: <b>' + esc(m.join(', ')) + '</b></p>' +
+          '<h2 id="q-title" tabindex="-1">' + esc(title) + '</h2>' + (hint ? '<p class="hint">' + esc(hint) + '</p>' : '');
+      }
+      function setPanel(html, focus) {
+        panel.innerHTML = '<div class="enter">' + html + '</div>';
+        if (focus) { var h = $('#q-title', panel) || $('#done-title', panel); if (h) { try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } } }
+      }
+      function agesHTML() {
+        var p = state.party, out = '';
+        for (var i = 0; i < p.children; i++) {
+          var v = Number.isInteger(p.ages[i]) ? p.ages[i] : '';
+          out += '<label class="f" for="age-' + i + '"><span>Child ' + (i + 1) + ' age</span><input type="number" id="age-' + i + '" data-age="' + i + '" min="2" max="17" inputmode="numeric" value="' + v + '"></label>';
+        }
+        return out;
+      }
+      function countsRow(field, label, one) {
+        return '<div class="row"><span id="l-' + field + '">' + label + '</span><div class="stepper" role="group" aria-labelledby="l-' + field + '">' +
+          '<button type="button" data-action="step" data-field="' + field + '" data-dir="-1" aria-label="Remove ' + one + '">&minus;</button>' +
+          '<output id="v-' + field + '" aria-live="polite">' + state.party[field] + '</output>' +
+          '<button type="button" data-action="step" data-field="' + field + '" data-dir="1" aria-label="Add ' + one + '">+</button></div></div>';
+      }
+      function renderPanel(focus) {
+        if (state.phase === 'reward' && allComplete()) { renderReward(focus); return; }
+        var st = nextStage(), id = st.id, html = '';
+        panel.classList.remove('busy');
+        if (id === 'party') {
+          if (!state.party.type) {
+            html = head('Who is traveling?', 'Pick the piece that fits your group. You can adjust the numbers next.') + tray('party', PARTY, 'Group type');
+          } else {
+            html = head('How many travelers?', 'These numbers are a starting point. Change them to match your group.') +
+              '<div class="fields" style="gap:0">' + countsRow('adults', 'Adults', 'an adult') + countsRow('children', 'Children, 2 to 17', 'a child') + countsRow('infants', 'Infants, under 2', 'an infant') + '</div>' +
+              '<div class="ages" id="ages">' + agesHTML() + '</div><p class="err" id="party-err" role="alert"></p>' +
+              '<div class="actions"><button type="button" class="btn primary" data-action="confirm-party">Confirm travelers</button></div>';
+          }
+        } else if (id === 'dates') {
+          var d = state.dates;
+          if (!d.mode) {
+            html = head('When are you traveling?', 'Choose exact dates, or stay flexible and pick a month.') + tray('dates', DATEMODE, 'Date type');
+          } else if (d.mode === 'exact') {
+            html = head('Pick your dates', 'We need an arrival date and a departure date.') +
+              '<div class="fields two"><label class="f" for="arrival"><span>Arrival</span><input type="date" id="arrival" min="' + TOMORROW + '" value="' + d.arrival + '"></label>' +
+              '<label class="f" for="departure"><span>Departure</span><input type="date" id="departure" min="' + (d.arrival || TOMORROW) + '" value="' + d.departure + '"></label></div>' +
+              '<p class="err" id="dates-err" role="alert"></p><div class="actions"><button type="button" class="btn primary" data-action="confirm-dates">Confirm dates</button><button type="button" class="btn text" data-action="dates-back">Choose differently</button></div>';
+          } else {
+            var months = '<option value="">Select a month</option>', now = new Date();
+            for (var i = 1; i <= 12; i++) {
+              var m = new Date(now.getFullYear(), now.getMonth() + i, 1), val = m.getFullYear() + '-' + pad(m.getMonth() + 1);
+              months += '<option value="' + val + '"' + (d.month === val ? ' selected' : '') + '>' + m.toLocaleString('en', { month: 'long', year: 'numeric' }) + '</option>';
+            }
+            var nights = '<option value="">Select length of stay</option>' + NIGHTS.map(function (n) { return '<option value="' + n[0] + '"' + (d.nights === n[0] ? ' selected' : '') + '>' + n[1] + '</option>'; }).join('');
+            html = head('Choose a period', 'Pick the month you prefer and roughly how long you want to stay.') +
+              '<div class="fields two"><label class="f" for="month"><span>Preferred month</span><select id="month">' + months + '</select></label>' +
+              '<label class="f" for="nights"><span>Length of stay</span><select id="nights">' + nights + '</select></label></div>' +
+              '<p class="err" id="dates-err" role="alert"></p><div class="actions"><button type="button" class="btn primary" data-action="confirm-dates">Confirm period</button><button type="button" class="btn text" data-action="dates-back">Choose differently</button></div>';
+          }
+        } else if (id === 'style') {
+          html = head('What is your travel style?', 'Select every piece that fits, then add them to the puzzle.') + tray('style', STYLES, 'Travel styles', true) +
+            '<div class="actions"><button type="button" class="btn primary" id="style-go" data-action="confirm-style"' + (state.style.length ? '' : ' disabled') + '>Add to my puzzle</button></div>';
+        } else if (id === 'dest') {
+          html = head('Where would you like to go?', 'Choose a region, or ask us to suggest one.') + tray('dest', DESTS, 'Destinations');
+        } else {
+          html = head('What is your budget?', 'Per person for the whole trip, in US dollars.') + tray('budget', BUDGETS, 'Budget levels');
+        }
+        setPanel(html, focus);
+      }
+
+      /* ---------- actions ---------- */
+      async function place(key, btn) {
+        var i = SLOT[key];
+        if (state.filled.has(i)) return;
+        if (btn) { await flyTo(btn, i); setFilled(i); } else { setFilled(i, 'settle'); }
+        await wait(160);
+      }
+      async function afterChange(focus) {
+        state.busy = false;
+        if (allComplete()) { await finish(); } else { renderPanel(focus !== false); }
+      }
+      async function finish() {
+        panel.classList.add('busy');
+        for (var i = 0; i < TOTAL; i++) if (!state.filled.has(i)) { setFilled(i, 'settle'); await wait(90); }
+        await wait(700);
+        state.phase = 'reward';
+        boardEl.classList.add('done');
+        renderReward(true);
+      }
+      async function run(fn) {
+        if (state.busy) return;
+        state.busy = true; panel.classList.add('busy');
+        try { await fn(); } catch (e) { state.busy = false; panel.classList.remove('busy'); if (window.console) console.error(e); }
+      }
+
+      function onPick(t) {
+        var stage = t.dataset.stage, id = t.dataset.id;
+        if (stage === 'party') return run(async function () {
+          var o = byId(PARTY, id), p = state.party;
+          p.type = id; p.adults = o.a; p.children = o.c; p.infants = o.i;
+          p.ages = []; for (var i = 0; i < o.c; i++) p.ages.push(NaN);
+          p.confirmed = false;
+          await place('party', t);
+          if (id === 'solo') { p.confirmed = true; await wait(200); await place('counts'); }   /* solo skips the counts step */
+          await afterChange();
+        });
+        if (stage === 'dates') return run(async function () {
+          state.dates.mode = id; state.dates.confirmed = false;
+          await place('mode', t);
+          await afterChange();
+        });
+        if (stage === 'style') {
+          if (state.busy) return;
+          var ix = state.style.indexOf(id);
+          if (ix > -1) state.style.splice(ix, 1); else state.style.push(id);
+          var on = ix === -1;
+          t.classList.toggle('on', on); t.setAttribute('aria-pressed', on ? 'true' : 'false');
+          var go = $('#style-go'); if (go) go.disabled = !state.style.length;
+          return;
+        }
+        if (stage === 'dest' || stage === 'budget') return run(async function () {
+          state[stage] = id;
+          await place(stage, t);
+          await afterChange();
+        });
+      }
+      function updateCounts() {
+        var p = state.party;
+        ['adults', 'children', 'infants'].forEach(function (f) { var o = $('#v-' + f); if (o) o.textContent = p[f]; });
+        while (p.ages.length < p.children) p.ages.push(NaN);
+        p.ages.length = p.children;
+        var a = $('#ages'); if (a) a.innerHTML = agesHTML();
+      }
+      var LIMITS = { adults: [1, 10], children: [0, 8], infants: [0, 4] };
+      panel.addEventListener('click', function (e) {
+        var t = e.target.closest('[data-action]'); if (!t || !panel.contains(t)) return;
+        var a = t.dataset.action;
+        if (a === 'pick') return onPick(t);
+        if (a === 'step') {
+          var f = t.dataset.field, lim = LIMITS[f], v = state.party[f] + parseInt(t.dataset.dir, 10);
+          if (v < lim[0] || v > lim[1]) return;
+          state.party[f] = v; updateCounts(); var er = $('#party-err'); if (er) er.textContent = '';
+          return;
+        }
+        if (a === 'confirm-party') {
+          var p = state.party, err = $('#party-err');
+          if (p.adults < 1) { err.textContent = 'At least one adult is needed.'; return; }
+          for (var i = 0; i < p.children; i++) if (!(Number.isInteger(p.ages[i]) && p.ages[i] >= 2 && p.ages[i] <= 17)) { err.textContent = 'Enter an age between 2 and 17 for each child.'; var inp = $('#age-' + i); if (inp) inp.focus(); return; }
+          return run(async function () { p.confirmed = true; await place('counts'); await afterChange(); });
+        }
+        if (a === 'dates-back') { state.dates.mode = null; renderPanel(true); return; }
+        if (a === 'confirm-dates') {
+          var d = state.dates, er2 = $('#dates-err'), msg = '';
+          if (d.mode === 'exact') {
+            if (!d.arrival || !d.departure) msg = 'Enter both an arrival and a departure date.';
+            else if (d.arrival < TOMORROW) msg = 'Arrival must be tomorrow or later.';
+            else if (d.departure <= d.arrival) msg = 'Departure must be after arrival.';
+          } else if (!d.month || !d.nights) msg = 'Choose a month and a length of stay.';
+          if (msg) { er2.textContent = msg; return; }
+          return run(async function () { d.confirmed = true; await place('dates'); await afterChange(); });
+        }
+        if (a === 'confirm-style') {
+          if (!state.style.length) return;
+          return run(async function () {
+            var btns = Array.prototype.slice.call(panel.querySelectorAll('.tp.on'));
+            state.styleConfirmed = true;
+            btns.slice(1).forEach(function (x) { x.classList.add('gone'); });   /* every picked style is one step, one piece */
+            await place('style', btns[0]);
+            await afterChange();
+          });
+        }
+        if (a === 'reveal') { revealReward(false); return; }
+        if (a === 'copy') { copyCode(); return; }
+        if (a === 'restart') { restart(); return; }
+      });
+      panel.addEventListener('input', function (e) {
+        var t = e.target;
+        if (t.dataset && t.dataset.age !== undefined) { state.party.ages[parseInt(t.dataset.age, 10)] = t.value === '' ? NaN : parseInt(t.value, 10); var er = $('#party-err'); if (er) er.textContent = ''; return; }
+        var d = state.dates;
+        if (t.id === 'arrival') { d.arrival = t.value; var dep = $('#departure'); if (dep) { dep.min = d.arrival || TOMORROW; if (d.departure && d.departure <= d.arrival) { d.departure = ''; dep.value = ''; } } }
+        else if (t.id === 'departure') d.departure = t.value;
+        else if (t.id === 'month') d.month = t.value;
+        else if (t.id === 'nights') d.nights = t.value;
+        else return;
+        var e2 = $('#dates-err'); if (e2) e2.textContent = '';
+      });
+
+      /* ---------- reward ---------- */
+      function fmtDate(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString('en', { day: 'numeric', month: 'short', year: 'numeric' }); }
+      function summaryRows() {
+        var t = state.traveler, p = state.party, d = state.dates, rows = [];
+        rows.push(['Traveler', t.name]);
+        rows.push(['Contact', t.email + ', ' + t.cc + ' ' + t.phone]);
+        rows.push(['Nationality', t.nat]);
+        var g = byId(PARTY, p.type).label + ': ' + p.adults + (p.adults === 1 ? ' adult' : ' adults');
+        if (p.children) g += ', ' + p.children + (p.children === 1 ? ' child' : ' children') + ' (ages ' + p.ages.join(', ') + ')';
+        if (p.infants) g += ', ' + p.infants + (p.infants === 1 ? ' infant' : ' infants');
+        rows.push(['Group', g]);
+        if (d.mode === 'exact') rows.push(['Dates', fmtDate(d.arrival) + ' to ' + fmtDate(d.departure)]);
+        else { var nm = ''; NIGHTS.forEach(function (n) { if (n[0] === d.nights) nm = n[1]; }); var mp = d.month.split('-'); rows.push(['Dates', 'Flexible, ' + new Date(+mp[0], +mp[1] - 1, 1).toLocaleString('en', { month: 'long', year: 'numeric' }) + ', ' + nm]); }
+        rows.push(['Style', state.style.map(function (s) { return byId(STYLES, s).label; }).join(', ')]);
+        rows.push(['Destination', byId(DESTS, state.dest).label]);
+        rows.push(['Budget', byId(BUDGETS, state.budget).label]);
+        return rows;
+      }
+      function renderReward(focus) {
+        if (!allComplete()) { state.phase = 'build'; renderPanel(focus); return; }   /* the reward never opens with missing details */
+        panel.classList.remove('busy');
+        var rows = summaryRows().map(function (r) { return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('');
+        setPanel(
+          '<h2 id="done-title" tabindex="-1">Your trip is taking shape</h2>' +
+          '<p class="hint">Every detail is in. Scratch the gold card on your photo to reveal your reward.</p>' +
+          '<div class="actions"><button type="button" class="btn ghost" data-action="reveal" id="reveal-btn">Reveal reward</button>' +
+          '<button type="button" class="btn primary" data-action="copy" id="copy-btn" disabled>Copy code</button></div>' +
+          '<p class="status" id="status" role="status"></p>' +
+          '<h3 class="sum-h">Your trip summary</h3><dl class="sum">' + rows + '</dl>' +
+          '<div class="actions"><button type="button" class="btn text" data-action="restart">Start over and test again</button></div>', focus);
+        state.revealed = false;
+        $('#reward-slot').innerHTML = '<div class="scratch" id="scratch"><div class="prize"><span class="lab">Demo reward code</span><strong id="code">' + SAMPLE_CODE + '</strong><span class="note">Sample code for this prototype. Not a real discount.</span></div>' +
+          '<canvas id="scratch-canvas" role="img" aria-label="Scratch card. Scratch with a mouse or finger, or use the Reveal reward button."></canvas></div>';
+        setupScratch();
+        /* bring the photo with the scratch card into view (matters on phones) */
+        setTimeout(function () { var bw = $('.board-wrap'); if (bw && bw.scrollIntoView) bw.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' }); }, 60);
+      }
+      var scratchState = null;
+      function setupScratch() {
+        var cv = $('#scratch-canvas'), wrap = $('#scratch'); if (!cv || !wrap) return;
+        var ctx = cv.getContext && cv.getContext('2d'); if (!ctx) return;
+        var dpr = Math.min(window.devicePixelRatio || 1, 2), drawing = false, last = null, moves = 0, lastW = 0;
+        function paint() {
+          var w = wrap.clientWidth, h = wrap.clientHeight; if (!w || !h) return;
+          lastW = w;
+          cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+          ctx.globalCompositeOperation = 'source-over';
+          var g = ctx.createLinearGradient(0, 0, cv.width, cv.height);
+          g.addColorStop(0, '#8a6a1f'); g.addColorStop(.22, '#e6c76e'); g.addColorStop(.45, '#b98a2b'); g.addColorStop(.62, '#f3dc92'); g.addColorStop(.82, '#a8801f'); g.addColorStop(1, '#d9b45a');
+          ctx.fillStyle = g; ctx.fillRect(0, 0, cv.width, cv.height);
+          ctx.strokeStyle = 'rgba(255,255,255,.16)'; ctx.lineWidth = dpr;
+          for (var x = -cv.height; x < cv.width; x += 11 * dpr) { ctx.beginPath(); ctx.moveTo(x, cv.height); ctx.lineTo(x + cv.height, 0); ctx.stroke(); }
+          ctx.fillStyle = 'rgba(60,42,6,.85)'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.font = '600 ' + Math.round(Math.min(17, w / 17) * dpr) + 'px Figtree, system-ui, sans-serif';
+          ctx.fillText('Scratch to reveal your reward', cv.width / 2, cv.height / 2);
+        }
+        function pos(e) { var r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * dpr, y: (e.clientY - r.top) * dpr }; }
+        function dot(p, q) {
+          ctx.globalCompositeOperation = 'destination-out'; ctx.strokeStyle = '#000'; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.lineWidth = 38 * dpr;
+          ctx.beginPath(); ctx.moveTo(q.x, q.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+        }
+        function progress() {
+          try {
+            var d = ctx.getImageData(0, 0, cv.width, cv.height).data, clear = 0, tot = 0;
+            for (var i = 3; i < d.length; i += 64) { tot++; if (d[i] < 20) clear++; }
+            return tot ? clear / tot : 0;
+          } catch (err) { return 0; }
+        }
+        function check() { if (!state.revealed && progress() >= .5) revealReward(true); }
+        cv.addEventListener('pointerdown', function (e) {
+          if (state.revealed) return;
+          drawing = true; last = pos(e); dot(last, last);
+          try { cv.setPointerCapture(e.pointerId); } catch (err) { }
+          e.preventDefault();
+        });
+        cv.addEventListener('pointermove', function (e) {
+          if (!drawing) return;
+          var p = pos(e); dot(p, last); last = p;
+          if (++moves % 10 === 0) check();
+        });
+        function end() { if (!drawing) return; drawing = false; check(); }
+        cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
+        paint();
+        scratchState = { cv: cv, repaint: function () { if (!state.revealed && wrap.clientWidth !== lastW) paint(); } };
+      }
+      window.addEventListener('resize', function () { if (scratchState) scratchState.repaint(); });
+      function revealReward(auto) {
+        if (state.revealed) return;
+        if (!allComplete()) return;
+        state.revealed = true;
+        var cv = $('#scratch-canvas'); if (cv) cv.classList.add('gone');
+        var c = $('#copy-btn'); if (c) c.disabled = false;
+        var r = $('#reveal-btn'); if (r) r.disabled = true;
+        var s = $('#status'); if (s) s.textContent = 'Reward revealed. Demo code ' + SAMPLE_CODE + '. It is sample data and gives no real discount.';
+      }
+      function copyCode() {
+        var s = $('#status'), el = $('#code');
+        function fallback() {
+          try { var rg = document.createRange(); rg.selectNodeContents(el); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(rg); } catch (e) { }
+          if (s) s.textContent = 'Code selected. Press Ctrl+C or Cmd+C to copy it.';
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(SAMPLE_CODE).then(function () { if (s) s.textContent = 'Code ' + SAMPLE_CODE + ' copied.'; }, fallback);
+        } else fallback();
+      }
+
+      /* ---------- modal ---------- */
+      function fillSelects() {
+        $('#t-cc').innerHTML = CCODES.map(function (c) { return '<option value="' + c[0] + '"' + (c[0] === state.traveler.cc ? ' selected' : '') + '>' + c[1] + '</option>'; }).join('');
+        $('#t-nat').innerHTML = '<option value="">Select nationality</option>' + NATS.map(function (n) { return '<option' + (n === state.traveler.nat ? ' selected' : '') + '>' + n + '</option>'; }).join('');
+      }
+      function openModal() {
+        state.phase = 'modal'; fillSelects();
+        $('#t-name').value = state.traveler.name; $('#t-email').value = state.traveler.email; $('#t-phone').value = state.traveler.phone;
+        ['name', 'email', 'phone', 'nat'].forEach(function (k) { $('#e-' + k).textContent = ''; var f = $('#t-' + k); if (f) f.removeAttribute('aria-invalid'); });
+        modal.hidden = false; mainEl.inert = true; mainEl.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { $('#t-name').focus(); }, 30);
+      }
+      function closeModal() { modal.hidden = true; mainEl.inert = false; mainEl.removeAttribute('aria-hidden'); }
+      function setErr(k, msg) { var f = $('#t-' + k), e = $('#e-' + k); e.textContent = msg; if (msg) f.setAttribute('aria-invalid', 'true'); else f.removeAttribute('aria-invalid'); return !msg; }
+      $('#traveler-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = $('#t-name').value.trim(), email = $('#t-email').value.trim(), cc = $('#t-cc').value, phone = $('#t-phone').value.trim(), nat = $('#t-nat').value;
+        var digits = phone.replace(/[\s\-().]/g, '');
+        var ok = [
+          setErr('name', name.length >= 2 && /[A-Za-zÀ-ɏ؀-ۿ]/.test(name) ? '' : 'Enter your full name.'),
+          setErr('email', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? '' : 'Enter a valid email address, like name@example.com.'),
+          setErr('phone', /^\d{6,14}$/.test(digits) ? '' : 'Enter 6 to 14 digits for your phone number.'),
+          setErr('nat', nat ? '' : 'Select your nationality.')
+        ];
+        if (ok.indexOf(false) > -1) { var bad = ['name', 'email', 'phone', 'nat'][ok.indexOf(false)]; $('#t-' + bad).focus(); return; }
+        state.traveler = { name: name, email: email, cc: cc, phone: phone, nat: nat };
+        closeModal(); state.phase = 'build';
+        run(async function () { await wait(250); await place('traveler'); await afterChange(true); });
+      });
+      $('#sample-btn').addEventListener('click', function () {
+        $('#t-name').value = 'Lena Fischer'; $('#t-email').value = 'lena.fischer@example.com'; $('#t-phone').value = '1512 3456789';
+        $('#t-cc').value = '+44'; $('#t-nat').value = 'German';
+        ['name', 'email', 'phone', 'nat'].forEach(function (k) { setErr(k, ''); });
+      });
+      modal.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab') return;
+        var f = Array.prototype.slice.call(modal.querySelectorAll('input,select,button')).filter(function (x) { return !x.disabled && x.offsetParent !== null; });
+        if (!f.length) return;
+        var first = f[0], lastEl = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); lastEl.focus(); }
+        else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); first.focus(); }
+      });
+
+      /* ---------- restart ---------- */
+      function restart() {
+        freshTrip(); scratchState = null; state.busy = false;
+        buildBoard(); panel.innerHTML = ''; panel.classList.remove('busy');
+        var fl = document.querySelectorAll('.flyer'); for (var i = 0; i < fl.length; i++) fl[i].remove();
+        openModal();
+      }
+      $('#restart-top').addEventListener('click', restart);
+
+      /* ---------- init ---------- */
+      buildBoard();
+      openModal();
+    })();
+  </script>
+</body>
+
+</html>

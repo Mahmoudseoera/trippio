@@ -311,11 +311,13 @@
     .result-head {
       margin: 32px 0 16px;
     }
-    .result-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
+
     .result-head__place {
       margin: 0;
       font-family: var(--font-heading);
@@ -741,7 +743,7 @@
 
             <nav>
               <ul class="main-nav" id="mainNav">
-                <li><a href="ai-assistance.html" class="nav-link">AI Smart Assistant</a></li>
+                <!--<li><a href="ai-assistance.html" class="nav-link">AI Smart Assistant</a></li> -->
                 <li><a href="index.html" class="nav-link is-active" aria-current="page">Home</a></li>
 
                 <li>
@@ -853,29 +855,14 @@
                 </li>
 
                 <li>
-                  <a href="category.html" class="nav-link">Destinations
+                  <a href="category.html" class="nav-link">Play & Win
                     <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
                       <path d="M6 9l6 6 6-6" />
                     </svg>
                   </a>
-                  <div class="nav-dropdown nav-dropdown--mega">
-                    <div class="mega-col mega-col--1">
-                      <a href="subcategory.html">Cairo &amp; Giza</a>
-                      <a href="subcategory.html">Luxor</a>
-                      <a href="subcategory.html">Aswan</a>
-                    </div>
-                    <div class="mega-col mega-col--2">
-                      <a href="subcategory.html">Alexandria</a>
-                      <a href="subcategory.html">Sharm El Sheikh</a>
-                    </div>
-                    <a href="category.html" class="mega-view-all">
-                      Show All Destinations
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.4">
-                        <path d="M7 17L17 7M9 7h8v8" />
-                      </svg>
-                    </a>
-
+                  <div class="nav-dropdown">
+                    <a href="visa-game.html">Visa Game</a>
+                    <a href="puzzles-game.html">Puzzle</a>
                   </div>
                 </li>
 
@@ -930,7 +917,8 @@
       <div class="mobile-menu__views" id="mobileMenuViews">
         <div class="mobile-menu__panel mobile-menu__panel--main">
           <nav id="mobileCategoryList">
-            <div class="mobile-menu__cat-row"><a href="ai-assistance.html" class="mobile-menu__cat-link">AI Smart Assistant</a></div>
+            <div class="mobile-menu__cat-row"><a href="ai-assistance.html" class="mobile-menu__cat-link">AI Smart
+                Assistant</a></div>
             <div class="mobile-menu__cat-row">
               <a href="index.html" class="mobile-menu__cat-link">Home</a>
             </div>
@@ -1132,71 +1120,8 @@
           Start: desktop Header
  ================================================== -->
 
-  <!-- <section class="hero-section">
-    <div class="container hero-wrap">
-      <div class="hero-bg">
-        <picture>
-          <source media="(min-width: 769px)" srcset="assets/images/tours/Pyramids-in-Egypt-webp.webp" sizes="100vw"
-            width="1600" height="900" type="image/webp"><img title="image"
-            src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="Egyptian coastline and clifftop resort"
-            width="1600" height="900" fetchpriority="high" decoding="async" sizes="100vw" loading="eager">
-        </picture>
-      </div>
-
-      <div class="hero-wave">
-        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-          <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,90 1440,40 L1440,100 L0,100 Z"></path>
-        </svg>
-      </div>
-
-      <div class="hero-content hero-content--centered">
-        <p class="hero-eyebrow"><span class="hero-eyebrow__dash"></span>Customize Your Tour<span
-            class="hero-eyebrow__dash"></span></p>
-
-        <h1 class="hero-title">Discover <em>Egypt</em><br>For Yourself</h1>
-
-        <p class="hero-tagline">Discover the world's most timeless destination — pyramids, temples, and the Nile,
-          planned your way.</p>
-
-        <a href="category.html" class="hero-cta">
-          <span>Explore Tours</span>
-          <span class="hero-cta__icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-              <path d="M7 17 17 7M7 7h10v10" />
-            </svg>
-          </span>
-        </a>
-
-        <div class="hero-stats">
-          <span class="hero-stats__item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-              <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9L5.7 21l1.7-7L2 9.2l7.1-.6L12 2z" />
-            </svg>
-            4.9 Stars <span>(1,200+ Reviews)</span>
-          </span>
-          <span class="hero-stats__dot"></span>
-          <span class="hero-stats__item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            12k+ Travelers
-          </span>
-          <span class="hero-stats__dot"></span>
-          <span class="hero-stats__item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <path d="M20.6 12.6 12 21.2 2.8 12 4 4l8-1.2 8.6 8.8a2 2 0 0 1 0 2.8Z" />
-              <circle cx="8.6" cy="7.4" r="1.4" fill="currentColor" stroke="none" />
-            </svg>
-            Best Price Guarantee
-          </span>
-        </div>
-      </div>
-    </div>
-  </section> -->
   <!--=====================================
-       End: Hero Section
+       Start: Hero Section
    ===================================== -->
   <section class="hero-section">
     <div class="hero-wrapper">
@@ -1274,6 +1199,9 @@
       </div>
     </div>
   </section>
+  <!--=====================================
+       End: Hero Section
+   ===================================== -->
   <!--=====================================
        Start: Why Section
    ===================================== -->
@@ -1432,90 +1360,74 @@
         <div class="progress-fill" id="catProgress"></div>
       </div>
 
-      <div class="swiper categories-swiper" id="categoriesSwiper">
+      <div class="swiper categories-grid" id="categoriesSwiper">
         <div class="swiper-wrapper">
           <!-- @foreach($categories as $category) in Blade -->
-          <div class="swiper-slide"><a href="subcategory.html" class="category-card">
+          <div class="swiper-slide">
+            <a href="subcategory.html" class="category-card">
               <div class="card-media"><img src="assets/images/tours/aswan4545.webp"
                   alt="Feluccas sailing on the Nile in Aswan" title="Feluccas sailing on the Nile in Aswan" width="600"
                   height="400" loading="lazy" decoding="async"></div>
               <div class="category-info">
-                <h3 class="cat-name">Nile Cruises</h3><span class="cat-count">18 Tours</span>
-              </div>
-              <div class="category-reveal">
-                <img class="category-reveal__image" src="assets/images/tours/aswan4545.webp"
-                  alt="Feluccas sailing on the Nile in Aswan" title="Feluccas sailing on the Nile in Aswan" width="600"
-                  height="400" loading="lazy" decoding="async">
-                <span class="reveal-name">Nile Cruises</span><span class="reveal-count">18 Tours</span>
+                <h3 class="cat-name">Nile Cruises</h3>
+                <span class="cat-count">18 Tours</span>
                 <p class="reveal-desc">Sail between Luxor and Aswan aboard a boutique cruise ship, stopping at temples
                   along the riverbank each morning and evening.</p>
               </div>
-            </a></div>
-          <div class="swiper-slide"><a href="subcategory.html" class="category-card">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="subcategory.html" class="category-card">
               <div class="card-media"><img
                   src="assets/images/tours/quad%20bike%20safari%20in%20sharm%20el%20sheikh877.webp"
                   alt="Desert safari in Egypt" title="Desert safari in Egypt" width="600" height="400" loading="lazy"
                   decoding="async"></div>
               <div class="category-info">
-                <h3 class="cat-name">Desert Safaris</h3><span class="cat-count">12 Tours</span>
-              </div>
-              <div class="category-reveal">
-                <img class="category-reveal__image"
-                  src="assets/images/tours/quad%20bike%20safari%20in%20sharm%20el%20sheikh877.webp"
-                  alt="Desert safari in Egypt" title="Desert safari in Egypt" width="600" height="400" loading="lazy"
-                  decoding="async">
-                <span class="reveal-name">Desert Safaris</span><span class="reveal-count">12 Tours</span>
+                <h3 class="cat-name">Desert Safaris</h3>
+                <span class="cat-count">12 Tours</span>
                 <p class="reveal-desc">4x4 dune rides, overnight desert camps, and stargazing far from city lights
                   across Siwa and the Western Desert.</p>
               </div>
-            </a></div>
-          <div class="swiper-slide"><a href="subcategory.html" class="category-card">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="subcategory.html" class="category-card">
               <div class="card-media"><img src="assets/images/tours/Luxor%20Temple675786.jpg"
                   alt="Ancient temple in Luxor" title="Ancient temple in Luxor" width="600" height="400" loading="lazy"
                   decoding="async"></div>
               <div class="category-info">
-                <h3 class="cat-name">Ancient Temples</h3><span class="cat-count">24 Tours</span>
-              </div>
-              <div class="category-reveal">
-                <img class="category-reveal__image" src="assets/images/tours/Luxor%20Temple675786.jpg"
-                  alt="Ancient temple in Luxor" title="Ancient temple in Luxor" width="600" height="400" loading="lazy"
-                  decoding="async">
-                <span class="reveal-name">Ancient Temples</span><span class="reveal-count">24 Tours</span>
+                <h3 class="cat-name">Ancient Temples</h3>
+                <span class="cat-count">24 Tours</span>
                 <p class="reveal-desc">Guided visits to Karnak, Luxor Temple, and the Valley of the Kings with
                   Egyptologist-led storytelling at every stop.</p>
               </div>
-            </a></div>
-          <div class="swiper-slide"><a href="subcategory.html" class="category-card">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="subcategory.html" class="category-card">
               <div class="card-media"><img src="assets/images/tours/hurghada%20scuba%20diving2.webp"
                   alt="Scuba diving in the Red Sea" title="Scuba diving in the Red Sea" width="600" height="400"
                   loading="lazy" decoding="async"></div>
               <div class="category-info">
-                <h3 class="cat-name">Red Sea Diving</h3><span class="cat-count">9 Tours</span>
-              </div>
-              <div class="category-reveal">
-                <img class="category-reveal__image" src="assets/images/tours/hurghada%20scuba%20diving2.webp"
-                  alt="Scuba diving in the Red Sea" title="Scuba diving in the Red Sea" width="600" height="400"
-                  loading="lazy" decoding="async">
-                <span class="reveal-name">Red Sea Diving</span><span class="reveal-count">9 Tours</span>
+                <h3 class="cat-name">Red Sea Diving</h3>
+                <span class="cat-count">9 Tours</span>
                 <p class="reveal-desc">Reef dives and snorkeling trips out of Hurghada and Sharm El-Sheikh, suited to
                   first-timers and certified divers alike.</p>
               </div>
-            </a></div>
-          <div class="swiper-slide"><a href="subcategory.html" class="category-card">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="subcategory.html" class="category-card">
               <div class="card-media"><img src="assets/images/tours/luxurytours-webp.webp" alt="Luxury travel in Egypt"
                   title="Luxury travel in Egypt" width="600" height="400" loading="lazy" decoding="async"></div>
               <div class="category-info">
-                <h3 class="cat-name">Luxury Getaways</h3><span class="cat-count">15 Tours</span>
-              </div>
-              <div class="category-reveal">
-                <img class="category-reveal__image" src="assets/images/tours/luxurytours-webp.webp"
-                  alt="Luxury travel in Egypt" title="Luxury travel in Egypt" width="600" height="400" loading="lazy"
-                  decoding="async">
-                <span class="reveal-name">Luxury Getaways</span><span class="reveal-count">15 Tours</span>
+                <h3 class="cat-name">Luxury Getaways</h3>
+                <span class="cat-count">15 Tours</span>
                 <p class="reveal-desc">Private guides, five-star stays, and skip-the-line access to Giza and Cairo's
                   museums for a slower, more comfortable pace.</p>
               </div>
-            </a></div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -2027,168 +1939,226 @@
     <div class="container">
       <div class="section-header">
         <div class="section-header__copy">
-          <span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon" title="Pill Icon"> Featured Tours</span>
+          <span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon" title="Pill Icon"> Featured
+            Tours</span>
           <h2 id="tours-title" class="section-header__title">Your ticket to Egypt</h2>
-          <p class="section-header__description">Explore Egypt with multi-day packages, Nile cruises and guided day trips.</p>
+          <p class="section-header__description">Explore Egypt with multi-day packages, Nile cruises and guided day
+            trips.</p>
         </div>
       </div>
     </div>
 
     <div class="tour-tabs__inner">
 
-        <!-- Tabs -->
-        <div class="tour-tabs__nav">
-            <div class="tour-tabs__tablist" role="tablist" aria-label="Trip categories">
-                <button class="tour-tabs__tab" role="tab" id="tab-packages" aria-selected="true" aria-controls="panel-packages">
-                    <span class="tour-tabs__tab-num">01</span>
-                    <span class="tour-tabs__tab-count">3 trips</span>
-                    <span class="tour-tabs__tab-label">Packages and circuits</span>
-                    <span class="tour-tabs__tab-desc">5 to 12 days through Cairo, the Nile and the Red Sea, privately or in a small group.</span>
-                </button>
-                <button class="tour-tabs__tab" role="tab" id="tab-cruises" aria-selected="false" aria-controls="panel-cruises" tabindex="-1">
-                    <span class="tour-tabs__tab-num">02</span>
-                    <span class="tour-tabs__tab-count">1 cruise</span>
-                    <span class="tour-tabs__tab-label">Nile River Cruises</span>
-                    <span class="tour-tabs__tab-desc">3 to 7 nights sailing between Luxor and Aswan on hand-picked ships.</span>
-                </button>
-                <button class="tour-tabs__tab" role="tab" id="tab-day" aria-selected="false" aria-controls="panel-day" tabindex="-1">
-                    <span class="tour-tabs__tab-num">03</span>
-                    <span class="tour-tabs__tab-count">1 day trip</span>
-                    <span class="tour-tabs__tab-label">Day trips</span>
-                    <span class="tour-tabs__tab-desc">Single-day tour-tabs with a guide and transport from your hotel.</span>
-                </button>
-            </div>
-
-            <a class="tour-tabs__catalog" href="tours.html">
-                View the full catalog
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
+      <!-- Tabs -->
+      <div class="tour-tabs__nav">
+        <div class="tour-tabs__tablist" role="tablist" aria-label="Trip categories">
+          <button class="tour-tabs__tab" role="tab" id="tab-packages" aria-selected="true"
+            aria-controls="panel-packages">
+            <span class="tour-tabs__tab-num">01</span>
+            <span class="tour-tabs__tab-count">3 trips</span>
+            <span class="tour-tabs__tab-label">Packages and circuits</span>
+            <span class="tour-tabs__tab-desc">5 to 12 days through Cairo, the Nile and the Red Sea, privately or in a
+              small group.</span>
+          </button>
+          <button class="tour-tabs__tab" role="tab" id="tab-cruises" aria-selected="false" aria-controls="panel-cruises"
+            tabindex="-1">
+            <span class="tour-tabs__tab-num">02</span>
+            <span class="tour-tabs__tab-count">1 cruise</span>
+            <span class="tour-tabs__tab-label">Nile River Cruises</span>
+            <span class="tour-tabs__tab-desc">3 to 7 nights sailing between Luxor and Aswan on hand-picked ships.</span>
+          </button>
+          <button class="tour-tabs__tab" role="tab" id="tab-day" aria-selected="false" aria-controls="panel-day"
+            tabindex="-1">
+            <span class="tour-tabs__tab-num">03</span>
+            <span class="tour-tabs__tab-count">1 day trip</span>
+            <span class="tour-tabs__tab-label">Day trips</span>
+            <span class="tour-tabs__tab-desc">Single-day tour-tabs with a guide and transport from your hotel.</span>
+          </button>
         </div>
 
-        <!-- Panels -->
-        <div class="tour-tabs__panels">
+        <a class="tour-tabs__catalog" href="tours.html">
+          View the full catalog
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
 
-            <!-- ===== Panel 1 ===== -->
-            <div class="tour-tabs__panel" role="tabpanel" id="panel-packages" aria-labelledby="tab-packages" tabindex="0">
-                <div class="tour-tabs__grid">
+      <!-- Panels -->
+      <div class="tour-tabs__panels">
 
-                    <!-- FIRST CARD = featured / most popular -->
-                    <article class="tab-trip tab-trip--featured">
-                        <div class="tab-trip__media">
-                            <img src="assets/images/tours/aswan4545.webp" alt="Sailing on the Nile in Aswan" title="Sailing on the Nile in Aswan" width="640" height="400" loading="lazy" decoding="async">
-                            <span class="tab-trip__duration">
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                                8 days 7 nights
-                            </span>
-                        </div>
-                        <div class="tab-trip__body">
-                            <h3 class="tab-trip__title"><a href="tour-details.html">Egypt 8 Days All Inclusive: Cairo and Cruise with Abu Simbel</a></h3>
-                            <ul class="tab-trip__route" aria-label="Route"><li>Cairo</li><li class="line" aria-hidden="true"></li><li>Abu Simbel</li></ul>
-                            <p class="tab-trip__excerpt">Explore the pyramids and the Nile on an unparalleled journey. Book now and secure your place on this unique adventure.</p>
-                            <div class="tab-trip__foot">
-                                <div class="tab-trip__price"><small>From / per person</small><strong>€1,025</strong></div>
-                                <div class="tab-trip__actions">
-                                    
-                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+        <!-- ===== Panel 1 ===== -->
+        <div class="tour-tabs__panel" role="tabpanel" id="panel-packages" aria-labelledby="tab-packages" tabindex="0">
+          <div class="tour-tabs__grid">
 
-                    <article class="tab-trip">
-                        <div class="tab-trip__media">
-                            <img src="assets/images/tours/cairo.webp" alt="Cairo in Egypt" title="Cairo in Egypt" width="640" height="400" loading="lazy" decoding="async">
-                            <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5 Days 4 Nights</span>
-                        </div>
-                        <div class="tab-trip__body">
-                            <h3 class="tab-trip__title"><a href="tour-details.html">Egypt in 5 days: Private trip to Cairo</a></h3>
-                            <ul class="tab-trip__route" aria-label="Route"><li>Cairo</li></ul>
-                            <p class="tab-trip__excerpt">Discover Cairo on a private five-day trip, with time to explore the city and its ancient landmarks.</p>
-                            <div class="tab-trip__foot">
-                                <div class="tab-trip__price"><small>From / per person</small><strong>€540</strong></div>
-                                <div class="tab-trip__actions">
-                                    
-                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+            <!-- FIRST CARD = featured / most popular -->
+            <article class="tab-trip tab-trip--featured">
+              <div class="tab-trip__media">
+                <img src="assets/images/tours/aswan4545.webp" alt="Sailing on the Nile in Aswan"
+                  title="Sailing on the Nile in Aswan" width="640" height="400" loading="lazy" decoding="async">
+                <span class="tab-trip__duration">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" />
+                  </svg>
+                  8 days 7 nights
+                </span>
+              </div>
+              <div class="tab-trip__body">
+                <h3 class="tab-trip__title"><a href="tour-details.html">Egypt 8 Days All Inclusive: Cairo and Cruise
+                    with Abu Simbel</a></h3>
+                <ul class="tab-trip__route" aria-label="Route">
+                  <li>Cairo</li>
+                  <li class="line" aria-hidden="true"></li>
+                  <li>Abu Simbel</li>
+                </ul>
+                <p class="tab-trip__excerpt">Explore the pyramids and the Nile on an unparalleled journey. Book now and
+                  secure your place on this unique adventure.</p>
+                <div class="tab-trip__foot">
+                  <div class="tab-trip__price"><small>From / per person</small><strong>€1,025</strong></div>
+                  <div class="tab-trip__actions">
 
-                    <article class="tab-trip">
-                        <div class="tab-trip__media">
-                            <img src="assets/images/tours/alexandria.jpg" alt="Alexandria in Egypt" title="Alexandria in Egypt" width="640" height="400" loading="lazy" decoding="async">
-                            <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>14 Days 13 Nights</span>
-                        </div>
-                        <div class="tab-trip__body">
-                            <h3 class="tab-trip__title"><a href="tour-details.html">14-Day Egypt Package: Cairo, Alexandria, Cruise and Sharm</a></h3>
-                            <ul class="tab-trip__route" aria-label="Route"><li>Cairo, Alexandria, Sharm</li></ul>
-                            <p class="tab-trip__excerpt">Combine city discoveries, a Nile cruise and time by the Red Sea on a fourteen-day Egypt journey.</p>
-                            <div class="tab-trip__foot">
-                                <div class="tab-trip__price"><small>From / per person</small><strong>€1,890</strong></div>
-                                <div class="tab-trip__actions">
-                                    
-                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
+                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                  </div>
                 </div>
-            </div>
+              </div>
+            </article>
 
-            <!-- ===== Panel 2 ===== -->
-            <div class="tour-tabs__panel" role="tabpanel" id="panel-cruises" aria-labelledby="tab-cruises" tabindex="0" hidden>
-                <div class="tour-tabs__grid">
-                    <article class="tab-trip tab-trip--featured">
-                        <div class="tab-trip__media">
-                            <img src="assets/images/tours/aswan547547.webp" alt="The Nile in Aswan" title="The Nile in Aswan" width="640" height="400" loading="lazy" decoding="async">
-                            <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5 days 4 nights</span>
-                        </div>
-                        <div class="tab-trip__body">
-                            <h3 class="tab-trip__title"><a href="tour-details.html">Luxor to Aswan Nile Cruise, Full Board</a></h3>
-                            <ul class="tab-trip__route" aria-label="Route"><li>Luxor</li><li class="line" aria-hidden="true"></li><li>Aswan</li></ul>
-                            <p class="tab-trip__excerpt">Sail past Edfu and Kom Ombo with temple visits and a private guide each day.</p>
-                            <div class="tab-trip__foot">
-                                <div class="tab-trip__price"><small>From / per person</small><strong>€420</strong></div>
-                                <div class="tab-trip__actions">
-                                    
-                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    
+            <article class="tab-trip">
+              <div class="tab-trip__media">
+                <img src="assets/images/tours/cairo.webp" alt="Cairo in Egypt" title="Cairo in Egypt" width="640"
+                  height="400" loading="lazy" decoding="async">
+                <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" />
+                  </svg>5 Days 4 Nights</span>
+              </div>
+              <div class="tab-trip__body">
+                <h3 class="tab-trip__title"><a href="tour-details.html">Egypt in 5 days: Private trip to Cairo</a></h3>
+                <ul class="tab-trip__route" aria-label="Route">
+                  <li>Cairo</li>
+                </ul>
+                <p class="tab-trip__excerpt">Discover Cairo on a private five-day trip, with time to explore the city
+                  and its ancient landmarks.</p>
+                <div class="tab-trip__foot">
+                  <div class="tab-trip__price"><small>From / per person</small><strong>€540</strong></div>
+                  <div class="tab-trip__actions">
+
+                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                  </div>
                 </div>
-            </div>
+              </div>
+            </article>
 
-            <!-- ===== Panel 3 ===== -->
-            <div class="tour-tabs__panel" role="tabpanel" id="panel-day" aria-labelledby="tab-day" tabindex="0" hidden>
-                <div class="tour-tabs__grid">
-                    <article class="tab-trip tab-trip--featured">
-                        <div class="tab-trip__media">
-                            <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="The Giza pyramids" title="The Giza pyramids" width="640" height="400" loading="lazy" decoding="async">
-                            <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Full day</span>
-                        </div>
-                        <div class="tab-trip__body">
-                            <h3 class="tab-trip__title"><a href="tour-details.html">Giza Pyramids and Sphinx Private Day Tour</a></h3>
-                            <ul class="tab-trip__route" aria-label="Route"><li>Giza</li><li class="line" aria-hidden="true"></li><li>Saqqara</li></ul>
-                            <p class="tab-trip__excerpt">Hotel pickup, an Egyptologist guide, lunch and entry tickets included.</p>
-                            <div class="tab-trip__foot">
-                                <div class="tab-trip__price"><small>From / per person</small><strong>€65</strong></div>
-                                <div class="tab-trip__actions">
-                                    
-                                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    
+            <article class="tab-trip">
+              <div class="tab-trip__media">
+                <img src="assets/images/tours/alexandria.jpg" alt="Alexandria in Egypt" title="Alexandria in Egypt"
+                  width="640" height="400" loading="lazy" decoding="async">
+                <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" />
+                  </svg>14 Days 13 Nights</span>
+              </div>
+              <div class="tab-trip__body">
+                <h3 class="tab-trip__title"><a href="tour-details.html">14-Day Egypt Package: Cairo, Alexandria, Cruise
+                    and Sharm</a></h3>
+                <ul class="tab-trip__route" aria-label="Route">
+                  <li>Cairo, Alexandria, Sharm</li>
+                </ul>
+                <p class="tab-trip__excerpt">Combine city discoveries, a Nile cruise and time by the Red Sea on a
+                  fourteen-day Egypt journey.</p>
+                <div class="tab-trip__foot">
+                  <div class="tab-trip__price"><small>From / per person</small><strong>€1,890</strong></div>
+                  <div class="tab-trip__actions">
+
+                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                  </div>
                 </div>
-            </div>
+              </div>
+            </article>
 
+          </div>
         </div>
+
+        <!-- ===== Panel 2 ===== -->
+        <div class="tour-tabs__panel" role="tabpanel" id="panel-cruises" aria-labelledby="tab-cruises" tabindex="0"
+          hidden>
+          <div class="tour-tabs__grid">
+            <article class="tab-trip tab-trip--featured">
+              <div class="tab-trip__media">
+                <img src="assets/images/tours/aswan547547.webp" alt="The Nile in Aswan" title="The Nile in Aswan"
+                  width="640" height="400" loading="lazy" decoding="async">
+                <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" />
+                  </svg>5 days 4 nights</span>
+              </div>
+              <div class="tab-trip__body">
+                <h3 class="tab-trip__title"><a href="tour-details.html">Luxor to Aswan Nile Cruise, Full Board</a></h3>
+                <ul class="tab-trip__route" aria-label="Route">
+                  <li>Luxor</li>
+                  <li class="line" aria-hidden="true"></li>
+                  <li>Aswan</li>
+                </ul>
+                <p class="tab-trip__excerpt">Sail past Edfu and Kom Ombo with temple visits and a private guide each
+                  day.</p>
+                <div class="tab-trip__foot">
+                  <div class="tab-trip__price"><small>From / per person</small><strong>€420</strong></div>
+                  <div class="tab-trip__actions">
+
+                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ===== Panel 3 ===== -->
+        <div class="tour-tabs__panel" role="tabpanel" id="panel-day" aria-labelledby="tab-day" tabindex="0" hidden>
+          <div class="tour-tabs__grid">
+            <article class="tab-trip tab-trip--featured">
+              <div class="tab-trip__media">
+                <img src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="The Giza pyramids"
+                  title="The Giza pyramids" width="640" height="400" loading="lazy" decoding="async">
+                <span class="tab-trip__duration"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" />
+                  </svg>Full day</span>
+              </div>
+              <div class="tab-trip__body">
+                <h3 class="tab-trip__title"><a href="tour-details.html">Giza Pyramids and Sphinx Private Day Tour</a>
+                </h3>
+                <ul class="tab-trip__route" aria-label="Route">
+                  <li>Giza</li>
+                  <li class="line" aria-hidden="true"></li>
+                  <li>Saqqara</li>
+                </ul>
+                <p class="tab-trip__excerpt">Hotel pickup, an Egyptologist guide, lunch and entry tickets included.</p>
+                <div class="tab-trip__foot">
+                  <div class="tab-trip__price"><small>From / per person</small><strong>€65</strong></div>
+                  <div class="tab-trip__actions">
+
+                    <a class="tour-tabs-view" href="tour-details.html">View trip</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
     </div>
-</section>
+  </section>
   <!-- End: Tabbed Featured Tours -->
   <section class="climate" id="climateWidget" aria-labelledby="climateTitle">
     <div class="climate__inner">
@@ -2207,25 +2177,25 @@
       </div>
       <div class="result-header">
         <div class="result-search">
-        <form class="search" id="searchForm" role="search" autocomplete="off">
-          <label class="search__field" for="cityInput">
-            <svg class="search__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" />
-              <path d="m20 20-3.5-3.5" />
-            </svg>
-            <span class="sr-only">Destination city</span>
-            <input type="text" id="cityInput" name="city" placeholder="Search a city, e.g. Aswan" required>
-          </label>
-          <button type="submit" class="search__btn" id="searchBtn">Check Best Months</button>
-        </form>
+          <form class="search" id="searchForm" role="search" autocomplete="off">
+            <label class="search__field" for="cityInput">
+              <svg class="search__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.5-3.5" />
+              </svg>
+              <span class="sr-only">Destination city</span>
+              <input type="text" id="cityInput" name="city" placeholder="Search a city, e.g. Aswan" required>
+            </label>
+            <button type="submit" class="search__btn" id="searchBtn">Check Best Months</button>
+          </form>
 
-        <div class="presets" role="group" aria-label="Popular destinations">
-          <button type="button" class="preset" data-city="Luxor">Luxor</button>
-          <button type="button" class="preset" data-city="Sharm El Sheikh">Sharm El Sheikh</button>
-          <button type="button" class="preset" data-city="Cairo">Cairo</button>
-          <button type="button" class="preset" data-city="Alexandria">Alexandria</button>
-        </div>
+          <div class="presets" role="group" aria-label="Popular destinations">
+            <button type="button" class="preset" data-city="Luxor">Luxor</button>
+            <button type="button" class="preset" data-city="Sharm El Sheikh">Sharm El Sheikh</button>
+            <button type="button" class="preset" data-city="Cairo">Cairo</button>
+            <button type="button" class="preset" data-city="Alexandria">Alexandria</button>
+          </div>
         </div>
 
 
@@ -2251,7 +2221,7 @@
 
     </div>
   </section>
-    <!--=====================================
+  <!--=====================================
        Start: Blog Section
    ===================================== -->
   <section class="blog-section section-spacing">
@@ -2437,7 +2407,8 @@
             <div class="section-header__copy"><span class="pill"><img src="assets/images/sphinx.svg" alt="Pill Icon"
                   title="Pill Icon"> Got Questions?</span>
               <h2 class="section-header__title">Frequently Asked</h2>
-              <p class="section-header__description">Everything travelers usually ask before booking a tour with us. Can't
+              <p class="section-header__description">Everything travelers usually ask before booking a tour with us.
+                Can't
                 find your
                 answer? Reach out and we'll help directly.</p>
             </div>
@@ -2448,17 +2419,15 @@
               <circle cx="365" cy="40" r="7" />
             </svg>
             <img class="faq-collage__photo faq-collage__photo--top"
-              src="assets/images/tours/Pyramids-in-Egypt-webp.webp"
-              alt="The pyramids of Giza in Egypt" title="Discover the pyramids of Giza"
-              width="300" height="300" loading="lazy" decoding="async">
+              src="assets/images/tours/Pyramids-in-Egypt-webp.webp" alt="The pyramids of Giza in Egypt"
+              title="Discover the pyramids of Giza" width="300" height="300" loading="lazy" decoding="async">
             <img class="faq-collage__photo faq-collage__photo--left"
               src="assets/images/tours/106896752__MG_7633-final_Pompeys_Pillar-webp.webp"
-              alt="Ancient Egyptian sphinx in Alexandria" title="Explore historic Alexandria"
-              width="300" height="320" loading="lazy" decoding="async">
-            <img class="faq-collage__photo faq-collage__photo--right"
-              src="assets/images/tours/aswan547547.webp"
-              alt="Scenery in Aswan, Egypt" title="Experience Aswan"
-              width="320" height="280" loading="lazy" decoding="async">
+              alt="Ancient Egyptian sphinx in Alexandria" title="Explore historic Alexandria" width="300" height="320"
+              loading="lazy" decoding="async">
+            <img class="faq-collage__photo faq-collage__photo--right" src="assets/images/tours/aswan547547.webp"
+              alt="Scenery in Aswan, Egypt" title="Experience Aswan" width="320" height="280" loading="lazy"
+              decoding="async">
           </div>
         </div>
         <div class="faq-list" id="faqList">
@@ -2597,9 +2566,11 @@
         </div>
         <div class="testimonials-actions">
           <a class="testimonials-reviews-link" href="#" aria-label="Show all reviews on TripAdvisor">
-            <img src="assets/images/svg/tripadvisor-icon.svg" alt="TripAdvisor" title="TripAdvisor" width="26" height="26" loading="lazy" decoding="async">
+            <img src="assets/images/svg/tripadvisor-icon.svg" alt="TripAdvisor" title="TripAdvisor" width="26"
+              height="26" loading="lazy" decoding="async">
             <span>Show all reviews</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              aria-hidden="true">
               <path d="M7 17 17 7M7 7h10v10" />
             </svg>
           </a>
@@ -3063,9 +3034,8 @@
   <script>
     new Swiper('#heroSwiper', {
       loop: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      spaceBetween: 30,
+      slidesPerView: 1,
+      spaceBetween: 0,
       speed: 700,
       autoplay: { delay: 4500, disableOnInteraction: false },
       grabCursor: true

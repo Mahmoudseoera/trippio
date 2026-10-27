@@ -16,13 +16,13 @@
 }
 
 .category-hero-section--inverted .border-inverted {
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  border-radius: 14px 14px 0 0;
-  background: var(--white-color, #fff);
-  box-shadow: none;
-  overflow: visible;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 40px 40px 0 0;
+    background: var(--white-color, #fff);
+    box-shadow: none;
+    overflow: visible;
 }
 
 .category-hero-section--inverted .border-inverted::before,

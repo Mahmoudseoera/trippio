@@ -1,0 +1,466 @@
+/* =========================================================
+   Tailor-made Passport
+   Colors, fonts and radii come from the brand tokens in :root.
+   Mobile-first. Tokens, then layout, then components.
+   ========================================================= */
+
+:root {
+  /* ===== Brand tokens (from your design system) ===== */
+  --main-color: #153B60;
+  --main-color-dark: #102D49;
+  --main-color-light: #2A5275;
+
+  --color-second: #2A9F9D;
+  --color-second-dark: #176F78;
+  --color-second-light: #57BBBB;
+
+  --accent-color: #C5A565;
+  --accent-color-light: #E8D8B6;
+  --accent-color-dark: #A8874B;
+
+  --white-color: #FFFFFF;
+  --color-off-white: #FAFBFA;
+  --color-blue-tint: #EEF7F6;
+  --color-bg-gold: rgba(232, 216, 182, .10);
+
+  --color-gray-100: #F6F8F8;
+  --color-gray-200: #EAF0EF;
+  --color-gray-300: #DDE7E6;
+  --color-gray-400: #AEB8C1;
+  --color-gray-500: #82909D;
+  --color-gray-700: #455665;
+  --color-gray-900: #0B1623;
+
+  --gradient-main: linear-gradient(135deg, var(--main-color-dark), var(--main-color));
+  --gradient-accent: linear-gradient(135deg, var(--main-color-dark), var(--main-color), var(--accent-color));
+  --gradient-hover: linear-gradient(135deg, var(--main-color-light) 0%, var(--color-second) 50%, var(--color-second-light) 100%);
+
+  --shadow-sm: 0 4px 16px rgba(21, 59, 96, .07);
+  --shadow-md: 0 12px 35px rgba(21, 59, 96, .11);
+  --shadow-lg: 0 20px 50px rgba(21, 59, 96, .16);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --font-heading: "Bricolage Grotesque", sans-serif;
+  --font-body: "Manrope", sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --clr-btn: var(--main-color);
+  --container: 1240px;
+
+  --surface-subtle: var(--color-gray-100);
+  --text-muted: var(--color-gray-700);
+  --link-color: var(--color-second-dark);
+  --button-primary-bg: var(--main-color);
+  --button-primary-hover: var(--main-color-dark);
+  --focus-color: var(--color-second-dark);
+
+  /* ===== Component aliases (map the tokens onto this page) ===== */
+  --paper: color-mix(in srgb, var(--accent-color-light) 38%, var(--white-color));
+  --panel: var(--white-color);
+  --field: var(--color-off-white);
+  --line: var(--color-gray-300);
+  --line-strong: var(--color-gray-400);
+  --ink: var(--color-gray-900);
+  --text: var(--color-gray-900);
+  --muted: var(--color-gray-700);
+  --gold: var(--accent-color);
+  --gold-hi: var(--accent-color-light);
+  --gold-deep: var(--accent-color-dark);
+  --gold-tint: color-mix(in srgb, var(--accent-color-light) 60%, var(--white-color));
+  --leather: var(--main-color-dark);
+
+  /* Stamp inks, one per passport page */
+  --stamp-1: var(--main-color);
+  --stamp-2: var(--color-second-dark);
+  --stamp-3: var(--accent-color-dark);
+  --stamp-4: var(--main-color-light);
+
+  --err: #a02f1c;
+  --ok: var(--color-second-dark);
+
+  --font-display: var(--font-heading);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--color-off-white) 0%, var(--color-gray-100) 55%, var(--color-blue-tint) 100%) fixed;
+  color: var(--text);
+  font: 400 1rem/1.55 var(--font-body);
+}
+
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.app {
+  width: min(100%, 720px);
+  margin-inline: auto;
+  padding: max(16px, env(safe-area-inset-top)) 16px calc(48px + env(safe-area-inset-bottom));
+  overflow-x: clip;
+  display: grid;
+  gap: 16px;
+}
+.book, main { display: grid; gap: 16px; }
+
+h1, h2 { font-family: var(--font-display); font-weight: 800; margin: 0; letter-spacing: -0.02em; line-height: 1.05; color: var(--ink); }
+h2 { font-size: clamp(1.75rem, 6.4vw, 2.35rem); }
+h2:focus, h1:focus { outline: none; }
+
+:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 3px; }
+
+/* ---------------- Closed passport ---------------- */
+.closed { display: grid; justify-items: center; gap: 28px; padding: 24px 0 8px; }
+.scene { perspective: 1600px; padding: 8px 20px 16px; cursor: pointer; }
+.cover-wrap { position: relative; width: min(70vw, 280px); aspect-ratio: 5 / 7; }
+
+/* Page block peeking out behind the cover */
+.cover-wrap::before {
+  content: ""; position: absolute; inset: 6px -6px 6px 8px; z-index: 0;
+  border-radius: 3px 12px 12px 3px;
+  background: repeating-linear-gradient(90deg, var(--color-off-white) 0 2px, var(--color-gray-300) 2px 3px);
+  box-shadow: 0 26px 34px -16px rgba(16, 45, 73, 0.4);
+}
+
+.cover {
+  position: absolute; inset: 0; z-index: 1;
+  transform-origin: 0 50%;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: 5px 14px 14px 5px;
+  padding: 11% 9% 11% 15%;
+  color: var(--gold);
+  background: radial-gradient(130% 90% at 28% 8%, var(--main-color-light) 0%, var(--main-color) 45%, var(--main-color-dark) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset -2px 0 0 rgba(255, 255, 255, 0.06),
+    0 3px 0 -1px #08192a;
+}
+/* Leather grain */
+.cover::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  opacity: 0.4; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+/* Stitching */
+.cover::after {
+  content: ""; position: absolute; inset: 14px 14px 14px 24px; pointer-events: none;
+  border: 1.5px dashed rgba(197, 165, 101, 0.55); border-radius: 3px 9px 9px 3px;
+}
+.cover__spine {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 9%; border-radius: 5px 0 0 5px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.07) 55%, rgba(0, 0, 0, 0.3));
+}
+.cover__inner {
+  position: relative; z-index: 1; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center;
+}
+.foil {
+  background: linear-gradient(105deg, #A8874B 0%, #E8D8B6 32%, #C5A565 52%, #F3E8CC 74%, #A8874B 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.cover__top { font: 600 0.78rem/1.2 var(--font-body); letter-spacing: 0.24em; text-transform: uppercase; }
+.cover__emblem { width: 62%; height: auto; color: var(--accent-color); filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.6)); }
+.cover__title { font: 800 1.75rem/1 var(--font-display); letter-spacing: 0.2em; text-transform: uppercase; padding-left: 0.2em; }
+
+/* Sealed state (after the request is sent) */
+.cover__seal {
+  position: absolute; right: -12px; bottom: -14px; z-index: 2;
+  width: 66px; height: 66px; border-radius: 50%;
+  display: grid; place-items: center; opacity: 0; transform: scale(0.5) rotate(-14deg);
+  background: radial-gradient(circle at 35% 30%, var(--gold-hi), var(--gold) 60%, var(--gold-deep));
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4), inset 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+.cover__seal svg { width: 30px; height: 30px; fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+
+.closed__text { text-align: center; display: grid; justify-items: center; }
+.closed__text h1 { font-size: clamp(1.85rem, 7vw, 2.7rem); max-width: 16ch; }
+.closed__text .card__lead { max-width: 40ch; margin-bottom: 4px; }
+.closed__text .btn { margin-top: 18px; }
+.closed.is-sent .closed__text { display: none; }
+
+/* ---------------- Open passport ---------------- */
+.passport {
+  position: relative; overflow: hidden; padding: 7px;
+  border-radius: 6px 18px 18px 6px;
+  background: radial-gradient(130% 120% at 20% 0%, var(--main-color-light), var(--leather) 70%);
+  box-shadow: 0 22px 40px -20px rgba(16, 45, 73, 0.55), 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+.passport__sheen {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.7) 50%, transparent 65%);
+}
+.passport__page {
+  --guilloche: rgba(42, 159, 157, 0.14);
+  position: relative; padding: 18px 16px 14px 24px;
+  border-radius: 3px 12px 12px 3px;
+  background:
+    repeating-radial-gradient(circle at 12% -10%, transparent 0 7px, var(--guilloche) 7px 8px),
+    repeating-radial-gradient(circle at 96% 110%, transparent 0 9px, var(--guilloche) 9px 10px),
+    var(--paper);
+}
+.passport__page::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(16, 45, 73, 0.22), transparent);
+}
+.passport__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+.passport h1 { font-size: clamp(1.25rem, 5vw, 1.65rem); line-height: 1.1; }
+.passport__sub { margin: 6px 0 0; font-size: 0.9rem; color: var(--muted); }
+.passport__count { margin: 0; font: 800 1.6rem/1 var(--font-display); color: var(--ink); white-space: nowrap; }
+
+.slots { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.slot { --c: var(--stamp-1); display: grid; justify-items: center; gap: 8px; }
+.slot:nth-child(1) { --c: var(--stamp-1); }
+.slot:nth-child(2) { --c: var(--stamp-2); }
+.slot:nth-child(3) { --c: var(--stamp-3); }
+.slot:nth-child(4) { --c: var(--stamp-4); }
+
+.slot__ring {
+  position: relative; width: 100%; aspect-ratio: 1; border-radius: 50%;
+  border: 2px dashed rgba(168, 135, 75, 0.7); background: rgba(255, 255, 255, 0.4);
+  display: grid; place-items: center; transition: border-color 0.3s, background 0.3s;
+}
+.slot.is-stamped .slot__ring { border-color: transparent; background: rgba(255, 255, 255, 0.6); }
+.slot__hint { font: 800 1.25rem var(--font-display); color: var(--color-gray-500); transition: opacity 0.2s; }
+.slot.is-stamped .slot__hint { opacity: 0; }
+.slot__label { font-size: 0.8rem; font-weight: 600; color: var(--muted); text-align: center; line-height: 1.2; }
+
+.slot__splash { position: absolute; inset: -4px; border-radius: 50%; border: 3px solid var(--c); opacity: 0; pointer-events: none; }
+.slot__stamp { position: absolute; inset: -6%; display: grid; place-items: center; }
+.slot__stamp svg {
+  width: 100%; height: 100%; color: var(--c); overflow: visible;
+  mix-blend-mode: multiply; filter: url(#ink); will-change: transform, opacity;
+}
+
+.passport__mrz {
+  margin: 16px 0 0; font: 600 0.62rem/1.3 "Courier New", ui-monospace, monospace;
+  letter-spacing: 0.12em; color: rgba(11, 22, 35, 0.4); overflow: hidden; white-space: nowrap;
+}
+
+/* ---------------- Game area ---------------- */
+.game { position: relative; }
+.stage { position: relative; }
+
+.card, .checkin {
+  background: var(--panel);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-lg);
+  padding: 24px 18px 22px;
+  box-shadow: var(--shadow-md);
+}
+.card__lead { margin: 10px 0 22px; color: var(--muted); max-width: 54ch; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%; min-height: 52px; padding: 0 22px; margin-top: 20px;
+  border: 0; border-radius: 10px; cursor: pointer;
+  background: var(--button-primary-bg); color: var(--white-color);
+  font: 700 0.8rem var(--font-body); letter-spacing: 0.14em; text-transform: uppercase;
+  transition: transform 0.15s, opacity 0.2s, background 0.2s;
+}
+.btn:hover:not(:disabled) { background: var(--button-primary-hover); }
+.btn:active:not(:disabled) { transform: scale(0.98); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.icon-btn {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.icon-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.icon-btn:hover:not(:disabled) { border-color: var(--color-second); background: var(--color-blue-tint); }
+.icon-btn:active:not(:disabled) { transform: scale(0.92); }
+.icon-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* Step 1: vibe tags */
+.tags { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.tag {
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 12px;
+  min-height: 88px; padding: 14px; text-align: left; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--field); color: var(--text);
+  font: 600 0.95rem/1.2 var(--font-body);
+  transition: transform 0.15s, border-color 0.15s, background 0.15s, color 0.15s;
+}
+.tag svg { width: 28px; height: 28px; fill: none; stroke: var(--color-second-dark); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.15s; }
+.tag:hover { border-color: var(--color-second); transform: translateY(-2px); }
+.tag[aria-pressed="true"] { background: var(--main-color); border-color: var(--main-color); color: var(--white-color); }
+.tag[aria-pressed="true"] svg { stroke: var(--accent-color); }
+
+/* Fields (shared by cards and check-in) */
+.field { margin-bottom: 16px; }
+.field--note { margin: 20px 0 0; }
+.field label { display: block; margin-bottom: 7px; font-size: 0.8125rem; font-weight: 700; color: var(--ink); }
+.req { color: var(--gold-deep); }
+
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  width: 100%; min-height: 48px; padding: 0 14px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--field); color: var(--text);
+  font: 500 0.95rem var(--font-body);
+}
+textarea { min-height: 130px; padding: 13px 14px; resize: vertical; line-height: 1.5; }
+input::placeholder, textarea::placeholder { color: var(--color-gray-500); font-weight: 400; }
+input:focus, select:focus, textarea:focus { border-color: var(--color-second-dark); outline: none; box-shadow: 0 0 0 3px rgba(42, 159, 157, 0.3); }
+[aria-invalid="true"] { border-color: var(--err) !important; }
+
+.select { position: relative; }
+.select select { appearance: none; -webkit-appearance: none; padding-right: 40px; cursor: pointer; font-weight: 600; }
+.select svg { position: absolute; right: 12px; top: 50%; width: 20px; height: 20px; margin-top: -10px; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+
+.msg { margin: 6px 0 0; font-size: 0.875rem; min-height: 1.3em; color: var(--muted); }
+.msg:empty { display: none; }
+.msg.is-ok { color: var(--ok); font-weight: 600; }
+.msg.is-bad, .msg--error { color: var(--err); font-weight: 600; }
+
+/* Step 2: dates */
+.readouts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.readout {
+  display: grid; gap: 2px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--field);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.readout.is-active { border-color: var(--color-second-dark); box-shadow: 0 0 0 3px rgba(42, 159, 157, 0.3); }
+.readout__label { font-size: 0.8125rem; font-weight: 700; }
+.readout__value { font-size: 0.95rem; color: var(--muted); }
+.readout.is-set .readout__value { color: var(--ink); font-weight: 600; }
+
+.cal { border: 1px solid var(--line); border-radius: 12px; padding: 10px; background: var(--field); }
+.cal__nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.cal__month { margin: 0; font: 800 1.15rem var(--font-display); }
+.cal__week, .cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+.cal__week span { text-align: center; font-size: 0.8rem; font-weight: 600; color: var(--muted); padding: 4px 0; }
+.cal__pad { height: 44px; }
+.cal__day {
+  position: relative; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer;
+  font: 600 0.92rem var(--font-body); color: var(--text); border-radius: 0;
+}
+.cal__day:disabled { color: var(--color-gray-400); cursor: not-allowed; text-decoration: line-through; }
+.cal__day:hover:not(:disabled):not(.is-start):not(.is-end) { background: var(--color-blue-tint); border-radius: 10px; }
+.cal__day.in-range { background: var(--color-blue-tint); }
+.cal__day.is-start, .cal__day.is-end { background: var(--main-color); color: var(--white-color); }
+.cal__day.is-start { border-radius: 10px 0 0 10px; }
+.cal__day.is-end { border-radius: 0 10px 10px 0; }
+.cal__day.is-start.is-end, .cal__day.no-range { border-radius: 10px; }
+.cal__summary { margin: 14px 0 0; font-weight: 600; min-height: 1.5em; }
+
+/* Step 3: seats */
+.pax { display: grid; gap: 10px; }
+.pax__row {
+  display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: center;
+  padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--field);
+}
+.pax__name { margin: 0; font-size: 0.8125rem; font-weight: 700; }
+.pax__hint { margin: 0; font-size: 0.85rem; color: var(--muted); }
+.stepper { display: flex; align-items: center; gap: 8px; }
+.pax__count { min-width: 2ch; text-align: center; font: 800 1.5rem var(--font-display); }
+.pax__seats { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; min-height: 32px; }
+.seat { width: 32px; height: 32px; fill: var(--main-color); }
+.seat--child { width: 26px; height: 26px; align-self: flex-end; fill: var(--color-second); }
+.seat--infant { width: 20px; height: 20px; align-self: flex-end; fill: var(--accent-color); }
+.pax__note { margin: 12px 0 0; font-size: 0.9rem; color: var(--muted); min-height: 1.4em; }
+
+/* Step 4: promo */
+.promo { display: flex; gap: 8px; }
+.promo__box { position: relative; flex: 1; min-width: 0; }
+.promo__icon { position: absolute; left: 13px; top: 50%; width: 22px; height: 22px; margin-top: -11px; fill: none; stroke: var(--accent-color-dark); stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; pointer-events: none; }
+.promo input { padding-left: 44px; }
+.promo.is-valid input { border-color: var(--ok); background: var(--color-blue-tint); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.promo.is-valid .promo__icon { stroke: var(--ok); }
+.promo__apply {
+  flex: none; min-width: 84px; padding: 0 18px; border: 0; border-radius: 10px; cursor: pointer;
+  background: var(--accent-color); color: var(--color-gray-900); font: 700 0.95rem var(--font-body);
+  transition: background 0.2s;
+}
+.promo__apply:hover { background: var(--accent-color-light); }
+
+/* ---------------- Check-in ---------------- */
+.checkin { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold), var(--shadow-md); }
+.summary { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+.summary span { padding: 6px 12px; border-radius: var(--radius-pill); background: var(--color-blue-tint); color: var(--main-color); font-size: 0.875rem; font-weight: 600; }
+.rule { margin: 0 0 18px; padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.form-grid { display: grid; grid-template-columns: 1fr; column-gap: 16px; }
+
+.check { display: flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 4px; cursor: pointer; font-size: 0.875rem; font-weight: 600; }
+.check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.check__box {
+  flex: none; width: 24px; height: 24px; display: grid; place-items: center;
+  border: 1.5px solid var(--line-strong); border-radius: 6px; background: var(--field);
+  transition: background 0.15s, border-color 0.15s;
+}
+.check__box svg { width: 16px; height: 16px; fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+.check input:checked + .check__box { background: var(--accent-color); border-color: var(--accent-color-dark); }
+.check input:checked + .check__box svg { opacity: 1; }
+.check input:focus-visible + .check__box { outline: 3px solid var(--focus-color); outline-offset: 3px; }
+
+.btn--issue {
+  min-height: 56px; font-size: 0.85rem;
+  box-shadow: 0 0 0 0 rgba(42, 159, 157, 0.6), 0 10px 26px rgba(21, 59, 96, 0.3);
+  animation: glow 2s ease-in-out infinite;
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(42, 159, 157, 0.55), 0 10px 26px rgba(21, 59, 96, 0.3); }
+  50% { box-shadow: 0 0 0 10px rgba(42, 159, 157, 0), 0 10px 38px rgba(42, 159, 157, 0.5); }
+}
+
+/* ---------------- Confirmation ---------------- */
+.ticket {
+  display: grid; grid-template-columns: 1fr; background: var(--panel); border: 1px solid var(--color-gray-300); border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-md);
+}
+.ticket__main { padding: 24px 18px; }
+.ticket__name { margin: 8px 0 16px; font-weight: 500; color: var(--muted); }
+.ticket__list { margin: 0; display: grid; gap: 10px; }
+.ticket__list div { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px dashed var(--line-strong); padding-bottom: 8px; }
+.ticket__list dt { color: var(--muted); }
+.ticket__list dd { margin: 0; font-weight: 700; text-align: right; overflow-wrap: anywhere; }
+.ticket__stub {
+  display: grid; place-items: center; padding: 14px; background: var(--accent-color); border-top: 2px dashed var(--main-color);
+  font: 800 1rem var(--font-display); color: var(--ink);
+}
+
+/* ---------------- Confetti ---------------- */
+.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 20; overflow: hidden; }
+.confetti i { position: absolute; width: 9px; height: 14px; border-radius: 2px; will-change: transform; }
+
+/* ---------------- Larger screens ---------------- */
+@media (min-width: 560px) {
+  .app { padding-top: 32px; gap: 20px; }
+  .closed { padding-top: 40px; }
+  .cover-wrap { width: 300px; }
+  .passport__page { padding: 24px 24px 18px 32px; }
+  .slots { gap: 18px; }
+  .card, .checkin { padding: 34px 32px 28px; }
+  .tags { grid-template-columns: repeat(3, 1fr); }
+  .cal { padding: 14px; }
+  .btn { width: auto; min-width: 240px; }
+  .btn--issue { width: 100%; }
+  .form-grid { grid-template-columns: 1fr 1fr; }
+  .pax { grid-template-columns: 1fr; }
+  .ticket { grid-template-columns: 1fr 150px; }
+  .ticket__stub { border-top: 0; border-left: 2px dashed var(--main-color); }
+  .ticket__main { padding: 30px; }
+}
+
+/* ---------------- Desktop: passport beside the active card ---------------- */
+@media (min-width: 900px) {
+  .app { width: min(100%, var(--container)); padding-inline: 32px; }
+  .book { grid-template-columns: minmax(320px, 400px) minmax(0, 1fr); column-gap: 28px; align-items: start; }
+  .passport, .book > main { grid-row: 1; }
+  .passport { grid-column: 1; position: sticky; top: 24px; }
+  .book > main { grid-column: 2; }
+  .slots { grid-template-columns: repeat(2, 1fr); gap: 20px 24px; }
+  .passport__page { padding: 26px 24px 18px 30px; }
+  .cal { max-width: 560px; }
+  .ticket { width: 100%; max-width: 720px; margin-inline: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn--issue { animation: none; }
+  * { scroll-behavior: auto !important; }
+}

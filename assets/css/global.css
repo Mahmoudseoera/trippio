@@ -2444,6 +2444,15 @@ picture {
 @media(prefers-reduced-motion:reduce) {
  .categories-section .category-reveal {transition:none;}
 }
+
+.header-wrap--home:not(.is-fixed) .topbar {
+  background: var(--color-second-light);
+  color: var(--main-color);
+}
+
+.header-wrap--home .nav-pill .btn--primary:hover {
+  background: var(--color-second);
+}
 /*====================================================
   end Header
 ======================================================*/
